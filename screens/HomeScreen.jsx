@@ -12,7 +12,8 @@ export function HomeScreen() {
 				title='Solicitar Serviços'
 				onPress={() => {
 					navigation.navigate('Services')
-				}}></Button>
+				}}
+			/>
 		</View>
 	)
 }

@@ -1,21 +1,9 @@
 import { StatusBar } from 'expo-status-bar'
-import {
-	StyleSheet,
-	Text,
-	View,
-	SafeAreaView,
-	Platform,
-	StatusBar as SB,
-} from 'react-native'
+import { StyleSheet, SafeAreaView, Platform, StatusBar as SB } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import {
-	HomeScreen,
-	ProfileScreen,
-	ServicesScreen,
-	ServiceFormScreen,
-} from './screens'
+import { HomeScreen, ProfileScreen, ServicesScreen, ServiceFormScreen } from './screens'
 
 const Tab = createBottomTabNavigator()
 const Stack = createNativeStackNavigator()
@@ -24,8 +12,9 @@ function Tabs() {
 	return (
 		<Tab.Navigator
 			screenOptions={{
-				headerShown: false,
-			}}>
+				headerShown: false
+			}}
+		>
 			<Tab.Screen name='HomeStack' component={Stacks} />
 			<Tab.Screen name='Profile' component={ProfileScreen} />
 		</Tab.Navigator>
@@ -39,7 +28,7 @@ function Stacks() {
 				name='Home'
 				component={HomeScreen}
 				options={{
-					headerShown: false,
+					headerShown: false
 				}}
 			/>
 			<Tab.Screen name='Services' component={ServicesScreen} />
@@ -53,8 +42,9 @@ export default function App() {
 		<SafeAreaView
 			style={{
 				flex: 1,
-				paddingTop: Platform.OS === 'android' ? SB.currentHeight : 0,
-			}}>
+				paddingTop: Platform.OS === 'android' ? SB.currentHeight : 0
+			}}
+		>
 			<StatusBar style='auto' />
 			<NavigationContainer>
 				<Tabs />
