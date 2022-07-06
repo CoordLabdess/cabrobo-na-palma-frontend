@@ -1,19 +1,28 @@
-import { View, Text, Button } from 'react-native'
+import { View, Text, Button, StyleSheet } from 'react-native'
+import { LinearGradient } from 'expo-linear-gradient'
 import { useNavigation } from '@react-navigation/native'
 import { UserHeader } from '../components/UserHeader'
+import { ToolsGrid } from '../components/home/ToolsGrid'
+import { tools } from '../data/toolsData'
 
 export function HomeScreen() {
 	const navigation = useNavigation()
 	return (
-		<View>
+		<LinearGradient colors={['#277cb4', '#fff']} style={styles.root}>
 			<UserHeader />
-			<Text>Home</Text>
+			<ToolsGrid toolsArray={tools} />
 			<Button
 				title='Solicitar Serviços'
 				onPress={() => {
 					navigation.navigate('Services')
 				}}
 			/>
-		</View>
+		</LinearGradient>
 	)
 }
+
+const styles = StyleSheet.create({
+	root: {
+		flex: 1
+	}
+})

@@ -3,23 +3,10 @@ import { StyleSheet, SafeAreaView, Platform, StatusBar as SB } from 'react-nativ
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { HomeScreen, ProfileScreen, ServicesScreen, ServiceFormScreen } from './screens'
+import { HomeScreen, ProfileScreen, ServicesScreen, ServiceFormScreen, ComingSoon } from './screens'
 
 const Tab = createBottomTabNavigator()
 const Stack = createNativeStackNavigator()
-
-function Tabs() {
-	return (
-		<Tab.Navigator
-			screenOptions={{
-				headerShown: false
-			}}
-		>
-			<Tab.Screen name='HomeStack' component={Stacks} />
-			<Tab.Screen name='Profile' component={ProfileScreen} />
-		</Tab.Navigator>
-	)
-}
 
 function Stacks() {
 	return (
@@ -31,9 +18,23 @@ function Stacks() {
 					headerShown: false
 				}}
 			/>
-			<Tab.Screen name='Services' component={ServicesScreen} />
+			<Stack.Screen name='Services' component={ServicesScreen} />
 			<Stack.Screen name='ServiceForm' component={ServiceFormScreen} />
+			<Stack.Screen name='ComingSoon' component={ComingSoon} />
 		</Stack.Navigator>
+	)
+}
+
+function Tabs() {
+	return (
+		<Tab.Navigator
+			screenOptions={{
+				headerShown: false
+			}}
+		>
+			<Tab.Screen name='HomeStack' component={Stacks} />
+			<Tab.Screen name='Profile' component={ProfileScreen} />
+		</Tab.Navigator>
 	)
 }
 

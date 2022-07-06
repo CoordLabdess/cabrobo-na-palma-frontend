@@ -15,14 +15,19 @@
 	"plugins": ["react", "@typescript-eslint"],
 
 	"rules": {
-		"import/no-unresolved": "off",
-		"no-use-before-define": "off",
-		"react/style-prop-object": "off",
-		"import/prefer-default-export": "off",
-		"no-unused-vars": "off",
-		"import/extensions": "off",
-		"eslint-disable import/no-unresolved": "off",
-		"eslint-disable-next-line import/extensions": "off",
-		"react/react-in-jsx-scope": "off"
+		"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+		"react/no-unused-prop-types": 0,
+		"import/no-unresolved": 0,
+		"react/style-prop-object": 0,
+		"react/destructuring-assignment": 0,
+		"arrow-body-style": 0,
+		"import/prefer-default-export": 0,
+		"react/no-array-index-key": 0,
+		"no-use-before-define": 0,
+		"no-unused-vars": 1,
+		"import/extensions": 0,
+		"eslint-disable import/no-unresolved": 0,
+		"eslint-disable-next-line import/extensions": 0,
+		"react/react-in-jsx-scope": 0
 	}
 }
