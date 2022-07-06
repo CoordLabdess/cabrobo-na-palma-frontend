@@ -19,8 +19,7 @@ function Tabs() {
 			screenOptions={{
 				headerShown: false,
 			}}>
-			<Tab.Screen name='Home' component={Stacks} />
-
+			<Tab.Screen name='HomeStack' component={Stacks} />
 			<Tab.Screen name='Profile' component={ProfileScreen} />
 		</Tab.Navigator>
 	)
