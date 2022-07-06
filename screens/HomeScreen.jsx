@@ -11,12 +11,6 @@ export function HomeScreen() {
 		<LinearGradient colors={['#277cb4', '#fff']} style={styles.root}>
 			<UserHeader />
 			<ToolsGrid toolsArray={tools} />
-			<Button
-				title='Solicitar Serviços'
-				onPress={() => {
-					navigation.navigate('Services')
-				}}
-			/>
 		</LinearGradient>
 	)
 }

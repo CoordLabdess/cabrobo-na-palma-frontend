@@ -3,7 +3,9 @@ import { StyleSheet, SafeAreaView, Platform, StatusBar as SB } from 'react-nativ
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import IonIcons from '@expo/vector-icons/Ionicons'
 import { HomeScreen, ProfileScreen, ServicesScreen, ServiceFormScreen, ComingSoon } from './screens'
+import { COLORS } from './constants/colors'
 
 const Tab = createBottomTabNavigator()
 const Stack = createNativeStackNavigator()
@@ -28,12 +30,59 @@ function Stacks() {
 function Tabs() {
 	return (
 		<Tab.Navigator
+			initialRouteName='HomeStack'
 			screenOptions={{
-				headerShown: false
+				tabBarActiveTintColor: '#fff',
+				tabBarInactiveTintColor: '#aaaaaa',
+				headerShown: false,
+				tabBarStyle: {
+					height: 70,
+					alignItems: 'center',
+					paddingBottom: 5,
+					backgroundColor: COLORS.primary500
+				}
 			}}
 		>
-			<Tab.Screen name='HomeStack' component={Stacks} />
-			<Tab.Screen name='Profile' component={ProfileScreen} />
+			<Tab.Screen
+				name='HomeStack'
+				component={Stacks}
+				options={{
+					title: 'Início',
+					tabBarIcon: ({ color }) => {
+						return <IonIcons name='home' size={35} color={color} />
+					}
+				}}
+			/>
+			<Tab.Screen
+				name='Profile'
+				component={ProfileScreen}
+				options={{
+					title: 'Perfil',
+					tabBarIcon: ({ color }) => {
+						return <IonIcons name='person' size={35} color={color} />
+					}
+				}}
+			/>
+			<Tab.Screen
+				name='News'
+				component={ComingSoon}
+				options={{
+					title: 'Notícias',
+					tabBarIcon: ({ color }) => {
+						return <IonIcons name='newspaper' size={35} color={color} />
+					}
+				}}
+			/>
+			<Tab.Screen
+				name='Settings'
+				component={ComingSoon}
+				options={{
+					title: 'Configurações',
+					tabBarIcon: ({ color }) => {
+						return <IonIcons name='options' size={35} color={color} />
+					}
+				}}
+			/>
 		</Tab.Navigator>
 	)
 }
@@ -53,5 +102,3 @@ export default function App() {
 		</SafeAreaView>
 	)
 }
-
-const styles = StyleSheet.create({})
