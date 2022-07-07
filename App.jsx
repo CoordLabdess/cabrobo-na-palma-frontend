@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar'
-import { StyleSheet, SafeAreaView, Platform, StatusBar as SB } from 'react-native'
+import { SafeAreaView, Platform, StatusBar as SB } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
@@ -12,7 +12,15 @@ const Stack = createNativeStackNavigator()
 
 function Stacks() {
 	return (
-		<Stack.Navigator>
+		<Stack.Navigator
+			screenOptions={{
+				headerTintColor: '#fff',
+				headerStyle: {
+					backgroundColor: '#4480c5'
+				},
+				animation: 'fade_from_bottom'
+			}}
+		>
 			<Stack.Screen
 				name='Home'
 				component={HomeScreen}
@@ -21,6 +29,7 @@ function Stacks() {
 				}}
 			/>
 			<Stack.Screen name='Services' component={ServicesScreen} />
+			<Stack.Screen name='MinorServices' component={ServicesScreen} />
 			<Stack.Screen name='ServiceForm' component={ServiceFormScreen} />
 			<Stack.Screen name='ComingSoon' component={ComingSoon} />
 		</Stack.Navigator>
@@ -95,7 +104,7 @@ export default function App() {
 				paddingTop: Platform.OS === 'android' ? SB.currentHeight : 0
 			}}
 		>
-			<StatusBar style='auto' />
+			<StatusBar style='light' backgroundColor='#4480c5' />
 			<NavigationContainer>
 				<Tabs />
 			</NavigationContainer>

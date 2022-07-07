@@ -22,6 +22,7 @@
 		"react/no-unstable-nested-components": 0,
 		"react/style-prop-object": 0,
 		"react/destructuring-assignment": 0,
+		"prefer-destructuring": 0,
 		"arrow-body-style": 0,
 		"import/prefer-default-export": 0,
 		"react/no-array-index-key": 0,

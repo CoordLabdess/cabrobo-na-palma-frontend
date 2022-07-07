@@ -30,20 +30,20 @@ export function UserHeader() {
 					<Pressable
 						style={styles.linkContainer}
 						onPress={() => {
-							console.log('Ouvidoria')
-						}}
-					>
-						<IonIcons name='headset-sharp' size={32} color='#123A56' />
-						<Text style={styles.linkText}>Ouvidoria</Text>
-					</Pressable>
-					<Pressable
-						style={styles.linkContainer}
-						onPress={() => {
 							console.log('Solicitações')
 						}}
 					>
 						<Text style={styles.linkText}>Solicitações</Text>
-						<IonIcons name='notifications' size={32} color='#123A56' />
+						<IonIcons name='document-text-outline' size={32} color='#123A56' />
+					</Pressable>
+					<Pressable
+						style={styles.linkContainer}
+						onPress={() => {
+							console.log('Sair')
+						}}
+					>
+						<IonIcons name='exit-outline' size={32} color='#123A56' />
+						<Text style={styles.linkText}>Sair</Text>
 					</Pressable>
 				</View>
 			</View>
@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
 	},
 	linkText: {
 		marginHorizontal: 10,
+		fontWeight: '600',
 		color: '#123A56'
 	}
 })

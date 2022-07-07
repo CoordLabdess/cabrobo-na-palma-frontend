@@ -6,47 +6,59 @@ import suaEmpresaAquiImg from '../assets/home/sua-empresa-aqui.png'
 import transporteSeguroImg from '../assets/home/transporte-seguro.png'
 import turismoImg from '../assets/home/turismo.png'
 
-export const tools: Tool[] = [
+export const allTools: Tool[] = [
 	{
 		id: 1,
 		navigateTo: 'Services',
 		alias: 'solicitar-servicos',
 		title: 'Solicitar Serviços',
-		img: solicitarServicoImg
+		img: solicitarServicoImg,
+		category: 'Tool',
+		majorServicesIds: [1, 2, 3, 4]
 	},
 	{
 		id: 2,
 		navigateTo: 'ComingSoon',
 		alias: 'sua-empresa-aqui',
 		title: 'Sua Empresa Aqui',
-		img: suaEmpresaAquiImg
+		img: suaEmpresaAquiImg,
+		category: 'Tool',
+		majorServicesIds: []
 	},
 	{
 		id: 3,
 		navigateTo: 'ComingSoon',
 		alias: 'saude',
 		title: 'Saúde',
-		img: saudeImg
+		img: saudeImg,
+		category: 'Tool',
+		majorServicesIds: []
 	},
 	{
 		id: 4,
 		navigateTo: 'ComingSoon',
 		alias: 'turismo',
 		title: 'Turismo',
-		img: turismoImg
+		img: turismoImg,
+		category: 'Tool',
+		majorServicesIds: []
 	},
 	{
 		id: 5,
 		navigateTo: 'ComingSoon',
 		alias: 'educacao',
 		title: 'Educação',
-		img: educacaoImg
+		img: educacaoImg,
+		category: 'Tool',
+		majorServicesIds: []
 	},
 	{
 		id: 6,
 		navigateTo: 'ComingSoon',
 		alias: 'transporte-seguro',
 		title: 'Transporte Seguro',
-		img: transporteSeguroImg
+		img: transporteSeguroImg,
+		category: 'Tool',
+		majorServicesIds: []
 	}
 ]

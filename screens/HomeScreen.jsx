@@ -1,16 +1,14 @@
-import { View, Text, Button, StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
-import { useNavigation } from '@react-navigation/native'
 import { UserHeader } from '../components/UserHeader'
 import { ToolsGrid } from '../components/home/ToolsGrid'
-import { tools } from '../data/toolsData'
+import { allTools } from '../data/toolsData'
 
 export function HomeScreen() {
-	const navigation = useNavigation()
 	return (
-		<LinearGradient colors={['#277cb4', '#fff']} style={styles.root}>
+		<LinearGradient colors={['#4480c5', '#fff']} style={styles.root}>
 			<UserHeader />
-			<ToolsGrid toolsArray={tools} />
+			<ToolsGrid toolsArray={allTools} />
 		</LinearGradient>
 	)
 }
