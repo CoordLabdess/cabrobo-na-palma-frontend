@@ -2,7 +2,9 @@
 	"expo": {
 		"name": "cabrobo_native_app",
 		"slug": "cabrobo_native_app",
+		"privacy": "public",
 		"version": "1.0.0",
+		"description": "Cabrobó na palma da mão",
 		"orientation": "portrait",
 		"icon": "./assets/icon.png",
 		"userInterfaceStyle": "light",
