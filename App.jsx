@@ -18,7 +18,7 @@ function Stacks() {
 				headerStyle: {
 					backgroundColor: '#4480c5'
 				},
-				animation: 'fade_from_bottom'
+				animation: 'none'
 			}}
 		>
 			<Stack.Screen

@@ -26,3 +26,12 @@ export interface MinorService extends Categorical {
 interface Categorical {
 	category: 'Tool' | 'MajorService' | 'MinorService'
 }
+
+export interface RouteProp {
+	params: { serviceId: number; serviceType: string; serviceTitle: string }
+}
+
+export interface Coords {
+	latitude: number
+	longitude: number
+}

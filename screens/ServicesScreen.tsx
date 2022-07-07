@@ -1,17 +1,14 @@
-import { View, Text, Button } from 'react-native'
-import { useNavigation, RouteProp } from '@react-navigation/native'
+import { View, Button, Text } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 import { useLayoutEffect, useState } from 'react'
 import { ServicesGrid } from '../components/services/ServicesGrid'
-import { MinorService, MajorService } from '../types/global'
+import { MinorService, MajorService, RouteProp } from '../types/global'
 import { allMajorServices } from '../data/majorServices'
 import { allMinorServices } from '../data/minorServices'
 import { allTools } from '../data/toolsData'
 
 interface ServiceScreenProps {
-	route: RouteProp<
-		{ params: { serviceId: number; serviceType: string; serviceTitle: string } },
-		'params'
-	>
+	route: RouteProp
 }
 
 export function ServicesScreen(props: ServiceScreenProps) {
@@ -59,15 +56,7 @@ export function ServicesScreen(props: ServiceScreenProps) {
 
 	return (
 		<View>
-			<Text>{serviceId}</Text>
-			<Text>{serviceType}</Text>
 			<ServicesGrid servicesArray={dataArray} />
-			<Button
-				title='Serviço 1'
-				onPress={() => {
-					navigation.navigate('ServiceForm' as any)
-				}}
-			/>
 		</View>
 	)
 }
