@@ -104,3 +104,8 @@
 		</script>
 	</body>
 </html>
+
+track.on('track', (evt: any) => { track.stop() layer.removeAll() layer.graphics = new Graphic({
+geometry: { type: 'point', latitude: evt.position.coords.latitude, longitude:
+evt.position.coords.longitude, }, symbol: simpleMarkerSymbol, })
+sendDataToReactNativeApp(evt.position.coords.longitude, evt.position.coords.latitude) })

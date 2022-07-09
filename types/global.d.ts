@@ -23,12 +23,38 @@ export interface MinorService extends Categorical {
 	formId?: number
 }
 
+export interface ServiceForm {
+	id: number
+	title: string
+	mapFeatures: string[]
+	pages: FormPage[]
+}
+
+interface FormPage {
+	index: number
+	sections: FormSection[]
+}
+
+interface FormSection {
+	title?: string
+	elements: FormElement[]
+}
+
+interface FormElement {
+	id: number
+	title: string
+	alias: string
+	placeHolder?: string
+	type: 'TextInput' | 'TextArea' | 'CheckBox' | 'Image'
+	value: string | number | boolean
+}
+
 interface Categorical {
 	category: 'Tool' | 'MajorService' | 'MinorService'
 }
 
 export interface RouteProp {
-	params: { serviceId: number; serviceType: string; serviceTitle: string }
+	params: { serviceId: number; serviceType: string; serviceTitle: string; step: number }
 }
 
 export interface Coords {

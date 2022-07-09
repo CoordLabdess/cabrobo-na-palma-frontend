@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from 'react'
 import { View, Button, ActivityIndicator, StyleSheet } from 'react-native'
 import { WebView } from 'react-native-webview'
 import { Coords } from '../types/global'
+import { COLORS } from '../constants/colors'
 
 interface HTMLMapProps {
 	onCoordChange?: (coords: Coords) => {}
@@ -23,7 +24,7 @@ export function HTMLMap(props: HTMLMapProps) {
 	}, [coords])
 
 	function LoadingIndicatorView() {
-		return <ActivityIndicator color='#009b88' size='large' style={styles.ActivityIndicatorStyle} />
+		return <ActivityIndicator color='#4480c5' size='large' style={styles.ActivityIndicatorStyle} />
 	}
 
 	function injectedToHtml() {
@@ -33,7 +34,15 @@ export function HTMLMap(props: HTMLMapProps) {
 	}
 
 	return (
-		<View style={{ height: 400, width: '100%' }}>
+		<View
+			style={{
+				height: '100%',
+				width: '100%',
+				borderColor: COLORS.primary500,
+				borderBottomWidth: 2,
+				borderTopWidth: 2
+			}}
+		>
 			<WebView
 				ref={webViewRef as any}
 				style={{ height: '100%', width: '100%', paddingTop: 20 }}
@@ -137,6 +146,7 @@ export function HTMLMap(props: HTMLMapProps) {
 									graphic: null,
 								})
 								view.ui.add(track, 'top-left')
+								
 								view.ui.add(search, 'top-right')
 								map.add(featureLayer)
 								map.add(layer)
@@ -160,12 +170,6 @@ export function HTMLMap(props: HTMLMapProps) {
 					</body>
 				</html>
 `
-				}}
-			/>
-			<Button
-				title='Send Data to Webview'
-				onPress={() => {
-					console.log('oi')
 				}}
 			/>
 		</View>

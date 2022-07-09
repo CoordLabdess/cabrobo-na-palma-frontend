@@ -37,9 +37,10 @@ export function ServiceItem(props: ServiceItemProps) {
 				{
 					screen: 'ServiceForm',
 					params: {
-						serviceId: props.service.id,
+						serviceId: (props.service as MinorService).formId,
 						serviceType: 'MinorServiceForm',
-						serviceTitle: props.service.title
+						serviceTitle: props.service.title,
+						step: 1
 					}
 				} as never
 			)
