@@ -7,6 +7,7 @@ import { HTMLMap } from '../components/HTMLMap'
 import { allServiceForms } from '../data/serviceForms'
 import { COLORS } from '../constants/colors'
 import { PrimaryButton } from '../components/ui/PrimaryButton'
+import { FormStepsBar } from '../components/form/FormStepsBar'
 
 interface ServiceScreenProps {
 	route: RouteProp
@@ -59,14 +60,12 @@ export function ServiceFormScreen(props: ServiceScreenProps) {
 			<View style={styles.formControlContainer}>
 				<PrimaryButton
 					title='Continuar'
-					style={{ width: 200 }}
+					style={{ width: 200, marginBottom: 20 }}
 					onPress={() => {
 						updateCurrentStep()
 					}}
 				/>
-				<Text>
-					{currentStep} de {maxSteps}
-				</Text>
+				<FormStepsBar style={{ width: '80%' }} currentStep={currentStep} maxSteps={maxSteps} />
 			</View>
 		</LinearGradient>
 	)
@@ -79,8 +78,9 @@ const styles = StyleSheet.create({
 		justifyContent: 'space-between'
 	},
 	titleText: {
-		padding: 20,
-		fontSize: 16,
+		paddingVertical: 20,
+		paddingHorizontal: 50,
+		fontSize: 18,
 		color: COLORS.secondary500,
 		width: '100%',
 		textAlign: 'center'
@@ -90,6 +90,6 @@ const styles = StyleSheet.create({
 	},
 	formControlContainer: {
 		alignItems: 'center',
-		paddingVertical: 40
+		paddingVertical: 30
 	}
 })
