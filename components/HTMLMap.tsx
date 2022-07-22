@@ -91,9 +91,7 @@ export function HTMLMap(props: HTMLMapProps) {
 								'esri/layers/FeatureLayer',
 								'esri/Graphic',
 								'esri/layers/GraphicsLayer',
-								'esri/widgets/Search',
-								'esri/widgets/Track',
-							], (Map, MapView, FeatureLayer, Graphic, GraphicsLayer, Search, Track) => {
+							], (Map, MapView, FeatureLayer, Graphic, GraphicsLayer) => {
 								const map = new Map({
 									basemap: 'topo-vector',
 								})
@@ -117,11 +115,6 @@ export function HTMLMap(props: HTMLMapProps) {
 									center: [-39.31, -8.51],
 									zoom: 16,
 								})
-
-								const search = new Search({
-									view: view,
-								})
-				
 								let layer = new GraphicsLayer({
 									graphics: pointGraphic,
 								})
@@ -141,13 +134,6 @@ export function HTMLMap(props: HTMLMapProps) {
 									})
 									sendDataToReactNativeApp(evt.mapPoint.longitude, evt.mapPoint.latitude)
 								})
-								const track = new Track({
-									view: view,
-									graphic: null,
-								})
-								view.ui.add(track, 'top-left')
-								
-								view.ui.add(search, 'top-right')
 								map.add(featureLayer)
 								map.add(layer)
 							})

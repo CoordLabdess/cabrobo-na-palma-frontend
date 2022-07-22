@@ -28,18 +28,18 @@ function StepJoint(props: { actived: boolean }) {
 export function FormStepsBar(props: FormStepsBarProps) {
 	return (
 		<View style={[styles.barContainer, props.style]}>
-			{Array.from(Array(props.maxSteps).keys()).map(step => {
+			{Array.from(Array(props.maxSteps).keys()).map((step, key) => {
 				if (step + 1 < props.maxSteps) {
 					return (
-						<>
+						<View key={key} style={{ flexDirection: 'row', alignItems: 'center' }}>
 							<StepBall
 								key={step}
 								step={step + 1}
 								target={step + 1 === props.currentStep}
 								actived={step + 1 <= props.currentStep}
 							/>
-							<StepJoint actived={step + 1 <= props.currentStep - 1} />
-						</>
+							<StepJoint key={step + 1000} actived={step + 1 <= props.currentStep - 1} />
+						</View>
 					)
 				}
 				return (
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
 	barContainer: {
 		width: '100%',
 		alignItems: 'center',
-		justifyContent: 'space-around',
+		justifyContent: 'center',
 		flexDirection: 'row'
 	},
 	ballElement: {
@@ -76,8 +76,7 @@ const styles = StyleSheet.create({
 	},
 	stepJoint: {
 		height: 5,
-		flex: 1,
-		marginHorizontal: 5
+		width: 70
 	},
 	on: {
 		backgroundColor: COLORS.primary500

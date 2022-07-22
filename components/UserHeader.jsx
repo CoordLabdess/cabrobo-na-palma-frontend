@@ -1,9 +1,10 @@
 import { View, Text, StyleSheet, Pressable, Image } from 'react-native'
 import IonIcons from '@expo/vector-icons/Ionicons'
+import { COLORS } from '../constants/colors'
 
 export function UserHeader() {
 	return (
-		<View>
+		<View style={{ flex: 1 }}>
 			<View style={styles.headerContainer}>
 				<Pressable
 					style={styles.userInfoContainer}
@@ -47,18 +48,16 @@ export function UserHeader() {
 					</Pressable>
 				</View>
 			</View>
+			<Text style={styles.toolsGridTitle}>O que você precisa hoje?</Text>
 		</View>
 	)
 }
 
 const styles = StyleSheet.create({
-	container: {
-		width: '100%'
-	},
 	headerContainer: {
 		backgroundColor: '#fff',
+		marginTop: 20,
 		borderRadius: 8,
-		margin: 20,
 		overflow: 'hidden'
 	},
 	userInfoContainer: {
@@ -88,7 +87,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		padding: 10,
 		backgroundColor: '#ACB1C6',
-		width: '100%',
+		flex: 1,
 		justifyContent: 'space-between'
 	},
 	linkContainer: {
@@ -99,5 +98,15 @@ const styles = StyleSheet.create({
 		marginHorizontal: 10,
 		fontWeight: '600',
 		color: '#123A56'
+	},
+	toolsGridTitle: {
+		color: COLORS.primary500,
+		marginTop: 20,
+		fontWeight: '600',
+		fontSize: 15,
+		width: '100%',
+		marginLeft: 5,
+		textAlign: 'left',
+		marginBottom: 10
 	}
 })

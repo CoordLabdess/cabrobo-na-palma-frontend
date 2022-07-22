@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar'
-import { SafeAreaView, Platform, StatusBar as SB } from 'react-native'
+import { SafeAreaView, Platform, Dimensions } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
@@ -41,6 +41,7 @@ function Tabs() {
 		<Tab.Navigator
 			initialRouteName='HomeStack'
 			screenOptions={{
+				tabBarHideOnKeyboard: true,
 				tabBarActiveTintColor: '#fff',
 				tabBarInactiveTintColor: '#aaaaaa',
 				headerShown: false,
@@ -100,8 +101,7 @@ export default function App() {
 	return (
 		<SafeAreaView
 			style={{
-				flex: 1,
-				paddingTop: Platform.OS === 'android' ? SB.currentHeight : 0
+				flex: 1
 			}}
 		>
 			<StatusBar style='light' backgroundColor='#4480c5' />

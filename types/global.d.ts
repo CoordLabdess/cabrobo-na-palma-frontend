@@ -30,7 +30,7 @@ export interface ServiceForm {
 	pages: FormPage[]
 }
 
-interface FormPage {
+export interface FormPage {
 	index: number
 	sections: FormSection[]
 }
@@ -40,15 +40,16 @@ interface FormSection {
 	elements: FormElement[]
 }
 
-interface FormElement {
+export interface FormElement {
 	id: number
 	title: string
 	alias: string
 	placeHolder?: string
-	type: 'TextInput' | 'TextArea' | 'CheckBox' | 'Image'
+	type: FormElementType
 	value: string | number | boolean
 }
 
+export type FormElementType = 'TextInput' | 'TextArea' | 'CheckBox' | 'Image'
 interface Categorical {
 	category: 'Tool' | 'MajorService' | 'MinorService'
 }

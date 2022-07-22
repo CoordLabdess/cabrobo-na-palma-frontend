@@ -1,7 +1,8 @@
-import { View, Text, FlatList, StyleSheet } from 'react-native'
-import { ToolItem } from './ToolItem'
+import { View, Text, FlatList, StyleSheet, Dimensions } from 'react-native'
+import { ToolItem } from '../../components/home/ToolItem'
 import { Tool } from '../../types/global'
 import { COLORS } from '../../constants/colors'
+import { UserHeader } from '../UserHeader'
 
 interface ToolsGridProps {
 	toolsArray: Tool[]
@@ -10,20 +11,19 @@ interface ToolsGridProps {
 export function ToolsGrid(props: ToolsGridProps) {
 	return (
 		<View style={styles.toolsGridContainer}>
-			<View>
-				<Text style={styles.toolsGridTitle}>O que você precisa hoje?</Text>
-				<FlatList
-					style={styles.toolsGrid}
-					data={props.toolsArray}
-					keyExtractor={item => {
-						return item.id.toString()
-					}}
-					renderItem={itemData => {
-						return <ToolItem tool={itemData.item} />
-					}}
-					numColumns={2}
-				/>
-			</View>
+			<FlatList
+				ListHeaderComponent={UserHeader}
+				scrollEnabled={false}
+				style={styles.toolsGrid}
+				data={props.toolsArray}
+				keyExtractor={item => {
+					return item.id.toString()
+				}}
+				renderItem={itemData => {
+					return <ToolItem tool={itemData.item} />
+				}}
+				numColumns={2}
+			/>
 		</View>
 	)
 }
@@ -31,12 +31,13 @@ export function ToolsGrid(props: ToolsGridProps) {
 const styles = StyleSheet.create({
 	toolsGridContainer: {
 		marginTop: 20,
-		height: 400,
-		alignItems: 'center',
-		width: '100%'
+		flex: 1,
+		alignItems: 'center'
 	},
 	toolsGrid: {
-		flex: 1
+		backgroundColor: 'red',
+		height: '100%',
+		flexGrow: 0
 	},
 	toolsGridTitle: {
 		color: COLORS.primary500,
