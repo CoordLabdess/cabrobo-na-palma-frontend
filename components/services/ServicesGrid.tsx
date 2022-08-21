@@ -8,6 +8,14 @@ interface ServicesGridProps {
 }
 
 export function ServicesGrid(props: ServicesGridProps) {
+	if (!props.servicesArray) {
+		return (
+			<View>
+				<Text>Loading...</Text>
+			</View>
+		)
+	}
+
 	return (
 		<View style={styles.servicesGridContainer}>
 			<View>

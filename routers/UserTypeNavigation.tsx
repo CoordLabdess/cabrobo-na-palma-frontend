@@ -9,7 +9,7 @@ export function UserTypeNavigation() {
 	const [userType, setUserType] = useState('Common')
 	return userType === 'Common' ? (
 		<NavigationContainer>
-			<StatusBar style='light' backgroundColor={COLORS.primary400} />
+			<StatusBar style='dark' backgroundColor='#fff' />
 			<RootCommonRouter />
 		</NavigationContainer>
 	) : (

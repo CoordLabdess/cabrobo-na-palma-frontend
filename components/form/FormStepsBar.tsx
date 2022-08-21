@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
 	},
 	stepJoint: {
 		height: 5,
-		width: 70
+		width: 80
 	},
 	on: {
 		backgroundColor: COLORS.primary500

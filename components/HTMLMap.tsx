@@ -5,7 +5,7 @@ import { Coords } from '../types/global'
 import { COLORS } from '../constants/colors'
 
 interface HTMLMapProps {
-	onCoordChange?: (coords: Coords) => {}
+	onCoordsChange?: (coords: Coords) => void
 	initialCoords?: Coords
 }
 
@@ -20,7 +20,9 @@ export function HTMLMap(props: HTMLMapProps) {
 	}
 
 	useEffect(() => {
-		console.log(coords)
+		if (props.onCoordsChange && coords) {
+			props.onCoordsChange(coords)
+		}
 	}, [coords])
 
 	function LoadingIndicatorView() {
@@ -47,6 +49,7 @@ export function HTMLMap(props: HTMLMapProps) {
 				ref={webViewRef as any}
 				style={{ height: '100%', width: '100%', paddingTop: 20 }}
 				startInLoadingState
+				geolocationEnabled
 				javaScriptEnabled
 				renderLoading={LoadingIndicatorView}
 				originWhitelist={['*']}

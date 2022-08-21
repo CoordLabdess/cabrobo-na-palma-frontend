@@ -64,7 +64,7 @@ export function ServiceFormScreen(props: ServiceScreenProps) {
 	return (
 		<LinearGradient style={styles.formContainer} colors={['#fff', '#123A562E']}>
 			<View style={{ backgroundColor: 'red', flex: 1, overflow: 'hidden' }}>
-				<ScrollView style={{ flexGrow: 1 }} scrollEnabled={true}>
+				<ScrollView style={{ flexGrow: 1 }}>
 					<Text style={styles.titleText}>Pesquise pelo nome da rua onde há o problema</Text>
 					<View style={styles.formFieldsContainer}>
 						{currentStep === 1 ? (

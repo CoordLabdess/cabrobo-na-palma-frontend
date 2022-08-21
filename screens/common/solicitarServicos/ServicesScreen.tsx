@@ -1,4 +1,4 @@
-import { View, Button, Text, StyleSheet } from 'react-native'
+import { View, Button, Text, StyleSheet, FlatList } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useNavigation } from '@react-navigation/native'
 import { useLayoutEffect, useState } from 'react'
@@ -8,6 +8,7 @@ import { allMajorServices } from '../../../data/majorServices'
 import { allMinorServices } from '../../../data/minorServices'
 import { allTools } from '../../../data/toolsData'
 import { COLORS } from '../../../constants/colors'
+import { ServiceItem } from '../../../components/services/ServiceItem'
 
 interface ServiceScreenProps {
 	route: RouteProp
@@ -58,13 +59,34 @@ export function ServicesScreen(props: ServiceScreenProps) {
 
 	return (
 		<View>
-			<View style={styles.servicesGridTitleContainer}>
-				<Text style={styles.servicesGridTitle}>
-					Envie sua solicitação para que a prefeitura trabalhe nas soluções dos problemas da nossa
-					cidade.
-				</Text>
-			</View>
-			<ServicesGrid servicesArray={dataArray} />
+			<FlatList
+				keyboardShouldPersistTaps='handled'
+				contentContainerStyle={{
+					flexGrow: 1,
+					justifyContent: 'flex-start',
+					paddingHorizontal: '5%',
+					alignItems: 'center',
+					paddingBottom: 20
+				}}
+				alwaysBounceVertical={false}
+				showsVerticalScrollIndicator={false}
+				ListHeaderComponent={() => (
+					<View style={styles.servicesGridTitleContainer}>
+						<Text style={styles.servicesGridTitle}>
+							Envie sua solicitação para que a prefeitura trabalhe nas soluções dos problemas da
+							nossa cidade.
+						</Text>
+					</View>
+				)}
+				data={dataArray}
+				keyExtractor={item => {
+					return item.id.toString()
+				}}
+				renderItem={itemData => {
+					return <ServiceItem service={itemData.item} />
+				}}
+				numColumns={1}
+			/>
 		</View>
 	)
 }
@@ -82,5 +104,13 @@ const styles = StyleSheet.create({
 		marginLeft: 5,
 		textAlign: 'left',
 		marginBottom: 30
+	},
+	servicesGridContainer: {
+		marginTop: 20,
+		width: '100%',
+		alignItems: 'center'
+	},
+	servicesGrid: {
+		width: '100%'
 	}
 })
