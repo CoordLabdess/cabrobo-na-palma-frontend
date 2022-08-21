@@ -10,12 +10,6 @@ interface ServicesGridProps {
 export function ServicesGrid(props: ServicesGridProps) {
 	return (
 		<View style={styles.servicesGridContainer}>
-			<View style={styles.servicesGridTitleContainer}>
-				<Text style={styles.servicesGridTitle}>
-					Envie sua solicitação para que a prefeitura trabalhe nas soluções dos problemas da nossa
-					cidade.
-				</Text>
-			</View>
 			<View>
 				<FlatList
 					style={styles.servicesGrid}

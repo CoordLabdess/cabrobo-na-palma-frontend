@@ -26,17 +26,7 @@ export function ToolItem(props: ToolItemProps) {
 						: styles.innerContainer
 				}
 				onPress={() => {
-					navigation.navigate(
-						'HomeStack' as never,
-						{
-							screen: props.tool.navigateTo,
-							params: {
-								serviceId: props.tool.id,
-								serviceType: 'MajorServices',
-								serviceTitle: props.tool.title
-							}
-						} as never
-					)
+					navigation.navigate(props.tool.navigateTo as never)
 				}}
 				android_ripple={{ color: '#ccc' }}
 			>

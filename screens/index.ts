@@ -1,5 +1,5 @@
 export { HomeScreen } from './HomeScreen'
 export { ProfileScreen } from './ProfileScreen'
-export { ServicesScreen } from './ServicesScreen'
+export { ServicesScreen } from './common/solicitarServicos/ServicesScreen'
 export { ServiceFormScreen } from './ServiceFormScreen'
 export { ComingSoon } from './ComingSoon'

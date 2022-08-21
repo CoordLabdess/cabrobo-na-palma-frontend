@@ -9,7 +9,7 @@ import turismoImg from '../assets/home/turismo.png'
 export const allTools: Tool[] = [
 	{
 		id: 1,
-		navigateTo: 'Services',
+		navigateTo: 'SolicitarServicos',
 		alias: 'solicitar-servicos',
 		title: 'Solicitar Serviços',
 		img: solicitarServicoImg,

@@ -21,27 +21,22 @@ export function ServiceItem(props: ServiceItemProps) {
 	function handleNavigation() {
 		if (props.service.category === 'MajorService') {
 			navigation.navigate(
-				'HomeStack' as never,
+				'SolicitarServicosMinor' as never,
+
 				{
-					screen: 'MinorServices',
-					params: {
-						serviceId: props.service.id,
-						serviceType: 'MinorServices',
-						serviceTitle: props.service.title
-					}
+					serviceId: props.service.id,
+					serviceType: 'MinorServices',
+					serviceTitle: props.service.title
 				} as never
 			)
 		} else if (props.service.category === 'MinorService') {
 			navigation.navigate(
-				'HomeStack' as never,
+				'SolicitarServicosForm1' as never,
 				{
-					screen: 'ServiceForm',
-					params: {
-						serviceId: (props.service as MinorService).formId,
-						serviceType: 'MinorServiceForm',
-						serviceTitle: props.service.title,
-						step: 1
-					}
+					serviceId: (props.service as MinorService).formId,
+					serviceType: 'MinorServiceForm',
+					serviceTitle: props.service.title,
+					step: 1
 				} as never
 			)
 		}

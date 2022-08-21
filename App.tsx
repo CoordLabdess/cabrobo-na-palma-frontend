@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import IonIcons from '@expo/vector-icons/Ionicons'
 import { HomeScreen, ProfileScreen, ServicesScreen, ServiceFormScreen, ComingSoon } from './screens'
 import { COLORS } from './constants/colors'
+import { Navigation } from './routers/Navigation'
 
 const Tab = createBottomTabNavigator()
 const Stack = createNativeStackNavigator()
@@ -104,10 +105,7 @@ export default function App() {
 				flex: 1
 			}}
 		>
-			<StatusBar style='light' backgroundColor='#4480c5' />
-			<NavigationContainer>
-				<Tabs />
-			</NavigationContainer>
+			<Navigation />
 		</SafeAreaView>
 	)
 }
