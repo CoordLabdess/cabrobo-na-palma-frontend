@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from 'react'
+import { useContext, useEffect, useLayoutEffect, useState } from 'react'
 import { View, Text, StyleSheet, ScrollView, Dimensions } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { FormStepsBar } from '../../../components/form/FormStepsBar'
@@ -6,14 +6,20 @@ import { HTMLMap } from '../../../components/HTMLMap'
 import { PrimaryButton } from '../../../components/ui/PrimaryButton'
 import { COLORS } from '../../../constants/colors'
 import { Coords } from '../../../types/global'
+import { SolicitarServicoFormContext } from '../../../store/SolicitarServicosContext'
+import { allMinorServices } from '../../../data/minorServices'
 
 export function ServicesForm1Screen() {
 	const navigation = useNavigation()
 	const [coords, setCoords] = useState<Coords | null>(null)
+	const ServicesCtx = useContext(SolicitarServicoFormContext)
+	const mService = allMinorServices.filter(
+		minService => minService.id === ServicesCtx.minorServiceId
+	)[0]
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
-			title: 'aaaa'
+			title: mService.title
 		})
 	}, [])
 
@@ -24,7 +30,7 @@ export function ServicesForm1Screen() {
 			</View>
 			<Text style={styles.title}>Selecione no mapa a localização do problema.</Text>
 			<View style={{ width: '100%', height: '60%' }}>
-				<HTMLMap onCoordsChange={c => setCoords(c)} />
+				<HTMLMap onCoordsChange={c => ServicesCtx.updateData('coords', c)} />
 			</View>
 			<View style={styles.continueContainer}>
 				<PrimaryButton

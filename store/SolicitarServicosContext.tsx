@@ -1,15 +1,58 @@
-import { createContext, useState } from 'react'
+import React, { createContext, useState } from 'react'
 import { Coords } from '../types/global'
 
 interface SolicitarServicoForm {
 	majorServiceId: number
 	minorServiceId: number
-	coords: Coords
-	localDoServicO: string
-	bairro: string
-	numero: string
-	complemento: string
-	currentStep: number
-	maxSteps: number
-	pontoDeReferencia: string
+	data: {
+		[key: string]: any
+	}
+	updateMajorServiceId: (id: number) => void
+	updateMinorServiceId: (id: number) => void
+	updateData: (key: string, value: any) => void
+}
+
+export const SolicitarServicoFormContext = createContext<SolicitarServicoForm>({
+	majorServiceId: -1,
+	minorServiceId: -1,
+	data: {},
+	updateMajorServiceId: (id: number) => {},
+	updateMinorServiceId: (id: number) => {},
+	updateData: (key: string, value: any) => {}
+})
+
+export function SolicitarServicoFormContextProvider(props: { children: React.ReactNode }) {
+	const [data, setData] = useState({})
+	const [majorServiceId, setMajorServiceId] = useState(-1)
+	const [minorServiceId, setMinorServiceId] = useState(-1)
+
+	function updateMajorServiceId(id: number) {
+		setMajorServiceId(id)
+	}
+
+	function updateMinorServiceId(id: number) {
+		setMinorServiceId(id)
+	}
+
+	function updateData(key: string, value: any) {
+		console.log(data)
+		setData(cData => {
+			return { ...cData, [key]: value }
+		})
+	}
+
+	const value = {
+		majorServiceId,
+		minorServiceId,
+		data,
+		updateData,
+		updateMajorServiceId,
+		updateMinorServiceId
+	}
+
+	return (
+		<SolicitarServicoFormContext.Provider value={value}>
+			{props.children}
+		</SolicitarServicoFormContext.Provider>
+	)
 }

@@ -7,22 +7,26 @@ import {
 	Platform,
 	ImageSourcePropType
 } from 'react-native'
+import { useContext } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { MajorService, MinorService } from '../../types/global'
 import { COLORS } from '../../constants/colors'
+import { SolicitarServicoFormContext } from '../../store/SolicitarServicosContext'
 
 interface ServiceItemProps {
 	service: MajorService | MinorService
 }
 
 export function ServiceItem(props: ServiceItemProps) {
+	const ServiceCtx = useContext(SolicitarServicoFormContext)
+
 	const navigation = useNavigation()
 
 	function handleNavigation() {
 		if (props.service.category === 'MajorService') {
+			ServiceCtx.updateMajorServiceId(props.service.id)
 			navigation.navigate(
 				'SolicitarServicosMinor' as never,
-
 				{
 					serviceId: props.service.id,
 					serviceType: 'MinorServices',
@@ -30,6 +34,7 @@ export function ServiceItem(props: ServiceItemProps) {
 				} as never
 			)
 		} else if (props.service.category === 'MinorService') {
+			ServiceCtx.updateMinorServiceId(props.service.id)
 			navigation.navigate(
 				'SolicitarServicosForm1' as never,
 				{

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { ScrollView, Text, View, StyleSheet, TextInput } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
@@ -6,6 +6,7 @@ import { FormStepsBar } from '../../../components/form/FormStepsBar'
 import { PrimaryButton } from '../../../components/ui/PrimaryButton'
 import { COLORS } from '../../../constants/colors'
 import { allMinorServicesForm } from '../../../data/minorServiceForm'
+import { SolicitarServicoFormContext } from '../../../store/SolicitarServicosContext'
 
 interface FormData {
 	[key: string]: any
@@ -15,6 +16,7 @@ export function ServicesForm2Screen() {
 	const formPage = allMinorServicesForm[0].pages[1]
 	const navigation = useNavigation()
 	const [formData, setFormData] = useState<FormData>({})
+	const ServicesCtx = useContext(SolicitarServicoFormContext)
 
 	return (
 		<ScrollView
@@ -44,8 +46,8 @@ export function ServicesForm2Screen() {
 										<TextInput
 											style={styles.textInput}
 											placeholder='Digite aqui...'
-											onChangeText={text => setFormData({ ...formData, [field.alias]: text })}
-											value={formData[field.alias] || ''}
+											onChangeText={text => ServicesCtx.updateData(field.alias, text)}
+											value={ServicesCtx.data[field.alias] || ''}
 										/>
 									) : field.type === 'textArea' ? (
 										<TextInput

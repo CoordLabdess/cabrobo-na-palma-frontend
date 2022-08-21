@@ -10,6 +10,7 @@
 		"eject": "expo eject"
 	},
 	"dependencies": {
+		"@esri/arcgis-rest-feature-layer": "^3.4.3",
 		"@react-navigation/bottom-tabs": "^6.3.2",
 		"@react-navigation/native": "^6.0.11",
 		"@react-navigation/native-stack": "^6.7.0",

@@ -36,6 +36,7 @@
 		"no-param-reassign": 0,
 		"eslint-disable-next-line import/extensions": 0,
 		"no-nested-ternary": 0,
-		"react/react-in-jsx-scope": 0
+		"react/react-in-jsx-scope": 0,
+		"react/jsx-no-constructed-context-values": 0
 	}
 }

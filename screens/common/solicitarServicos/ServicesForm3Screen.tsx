@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import {
 	ScrollView,
 	Text,
@@ -6,7 +6,8 @@ import {
 	StyleSheet,
 	TextInput,
 	KeyboardAvoidingView,
-	Pressable
+	Pressable,
+	Image
 } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import * as ImagePicker from 'expo-image-picker'
@@ -16,6 +17,7 @@ import { FormStepsBar } from '../../../components/form/FormStepsBar'
 import { PrimaryButton } from '../../../components/ui/PrimaryButton'
 import { COLORS } from '../../../constants/colors'
 import { allMinorServicesForm } from '../../../data/minorServiceForm'
+import { SolicitarServicoFormContext } from '../../../store/SolicitarServicosContext'
 
 interface FormData {
 	[key: string]: any
@@ -25,20 +27,20 @@ export function ServicesForm3Screen() {
 	const formPage = allMinorServicesForm[0].pages[2]
 	const navigation = useNavigation()
 	const [formData, setFormData] = useState<FormData>({})
-
 	const [image, setImage] = useState<string | null>(null)
+	const ServicesCtx = useContext(SolicitarServicoFormContext)
 
-	const pickImage = async () => {
-		// No permissions request is necessary for launching the image library
+	async function pickImage(fieldAlias: string) {
 		const result = await ImagePicker.launchImageLibraryAsync({
 			mediaTypes: ImagePicker.MediaTypeOptions.All,
-			allowsEditing: true,
-			aspect: [4, 3],
+			base64: true,
+			// allowsEditing: true,
+			// aspect: [1, 1],
 			quality: 1
 		})
 
 		if (!result.cancelled) {
-			setImage(result.uri)
+			ServicesCtx.updateData(fieldAlias, result.uri)
 		}
 	}
 
@@ -72,8 +74,8 @@ export function ServicesForm3Screen() {
 										<TextInput
 											style={styles.textInput}
 											placeholder='Digite aqui...'
-											onChangeText={text => setFormData({ ...formData, [field.alias]: text })}
-											value={formData[field.alias] || ''}
+											onChangeText={text => ServicesCtx.updateData(field.alias, text)}
+											value={ServicesCtx.data[field.alias] || ''}
 										/>
 									) : field.type === 'textArea' ? (
 										<TextInput
@@ -81,34 +83,66 @@ export function ServicesForm3Screen() {
 											multiline
 											numberOfLines={4}
 											placeholder='Digite aqui...'
-											onChangeText={text => setFormData({ ...formData, [field.alias]: text })}
-											value={formData[field.alias] || ''}
+											onChangeText={text => ServicesCtx.updateData(field.alias, text)}
+											value={ServicesCtx.data[field.alias] || ''}
 										/>
 									) : field.type === 'radioButton' ? (
 										<Pressable
 											style={styles.radioButtonContainer}
 											onPress={() =>
-												setFormData({
-													...formData,
-													[field.alias]: !formData[field.alias]
-												})
+												ServicesCtx.updateData(field.alias, !ServicesCtx.data[field.alias])
 											}
 										>
 											<View
 												style={[
 													styles.radioButton,
-													formData[field.alias] && { backgroundColor: COLORS.primary500 }
+													ServicesCtx.data[field.alias] && { backgroundColor: COLORS.primary500 }
 												]}
 											/>
 											<Text style={styles.fieldLabel}>{field.label}</Text>
 										</Pressable>
 									) : field.type === 'file' ? (
 										<View style={{ width: '100%', alignItems: 'center', marginTop: 10 }}>
-											<Pressable style={{ alignItems: 'center' }} onPress={pickImage}>
-												<Ionicons name='camera' color={COLORS.primary500} size={60} />
-												<Text style={{ color: COLORS.primary500 }}>
-													Toque para anexar uma imagem
-												</Text>
+											<Pressable
+												style={{
+													alignItems: 'center',
+													borderWidth: 2,
+													borderColor: COLORS.primary500,
+													height: 250,
+													width: 200,
+													justifyContent: 'center'
+												}}
+												onPress={() => pickImage(field.alias)}
+											>
+												{!ServicesCtx.data[field.alias] ? (
+													<>
+														<Ionicons name='camera' color={COLORS.primary500} size={60} />
+														<Text
+															style={{ color: COLORS.primary500, width: 190, textAlign: 'center' }}
+														>
+															Toque para anexar uma imagem
+														</Text>
+													</>
+												) : (
+													<>
+														<Image
+															resizeMode='contain'
+															style={{
+																flex: 1,
+																height: '100%',
+																width: '100%',
+																resizeMode: 'contain'
+															}}
+															source={{ uri: ServicesCtx.data[field.alias] }}
+														/>
+														<Pressable
+															style={{ position: 'absolute', top: 10, right: 10 }}
+															onPress={() => ServicesCtx.updateData(field.alias, null)}
+														>
+															<Ionicons name='close-circle' color={COLORS.primary500} size={35} />
+														</Pressable>
+													</>
+												)}
 											</Pressable>
 										</View>
 									) : (

@@ -1,7 +1,7 @@
 import { View, Button, Text, StyleSheet, FlatList } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useNavigation } from '@react-navigation/native'
-import { useLayoutEffect, useState } from 'react'
+import { useContext, useLayoutEffect, useState } from 'react'
 import { ServicesGrid } from '../../../components/services/ServicesGrid'
 import { MinorService, MajorService, RouteProp } from '../../../types/global'
 import { allMajorServices } from '../../../data/majorServices'
@@ -9,6 +9,7 @@ import { allMinorServices } from '../../../data/minorServices'
 import { allTools } from '../../../data/toolsData'
 import { COLORS } from '../../../constants/colors'
 import { ServiceItem } from '../../../components/services/ServiceItem'
+import { SolicitarServicoFormContext } from '../../../store/SolicitarServicosContext'
 
 interface ServiceScreenProps {
 	route: RouteProp
