@@ -125,6 +125,10 @@ export function HTMLMap(props: HTMLMapProps) {
 									source: [pointGraphic],
 									url: '',
 								})
+
+								const fLayer = new FeatureLayer({
+									url: 'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Servi%c3%a7os_P%c3%bablicos/FeatureServer/0'
+								})
 								view.on('click', (evt) => {
 									layer.removeAll()
 									layer.graphics = new Graphic({
@@ -138,6 +142,7 @@ export function HTMLMap(props: HTMLMapProps) {
 									sendDataToReactNativeApp(evt.mapPoint.longitude, evt.mapPoint.latitude)
 								})
 								map.add(featureLayer)
+								map.add(fLayer)
 								map.add(layer)
 							})
 						</script>

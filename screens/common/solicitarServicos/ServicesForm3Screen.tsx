@@ -18,6 +18,9 @@ import { PrimaryButton } from '../../../components/ui/PrimaryButton'
 import { COLORS } from '../../../constants/colors'
 import { allMinorServicesForm } from '../../../data/minorServiceForm'
 import { SolicitarServicoFormContext } from '../../../store/SolicitarServicosContext'
+import { GeneralServiceFormat, sendData } from '../../../utils/arcgis'
+import { allMajorServices } from '../../../data/majorServices'
+import { allMinorServices } from '../../../data/minorServices'
 
 interface FormData {
 	[key: string]: any
@@ -44,9 +47,34 @@ export function ServicesForm3Screen() {
 		}
 	}
 
+	function handleSendingData() {
+		const d: GeneralServiceFormat = {
+			BAIRRO: ServicesCtx.data.bairro,
+			CIDADE: 'Cabrobó',
+			NUMERO: Number(ServicesCtx.data.numero) || 0,
+			COMPLEMENT: ServicesCtx.data.complemento,
+			ENDEREÇO: ServicesCtx.data.endereco,
+			PONTO_DE_R: ServicesCtx.data.pontoDeReferencia,
+			SERVIÇO: allMajorServices.filter(mService => mService.id === ServicesCtx.majorServiceId)[0]
+				.title,
+			ESPECIFICA: ServicesCtx.data.especificacao,
+			LOGRADOURO: 'Rua das flores',
+			NOME: 'Fulano da Silva Sauro',
+			OBSERVACAO: ServicesCtx.data.notes,
+			TELEFONE: 98765432,
+			TIPO: allMinorServices.filter(mService => mService.id === ServicesCtx.minorServiceId)[0].title
+		}
+		sendData(ServicesCtx.data.coords || { latitude: 0, longitude: 0 }, d)
+			.then(res => {
+				console.log(res)
+			})
+			.catch(err => {
+				console.log(err)
+			})
+	}
+
 	return (
 		<ScrollView
-			keyboardShouldPersistTaps='always'
 			contentContainerStyle={{
 				flexGrow: 1,
 				justifyContent: 'flex-start',
@@ -89,14 +117,14 @@ export function ServicesForm3Screen() {
 									) : field.type === 'radioButton' ? (
 										<Pressable
 											style={styles.radioButtonContainer}
-											onPress={() =>
-												ServicesCtx.updateData(field.alias, !ServicesCtx.data[field.alias])
-											}
+											onPress={() => ServicesCtx.updateData(section.alias, field.alias)}
 										>
 											<View
 												style={[
 													styles.radioButton,
-													ServicesCtx.data[field.alias] && { backgroundColor: COLORS.primary500 }
+													ServicesCtx.data[section.alias] === field.alias && {
+														backgroundColor: COLORS.primary500
+													}
 												]}
 											/>
 											<Text style={styles.fieldLabel}>{field.label}</Text>
@@ -155,10 +183,7 @@ export function ServicesForm3Screen() {
 				)
 			})}
 			<View style={styles.buttonContainer}>
-				<PrimaryButton
-					title='Enviar Formulário'
-					onPress={() => navigation.navigate('SolicitarServicosForm3' as never)}
-				/>
+				<PrimaryButton title='Enviar Formulário' onPress={handleSendingData} />
 			</View>
 		</ScrollView>
 	)

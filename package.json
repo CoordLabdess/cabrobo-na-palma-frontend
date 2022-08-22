@@ -10,11 +10,15 @@
 		"eject": "expo eject"
 	},
 	"dependencies": {
+		"@arcgis/core": "^4.24.7",
 		"@esri/arcgis-rest-feature-layer": "^3.4.3",
+		"@esri/arcgis-rest-request": "^4.0.3",
+		"@esri/react-arcgis": "^5.2.0",
 		"@react-navigation/bottom-tabs": "^6.3.2",
 		"@react-navigation/native": "^6.0.11",
 		"@react-navigation/native-stack": "^6.7.0",
 		"@react-navigation/stack": "^6.2.2",
+		"esri": "^0.0.1-security",
 		"esri-loader": "^3.6.0",
 		"expo": "~45.0.0",
 		"expo-image-picker": "~13.1.1",

@@ -20,7 +20,6 @@ export function ServicesForm2Screen() {
 
 	return (
 		<ScrollView
-			keyboardShouldPersistTaps='handled'
 			contentContainerStyle={{
 				flexGrow: 1,
 				justifyContent: 'flex-start',

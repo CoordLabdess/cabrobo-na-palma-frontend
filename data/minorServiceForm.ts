@@ -11,7 +11,8 @@ export interface FormPage {
 
 export interface FormSection {
 	title: string
-	uniqueBooleanValue?: boolean
+	uniqueValue?: string
+	alias: string
 	fields: FormField[]
 }
 
@@ -34,6 +35,7 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 				sections: [
 					{
 						title: '',
+						alias: '',
 						fields: [
 							{
 								label: '',
@@ -51,6 +53,7 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 				sections: [
 					{
 						title: '',
+						alias: '',
 						fields: [
 							{
 								label: 'Endereço',
@@ -98,7 +101,8 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 				sections: [
 					{
 						title: 'Especificação do problema',
-						uniqueBooleanValue: true,
+						uniqueValue: '',
+						alias: 'especificacao',
 						fields: [
 							{
 								label: 'Lâmpada sempre acesa',
@@ -122,6 +126,7 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 					},
 					{
 						title: 'Opcional',
+						alias: '',
 						fields: [
 							{
 								label: 'Descreva o serviço necessário (Opcional)',
