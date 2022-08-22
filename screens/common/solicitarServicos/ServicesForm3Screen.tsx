@@ -32,6 +32,7 @@ export function ServicesForm3Screen() {
 	const [formData, setFormData] = useState<FormData>({})
 	const [image, setImage] = useState<string | null>(null)
 	const ServicesCtx = useContext(SolicitarServicoFormContext)
+	const [isLoading, setIsLoading] = useState(false)
 
 	async function pickImage(fieldAlias: string) {
 		const result = await ImagePicker.launchImageLibraryAsync({
@@ -48,29 +49,35 @@ export function ServicesForm3Screen() {
 	}
 
 	function handleSendingData() {
-		const d: GeneralServiceFormat = {
-			BAIRRO: ServicesCtx.data.bairro,
-			CIDADE: 'Cabrobó',
-			NUMERO: Number(ServicesCtx.data.numero) || 0,
-			COMPLEMENT: ServicesCtx.data.complemento,
-			ENDEREÇO: ServicesCtx.data.endereco,
-			PONTO_DE_R: ServicesCtx.data.pontoDeReferencia,
-			SERVIÇO: allMajorServices.filter(mService => mService.id === ServicesCtx.majorServiceId)[0]
-				.title,
-			ESPECIFICA: ServicesCtx.data.especificacao,
-			LOGRADOURO: 'Rua das flores',
-			NOME: 'Fulano da Silva Sauro',
-			OBSERVACAO: ServicesCtx.data.notes,
-			TELEFONE: 98765432,
-			TIPO: allMinorServices.filter(mService => mService.id === ServicesCtx.minorServiceId)[0].title
+		if (!isLoading) {
+			setIsLoading(true)
+			const d: GeneralServiceFormat = {
+				BAIRRO: ServicesCtx.data.bairro || '',
+				CIDADE: 'Cabrobó',
+				NUMERO: Number(ServicesCtx.data.numero) || 0,
+				COMPLEMENT: ServicesCtx.data.complemento || '',
+				ENDEREÇO: ServicesCtx.data.endereco || '',
+				PONTO_DE_R: ServicesCtx.data.pontoDeReferencia || '',
+				SERVIÇO: allMajorServices.filter(mService => mService.id === ServicesCtx.majorServiceId)[0]
+					.title,
+				ESPECIFICA: ServicesCtx.data.especificacao || '',
+				LOGRADOURO: 'Rua das flores',
+				NOME: 'Fulano da Silva Sauro',
+				OBSERVACAO: ServicesCtx.data.notes || '',
+				TELEFONE: 98765432,
+				TIPO: allMinorServices.filter(mService => mService.id === ServicesCtx.minorServiceId)[0]
+					.title
+			}
+			sendData(ServicesCtx.data.coords || { latitude: 0, longitude: 0 }, d)
+				.then(res => {
+					console.log(res)
+					navigation.navigate('Inicio' as never)
+				})
+				.catch(err => {
+					setIsLoading(false)
+					console.log(err)
+				})
 		}
-		sendData(ServicesCtx.data.coords || { latitude: 0, longitude: 0 }, d)
-			.then(res => {
-				console.log(res)
-			})
-			.catch(err => {
-				console.log(err)
-			})
 	}
 
 	return (
@@ -183,7 +190,11 @@ export function ServicesForm3Screen() {
 				)
 			})}
 			<View style={styles.buttonContainer}>
-				<PrimaryButton title='Enviar Formulário' onPress={handleSendingData} />
+				<PrimaryButton
+					isLoading={isLoading}
+					title='Enviar Formulário'
+					onPress={handleSendingData}
+				/>
 			</View>
 		</ScrollView>
 	)
