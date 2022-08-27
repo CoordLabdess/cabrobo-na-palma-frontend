@@ -1,16 +1,19 @@
 import { View, Text } from 'react-native'
+import { useContext } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { StatusBar } from 'expo-status-bar'
-import { useState } from 'react'
 import { UserTypeNavigation } from './UserTypeNavigation'
+import { AuthContext } from '../store/AuthContext'
+import { RootPublicRouter } from './public/RootPublicRouter'
 
 export function Navigation() {
-	const [isLogged, setIsLogged] = useState(true)
-	return isLogged ? (
+	const authCtx = useContext(AuthContext)
+	return authCtx.isAuthenticated ? (
 		<UserTypeNavigation />
 	) : (
-		<View>
-			<Text>Login</Text>
-		</View>
+		<NavigationContainer>
+			<StatusBar style='dark' backgroundColor='#fff' />
+			<RootPublicRouter />
+		</NavigationContainer>
 	)
 }

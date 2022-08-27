@@ -1,12 +1,12 @@
 {
 	"expo": {
-		"name": "cabrobo_native_app",
+		"name": "Cabrobó na Plama da Mão",
 		"slug": "cabrobo_native_app",
 		"privacy": "public",
 		"version": "1.0.0",
 		"description": "Cabrobó na palma da mão",
 		"orientation": "portrait",
-		"icon": "./assets/icon.png",
+		"icon": "./assets/CabroboIcon.jpg",
 		"userInterfaceStyle": "light",
 		"splash": {
 			"image": "./assets/splash.png",

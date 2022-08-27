@@ -1,17 +1,15 @@
 import { View, Text, StyleSheet, Pressable, Image } from 'react-native'
 import IonIcons from '@expo/vector-icons/Ionicons'
+import { useContext } from 'react'
 import { COLORS } from '../constants/colors'
+import { AuthContext } from '../store/AuthContext'
 
 export function UserHeader() {
+	const authCtx = useContext(AuthContext)
 	return (
 		<View style={{ flex: 1 }}>
 			<View style={styles.headerContainer}>
-				<Pressable
-					style={styles.userInfoContainer}
-					onPress={() => {
-						console.log('Perfil')
-					}}
-				>
+				<Pressable style={styles.userInfoContainer}>
 					<View style={styles.profileImageContainer}>
 						<Image
 							style={styles.profileImage}
@@ -40,7 +38,7 @@ export function UserHeader() {
 					<Pressable
 						style={styles.linkContainer}
 						onPress={() => {
-							console.log('Sair')
+							authCtx.logout()
 						}}
 					>
 						<IonIcons name='exit-outline' size={32} color='#123A56' />

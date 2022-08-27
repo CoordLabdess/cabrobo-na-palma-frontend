@@ -29,7 +29,6 @@ export function PrimaryButton(props: PrimaryButtonProps) {
 const styles = StyleSheet.create({
 	buttonOuterContainer: {
 		borderRadius: 30,
-		margin: 4,
 		overflow: 'hidden',
 		backgroundColor: COLORS.primary500,
 		elevation: 4,

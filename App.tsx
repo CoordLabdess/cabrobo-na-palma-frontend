@@ -1,5 +1,6 @@
 import { View } from 'react-native'
 import { Navigation } from './routers/Navigation'
+import { AuthContextProvider } from './store/AuthContext'
 
 export default function App() {
 	return (
@@ -8,7 +9,9 @@ export default function App() {
 				flex: 1
 			}}
 		>
-			<Navigation />
+			<AuthContextProvider>
+				<Navigation />
+			</AuthContextProvider>
 		</View>
 	)
 }
