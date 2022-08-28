@@ -21,7 +21,7 @@ interface ServiceScreenProps {
 	route: RouteProp
 }
 
-export function ServicesScreen(props: ServiceScreenProps) {
+export function ServicesScreen2(props: ServiceScreenProps) {
 	const navigation = useNavigation()
 	const [serviceId, setServiceId] = useState(-1)
 	const [serviceTitle, setServiceTitle] = useState('')
@@ -34,18 +34,14 @@ export function ServicesScreen(props: ServiceScreenProps) {
 		setServiceId(props.route.params?.serviceId)
 		setServiceTitle(props.route.params?.serviceTitle)
 		setServiceType(props.route.params?.serviceType)
-		if (solicitarServicosContext.majorServiceId > 0) {
-			setCurrentService(
-				allMajorServices.filter(m => m.id === solicitarServicosContext.majorServiceId)[0]
-			)
-		} else {
-			setCurrentService(allTools.filter(m => m.id === 1)[0])
-		}
+		setCurrentService(
+			allMajorServices.filter(m => m.id === solicitarServicosContext.majorServiceId)[0]
+		)
 	}, [])
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
-			title: serviceTitle || 'Solicitar Servicos'
+			title: serviceTitle
 		})
 	}, [serviceTitle])
 
@@ -104,8 +100,7 @@ export function ServicesScreen(props: ServiceScreenProps) {
 								defaultSource={currentService.img2 as ImageURISource}
 							/>
 							<Text style={styles.servicesGridTitle}>
-								Envie sua solicitação para que a prefeitura trabalhe nas soluções dos problemas da
-								nossa cidade.
+								Envie sua solicitação referente ao servico de {currentService.title}.
 							</Text>
 						</View>
 					</View>
@@ -145,8 +140,8 @@ const styles = StyleSheet.create({
 		width: '100%'
 	},
 	serviceImg: {
-		height: 122,
-		width: 188,
+		height: 120,
+		width: 120,
 		marginBottom: 10
 	}
 })

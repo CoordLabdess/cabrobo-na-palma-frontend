@@ -1,6 +1,7 @@
 export interface Tool extends Categorical {
 	id: number
 	img: string
+	img2: string
 	navigateTo: string
 	title: string
 	alias: string
@@ -12,6 +13,7 @@ export interface MajorService extends Categorical {
 	title: string
 	alias: string
 	img: string
+	img2: string
 	minorServicesId: number[]
 }
 

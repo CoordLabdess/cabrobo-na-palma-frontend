@@ -6,6 +6,7 @@ export interface GeneralServiceFormat {
 	LOGRADOURO: string
 	BAIRRO: string
 	CIDADE: string
+	CPF: number
 	COMPLEMENT: string
 	PONTO_DE_R: string
 	SERVIÇO: string

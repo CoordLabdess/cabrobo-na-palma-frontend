@@ -65,16 +65,18 @@ export function ServicesForm3Screen() {
 				CIDADE: 'Cabrobó',
 				NUMERO: Number(ServicesCtx.data.numero) || 0,
 				COMPLEMENT: ServicesCtx.data.complemento || '',
-				ENDEREÇO: ServicesCtx.data.endereco || '',
+				ENDEREÇO: 'Aguardando atualização da base de Cabrobó',
 				PONTO_DE_R: ServicesCtx.data.pontoDeReferencia || '',
-				SERVIÇO: allMajorServices.filter(mService => mService.id === ServicesCtx.majorServiceId)[0]
-					.title,
+				SERVIÇO: allMajorServices
+					.filter(mService => mService.id === ServicesCtx.majorServiceId)[0]
+					.title.toUpperCase(),
 				ESPECIFICA: ServicesCtx.data.especificacao || '',
-				TEMPO: ServicesCtx.data.tempoDeOcorrencia || 'aaaa',
-				LOGRADOURO: 'Rua das flores',
-				NOME: 'Fulano da Silva Sauro',
+				TEMPO: ServicesCtx.data.tempoDeOcorrencia || '',
+				LOGRADOURO: ServicesCtx.data.logradouro || '',
+				NOME: '',
+				CPF: 0,
 				OBSERVACAO: ServicesCtx.data.notes || '',
-				TELEFONE: 98765432,
+				TELEFONE: 0,
 				TIPO: allMinorServices.filter(mService => mService.id === ServicesCtx.minorServiceId)[0]
 					.title
 			}
@@ -271,7 +273,8 @@ const styles = StyleSheet.create({
 	},
 	radioButtonContainer: {
 		flexDirection: 'row',
-		alignItems: 'center'
+		alignItems: 'center',
+		paddingVertical: 5
 	},
 	radioButton: {
 		backgroundColor: '#fff',

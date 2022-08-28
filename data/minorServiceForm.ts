@@ -56,8 +56,8 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 						alias: '',
 						fields: [
 							{
-								label: 'Endereço',
-								alias: 'endereco',
+								label: 'Logradouro',
+								alias: 'logradouro',
 								type: 'textInput',
 								value: ''
 							},
@@ -74,7 +74,7 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								value: ''
 							},
 							{
-								label: 'Complemento',
+								label: 'Complemento (opcional)',
 								alias: 'complemento',
 								type: 'textInput',
 								value: ''
@@ -86,7 +86,7 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								value: ''
 							},
 							{
-								label: 'Número do Poste',
+								label: 'Número do Poste (opcional)',
 								alias: 'numeroDoPoste',
 								type: 'textInput',
 								value: ''
@@ -176,8 +176,8 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 						alias: '',
 						fields: [
 							{
-								label: 'Endereço',
-								alias: 'endereco',
+								label: 'Logradouro',
+								alias: 'logradouro',
 								type: 'textInput',
 								value: ''
 							},
@@ -194,7 +194,7 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								value: ''
 							},
 							{
-								label: 'Complemento',
+								label: 'Complemento (opcional)',
 								alias: 'complemento',
 								type: 'textInput',
 								value: ''
@@ -206,7 +206,7 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								value: ''
 							},
 							{
-								label: 'Número do Poste',
+								label: 'Número do Poste (opcional)',
 								alias: 'numeroDoPoste',
 								type: 'textInput',
 								value: ''
@@ -305,8 +305,8 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 						alias: '',
 						fields: [
 							{
-								label: 'Endereço',
-								alias: 'endereco',
+								label: 'Logradouro',
+								alias: 'logradouro',
 								type: 'textInput',
 								value: ''
 							},
@@ -323,7 +323,7 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								value: ''
 							},
 							{
-								label: 'Complemento',
+								label: 'Complemento (opcional)',
 								alias: 'complemento',
 								type: 'textInput',
 								value: ''
@@ -335,7 +335,7 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								value: ''
 							},
 							{
-								label: 'Número do Poste',
+								label: 'Número do Poste (opcional)',
 								alias: 'numeroDoPoste',
 								type: 'textInput',
 								value: ''
@@ -434,8 +434,8 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 						alias: '',
 						fields: [
 							{
-								label: 'Endereço',
-								alias: 'endereco',
+								label: 'Logradouro',
+								alias: 'logradouro',
 								type: 'textInput',
 								value: ''
 							},
@@ -452,7 +452,7 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								value: ''
 							},
 							{
-								label: 'Complemento',
+								label: 'Complemento (opcional)',
 								alias: 'complemento',
 								type: 'textInput',
 								value: ''
@@ -570,8 +570,8 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 						alias: '',
 						fields: [
 							{
-								label: 'Endereço',
-								alias: 'endereco',
+								label: 'Logradouro',
+								alias: 'logradouro',
 								type: 'textInput',
 								value: ''
 							},
@@ -588,7 +588,7 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								value: ''
 							},
 							{
-								label: 'Complemento',
+								label: 'Complemento (opcional)',
 								alias: 'complemento',
 								type: 'textInput',
 								value: ''
@@ -706,8 +706,8 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 						alias: '',
 						fields: [
 							{
-								label: 'Endereço',
-								alias: 'endereco',
+								label: 'Logradouro',
+								alias: 'logradouro',
 								type: 'textInput',
 								value: ''
 							},
@@ -724,7 +724,7 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								value: ''
 							},
 							{
-								label: 'Complemento',
+								label: 'Complemento (opcional)',
 								alias: 'complemento',
 								type: 'textInput',
 								value: ''
@@ -823,8 +823,8 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 						alias: '',
 						fields: [
 							{
-								label: 'Endereço',
-								alias: 'endereco',
+								label: 'Logradouro',
+								alias: 'logradouro',
 								type: 'textInput',
 								value: ''
 							},
@@ -841,7 +841,7 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								value: ''
 							},
 							{
-								label: 'Complemento',
+								label: 'Complemento (opcional)',
 								alias: 'complemento',
 								type: 'textInput',
 								value: ''
@@ -940,8 +940,8 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 						alias: '',
 						fields: [
 							{
-								label: 'Endereço',
-								alias: 'endereco',
+								label: 'Logradouro',
+								alias: 'logradouro',
 								type: 'textInput',
 								value: ''
 							},
@@ -958,7 +958,7 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								value: ''
 							},
 							{
-								label: 'Complemento',
+								label: 'Complemento (opcional)',
 								alias: 'complemento',
 								type: 'textInput',
 								value: ''
@@ -1057,8 +1057,8 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 						alias: '',
 						fields: [
 							{
-								label: 'Endereço',
-								alias: 'endereco',
+								label: 'Logradouro',
+								alias: 'logradouro',
 								type: 'textInput',
 								value: ''
 							},
@@ -1075,7 +1075,7 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								value: ''
 							},
 							{
-								label: 'Complemento',
+								label: 'Complemento (opcional)',
 								alias: 'complemento',
 								type: 'textInput',
 								value: ''
@@ -1114,6 +1114,911 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 							{
 								label: 'Controle de baratas e outros insetos',
 								alias: 'controleDeBaratasEOutrosInsetos',
+								type: 'radioButton',
+								value: false
+							}
+						]
+					},
+					{
+						title: 'Opcional',
+						alias: '',
+						fields: [
+							{
+								label: 'Descreva o serviço necessário (Opcional)',
+								alias: 'notes',
+								type: 'textArea',
+								value: ''
+							},
+							{
+								label: 'Foto do problema (Opcional)',
+								alias: 'photo',
+								type: 'file',
+								value: ''
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	//
+	//
+	//
+	{
+		minorServiceId: 10,
+		pages: [
+			{
+				index: 1,
+				title: 'Selecione no mapa a localização do problema',
+				sections: [
+					{
+						title: '',
+						alias: '',
+						fields: [
+							{
+								label: '',
+								alias: 'map',
+								type: 'map',
+								value: true
+							}
+						]
+					}
+				]
+			},
+			{
+				index: 2,
+				title: 'Informe os dados do local',
+				sections: [
+					{
+						title: '',
+						alias: '',
+						fields: [
+							{
+								label: 'Logradouro',
+								alias: 'logradouro',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Bairro',
+								alias: 'bairro',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Número',
+								alias: 'numero',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Complemento (opcional)',
+								alias: 'complemento',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Ponto de Referência',
+								alias: 'pontoDeReferencia',
+								type: 'textInput',
+								value: ''
+							}
+						]
+					}
+				]
+			},
+			{
+				index: 3,
+				title: 'Informações adicionais',
+				sections: [
+					{
+						title: 'Especificação do problema',
+						uniqueValue: '',
+						alias: 'especificacao',
+						fields: [
+							{
+								label: 'Estrada de asfalto',
+								alias: 'estradaDeAsfalto',
+								type: 'radioButton',
+								value: false
+							},
+							{
+								label: 'Estrada de terra',
+								alias: 'estradaDeTerra',
+								type: 'radioButton',
+								value: false
+							},
+							{
+								label: 'Calçadas',
+								alias: 'calcadas',
+								type: 'radioButton',
+								value: false
+							}
+						]
+					},
+					{
+						title: 'Opcional',
+						alias: '',
+						fields: [
+							{
+								label: 'Descreva o serviço necessário (Opcional)',
+								alias: 'notes',
+								type: 'textArea',
+								value: ''
+							},
+							{
+								label: 'Foto do problema (Opcional)',
+								alias: 'photo',
+								type: 'file',
+								value: ''
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	//
+	//
+	//
+	{
+		minorServiceId: 11,
+		pages: [
+			{
+				index: 1,
+				title: 'Selecione no mapa a localização do problema',
+				sections: [
+					{
+						title: '',
+						alias: '',
+						fields: [
+							{
+								label: '',
+								alias: 'map',
+								type: 'map',
+								value: true
+							}
+						]
+					}
+				]
+			},
+			{
+				index: 2,
+				title: 'Informe os dados do local',
+				sections: [
+					{
+						title: '',
+						alias: '',
+						fields: [
+							{
+								label: 'Logradouro',
+								alias: 'logradouro',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Bairro',
+								alias: 'bairro',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Número',
+								alias: 'numero',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Complemento (opcional)',
+								alias: 'complemento',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Ponto de Referência',
+								alias: 'pontoDeReferencia',
+								type: 'textInput',
+								value: ''
+							}
+						]
+					}
+				]
+			},
+			{
+				index: 3,
+				title: 'Informações adicionais',
+				sections: [
+					{
+						title: 'Especificação do problema',
+						uniqueValue: '',
+						alias: 'especificacao',
+						fields: [
+							{
+								label: 'Residência',
+								alias: 'residencia',
+								type: 'radioButton',
+								value: false
+							},
+							{
+								label: 'Comércio',
+								alias: 'comercio',
+								type: 'radioButton',
+								value: false
+							},
+							{
+								label: 'Rua',
+								alias: 'rua',
+								type: 'radioButton',
+								value: false
+							},
+							{
+								label: 'Terreno baldio',
+								alias: 'terrenoBaldio',
+								type: 'radioButton',
+								value: false
+							}
+						]
+					},
+					{
+						title: 'Opcional',
+						alias: '',
+						fields: [
+							{
+								label: 'Descreva o serviço necessário (Opcional)',
+								alias: 'notes',
+								type: 'textArea',
+								value: ''
+							},
+							{
+								label: 'Foto do problema (Opcional)',
+								alias: 'photo',
+								type: 'file',
+								value: ''
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	//
+	//
+	//
+	{
+		minorServiceId: 12,
+		pages: [
+			{
+				index: 1,
+				title: 'Selecione no mapa a localização do problema',
+				sections: [
+					{
+						title: '',
+						alias: '',
+						fields: [
+							{
+								label: '',
+								alias: 'map',
+								type: 'map',
+								value: true
+							}
+						]
+					}
+				]
+			},
+			{
+				index: 2,
+				title: 'Informe os dados do local',
+				sections: [
+					{
+						title: '',
+						alias: '',
+						fields: [
+							{
+								label: 'Logradouro',
+								alias: 'logradouro',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Bairro',
+								alias: 'bairro',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Número',
+								alias: 'numero',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Complemento (opcional)',
+								alias: 'complemento',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Ponto de Referência',
+								alias: 'pontoDeReferencia',
+								type: 'textInput',
+								value: ''
+							}
+						]
+					}
+				]
+			},
+			{
+				index: 3,
+				title: 'Informações adicionais',
+				sections: [
+					{
+						title: 'Opcional',
+						alias: '',
+						fields: [
+							{
+								label: 'Descreva o serviço necessário (Opcional)',
+								alias: 'notes',
+								type: 'textArea',
+								value: ''
+							},
+							{
+								label: 'Foto do problema (Opcional)',
+								alias: 'photo',
+								type: 'file',
+								value: ''
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	//
+	//
+	//
+	{
+		minorServiceId: 13,
+		pages: [
+			{
+				index: 1,
+				title: 'Selecione no mapa a localização do problema',
+				sections: [
+					{
+						title: '',
+						alias: '',
+						fields: [
+							{
+								label: '',
+								alias: 'map',
+								type: 'map',
+								value: true
+							}
+						]
+					}
+				]
+			},
+			{
+				index: 2,
+				title: 'Informe os dados do local',
+				sections: [
+					{
+						title: '',
+						alias: '',
+						fields: [
+							{
+								label: 'Logradouro',
+								alias: 'logradouro',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Bairro',
+								alias: 'bairro',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Número',
+								alias: 'numero',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Complemento (opcional)',
+								alias: 'complemento',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Ponto de Referência',
+								alias: 'pontoDeReferencia',
+								type: 'textInput',
+								value: ''
+							}
+						]
+					}
+				]
+			},
+			{
+				index: 3,
+				title: 'Informações adicionais',
+				sections: [
+					{
+						title: 'Especificação do problema',
+						uniqueValue: '',
+						alias: 'especificacao',
+						fields: [
+							{
+								label: 'Árvore próxima à rede elétrica',
+								alias: 'arvoreProximaARedeEletrica',
+								type: 'radioButton',
+								value: false
+							},
+							{
+								label: 'Árvore ameaça cair',
+								alias: 'arvoreAmeacaCair',
+								type: 'radioButton',
+								value: false
+							}
+						]
+					},
+					{
+						title: 'Opcional',
+						alias: '',
+						fields: [
+							{
+								label: 'Descreva o serviço necessário (Opcional)',
+								alias: 'notes',
+								type: 'textArea',
+								value: ''
+							},
+							{
+								label: 'Foto do problema (Opcional)',
+								alias: 'photo',
+								type: 'file',
+								value: ''
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	//
+	//
+	//
+	{
+		minorServiceId: 14,
+		pages: [
+			{
+				index: 1,
+				title: 'Selecione no mapa a localização do problema',
+				sections: [
+					{
+						title: '',
+						alias: '',
+						fields: [
+							{
+								label: '',
+								alias: 'map',
+								type: 'map',
+								value: true
+							}
+						]
+					}
+				]
+			},
+			{
+				index: 2,
+				title: 'Informe os dados do local',
+				sections: [
+					{
+						title: '',
+						alias: '',
+						fields: [
+							{
+								label: 'Logradouro',
+								alias: 'logradouro',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Bairro',
+								alias: 'bairro',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Número',
+								alias: 'numero',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Complemento (opcional)',
+								alias: 'complemento',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Ponto de Referência',
+								alias: 'pontoDeReferencia',
+								type: 'textInput',
+								value: ''
+							}
+						]
+					}
+				]
+			},
+			{
+				index: 3,
+				title: 'Informações adicionais',
+				sections: [
+					{
+						title: 'Especificação do problema',
+						uniqueValue: '',
+						alias: 'especificacao',
+						fields: [
+							{
+								label: 'Via pavimentada',
+								alias: 'viaPavimentada',
+								type: 'radioButton',
+								value: false
+							},
+							{
+								label: 'Via não pavimentada',
+								alias: 'viaNaoPavimentada',
+								type: 'radioButton',
+								value: false
+							},
+							{
+								label: 'Áreas verdes e praças',
+								alias: 'areasVerdesEPracas',
+								type: 'radioButton',
+								value: false
+							}
+						]
+					},
+					{
+						title: 'Opcional',
+						alias: '',
+						fields: [
+							{
+								label: 'Descreva o serviço necessário (Opcional)',
+								alias: 'notes',
+								type: 'textArea',
+								value: ''
+							},
+							{
+								label: 'Foto do problema (Opcional)',
+								alias: 'photo',
+								type: 'file',
+								value: ''
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	//
+	//
+	//
+	{
+		minorServiceId: 15,
+		pages: [
+			{
+				index: 1,
+				title: 'Selecione no mapa a localização do problema',
+				sections: [
+					{
+						title: '',
+						alias: '',
+						fields: [
+							{
+								label: '',
+								alias: 'map',
+								type: 'map',
+								value: true
+							}
+						]
+					}
+				]
+			},
+			{
+				index: 2,
+				title: 'Informe os dados do local',
+				sections: [
+					{
+						title: '',
+						alias: '',
+						fields: [
+							{
+								label: 'Logradouro',
+								alias: 'logradouro',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Bairro',
+								alias: 'bairro',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Número',
+								alias: 'numero',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Complemento (opcional)',
+								alias: 'complemento',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Ponto de Referência',
+								alias: 'pontoDeReferencia',
+								type: 'textInput',
+								value: ''
+							}
+						]
+					}
+				]
+			},
+			{
+				index: 3,
+				title: 'Informações adicionais',
+				sections: [
+					{
+						title: 'Especificação do problema',
+						uniqueValue: '',
+						alias: 'especificacao',
+						fields: [
+							{
+								label: 'Presença de buracos',
+								alias: 'presencaDeBuracos',
+								type: 'radioButton',
+								value: false
+							},
+							{
+								label: 'Árvores e raízes obstruindo a passagem',
+								alias: 'arvoresERaizesObstruindoAPassagem',
+								type: 'radioButton',
+								value: false
+							},
+							{
+								label: 'Postes obstruindo a passagem',
+								alias: 'postesObstruindoAPassagem',
+								type: 'radioButton',
+								value: false
+							}
+						]
+					},
+					{
+						title: 'Opcional',
+						alias: '',
+						fields: [
+							{
+								label: 'Descreva o serviço necessário (Opcional)',
+								alias: 'notes',
+								type: 'textArea',
+								value: ''
+							},
+							{
+								label: 'Foto do problema (Opcional)',
+								alias: 'photo',
+								type: 'file',
+								value: ''
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	//
+	//
+	//
+	{
+		minorServiceId: 16,
+		pages: [
+			{
+				index: 1,
+				title: 'Selecione no mapa a localização do problema',
+				sections: [
+					{
+						title: '',
+						alias: '',
+						fields: [
+							{
+								label: '',
+								alias: 'map',
+								type: 'map',
+								value: true
+							}
+						]
+					}
+				]
+			},
+			{
+				index: 2,
+				title: 'Informe os dados do local',
+				sections: [
+					{
+						title: '',
+						alias: '',
+						fields: [
+							{
+								label: 'Logradouro',
+								alias: 'logradouro',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Bairro',
+								alias: 'bairro',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Número',
+								alias: 'numero',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Complemento (opcional)',
+								alias: 'complemento',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Ponto de Referência',
+								alias: 'pontoDeReferencia',
+								type: 'textInput',
+								value: ''
+							}
+						]
+					}
+				]
+			},
+			{
+				index: 3,
+				title: 'Informações adicionais',
+				sections: [
+					{
+						title: 'Especificação do problema',
+						uniqueValue: '',
+						alias: 'especificacao',
+						fields: [
+							{
+								label: 'Derivado de vazamento de tubulação',
+								alias: 'derivadoDeVazamentoDeTubulacao',
+								type: 'radioButton',
+								value: false
+							},
+							{
+								label: 'Decorrente de chuvas',
+								alias: 'decorrenteDeChuvas',
+								type: 'radioButton',
+								value: false
+							}
+						]
+					},
+					{
+						title: 'Opcional',
+						alias: '',
+						fields: [
+							{
+								label: 'Descreva o serviço necessário (Opcional)',
+								alias: 'notes',
+								type: 'textArea',
+								value: ''
+							},
+							{
+								label: 'Foto do problema (Opcional)',
+								alias: 'photo',
+								type: 'file',
+								value: ''
+							}
+						]
+					}
+				]
+			}
+		]
+	},
+	//
+	//
+	//
+	{
+		minorServiceId: 17,
+		pages: [
+			{
+				index: 1,
+				title: 'Selecione no mapa a localização do problema',
+				sections: [
+					{
+						title: '',
+						alias: '',
+						fields: [
+							{
+								label: '',
+								alias: 'map',
+								type: 'map',
+								value: true
+							}
+						]
+					}
+				]
+			},
+			{
+				index: 2,
+				title: 'Informe os dados do local',
+				sections: [
+					{
+						title: '',
+						alias: '',
+						fields: [
+							{
+								label: 'Logradouro',
+								alias: 'logradouro',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Bairro',
+								alias: 'bairro',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Número',
+								alias: 'numero',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Complemento (opcional)',
+								alias: 'complemento',
+								type: 'textInput',
+								value: ''
+							},
+							{
+								label: 'Ponto de Referência',
+								alias: 'pontoDeReferencia',
+								type: 'textInput',
+								value: ''
+							}
+						]
+					}
+				]
+			},
+			{
+				index: 3,
+				title: 'Informações adicionais',
+				sections: [
+					{
+						title: 'Especificação do problema',
+						uniqueValue: '',
+						alias: 'especificacao',
+						fields: [
+							{
+								label: 'Necessidade de tratamento médico',
+								alias: 'necessidadeDeTratamentoMedico',
+								type: 'radioButton',
+								value: false
+							},
+							{
+								label: 'Dificuldade de locomoção',
+								alias: 'dificuldadeDeLocomocao',
+								type: 'radioButton',
+								value: false
+							},
+							{
+								label: 'Postes obstruindo a passagem',
+								alias: 'postesObstruindoAPassagem',
 								type: 'radioButton',
 								value: false
 							}

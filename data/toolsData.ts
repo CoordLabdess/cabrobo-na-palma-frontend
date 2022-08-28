@@ -6,6 +6,8 @@ import suaEmpresaAquiImg from '../assets/home/sua-empresa-aqui.png'
 import transporteSeguroImg from '../assets/home/transporte-seguro.png'
 import turismoImg from '../assets/home/turismo.png'
 
+import solicitarServicoColor from '../assets/home/solicitarServicoColor.png'
+
 export const allTools: Tool[] = [
 	{
 		id: 1,
@@ -13,6 +15,7 @@ export const allTools: Tool[] = [
 		alias: 'solicitar-servicos',
 		title: 'Solicitar Serviços',
 		img: solicitarServicoImg,
+		img2: solicitarServicoColor,
 		category: 'Tool',
 		majorServicesIds: [1, 2, 3, 4]
 	},
@@ -22,6 +25,7 @@ export const allTools: Tool[] = [
 		alias: 'sua-empresa-aqui',
 		title: 'Sua Empresa Aqui',
 		img: suaEmpresaAquiImg,
+		img2: transporteSeguroImg,
 		category: 'Tool',
 		majorServicesIds: []
 	},
@@ -31,6 +35,7 @@ export const allTools: Tool[] = [
 		alias: 'saude',
 		title: 'Saúde',
 		img: saudeImg,
+		img2: transporteSeguroImg,
 		category: 'Tool',
 		majorServicesIds: []
 	},
@@ -40,6 +45,7 @@ export const allTools: Tool[] = [
 		alias: 'turismo',
 		title: 'Turismo',
 		img: turismoImg,
+		img2: transporteSeguroImg,
 		category: 'Tool',
 		majorServicesIds: []
 	},
@@ -49,6 +55,7 @@ export const allTools: Tool[] = [
 		alias: 'educacao',
 		title: 'Educação',
 		img: educacaoImg,
+		img2: transporteSeguroImg,
 		category: 'Tool',
 		majorServicesIds: []
 	},
@@ -58,6 +65,7 @@ export const allTools: Tool[] = [
 		alias: 'transporte-seguro',
 		title: 'Transporte Seguro',
 		img: transporteSeguroImg,
+		img2: transporteSeguroImg,
 		category: 'Tool',
 		majorServicesIds: []
 	}

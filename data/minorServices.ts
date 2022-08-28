@@ -1,12 +1,31 @@
 import { MinorService } from '../types/global'
-import iluminacaoPublicaImg from '../assets/services/majorservices/iluminacao-publica.png'
+import postesMono from '../assets/services/majorservices/iluminacaoPublica/minorServices/postesMono.png'
+import pracasMono from '../assets/services/majorservices/iluminacaoPublica/minorServices/pracasMono.png'
+import monumentosMono from '../assets/services/majorservices/iluminacaoPublica/minorServices/monumentosMono.png'
+
+import faltaDeAguaMono from '../assets/services/majorservices/abastecimentoDeAgua/minorServices/faltaDeAguaMono.png'
+import vazamentoMono from '../assets/services/majorservices/abastecimentoDeAgua/minorServices/vazamentoMono.png'
+import caminhaoPipaMono from '../assets/services/majorservices/abastecimentoDeAgua/minorServices/caminhaoPipaMono.png'
+
+import esgotoMono from '../assets/services/majorservices/saneamentoBasico/minorServices/esgotoMono.png'
+import coletaDeLixoMono from '../assets/services/majorservices/saneamentoBasico/minorServices/coletaDeLixoMono.png'
+import insetosERoedoresMono from '../assets/services/majorservices/saneamentoBasico/minorServices/insetosERoedoresMono.png'
+
+import tapaBuracosMono from '../assets/services/majorservices/mobilidadeUrbana/minorServices/tapaBuracosMono.png'
+import remocaoDeEntulhosMono from '../assets/services/majorservices/mobilidadeUrbana/minorServices/remocaoDeEntulhosMono.png'
+import terraplanagemDeViasMono from '../assets/services/majorservices/mobilidadeUrbana/minorServices/terraplanagemDeViasMono.png'
+import vistoriaDeArvoresMono from '../assets/services/majorservices/mobilidadeUrbana/minorServices/vistoriaDeArvoresMono.png'
+import capinacaoEmViasMono from '../assets/services/majorservices/mobilidadeUrbana/minorServices/capinacaoEmViasMono.png'
+import calcadasMono from '../assets/services/majorservices/mobilidadeUrbana/minorServices/calcadasMono.png'
+import alagamentosMono from '../assets/services/majorservices/mobilidadeUrbana/minorServices/alagamentosMono.png'
+import transporteMono from '../assets/services/majorservices/mobilidadeUrbana/minorServices/transporteMono.png'
 
 export const allMinorServices: MinorService[] = [
 	{
 		id: 1,
 		title: 'Postes',
 		alias: 'postes',
-		img: iluminacaoPublicaImg,
+		img: postesMono,
 		category: 'MinorService',
 		formId: 1
 	},
@@ -14,7 +33,7 @@ export const allMinorServices: MinorService[] = [
 		id: 2,
 		title: 'Praças',
 		alias: 'pracas',
-		img: iluminacaoPublicaImg,
+		img: pracasMono,
 		category: 'MinorService',
 		formId: 2
 	},
@@ -22,7 +41,7 @@ export const allMinorServices: MinorService[] = [
 		id: 3,
 		title: 'Monumentos',
 		alias: 'monumentos',
-		img: iluminacaoPublicaImg,
+		img: monumentosMono,
 		category: 'MinorService',
 		formId: 3
 	},
@@ -30,7 +49,7 @@ export const allMinorServices: MinorService[] = [
 		id: 4,
 		title: 'Falta de Água',
 		alias: 'faltaDeAgua',
-		img: iluminacaoPublicaImg,
+		img: faltaDeAguaMono,
 		category: 'MinorService',
 		formId: 4
 	},
@@ -38,7 +57,7 @@ export const allMinorServices: MinorService[] = [
 		id: 5,
 		title: 'Vazamento',
 		alias: 'vazamento',
-		img: iluminacaoPublicaImg,
+		img: vazamentoMono,
 		category: 'MinorService',
 		formId: 5
 	},
@@ -46,7 +65,7 @@ export const allMinorServices: MinorService[] = [
 		id: 6,
 		title: 'Caminhão Pipa',
 		alias: 'caminhaoPipa',
-		img: iluminacaoPublicaImg,
+		img: caminhaoPipaMono,
 		category: 'MinorService',
 		formId: 6
 	},
@@ -54,7 +73,7 @@ export const allMinorServices: MinorService[] = [
 		id: 7,
 		title: 'Esgoto',
 		alias: 'esgoto',
-		img: iluminacaoPublicaImg,
+		img: esgotoMono,
 		category: 'MinorService',
 		formId: 7
 	},
@@ -62,7 +81,7 @@ export const allMinorServices: MinorService[] = [
 		id: 8,
 		title: 'Coleta de Lixo',
 		alias: 'coletaDeLixo',
-		img: iluminacaoPublicaImg,
+		img: coletaDeLixoMono,
 		category: 'MinorService',
 		formId: 8
 	},
@@ -70,7 +89,7 @@ export const allMinorServices: MinorService[] = [
 		id: 9,
 		title: 'Insetos e Roedores',
 		alias: 'insetosERoedores',
-		img: iluminacaoPublicaImg,
+		img: insetosERoedoresMono,
 		category: 'MinorService',
 		formId: 9
 	},
@@ -78,7 +97,7 @@ export const allMinorServices: MinorService[] = [
 		id: 10,
 		title: 'Tapa Buracos',
 		alias: 'tapaBuracos',
-		img: iluminacaoPublicaImg,
+		img: tapaBuracosMono,
 		category: 'MinorService',
 		formId: 10
 	},
@@ -86,7 +105,7 @@ export const allMinorServices: MinorService[] = [
 		id: 11,
 		title: 'Remoção de Entulhos',
 		alias: 'remocaoDeEntulhos',
-		img: iluminacaoPublicaImg,
+		img: remocaoDeEntulhosMono,
 		category: 'MinorService',
 		formId: 11
 	},
@@ -94,7 +113,7 @@ export const allMinorServices: MinorService[] = [
 		id: 12,
 		title: 'Terraplanagem de Vias',
 		alias: 'terraplanagemDeVias',
-		img: iluminacaoPublicaImg,
+		img: terraplanagemDeViasMono,
 		category: 'MinorService',
 		formId: 12
 	},
@@ -102,7 +121,7 @@ export const allMinorServices: MinorService[] = [
 		id: 13,
 		title: 'Vistoria de Árvores',
 		alias: 'vistoriaDeArvores',
-		img: iluminacaoPublicaImg,
+		img: vistoriaDeArvoresMono,
 		category: 'MinorService',
 		formId: 13
 	},
@@ -110,7 +129,7 @@ export const allMinorServices: MinorService[] = [
 		id: 14,
 		title: 'Capinação em Vias',
 		alias: 'capinacaoEmVieas',
-		img: iluminacaoPublicaImg,
+		img: capinacaoEmViasMono,
 		category: 'MinorService',
 		formId: 14
 	},
@@ -118,7 +137,7 @@ export const allMinorServices: MinorService[] = [
 		id: 15,
 		title: 'Calçadas',
 		alias: 'calcadas',
-		img: iluminacaoPublicaImg,
+		img: calcadasMono,
 		category: 'MinorService',
 		formId: 15
 	},
@@ -126,7 +145,7 @@ export const allMinorServices: MinorService[] = [
 		id: 16,
 		title: 'Alagamentos',
 		alias: 'alagamentos',
-		img: iluminacaoPublicaImg,
+		img: alagamentosMono,
 		category: 'MinorService',
 		formId: 16
 	},
@@ -134,7 +153,7 @@ export const allMinorServices: MinorService[] = [
 		id: 17,
 		title: 'Transporte',
 		alias: 'transporte',
-		img: iluminacaoPublicaImg,
+		img: transporteMono,
 		category: 'MinorService',
 		formId: 17
 	}

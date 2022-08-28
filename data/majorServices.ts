@@ -1,8 +1,13 @@
 import { MajorService } from '../types/global'
-import abastecimentoDeAguaImg from '../assets/services/majorservices/abastecimento-de-agua.png'
-import iluminacaoPublicaImg from '../assets/services/majorservices/iluminacao-publica.png'
-import mobilidadeUrbanaImg from '../assets/services/majorservices/mobilidade-urbana.png'
-import saneamentoBasicoImg from '../assets/services/majorservices/saneamento-basico.png'
+import abastecimentoDeAguaImg from '../assets/services/majorservices/abastecimentoDeAgua/abastecimento-de-agua.png'
+import iluminacaoPublicaImg from '../assets/services/majorservices/iluminacaoPublica/iluminacao-publica.png'
+import mobilidadeUrbanaImg from '../assets/services/majorservices/mobilidadeUrbana/mobilidade-urbana.png'
+import saneamentoBasicoImg from '../assets/services/majorservices/saneamentoBasico/saneamento-basico.png'
+
+import abastecimentoDeAguaColor from '../assets/services/majorservices/abastecimentoDeAgua/abastecimentoDeAguaColor.png'
+import iluminacaoPublicaColor from '../assets/services/majorservices/iluminacaoPublica/iluminacaoPublicaColor.png'
+import saneamentoBasicoColor from '../assets/services/majorservices/saneamentoBasico/saneamentoBasicoColor.png'
+import mobilidadeUrbanaColor from '../assets/services/majorservices/mobilidadeUrbana/mobilidadeUrbanaColor.png'
 
 export const allMajorServices: MajorService[] = [
 	{
@@ -10,6 +15,7 @@ export const allMajorServices: MajorService[] = [
 		title: 'Iluminação Pública',
 		alias: 'IluminacaoPublica',
 		img: iluminacaoPublicaImg,
+		img2: iluminacaoPublicaColor,
 		category: 'MajorService',
 		minorServicesId: [1, 2, 3]
 	},
@@ -19,6 +25,7 @@ export const allMajorServices: MajorService[] = [
 		title: 'Abastecimento de Água',
 		alias: 'AbastecimentoDeAgua',
 		img: abastecimentoDeAguaImg,
+		img2: abastecimentoDeAguaColor,
 		category: 'MajorService',
 		minorServicesId: [4, 5, 6]
 	},
@@ -28,6 +35,7 @@ export const allMajorServices: MajorService[] = [
 		title: 'Saneamento Básico',
 		alias: 'SaneamentoBasico',
 		img: saneamentoBasicoImg,
+		img2: saneamentoBasicoColor,
 		category: 'MajorService',
 		minorServicesId: [7, 8, 9]
 	},
@@ -36,6 +44,7 @@ export const allMajorServices: MajorService[] = [
 		title: 'Mobilidade Urbana',
 		alias: 'MobilidadeUrbana',
 		img: mobilidadeUrbanaImg,
+		img2: mobilidadeUrbanaColor,
 		category: 'MajorService',
 		minorServicesId: [10, 11, 12, 13, 14, 15, 16, 17]
 	}
