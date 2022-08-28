@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useLayoutEffect, useState } from 'react'
 import {
 	ScrollView,
 	Text,
@@ -16,7 +16,7 @@ import { Ionicons } from '@expo/vector-icons'
 import { FormStepsBar } from '../../../components/form/FormStepsBar'
 import { PrimaryButton } from '../../../components/ui/PrimaryButton'
 import { COLORS } from '../../../constants/colors'
-import { allMinorServicesForm } from '../../../data/minorServiceForm'
+import { allMinorServicesForm, FormPage } from '../../../data/minorServiceForm'
 import { SolicitarServicoFormContext } from '../../../store/SolicitarServicosContext'
 import { GeneralServiceFormat, sendData } from '../../../utils/arcgis'
 import { allMajorServices } from '../../../data/majorServices'
@@ -27,12 +27,21 @@ interface FormData {
 }
 
 export function ServicesForm3Screen() {
-	const formPage = allMinorServicesForm[0].pages[2]
+	const [formPage, setFormPage] = useState<FormPage | null>()
 	const navigation = useNavigation()
 	const [formData, setFormData] = useState<FormData>({})
 	const [image, setImage] = useState<string | null>(null)
 	const ServicesCtx = useContext(SolicitarServicoFormContext)
 	const [isLoading, setIsLoading] = useState(false)
+	const minService = allMinorServices.filter(
+		minSrvc => minSrvc.id === ServicesCtx.minorServiceId
+	)[0]
+
+	useLayoutEffect(() => {
+		navigation.setOptions({
+			title: minService.title
+		})
+	}, [])
 
 	async function pickImage(fieldAlias: string) {
 		const result = await ImagePicker.launchImageLibraryAsync({
@@ -78,6 +87,22 @@ export function ServicesForm3Screen() {
 					console.log(err)
 				})
 		}
+	}
+
+	useLayoutEffect(() => {
+		setFormPage(
+			allMinorServicesForm.filter(
+				minSrvForm => minSrvForm.minorServiceId === ServicesCtx.minorServiceId
+			)[0].pages[2]
+		)
+	}, [])
+
+	if (!formPage) {
+		return (
+			<View>
+				<Text>Carregando...</Text>
+			</View>
+		)
 	}
 
 	return (

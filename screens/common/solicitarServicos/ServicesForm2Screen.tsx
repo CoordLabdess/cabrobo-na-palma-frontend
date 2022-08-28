@@ -1,22 +1,46 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useLayoutEffect, useState } from 'react'
 import { ScrollView, Text, View, StyleSheet, TextInput } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
 import { FormStepsBar } from '../../../components/form/FormStepsBar'
 import { PrimaryButton } from '../../../components/ui/PrimaryButton'
 import { COLORS } from '../../../constants/colors'
-import { allMinorServicesForm } from '../../../data/minorServiceForm'
+import { allMinorServicesForm, FormPage } from '../../../data/minorServiceForm'
 import { SolicitarServicoFormContext } from '../../../store/SolicitarServicosContext'
+import { allMinorServices } from '../../../data/minorServices'
 
 interface FormData {
 	[key: string]: any
 }
 
 export function ServicesForm2Screen() {
-	const formPage = allMinorServicesForm[0].pages[1]
+	const [formPage, setFormPage] = useState<FormPage | null>()
 	const navigation = useNavigation()
 	const [formData, setFormData] = useState<FormData>({})
 	const ServicesCtx = useContext(SolicitarServicoFormContext)
+
+	const mService = allMinorServices.filter(
+		minService => minService.id === ServicesCtx.minorServiceId
+	)[0]
+
+	useLayoutEffect(() => {
+		navigation.setOptions({
+			title: mService.title
+		})
+		setFormPage(
+			allMinorServicesForm.filter(
+				minSrvForm => minSrvForm.minorServiceId === ServicesCtx.minorServiceId
+			)[0].pages[1]
+		)
+	}, [])
+
+	if (!formPage) {
+		return (
+			<View>
+				<Text>aaa</Text>
+			</View>
+		)
+	}
 
 	return (
 		<ScrollView

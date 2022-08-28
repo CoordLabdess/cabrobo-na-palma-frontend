@@ -13,28 +13,30 @@ export const allMajorServices: MajorService[] = [
 		category: 'MajorService',
 		minorServicesId: [1, 2, 3]
 	},
+
 	{
 		id: 2,
-		title: 'Mobilidade Urbana',
-		alias: 'MobilidadeUrbana',
-		img: mobilidadeUrbanaImg,
-		category: 'MajorService',
-		minorServicesId: []
-	},
-	{
-		id: 3,
 		title: 'Abastecimento de Água',
 		alias: 'AbastecimentoDeAgua',
 		img: abastecimentoDeAguaImg,
 		category: 'MajorService',
-		minorServicesId: []
+		minorServicesId: [4, 5, 6]
 	},
+
 	{
-		id: 4,
+		id: 3,
 		title: 'Saneamento Básico',
 		alias: 'SaneamentoBasico',
 		img: saneamentoBasicoImg,
 		category: 'MajorService',
-		minorServicesId: []
+		minorServicesId: [7, 8, 9]
+	},
+	{
+		id: 4,
+		title: 'Mobilidade Urbana',
+		alias: 'MobilidadeUrbana',
+		img: mobilidadeUrbanaImg,
+		category: 'MajorService',
+		minorServicesId: [10, 11, 12, 13, 14, 15, 16, 17]
 	}
 ]

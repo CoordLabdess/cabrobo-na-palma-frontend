@@ -28,14 +28,15 @@ export function SolicitarServicoFormContextProvider(props: { children: React.Rea
 
 	function updateMajorServiceId(id: number) {
 		setMajorServiceId(id)
+		setData({})
 	}
 
 	function updateMinorServiceId(id: number) {
 		setMinorServiceId(id)
+		setData({})
 	}
 
 	function updateData(key: string, value: any) {
-		console.log(data)
 		setData(cData => {
 			return { ...cData, [key]: value }
 		})
