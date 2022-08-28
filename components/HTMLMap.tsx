@@ -68,10 +68,10 @@ export function HTMLMap(props: HTMLMapProps) {
 						/>
 						<link
 							rel="stylesheet"
-							href="https://js.arcgis.com/4.23/esri/themes/light/main.css"
+							href="https://js.arcgis.com/4.13/esri/themes/light/main.css"
 
 						/>
-						<script src="https://js.arcgis.com/4.23/"></script>
+						<script src="https://js.arcgis.com/4.13/"></script>
 				
 						<style>
 							html,
@@ -94,7 +94,8 @@ export function HTMLMap(props: HTMLMapProps) {
 								'esri/layers/FeatureLayer',
 								'esri/Graphic',
 								'esri/layers/GraphicsLayer',
-							], (Map, MapView, FeatureLayer, Graphic, GraphicsLayer) => {
+								'esri/widgets/Search',
+							], (Map, MapView, FeatureLayer, Graphic, GraphicsLayer, Search) => {
 								const map = new Map({
 									basemap: 'topo-vector',
 								})
@@ -129,6 +130,14 @@ export function HTMLMap(props: HTMLMapProps) {
 								const fLayer = new FeatureLayer({
 									url: 'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Servi%c3%a7os_P%c3%bablicos/FeatureServer/0'
 								})
+
+								const searchWidget = new Search({
+									view: view,
+									locationEnabled: true,
+									maxResults: 0,
+									suggestionsEnabled: false,
+									
+								})
 								view.on('click', (evt) => {
 									layer.removeAll()
 									layer.graphics = new Graphic({
@@ -143,6 +152,10 @@ export function HTMLMap(props: HTMLMapProps) {
 								})
 								map.add(featureLayer)
 								map.add(fLayer)
+								view.ui.add(searchWidget, {
+									position: "top-right",
+									index: 1
+								});
 								map.add(layer)
 							})
 						</script>
