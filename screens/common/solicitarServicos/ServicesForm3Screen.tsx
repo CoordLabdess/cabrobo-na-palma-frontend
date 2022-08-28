@@ -100,6 +100,13 @@ export function ServicesForm3Screen() {
 		)
 	}, [])
 
+	function checkIfFieldsAreFilled() {
+		if (ServicesCtx?.data['especificacao']?.trim()) {
+			return true
+		}
+		return false
+	}
+
 	if (!formPage) {
 		return (
 			<View>
@@ -221,7 +228,11 @@ export function ServicesForm3Screen() {
 				<PrimaryButton
 					isLoading={isLoading}
 					title='Enviar Formulário'
-					onPress={handleSendingData}
+					onPress={() => {
+						if (checkIfFieldsAreFilled()) {
+							handleSendingData()
+						}
+					}}
 				/>
 			</View>
 		</ScrollView>

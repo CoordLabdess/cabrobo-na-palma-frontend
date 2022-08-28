@@ -7,16 +7,23 @@ interface PrimaryButtonProps {
 	title: string
 	style?: ViewStyle
 	isLoading?: boolean
+	locked?: boolean
 }
 
 export function PrimaryButton(props: PrimaryButtonProps) {
 	return (
 		<View style={[styles.buttonOuterContainer, props?.style]}>
 			<Pressable
-				style={({ pressed }) =>
-					pressed ? [styles.buttonInnerContainer, styles.pressed] : styles.buttonInnerContainer
-				}
-				onPress={props.onPress}
+				style={({ pressed }) => [
+					styles.buttonInnerContainer,
+					pressed && styles.pressed,
+					props.locked && { backgroundColor: COLORS.secondary500 }
+				]}
+				onPress={() => {
+					if (!props.locked) {
+						props.onPress()
+					}
+				}}
 			>
 				{props.isLoading && (
 					<ActivityIndicator style={{ position: 'absolute' }} size='large' color='#fff' />

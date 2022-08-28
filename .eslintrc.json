@@ -39,6 +39,7 @@
 		"react/react-in-jsx-scope": 0,
 		"react/jsx-no-constructed-context-values": 0,
 		"valid-typeof": 0,
-		"import/no-dynamic-require": 0
+		"import/no-dynamic-require": 0,
+		"dot-notation": 0
 	}
 }

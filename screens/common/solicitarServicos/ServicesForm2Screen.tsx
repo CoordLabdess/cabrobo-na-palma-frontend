@@ -16,8 +16,8 @@ interface FormData {
 export function ServicesForm2Screen() {
 	const [formPage, setFormPage] = useState<FormPage | null>()
 	const navigation = useNavigation()
-	const [formData, setFormData] = useState<FormData>({})
 	const ServicesCtx = useContext(SolicitarServicoFormContext)
+	const [isMissing, setIsMissing] = useState(true)
 
 	const mService = allMinorServices.filter(
 		minService => minService.id === ServicesCtx.minorServiceId
@@ -40,6 +40,18 @@ export function ServicesForm2Screen() {
 				<Text>aaa</Text>
 			</View>
 		)
+	}
+
+	function checkIfFieldsAreFilled() {
+		if (
+			ServicesCtx?.data['logradouro']?.trim() &&
+			ServicesCtx?.data['bairro']?.trim() &&
+			ServicesCtx?.data['numero']?.trim() &&
+			ServicesCtx?.data['pontoDeReferencia']?.trim()
+		) {
+			return true
+		}
+		return false
 	}
 
 	return (
@@ -69,7 +81,9 @@ export function ServicesForm2Screen() {
 										<TextInput
 											style={styles.textInput}
 											placeholder='Digite aqui...'
-											onChangeText={text => ServicesCtx.updateData(field.alias, text)}
+											onChangeText={text => {
+												ServicesCtx.updateData(field.alias, text)
+											}}
 											value={ServicesCtx.data[field.alias] || ''}
 										/>
 									) : field.type === 'textArea' ? (
@@ -92,7 +106,11 @@ export function ServicesForm2Screen() {
 			<View style={styles.buttonContainer}>
 				<PrimaryButton
 					title='Continuar'
-					onPress={() => navigation.navigate('SolicitarServicosForm3' as never)}
+					onPress={() => {
+						if (checkIfFieldsAreFilled()) {
+							navigation.navigate('SolicitarServicosForm3' as never)
+						}
+					}}
 				/>
 			</View>
 		</ScrollView>

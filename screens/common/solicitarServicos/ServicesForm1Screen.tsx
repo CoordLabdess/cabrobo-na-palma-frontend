@@ -11,7 +11,6 @@ import { allMinorServices } from '../../../data/minorServices'
 
 export function ServicesForm1Screen() {
 	const navigation = useNavigation()
-	const [coords, setCoords] = useState<Coords | null>(null)
 	const ServicesCtx = useContext(SolicitarServicoFormContext)
 	const mService = allMinorServices.filter(
 		minService => minService.id === ServicesCtx.minorServiceId
@@ -34,7 +33,11 @@ export function ServicesForm1Screen() {
 			</View>
 			<View style={styles.continueContainer}>
 				<PrimaryButton
-					onPress={() => navigation.navigate('SolicitarServicosForm2' as never)}
+					onPress={() => {
+						if (ServicesCtx.data['coords']) {
+							navigation.navigate('SolicitarServicosForm2' as never)
+						}
+					}}
 					title='Continuar'
 				/>
 			</View>
