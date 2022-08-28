@@ -11,7 +11,11 @@ export default function App() {
 		>
 			<AuthContextProvider>
 				{Platform.OS === 'ios' ? (
-					<KeyboardAvoidingView style={{ flex: 1 }} behavior='padding' keyboardVerticalOffset={0}>
+					<KeyboardAvoidingView
+						style={{ width: '100%', height: '100%' }}
+						behavior='padding'
+						keyboardVerticalOffset={0}
+					>
 						<Navigation />
 					</KeyboardAvoidingView>
 				) : (

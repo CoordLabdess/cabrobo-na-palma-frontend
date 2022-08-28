@@ -1,5 +1,6 @@
-import { useContext, useState } from 'react'
+import { useContext, useLayoutEffect, useState } from 'react'
 import { ScrollView, View, Text, StyleSheet, TextInput, Image } from 'react-native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Ionicons } from '@expo/vector-icons'
 import { CleanTextButton } from '../../components/ui/buttons/CleanTextButton'
@@ -8,11 +9,14 @@ import { CleanTextInput } from '../../components/ui/textInputs/CleanTextInput'
 import { COLORS } from '../../constants/colors'
 import { AuthContext } from '../../store/AuthContext'
 import { fakeSendData } from '../../utils/fakeFunctions'
+import { PrivacyPolicyModal } from '../../components/modals/PrivacyPolicyModal'
 
 export function LoginScreen() {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
+	const [viewModal, setViewModal] = useState(false)
 	const [isLoading, setIsLoading] = useState(false)
+	const [acceptedPolicy, setAcceptedPolicy] = useState(true)
 	const authCtx = useContext(AuthContext)
 
 	async function validate() {
@@ -24,6 +28,38 @@ export function LoginScreen() {
 			})
 		}
 	}
+
+	async function storeData(key: string, value: string) {
+		try {
+			await AsyncStorage.setItem(key, value)
+		} catch (e) {
+			console.log(e)
+		}
+	}
+
+	async function getData(key: string) {
+		try {
+			const value = await AsyncStorage.getItem(key)
+			setAcceptedPolicy(value === 'true')
+			if (value) {
+				return value
+			}
+			return ''
+		} catch (e) {
+			return ''
+		}
+	}
+
+	function checkA(key: string) {
+		getData('hasAcceptedPolicy').then(value => {
+			setAcceptedPolicy(value === 'true')
+		})
+	}
+
+	useLayoutEffect(() => {
+		// storeData('hasAcceptedPolicy', 'false')
+		checkA('hasAcceptedPolicy')
+	}, [])
 
 	return (
 		<SafeAreaView style={styles.root} edges={['top', 'left', 'right']}>
@@ -76,8 +112,12 @@ export function LoginScreen() {
 					<View style={[styles.elementContainer, { marginBottom: 60 }]}>
 						<CleanTextButton
 							textStyle={styles.forgotPassword}
-							title='Esqueci minha senha'
-							onPress={() => {}}
+							title='Ver política de privacidade'
+							onPress={() => {
+								if (acceptedPolicy) {
+									setViewModal(true)
+								}
+							}}
 						/>
 					</View>
 					<View style={[styles.elementContainer]}>
@@ -87,6 +127,16 @@ export function LoginScreen() {
 					</View>
 				</View>
 			</ScrollView>
+			<PrivacyPolicyModal
+				visible={!acceptedPolicy || viewModal}
+				confirm={!viewModal}
+				onCancel={() => {}}
+				onConfirm={() => {
+					storeData('hasAcceptedPolicy', 'true')
+					checkA('hasAcceptedPolicy')
+					setViewModal(false)
+				}}
+			/>
 		</SafeAreaView>
 	)
 }

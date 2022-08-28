@@ -21,7 +21,7 @@ export const allTools: Tool[] = [
 	},
 	{
 		id: 2,
-		navigateTo: 'ComingSoon',
+		navigateTo: 'SuaEmpresaAqui',
 		alias: 'sua-empresa-aqui',
 		title: 'Sua Empresa Aqui',
 		img: suaEmpresaAquiImg,

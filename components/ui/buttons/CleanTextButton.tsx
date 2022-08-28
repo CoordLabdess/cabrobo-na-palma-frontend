@@ -9,7 +9,7 @@ interface CleanTextButtonProps {
 
 export function CleanTextButton(props: CleanTextButtonProps) {
 	return (
-		<Pressable>
+		<Pressable onPress={props.onPress}>
 			<Text style={[styles.text, props.textStyle]}>{props.title}</Text>
 		</Pressable>
 	)
