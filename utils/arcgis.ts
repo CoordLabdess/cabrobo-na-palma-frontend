@@ -12,6 +12,7 @@ export interface GeneralServiceFormat {
 	TIPO: string
 	ENDEREÇO: string
 	ESPECIFICA: string
+	TEMPO: string
 	NUMERO: number
 	OBSERVACAO: string
 }

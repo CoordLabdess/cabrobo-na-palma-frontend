@@ -70,6 +70,7 @@ export function ServicesForm3Screen() {
 				SERVIÇO: allMajorServices.filter(mService => mService.id === ServicesCtx.majorServiceId)[0]
 					.title,
 				ESPECIFICA: ServicesCtx.data.especificacao || '',
+				TEMPO: ServicesCtx.data.tempoDeOcorrencia || 'aaaa',
 				LOGRADOURO: 'Rua das flores',
 				NOME: 'Fulano da Silva Sauro',
 				OBSERVACAO: ServicesCtx.data.notes || '',
@@ -149,12 +150,12 @@ export function ServicesForm3Screen() {
 									) : field.type === 'radioButton' ? (
 										<Pressable
 											style={styles.radioButtonContainer}
-											onPress={() => ServicesCtx.updateData(section.alias, field.alias)}
+											onPress={() => ServicesCtx.updateData(section.alias, field.label)}
 										>
 											<View
 												style={[
 													styles.radioButton,
-													ServicesCtx.data[section.alias] === field.alias && {
+													ServicesCtx.data[section.alias] === field.label && {
 														backgroundColor: COLORS.primary500
 													}
 												]}

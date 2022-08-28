@@ -28,13 +28,13 @@ export function LoginScreen() {
 	return (
 		<SafeAreaView style={styles.root} edges={['top', 'left', 'right']}>
 			<ScrollView
-				keyboardShouldPersistTaps='always'
 				contentContainerStyle={{
 					flexGrow: 1,
 					justifyContent: 'flex-end',
 					alignItems: 'center'
 				}}
 				alwaysBounceVertical={false}
+				bounces={false}
 				showsVerticalScrollIndicator={false}
 			>
 				<View style={styles.foreground}>
