@@ -40,6 +40,7 @@
 		"react/jsx-no-constructed-context-values": 0,
 		"valid-typeof": 0,
 		"import/no-dynamic-require": 0,
-		"dot-notation": 0
+		"dot-notation": 0,
+		"react/jsx-curly-brace-presence": 0
 	}
 }

@@ -9,7 +9,7 @@
 		"icon": "./assets/CabroboIcon.jpg",
 		"userInterfaceStyle": "light",
 		"splash": {
-			"image": "./assets/splash.png",
+			"image": "./assets/cabroboSplash.png",
 			"resizeMode": "contain",
 			"backgroundColor": "#ffffff"
 		},

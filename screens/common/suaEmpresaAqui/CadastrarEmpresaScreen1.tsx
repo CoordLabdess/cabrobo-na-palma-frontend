@@ -8,29 +8,31 @@ import { COLORS } from '../../../constants/colors'
 import { Coords } from '../../../types/global'
 import { SolicitarServicoFormContext } from '../../../store/SolicitarServicosContext'
 import { allMinorServices } from '../../../data/minorServices'
+import { CadastrarEmpresaContext } from '../../../store/CadastrarEmpresaContext'
 
-export function ServicesForm1Screen() {
+export function CadastrarEmpresaScreen1() {
 	const navigation = useNavigation()
-	const ServicesCtx = useContext(SolicitarServicoFormContext)
+	const cadastrarEmpresaCtx = useContext(CadastrarEmpresaContext)
 	const [error, setError] = useState(false)
-	const mService = allMinorServices.filter(
-		minService => minService.id === ServicesCtx.minorServiceId
-	)[0]
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
-			title: mService.title
+			title: 'Cadastrar Empresa'
 		})
 	}, [])
 
 	return (
 		<View style={styles.root}>
 			<View style={{ marginVertical: 10, width: '100%', alignItems: 'center' }}>
-				<FormStepsBar maxSteps={3} currentStep={1} />
+				<FormStepsBar maxSteps={2} currentStep={1} />
 			</View>
-			<Text style={styles.title}>Selecione no mapa a localização do problema.</Text>
+			<Text style={styles.title}>Selecione a localização da sua empresa.</Text>
 			<View style={{ width: '100%', height: '60%' }}>
-				<HTMLMap onCoordsChange={c => ServicesCtx.updateData('coords', c)} />
+				<HTMLMap
+					onCoordsChange={c =>
+						cadastrarEmpresaCtx.updateData({ ...cadastrarEmpresaCtx.data, coords: c })
+					}
+				/>
 			</View>
 			{error && (
 				<View style={{ marginTop: 15 }}>
@@ -42,9 +44,9 @@ export function ServicesForm1Screen() {
 			<View style={styles.continueContainer}>
 				<PrimaryButton
 					onPress={() => {
-						if (ServicesCtx.data['coords']) {
+						if (cadastrarEmpresaCtx.data?.coords) {
 							setError(false)
-							navigation.navigate('SolicitarServicosForm2' as never)
+							navigation.navigate('cadastrarEmpresa2' as never)
 						} else {
 							setError(true)
 						}

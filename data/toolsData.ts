@@ -7,6 +7,7 @@ import transporteSeguroImg from '../assets/home/transporte-seguro.png'
 import turismoImg from '../assets/home/turismo.png'
 
 import solicitarServicoColor from '../assets/home/solicitarServicoColor.png'
+import suaEmpresaAquiColor from '../assets/home/suaEmpresaAquiColor.png'
 
 export const allTools: Tool[] = [
 	{
@@ -25,7 +26,7 @@ export const allTools: Tool[] = [
 		alias: 'sua-empresa-aqui',
 		title: 'Sua Empresa Aqui',
 		img: suaEmpresaAquiImg,
-		img2: transporteSeguroImg,
+		img2: suaEmpresaAquiColor,
 		category: 'Tool',
 		majorServicesIds: []
 	},

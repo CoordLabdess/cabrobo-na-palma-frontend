@@ -8,6 +8,10 @@ import { ServicesForm3Screen } from '../../screens/common/solicitarServicos/Serv
 import { ServicesScreen2 } from '../../screens/common/solicitarServicos/ServicesScreen2'
 import { SolicitarServicoFormContextProvider } from '../../store/SolicitarServicosContext'
 import { SuaEmpresaAqui1 } from '../../screens/common/suaEmpresaAqui/SuaEmpresaAqui1'
+import { CadastrarEmpresaContextProvider } from '../../store/CadastrarEmpresaContext'
+import { AnyScreen } from '../../screens/AnyScreen'
+import { CadastrarEmpresaScreen1 } from '../../screens/common/suaEmpresaAqui/CadastrarEmpresaScreen1'
+import { CadastrarEmpresaScreen2 } from '../../screens/common/suaEmpresaAqui/CadastrarEmpresaScreen2'
 
 const Stack = createNativeStackNavigator()
 
@@ -33,7 +37,7 @@ function customBackButton(navigation: any) {
 
 export function SuaEmpresaAquiRouter() {
 	return (
-		<SolicitarServicoFormContextProvider>
+		<CadastrarEmpresaContextProvider>
 			<Stack.Navigator
 				initialRouteName='SuaEmpresaAquiHome'
 				screenOptions={({ navigation }) => ({
@@ -49,7 +53,31 @@ export function SuaEmpresaAquiRouter() {
 						animation: 'none'
 					}}
 				/>
+				<Stack.Screen
+					name='procurarEstabelecimento'
+					component={AnyScreen}
+					options={{
+						title: 'Solicitar Serviços',
+						animation: 'none'
+					}}
+				/>
+				<Stack.Screen
+					name='cadastrarEmpresa'
+					component={CadastrarEmpresaScreen1}
+					options={{
+						title: 'Solicitar Serviços',
+						animation: 'none'
+					}}
+				/>
+				<Stack.Screen
+					name='cadastrarEmpresa2'
+					component={CadastrarEmpresaScreen2}
+					options={{
+						title: 'Solicitar Serviços',
+						animation: 'none'
+					}}
+				/>
 			</Stack.Navigator>
-		</SolicitarServicoFormContextProvider>
+		</CadastrarEmpresaContextProvider>
 	)
 }

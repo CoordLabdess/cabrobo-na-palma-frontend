@@ -29,8 +29,7 @@ interface FormData {
 export function ServicesForm3Screen() {
 	const [formPage, setFormPage] = useState<FormPage | null>()
 	const navigation = useNavigation()
-	const [formData, setFormData] = useState<FormData>({})
-	const [image, setImage] = useState<string | null>(null)
+	const [error, setError] = useState(false)
 	const ServicesCtx = useContext(SolicitarServicoFormContext)
 	const [isLoading, setIsLoading] = useState(false)
 	const minService = allMinorServices.filter(
@@ -224,13 +223,23 @@ export function ServicesForm3Screen() {
 					</View>
 				)
 			})}
+			{error && (
+				<View style={{ marginTop: 15 }}>
+					<Text style={{ color: 'red', fontSize: 14, fontWeight: '400' }}>
+						Preencha todos os campos
+					</Text>
+				</View>
+			)}
 			<View style={styles.buttonContainer}>
 				<PrimaryButton
 					isLoading={isLoading}
 					title='Enviar Formulário'
 					onPress={() => {
 						if (checkIfFieldsAreFilled()) {
+							setError(false)
 							handleSendingData()
+						} else {
+							setError(true)
 						}
 					}}
 				/>

@@ -18,12 +18,14 @@ interface PrivacPolicyModalProps {
 
 export function PrivacyPolicyModal(props: PrivacPolicyModalProps) {
 	const [checked, setChecked] = useState(false)
+	const [checked2, setChecked2] = useState(false)
 	return (
 		<Modal visible={props.visible} transparent>
 			<SafeAreaView style={styles.modalContainer} edges={['top', 'left', 'right']}>
 				<View style={styles.modalCardShadow}>
 					<View style={styles.modalCard}>
 						<ScrollView
+							showsVerticalScrollIndicator
 							contentContainerStyle={{
 								justifyContent: 'flex-start',
 								paddingTop: '5%',
@@ -42,18 +44,33 @@ export function PrivacyPolicyModal(props: PrivacPolicyModalProps) {
 								<Text style={styles.privacyText}>{privacyPolicyText}</Text>
 							</View>
 							{props.confirm && (
-								<Pressable onPress={() => setChecked(!checked)} style={styles.checkboxContainer}>
-									<Checkbox
-										style={styles.checkbox}
-										value={checked}
-										onValueChange={() => setChecked(!checked)}
-									/>
-									<Text style={styles.checkboxText}>
-										Li e concordo com a Política de Privacidade
-									</Text>
-								</Pressable>
+								<View style={{ width: '100%', alignItems: 'flex-start' }}>
+									<Pressable
+										onPress={() => setChecked2(!checked2)}
+										style={styles.checkboxContainer}
+									>
+										<Checkbox
+											style={styles.checkbox}
+											value={checked2}
+											onValueChange={() => setChecked2(!checked2)}
+										/>
+										<Text style={styles.checkboxText}>
+											Entendo que meus dados de localização não serão compartilhados com terceiros
+										</Text>
+									</Pressable>
+									<Pressable onPress={() => setChecked(!checked)} style={styles.checkboxContainer}>
+										<Checkbox
+											style={styles.checkbox}
+											value={checked}
+											onValueChange={() => setChecked(!checked)}
+										/>
+										<Text style={styles.checkboxText}>
+											Li e concordo com a Política de Privacidade
+										</Text>
+									</Pressable>
+								</View>
 							)}
-							<View>
+							<View style={{ marginBottom: 10 }}>
 								<CleanTextButton
 									title='Ver política de privacidade na web'
 									textStyle={{ padding: 10 }}
@@ -62,7 +79,7 @@ export function PrivacyPolicyModal(props: PrivacPolicyModalProps) {
 							</View>
 							<View>
 								<PrimaryButton
-									locked={!checked && props.confirm}
+									locked={(!checked || !checked2) && props.confirm}
 									title={props.confirm ? 'Confirmar' : 'Voltar'}
 									onPress={props.onConfirm}
 								/>

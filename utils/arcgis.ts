@@ -23,9 +23,20 @@ interface Coords {
 	longitude: number
 }
 
-export const sendData = async (coords: Coords, attributes: Object) => {
+export interface CadastrarEmpresaFormat {
+	name: string
+	address: string
+	phoneNumbe: string
+	TIPO_ESTAB: string
+}
+
+export const sendData = async (
+	coords: Coords,
+	attributes: Object,
+	url = 'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Servi%c3%a7os_P%c3%bablicos/FeatureServer/0'
+) => {
 	return addFeatures({
-		url: 'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Servi%c3%a7os_P%c3%bablicos/FeatureServer/0',
+		url,
 		features: [
 			{
 				geometry: {

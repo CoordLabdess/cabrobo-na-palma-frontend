@@ -17,6 +17,7 @@ export function ServicesForm2Screen() {
 	const [formPage, setFormPage] = useState<FormPage | null>()
 	const navigation = useNavigation()
 	const ServicesCtx = useContext(SolicitarServicoFormContext)
+	const [error, setError] = useState(false)
 	const [isMissing, setIsMissing] = useState(true)
 
 	const mService = allMinorServices.filter(
@@ -103,12 +104,22 @@ export function ServicesForm2Screen() {
 					</View>
 				)
 			})}
+			{error && (
+				<View style={{ marginTop: 15 }}>
+					<Text style={{ color: 'red', fontSize: 14, fontWeight: '400' }}>
+						Preencha todos os campos
+					</Text>
+				</View>
+			)}
 			<View style={styles.buttonContainer}>
 				<PrimaryButton
 					title='Continuar'
 					onPress={() => {
 						if (checkIfFieldsAreFilled()) {
+							setError(false)
 							navigation.navigate('SolicitarServicosForm3' as never)
+						} else {
+							setError(true)
 						}
 					}}
 				/>
