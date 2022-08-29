@@ -15,9 +15,9 @@ export function UserHeader() {
 						<Image style={styles.profileImage} resizeMode='cover' source={genericUserImg} />
 					</View>
 					<View>
-						<Text style={styles.userInfoName}>Fulano da Silva</Text>
+						<Text style={styles.userInfoName}>Cidadão de Cabrobó</Text>
 						<Text style={styles.userInfoText}>Cidadão</Text>
-						<Text style={styles.userInfoText}>123.456.789-00</Text>
+						<Text style={styles.userInfoText}>xxx.xxx.xxx-xx</Text>
 					</View>
 				</Pressable>
 				<View style={styles.fastLinksContainer}>
