@@ -9,6 +9,7 @@ import { Coords } from '../../../types/global'
 import { SolicitarServicoFormContext } from '../../../store/SolicitarServicosContext'
 import { allMinorServices } from '../../../data/minorServices'
 import { CadastrarEmpresaContext } from '../../../store/CadastrarEmpresaContext'
+import { HTMLMapEmpresas } from '../../../components/HTMLMapEmpresas'
 
 export function CadastrarEmpresaScreen1() {
 	const navigation = useNavigation()
@@ -28,7 +29,7 @@ export function CadastrarEmpresaScreen1() {
 			</View>
 			<Text style={styles.title}>Selecione a localização da sua empresa.</Text>
 			<View style={{ width: '100%', height: '60%' }}>
-				<HTMLMap
+				<HTMLMapEmpresas
 					onCoordsChange={c =>
 						cadastrarEmpresaCtx.updateData({ ...cadastrarEmpresaCtx.data, coords: c })
 					}
