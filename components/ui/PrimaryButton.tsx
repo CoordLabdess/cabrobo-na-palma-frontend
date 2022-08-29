@@ -1,11 +1,20 @@
 import React from 'react'
-import { View, Pressable, Text, StyleSheet, ViewStyle, ActivityIndicator } from 'react-native'
+import {
+	View,
+	Pressable,
+	Text,
+	StyleSheet,
+	ViewStyle,
+	ActivityIndicator,
+	TextStyle
+} from 'react-native'
 import { COLORS } from '../../constants/colors'
 
 interface PrimaryButtonProps {
 	onPress: () => void
 	title: string
 	style?: ViewStyle
+	textStyle?: TextStyle
 	isLoading?: boolean
 	locked?: boolean
 }
@@ -28,7 +37,9 @@ export function PrimaryButton(props: PrimaryButtonProps) {
 				{props.isLoading && (
 					<ActivityIndicator style={{ position: 'absolute' }} size='large' color='#fff' />
 				)}
-				<Text style={[styles.buttonText, props.isLoading && { opacity: 0 }]}>{props.title}</Text>
+				<Text style={[styles.buttonText, props.textStyle, props.isLoading && { opacity: 0 }]}>
+					{props.title}
+				</Text>
 			</Pressable>
 		</View>
 	)
@@ -41,8 +52,8 @@ const styles = StyleSheet.create({
 		elevation: 4,
 		shadowColor: 'black',
 		shadowOffset: { width: 1, height: 1 },
-		shadowRadius: 5,
-		shadowOpacity: 0.5
+		shadowRadius: 3,
+		shadowOpacity: 0.3
 	},
 	buttonInnerContainer: {
 		paddingVertical: 8,

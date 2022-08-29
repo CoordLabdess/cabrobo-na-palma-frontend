@@ -12,6 +12,7 @@ import { CadastrarEmpresaContextProvider } from '../../store/CadastrarEmpresaCon
 import { AnyScreen } from '../../screens/AnyScreen'
 import { CadastrarEmpresaScreen1 } from '../../screens/common/suaEmpresaAqui/CadastrarEmpresaScreen1'
 import { CadastrarEmpresaScreen2 } from '../../screens/common/suaEmpresaAqui/CadastrarEmpresaScreen2'
+import { PaginaEmConstrucao } from '../../screens/public/PaginaEmConstrucao'
 
 const Stack = createNativeStackNavigator()
 
@@ -55,7 +56,7 @@ export function SuaEmpresaAquiRouter() {
 				/>
 				<Stack.Screen
 					name='procurarEstabelecimento'
-					component={AnyScreen}
+					component={PaginaEmConstrucao}
 					options={{
 						title: 'Solicitar Serviços',
 						animation: 'none'

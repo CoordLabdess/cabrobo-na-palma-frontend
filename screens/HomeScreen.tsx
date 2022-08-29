@@ -33,7 +33,8 @@ export function HomeScreen() {
 
 const styles = StyleSheet.create({
 	root: {
-		flex: 1
+		flex: 1,
+		backgroundColor: '#fff'
 	},
 	toolsGridContainer: {
 		flex: 1,

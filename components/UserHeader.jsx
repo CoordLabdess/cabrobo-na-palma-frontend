@@ -3,6 +3,7 @@ import IonIcons from '@expo/vector-icons/Ionicons'
 import { useContext } from 'react'
 import { COLORS } from '../constants/colors'
 import { AuthContext } from '../store/AuthContext'
+import genericUserImg from '../assets/public/genericUser.png'
 
 export function UserHeader() {
 	const authCtx = useContext(AuthContext)
@@ -11,27 +12,16 @@ export function UserHeader() {
 			<View style={styles.headerContainer}>
 				<Pressable style={styles.userInfoContainer}>
 					<View style={styles.profileImageContainer}>
-						<Image
-							style={styles.profileImage}
-							resizeMode='cover'
-							source={{
-								uri: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGVyc29ufGVufDB8fDB8fA%3D%3D&w=1000&q=80'
-							}}
-						/>
+						<Image style={styles.profileImage} resizeMode='cover' source={genericUserImg} />
 					</View>
 					<View>
 						<Text style={styles.userInfoName}>Fulano da Silva</Text>
-						<Text style={styles.userInfoText}>Civil</Text>
+						<Text style={styles.userInfoText}>Cidadão</Text>
 						<Text style={styles.userInfoText}>123.456.789-00</Text>
 					</View>
 				</Pressable>
 				<View style={styles.fastLinksContainer}>
-					<Pressable
-						style={styles.linkContainer}
-						onPress={() => {
-							console.log('Solicitações')
-						}}
-					>
+					<Pressable style={styles.linkContainer} onPress={() => {}}>
 						<Text style={styles.linkText}>Solicitações</Text>
 						<IonIcons name='document-text-outline' size={32} color='#123A56' />
 					</Pressable>

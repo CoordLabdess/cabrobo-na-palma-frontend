@@ -5,6 +5,7 @@ import { Ionicons } from '@expo/vector-icons'
 import { COLORS } from '../../constants/colors'
 import { AnyScreen } from '../../screens/AnyScreen'
 import { HomeCommonStackRouter } from './HomeCommonStackRouter'
+import { PaginaEmConstrucao } from '../../screens/public/PaginaEmConstrucao'
 
 const BottomTab = createBottomTabNavigator()
 
@@ -41,7 +42,7 @@ export function RootCommonRouter() {
 			/>
 			<BottomTab.Screen
 				name='RootPerfil'
-				component={AnyScreen}
+				component={PaginaEmConstrucao}
 				options={{
 					tabBarLabel: () => null,
 					tabBarIcon: tabInfo => {
@@ -57,7 +58,7 @@ export function RootCommonRouter() {
 			/>
 			<BottomTab.Screen
 				name='RootNoticias'
-				component={AnyScreen}
+				component={PaginaEmConstrucao}
 				options={{
 					tabBarLabel: () => null,
 					tabBarIcon: tabInfo => {
@@ -73,7 +74,7 @@ export function RootCommonRouter() {
 			/>
 			<BottomTab.Screen
 				name='RootConfiguracoes'
-				component={AnyScreen}
+				component={PaginaEmConstrucao}
 				options={{
 					tabBarLabel: () => null,
 
