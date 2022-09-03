@@ -7,7 +7,6 @@ import { CovidMap } from '../../../components/maps/CovidMap'
 export function MapaDeCovidScreen() {
 	const navigation = useNavigation()
 	const [lockedMap, setLockedMap] = useState(true)
-	const [scrollEnabled, setScrollEnabled] = useState(true)
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
@@ -62,7 +61,7 @@ export function MapaDeCovidScreen() {
 				)}
 			</View>
 			<Pressable
-				style={{ width: '100%', alignItems: 'center' }}
+				style={{ flex: 1, width: '100%', alignItems: 'center' }}
 				onTouchMove={() => setLockedMap(true)}
 				onTouchStart={() => setLockedMap(true)}
 			>

@@ -117,7 +117,7 @@ export function HTMLMapEmpresas(props: HTMLMapProps) {
 									container: 'viewDiv',
 									map: map,
 									center: [-39.31, -8.51],
-									zoom: 16,
+									zoom: 15,
 								})
 								let layer = new GraphicsLayer({
 									graphics: pointGraphic,
@@ -128,7 +128,7 @@ export function HTMLMapEmpresas(props: HTMLMapProps) {
 								})
 
 								const fLayer = new FeatureLayer({
-									url: 'https://services7.arcgis.com/HXnCREqizBOVfTQc/ArcGIS/rest/services/Empresas/FeatureServer/0'
+									url: 'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Estabelecimentos/FeatureServer/0'
 								})
 
 								const searchWidget = new Search({

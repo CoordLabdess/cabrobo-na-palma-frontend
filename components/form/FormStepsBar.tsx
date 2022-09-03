@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, ViewStyle } from 'react-native'
+import { View, Text, StyleSheet, ViewStyle, Dimensions } from 'react-native'
 import { COLORS } from '../../constants/colors'
 
 interface FormStepsBarProps {
@@ -64,19 +64,21 @@ const styles = StyleSheet.create({
 	},
 	ballElement: {
 		padding: 7,
-		width: 40,
-		height: 40,
+		width: 35,
+		height: 35,
 		alignItems: 'center',
+		justifyContent: 'center',
 		borderRadius: 100
 	},
 	text: {
 		color: COLORS.secondary100,
 		fontWeight: '600',
+		position: 'absolute',
 		fontSize: 18
 	},
 	stepJoint: {
 		height: 5,
-		width: 80
+		width: Dimensions.get('window').width * 0.25
 	},
 	on: {
 		backgroundColor: COLORS.primary500

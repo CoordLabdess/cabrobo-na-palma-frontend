@@ -117,7 +117,7 @@ export function DengueMap(props: HTMLMapProps) {
 									container: 'viewDiv',
 									map: map,
 									center: [-39.31, -8.51],
-									zoom: 16,
+									zoom: 15,
 								})
 								let layer = new GraphicsLayer({
 									graphics: pointGraphic,

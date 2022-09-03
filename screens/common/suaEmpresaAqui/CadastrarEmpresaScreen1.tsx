@@ -1,5 +1,5 @@
 import { useContext, useEffect, useLayoutEffect, useState } from 'react'
-import { View, Text, StyleSheet, ScrollView, Dimensions } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, Dimensions, Pressable, Image } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { FormStepsBar } from '../../../components/form/FormStepsBar'
 import { HTMLMap } from '../../../components/HTMLMap'
@@ -15,6 +15,7 @@ export function CadastrarEmpresaScreen1() {
 	const navigation = useNavigation()
 	const cadastrarEmpresaCtx = useContext(CadastrarEmpresaContext)
 	const [error, setError] = useState(false)
+	const [lockedMap, setLockedMap] = useState(true)
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
@@ -23,39 +24,104 @@ export function CadastrarEmpresaScreen1() {
 	}, [])
 
 	return (
-		<View style={styles.root}>
-			<View style={{ marginVertical: 10, width: '100%', alignItems: 'center' }}>
+		<ScrollView
+			scrollEnabled={lockedMap}
+			contentContainerStyle={{
+				flexGrow: 1,
+				justifyContent: 'flex-start',
+				alignItems: 'center'
+			}}
+			alwaysBounceVertical={false}
+			showsVerticalScrollIndicator={false}
+		>
+			<Pressable
+				onTouchMove={() => setLockedMap(true)}
+				onTouchStart={() => setLockedMap(true)}
+				style={{ marginVertical: 10, width: '100%', alignItems: 'center' }}
+			>
 				<FormStepsBar maxSteps={2} currentStep={1} />
-			</View>
+			</Pressable>
 			<Text style={styles.title}>Selecione a localização da sua empresa.</Text>
-			<View style={{ width: '100%', height: '60%' }}>
+			<View style={{ width: '100%', height: Dimensions.get('window').height * 0.5 }}>
 				<HTMLMapEmpresas
 					onCoordsChange={c =>
 						cadastrarEmpresaCtx.updateData({ ...cadastrarEmpresaCtx.data, coords: c })
 					}
 				/>
+				{lockedMap && (
+					<Pressable
+						onPress={() => setLockedMap(false)}
+						style={{
+							width: '100%',
+							height: '100%',
+							position: 'absolute',
+							justifyContent: 'center',
+							alignItems: 'center'
+						}}
+					>
+						<View
+							style={{
+								backgroundColor: '#000',
+								opacity: 0.3,
+								width: '100%',
+								height: '100%',
+								position: 'absolute'
+							}}
+						/>
+						<Text style={{ color: '#fff', fontSize: 20, fontWeight: '600' }}>
+							Clique para liberar o mapa
+						</Text>
+					</Pressable>
+				)}
 			</View>
-			{error && (
-				<View style={{ marginTop: 15 }}>
-					<Text style={{ color: 'red', fontSize: 14, fontWeight: '400' }}>
-						Selecione um local no mapa
-					</Text>
-				</View>
-			)}
-			<View style={styles.continueContainer}>
-				<PrimaryButton
-					onPress={() => {
-						if (cadastrarEmpresaCtx.data?.coords) {
-							setError(false)
-							navigation.navigate('cadastrarEmpresa2' as never)
-						} else {
-							setError(true)
-						}
+			<Pressable
+				style={{ flex: 1, width: '100%' }}
+				onTouchMove={() => setLockedMap(true)}
+				onTouchStart={() => setLockedMap(true)}
+			>
+				{error && (
+					<View style={{ marginTop: 15 }}>
+						<Text style={{ color: 'red', fontSize: 14, fontWeight: '400' }}>
+							Selecione um local no mapa
+						</Text>
+					</View>
+				)}
+				<View
+					style={{
+						width: '90%',
+						height: 200,
+						flexDirection: 'row',
+						overflow: 'hidden',
+						justifyContent: 'space-around',
+						marginTop: 10
 					}}
-					title='Continuar'
-				/>
-			</View>
-		</View>
+				>
+					<Image
+						resizeMode='contain'
+						style={{ height: '100%', width: '100%' }}
+						source={require('../../../assets/services/saude/legenda1MapaEstabelecimentos.png')}
+					/>
+					<Image
+						resizeMode='contain'
+						style={{ height: '100%', width: '100%' }}
+						source={require('../../../assets/services/saude/legenda2MapaEstabelecimentos.png')}
+					/>
+				</View>
+				<View style={styles.continueContainer}>
+					<PrimaryButton
+						onPress={() => {
+							if (cadastrarEmpresaCtx.data?.coords) {
+								setError(false)
+								navigation.navigate('cadastrarEmpresa2' as never)
+							} else {
+								setError(true)
+							}
+						}}
+						title='Continuar'
+					/>
+				</View>
+			</Pressable>
+		</ScrollView>
 	)
 }
 

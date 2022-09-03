@@ -1,5 +1,5 @@
-import { useContext, useEffect, useLayoutEffect, useState } from 'react'
-import { View, Text, StyleSheet, ScrollView, Dimensions } from 'react-native'
+import { useLayoutEffect, useState } from 'react'
+import { View, Text, StyleSheet, ScrollView, Dimensions, Pressable, Image } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 
 import { COLORS } from '../../../constants/colors'
@@ -8,6 +8,7 @@ import { DengueMap } from '../../../components/maps/DengueMap'
 
 export function MapaDeDengueScreen() {
 	const navigation = useNavigation()
+	const [lockedMap, setLockedMap] = useState(true)
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
@@ -16,12 +17,73 @@ export function MapaDeDengueScreen() {
 	}, [])
 
 	return (
-		<View style={styles.root}>
-			<Text style={styles.title}>Mapa de calor dos casos de dengue no município</Text>
-			<View style={{ width: '100%', height: '60%' }}>
+		<ScrollView
+			scrollEnabled={lockedMap}
+			contentContainerStyle={{
+				flexGrow: 1,
+				justifyContent: 'flex-start',
+				alignItems: 'center'
+			}}
+			alwaysBounceVertical={false}
+			showsVerticalScrollIndicator={false}
+		>
+			<Pressable
+				style={{ width: '100%', alignItems: 'center' }}
+				onTouchMove={() => setLockedMap(true)}
+				onTouchStart={() => setLockedMap(true)}
+			>
+				<Text style={styles.title}>Mapa de calor dos casos de dengue no município</Text>
+			</Pressable>
+			<View style={{ width: '100%', height: Dimensions.get('window').height * 0.5 }}>
 				<DengueMap />
+				{lockedMap && (
+					<Pressable
+						onPress={() => setLockedMap(false)}
+						style={{
+							width: '100%',
+							height: '100%',
+							position: 'absolute',
+							justifyContent: 'center',
+							alignItems: 'center'
+						}}
+					>
+						<View
+							style={{
+								backgroundColor: '#000',
+								opacity: 0.3,
+								width: '100%',
+								height: '100%',
+								position: 'absolute'
+							}}
+						/>
+						<Text style={{ color: '#fff', fontSize: 20, fontWeight: '600' }}>
+							Clique para liberar o mapa
+						</Text>
+					</Pressable>
+				)}
 			</View>
-		</View>
+			<Pressable
+				style={{ flex: 1, width: '100%', alignItems: 'center' }}
+				onTouchMove={() => setLockedMap(true)}
+				onTouchStart={() => setLockedMap(true)}
+			>
+				<View
+					style={{
+						width: '90%',
+						height: 200,
+						flexDirection: 'row',
+						overflow: 'hidden',
+						justifyContent: 'space-around'
+					}}
+				>
+					<Image
+						resizeMode='contain'
+						style={{ height: '100%', width: '100%' }}
+						source={require('../../../assets/services/saude/legenda1MapaDengue.png')}
+					/>
+				</View>
+			</Pressable>
+		</ScrollView>
 	)
 }
 
@@ -43,5 +105,17 @@ const styles = StyleSheet.create({
 		width: '100%',
 		marginVertical: 20,
 		alignItems: 'center'
+	},
+	legenda1: {
+		height: 100,
+		width: 100
+	},
+	legenda2: {
+		height: 100,
+		width: 100
+	},
+	elementContainer: {
+		width: '100%',
+		alignItems: 'flex-start'
 	}
 })
