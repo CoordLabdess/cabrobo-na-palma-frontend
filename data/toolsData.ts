@@ -9,6 +9,8 @@ import turismoImg from '../assets/home/turismo.png'
 import solicitarServicoColor from '../assets/home/solicitarServicoColor.png'
 import suaEmpresaAquiColor from '../assets/home/suaEmpresaAquiColor.png'
 
+import saudeColor from '../assets/home/saudeColor.png'
+
 export const allTools: Tool[] = [
 	{
 		id: 1,
@@ -32,11 +34,11 @@ export const allTools: Tool[] = [
 	},
 	{
 		id: 3,
-		navigateTo: 'ComingSoon',
+		navigateTo: 'Saude',
 		alias: 'saude',
 		title: 'Saúde',
 		img: saudeImg,
-		img2: transporteSeguroImg,
+		img2: saudeColor,
 		category: 'Tool',
 		majorServicesIds: []
 	},
