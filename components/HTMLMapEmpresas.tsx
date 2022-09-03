@@ -128,7 +128,7 @@ export function HTMLMapEmpresas(props: HTMLMapProps) {
 								})
 
 								const fLayer = new FeatureLayer({
-									url: 'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Estabelecimentos_Comerciais/FeatureServer/0'
+									url: 'https://services7.arcgis.com/HXnCREqizBOVfTQc/ArcGIS/rest/services/Empresas/FeatureServer/0'
 								})
 
 								const searchWidget = new Search({
