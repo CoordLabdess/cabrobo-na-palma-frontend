@@ -16,6 +16,7 @@ import { PaginaEmConstrucao } from '../../screens/public/PaginaEmConstrucao'
 import { SaudeHomeScreen } from '../../screens/common/saude/SaudeHomeScreen'
 import { MapaDeCovidScreen } from '../../screens/common/saude/MapaDeCovidScreen'
 import { MapaDeDengueScreen } from '../../screens/common/saude/MapaDeDengueScreen'
+import { NoticiasHomeScreen } from '../../screens/common/noticias/NoticiasHomeScreen'
 
 const Stack = createNativeStackNavigator()
 
@@ -39,34 +40,21 @@ function customBackButton(navigation: any) {
 	)
 }
 
-export function SaudeRouter() {
+export function NoticiasRouter() {
 	return (
 		<Stack.Navigator
-			initialRouteName='SaudeHome'
+			initialRouteName='NoticiasHome'
 			screenOptions={({ navigation }) => ({
+				headerShown: false,
 				headerTitleAlign: 'center',
 				headerLeft: () => customBackButton(navigation)
 			})}
 		>
 			<Stack.Screen
-				name='SaudeHome'
-				component={SaudeHomeScreen}
+				name='NoticiasHome'
+				component={NoticiasHomeScreen}
 				options={{
-					title: 'Solicitar Serviços',
-					animation: 'none'
-				}}
-			/>
-			<Stack.Screen
-				name='SaudeMapaCovid'
-				component={MapaDeCovidScreen}
-				options={{
-					animation: 'none'
-				}}
-			/>
-			<Stack.Screen
-				name='SaudeMapaDengue'
-				component={MapaDeDengueScreen}
-				options={{
+					title: 'Notícias',
 					animation: 'none'
 				}}
 			/>

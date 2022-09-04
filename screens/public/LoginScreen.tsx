@@ -67,7 +67,7 @@ export function LoginScreen() {
 				contentContainerStyle={{
 					flexGrow: 1,
 					justifyContent: 'flex-end',
-					alignItems: 'center'
+					alignItems: 'center',
 				}}
 				alwaysBounceVertical={false}
 				bounces={false}
@@ -84,7 +84,7 @@ export function LoginScreen() {
 					</View>
 				</View>
 				<View style={styles.loginCard}>
-					<View style={{ marginBottom: 20 }}>
+					<View style={{ width: '100%', alignItems: 'center', marginBottom: 20 }}>
 						<CleanTextInput
 							style={styles.textInput}
 							value={email}
@@ -144,11 +144,11 @@ export function LoginScreen() {
 const styles = StyleSheet.create({
 	root: {
 		flex: 1,
-		backgroundColor: COLORS.primary400
+		backgroundColor: COLORS.primary400,
 	},
 	foreground: {
 		minHeight: 200,
-		marginVertical: '15%'
+		marginVertical: '15%',
 	},
 	userIconContainer: {
 		backgroundColor: '#fff',
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
 		width: 170,
 		padding: 20,
 		justifyContent: 'center',
-		alignItems: 'center'
+		alignItems: 'center',
 	},
 	userIcon: {},
 	loginCard: {
@@ -168,31 +168,31 @@ const styles = StyleSheet.create({
 		paddingBottom: 40,
 		paddingTop: 60,
 		overflow: 'hidden',
-		alignItems: 'center'
+		alignItems: 'center',
 	},
 	title: {
 		color: COLORS.primary500,
 		fontSize: 60,
-		fontWeight: '600'
+		fontWeight: '600',
 	},
 	forgotPassword: {
-		fontSize: 14
+		fontSize: 14,
 	},
 	textInput: {
 		fontSize: 16,
-		width: 240
+		width: '60%',
 	},
 	elementContainer: {
 		width: '100%',
-		alignItems: 'center'
+		alignItems: 'center',
 	},
 	logoContainer: {
 		width: '60%',
-		maxHeight: 100
+		maxHeight: 100,
 	},
 	logo: {
 		width: '100%',
 		height: '100%',
-		resizeMode: 'contain'
-	}
+		resizeMode: 'contain',
+	},
 })

@@ -1,6 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { HomeScreen, ServicesScreen } from '../../screens'
 import { AnyScreen } from '../../screens/AnyScreen'
+import { NoticiasHomeScreen } from '../../screens/common/noticias/NoticiasHomeScreen'
 import { PaginaEmConstrucao } from '../../screens/public/PaginaEmConstrucao'
 import { SaudeRouter } from './SaudeRouter'
 import { SolicitarServicosStackRouter } from './SolicitarServicosStackRouter'

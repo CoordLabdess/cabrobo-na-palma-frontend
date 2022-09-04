@@ -6,6 +6,8 @@ import { COLORS } from '../../constants/colors'
 import { AnyScreen } from '../../screens/AnyScreen'
 import { HomeCommonStackRouter } from './HomeCommonStackRouter'
 import { PaginaEmConstrucao } from '../../screens/public/PaginaEmConstrucao'
+import { NoticiasHomeScreen } from '../../screens/common/noticias/NoticiasHomeScreen'
+import { NoticiasRouter } from './NoticiasRouter'
 
 const BottomTab = createBottomTabNavigator()
 
@@ -58,7 +60,7 @@ export function RootCommonRouter() {
 			/>
 			<BottomTab.Screen
 				name='RootNoticias'
-				component={PaginaEmConstrucao}
+				component={NoticiasRouter}
 				options={{
 					tabBarLabel: () => null,
 					tabBarIcon: tabInfo => {
