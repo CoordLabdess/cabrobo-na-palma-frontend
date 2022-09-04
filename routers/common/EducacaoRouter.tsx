@@ -2,6 +2,10 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { Button, Image, Platform, Pressable, View } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import { NoticiasHomeScreen } from '../../screens/common/noticias/NoticiasHomeScreen'
+import { EducacaoHomeScreen } from '../../screens/common/educacao/EducacaoHomeScreen'
+import { ComingSoon } from '../../screens'
+import { PaginaEmConstrucao } from '../../screens/public/PaginaEmConstrucao'
+import { PontosDeColetaScreen } from '../../screens/common/educacao/PontosDeColetaScreen'
 
 const Stack = createNativeStackNavigator()
 
@@ -25,21 +29,28 @@ function customBackButton(navigation: any) {
 	)
 }
 
-export function NoticiasRouter() {
+export function EducacaoRouter() {
 	return (
 		<Stack.Navigator
-			initialRouteName='NoticiasHome'
+			initialRouteName='EducacaoHome'
 			screenOptions={({ navigation }) => ({
-				headerShown: false,
 				headerTitleAlign: 'center',
 				headerLeft: () => customBackButton(navigation),
 			})}
 		>
 			<Stack.Screen
-				name='NoticiasHome'
-				component={NoticiasHomeScreen}
+				name='EducacaoHome'
+				component={EducacaoHomeScreen}
 				options={{
 					title: 'Notícias',
+					animation: 'none',
+				}}
+			/>
+			<Stack.Screen
+				name='PontosDeColeta'
+				component={PontosDeColetaScreen}
+				options={{
+					title: 'Pontos de Coleta',
 					animation: 'none',
 				}}
 			/>

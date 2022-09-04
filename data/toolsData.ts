@@ -11,6 +11,8 @@ import suaEmpresaAquiColor from '../assets/home/suaEmpresaAquiColor.png'
 
 import saudeColor from '../assets/home/saudeColor.png'
 
+import educacaoColor from '../assets/home/educacaoColor.png'
+
 export const allTools: Tool[] = [
 	{
 		id: 1,
@@ -20,7 +22,7 @@ export const allTools: Tool[] = [
 		img: solicitarServicoImg,
 		img2: solicitarServicoColor,
 		category: 'Tool',
-		majorServicesIds: [1, 2, 3, 4]
+		majorServicesIds: [1, 2, 3, 4],
 	},
 	{
 		id: 2,
@@ -30,7 +32,7 @@ export const allTools: Tool[] = [
 		img: suaEmpresaAquiImg,
 		img2: suaEmpresaAquiColor,
 		category: 'Tool',
-		majorServicesIds: []
+		majorServicesIds: [],
 	},
 	{
 		id: 3,
@@ -40,7 +42,7 @@ export const allTools: Tool[] = [
 		img: saudeImg,
 		img2: saudeColor,
 		category: 'Tool',
-		majorServicesIds: []
+		majorServicesIds: [],
 	},
 	{
 		id: 4,
@@ -50,17 +52,17 @@ export const allTools: Tool[] = [
 		img: turismoImg,
 		img2: transporteSeguroImg,
 		category: 'Tool',
-		majorServicesIds: []
+		majorServicesIds: [],
 	},
 	{
 		id: 5,
-		navigateTo: 'ComingSoon',
+		navigateTo: 'Educacao',
 		alias: 'educacao',
 		title: 'Educação',
 		img: educacaoImg,
-		img2: transporteSeguroImg,
+		img2: educacaoColor,
 		category: 'Tool',
-		majorServicesIds: []
+		majorServicesIds: [],
 	},
 	{
 		id: 6,
@@ -70,6 +72,6 @@ export const allTools: Tool[] = [
 		img: transporteSeguroImg,
 		img2: transporteSeguroImg,
 		category: 'Tool',
-		majorServicesIds: []
-	}
+		majorServicesIds: [],
+	},
 ]

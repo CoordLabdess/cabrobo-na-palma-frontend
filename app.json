@@ -1,42 +1,40 @@
 {
-  "expo": {
-    "name": "Cabrobó na Palma da Mão",
-    "slug": "cabroboNaPalmaDaMao",
-    "privacy": "public",
-    "version": "1.0.1",
-    "description": "Cabrobó na palma da mão",
-    "orientation": "portrait",
-    "icon": "./assets/cabroboIcon.png",
-    "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/cabroboSplash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "package": "com.cabroboNaPalmaDaMao",
-      "versionCode": 2,
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/cabroboIcon.png",
-        "backgroundColor": "#FFFFFF"
-      }
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "58ae1e6a-deec-4e32-97e9-0a57574cea37"
-      }
-    }
-  }
+	"expo": {
+		"name": "Cabrobó na Palma da Mão",
+		"slug": "cabroboNaPalmaDaMao",
+		"privacy": "public",
+		"version": "1.1.0",
+		"description": "Cabrobó na palma da mão",
+		"orientation": "portrait",
+		"icon": "./assets/cabroboIcon.png",
+		"userInterfaceStyle": "light",
+		"splash": {
+			"image": "./assets/cabroboSplash.png",
+			"resizeMode": "contain",
+			"backgroundColor": "#ffffff"
+		},
+		"updates": {
+			"fallbackToCacheTimeout": 0
+		},
+		"assetBundlePatterns": ["**/*"],
+		"ios": {
+			"supportsTablet": true
+		},
+		"android": {
+			"package": "com.cabroboNaPalmaDaMao",
+			"versionCode": 3,
+			"adaptiveIcon": {
+				"foregroundImage": "./assets/cabroboIcon.png",
+				"backgroundColor": "#FFFFFF"
+			}
+		},
+		"web": {
+			"favicon": "./assets/favicon.png"
+		},
+		"extra": {
+			"eas": {
+				"projectId": "58ae1e6a-deec-4e32-97e9-0a57574cea37"
+			}
+		}
+	}
 }

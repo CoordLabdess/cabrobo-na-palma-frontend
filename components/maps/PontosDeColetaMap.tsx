@@ -1,15 +1,15 @@
 import { useRef, useState, useEffect } from 'react'
 import { View, Button, ActivityIndicator, StyleSheet } from 'react-native'
 import { WebView } from 'react-native-webview'
-import { Coords } from '../types/global'
-import { COLORS } from '../constants/colors'
+import { Coords } from '../../types/global'
+import { COLORS } from '../../constants/colors'
 
 interface HTMLMapProps {
 	onCoordsChange?: (coords: Coords) => void
 	initialCoords?: Coords
 }
 
-export function HTMLMap(props: HTMLMapProps) {
+export function PontosDeColetaMap(props: HTMLMapProps) {
 	const webViewRef = useRef()
 
 	const [coords, setCoords] = useState<Coords | null>(null)
@@ -122,25 +122,10 @@ export function HTMLMap(props: HTMLMapProps) {
 								let layer = new GraphicsLayer({
 									graphics: pointGraphic,
 								})
-								const featureLayer = new FeatureLayer({
-									source: [pointGraphic],
-									url: '',
-								})
-
+						
+                
 								const fLayer1 = new FeatureLayer({
-									url: 'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Ruas_Cabrobo_APP/FeatureServer/0'
-								})
-
-								const fLayer2 = new FeatureLayer({
-									url: 'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Bairros_Cabrobo/FeatureServer/0'
-								})
-
-								const fLayer3 = new FeatureLayer({
-									url: 'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Lotes_Cabrobo_APP/FeatureServer/0'
-								})
-
-								const fLayer4 = new FeatureLayer({
-									url: 'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Lotes_Cabrobo_APP/FeatureServer/0'
+									url: 'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Escolas_Recicla_APP/FeatureServer/0'
 								})
 
 								const searchWidget = new Search({
@@ -150,22 +135,9 @@ export function HTMLMap(props: HTMLMapProps) {
 									suggestionsEnabled: false,
 									
 								})
-								view.on('click', (evt) => {
-									layer.removeAll()
-									layer.graphics = new Graphic({
-										geometry: {
-											type: 'point',
-											longitude: evt.mapPoint.longitude,
-											latitude: evt.mapPoint.latitude,
-										},
-										symbol: simpleMarkerSymbol,
-									})
-									sendDataToReactNativeApp(evt.mapPoint.longitude, evt.mapPoint.latitude)
-								})
-								map.add(featureLayer)
+						
 								map.add(fLayer1)
-								map.add(fLayer2)
-								map.add(fLayer3)
+    
 								view.ui.add(searchWidget, {
 									position: "top-right",
 									index: 1

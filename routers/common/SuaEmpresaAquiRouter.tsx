@@ -26,7 +26,7 @@ function customBackButton(navigation: any) {
 				padding: 2,
 				overflow: 'hidden',
 				alignItems: 'center',
-				justifyContent: 'center'
+				justifyContent: 'center',
 			}}
 		>
 			<Pressable style={{}} android_ripple={{ color: '#ccc' }} onPress={() => navigation.goBack()}>
@@ -43,7 +43,7 @@ export function SuaEmpresaAquiRouter() {
 				initialRouteName='SuaEmpresaAquiHome'
 				screenOptions={({ navigation }) => ({
 					headerTitleAlign: 'center',
-					headerLeft: () => customBackButton(navigation)
+					headerLeft: () => customBackButton(navigation),
 				})}
 			>
 				<Stack.Screen
@@ -51,23 +51,23 @@ export function SuaEmpresaAquiRouter() {
 					component={SuaEmpresaAqui1}
 					options={{
 						title: 'Solicitar Serviços',
-						animation: 'none'
+						animation: 'none',
 					}}
 				/>
 				<Stack.Screen
 					name='procurarEstabelecimento'
 					component={PaginaEmConstrucao}
 					options={{
-						title: 'Solicitar Serviços',
-						animation: 'none'
+						title: 'Procurar Estabelecimento',
+						animation: 'none',
 					}}
 				/>
 				<Stack.Screen
 					name='cadastrarEmpresa'
 					component={CadastrarEmpresaScreen1}
 					options={{
-						title: 'Solicitar Serviços',
-						animation: 'none'
+						title: 'Cadastrar Empresa',
+						animation: 'none',
 					}}
 				/>
 				<Stack.Screen
@@ -75,7 +75,7 @@ export function SuaEmpresaAquiRouter() {
 					component={CadastrarEmpresaScreen2}
 					options={{
 						title: 'Solicitar Serviços',
-						animation: 'none'
+						animation: 'none',
 					}}
 				/>
 			</Stack.Navigator>

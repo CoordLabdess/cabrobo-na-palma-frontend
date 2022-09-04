@@ -25,8 +25,7 @@ export function PaginaEmConstrucao() {
 				<View style={styles.elementContainer}>
 					<PrimaryButton
 						title='Voltar'
-						style={{ paddingHorizontal: 40 }}
-						textStyle={{ fontSize: 30 }}
+						textStyle={{ fontSize: 30, paddingHorizontal: 20 }}
 						onPress={() => navigation.goBack()}
 					/>
 				</View>
@@ -38,29 +37,29 @@ export function PaginaEmConstrucao() {
 const styles = StyleSheet.create({
 	root: {
 		flex: 1,
-		backgroundColor: '#fff'
+		backgroundColor: '#fff',
 	},
 	scrollView: {
 		width: '100%',
 		height: '100%',
 		backgroundColor: '#fff',
 		alignItems: 'center',
-		justifyContent: 'center'
+		justifyContent: 'center',
 	},
 	elementContainer: {
 		width: '80%',
 		alignItems: 'center',
-		marginBottom: 20
+		marginBottom: 20,
 	},
 	title: {
 		fontSize: 24,
 		fontWeight: '600',
-		color: COLORS.primary500
+		color: COLORS.primary500,
 	},
 	description: {
 		fontSize: 20,
 		fontWeight: '500',
 		color: COLORS.primary500,
-		textAlign: 'center'
-	}
+		textAlign: 'center',
+	},
 })
