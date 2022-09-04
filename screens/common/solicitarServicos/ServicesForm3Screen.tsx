@@ -1,4 +1,4 @@
-import React, { useContext, useLayoutEffect, useState } from 'react'
+import React, { useContext, useEffect, useLayoutEffect, useState } from 'react'
 import {
 	ScrollView,
 	Text,
@@ -21,6 +21,7 @@ import { SolicitarServicoFormContext } from '../../../store/SolicitarServicosCon
 import { GeneralServiceFormat, sendData } from '../../../utils/arcgis'
 import { allMajorServices } from '../../../data/majorServices'
 import { allMinorServices } from '../../../data/minorServices'
+import { SuccessModal } from '../../../components/modals/SuccessModal'
 
 interface FormData {
 	[key: string]: any
@@ -30,8 +31,11 @@ export function ServicesForm3Screen() {
 	const [formPage, setFormPage] = useState<FormPage | null>()
 	const navigation = useNavigation()
 	const [error, setError] = useState(false)
+	const [serverError, setServerError] = useState(false)
 	const ServicesCtx = useContext(SolicitarServicoFormContext)
 	const [isLoading, setIsLoading] = useState(false)
+	const [successModal, setSuccessModal] = useState(false)
+	const [protocol, setProtocol] = useState('000.000-000')
 	const minService = allMinorServices.filter(
 		minSrvc => minSrvc.id === ServicesCtx.minorServiceId
 	)[0]
@@ -56,9 +60,18 @@ export function ServicesForm3Screen() {
 		}
 	}
 
+	function generateRandomProtocol() {
+		const a = Math.floor(Math.random() * (1000 - 100) + 100)
+		const b = Math.floor(Math.random() * (1000 - 100) + 100)
+		const c = Math.floor(Math.random() * (1000 - 100) + 100)
+		return `${a}.${b}-${c}`
+	}
+
 	function handleSendingData() {
 		if (!isLoading) {
 			setIsLoading(true)
+			const p = generateRandomProtocol()
+			setProtocol(p)
 			const d: GeneralServiceFormat = {
 				BAIRRO: ServicesCtx.data.bairro || '',
 				CIDADE: 'Cabrobó',
@@ -76,17 +89,19 @@ export function ServicesForm3Screen() {
 				CPF: 0,
 				OBSERVACAO: ServicesCtx.data.notes || '',
 				TELEFONE: 0,
+				PROTOCOLO: p,
 				TIPO: allMinorServices.filter(mService => mService.id === ServicesCtx.minorServiceId)[0]
 					.title
 			}
 			sendData(ServicesCtx.data.coords || { latitude: 0, longitude: 0 }, d)
 				.then(res => {
-					console.log(res)
-					navigation.navigate('Inicio' as never)
+					setServerError(false)
+					setSuccessModal(true)
+					setIsLoading(false)
 				})
 				.catch(err => {
+					setServerError(true)
 					setIsLoading(false)
-					console.log(err)
 				})
 		}
 	}
@@ -230,6 +245,13 @@ export function ServicesForm3Screen() {
 					</Text>
 				</View>
 			)}
+			{serverError && (
+				<View style={{ marginTop: 15 }}>
+					<Text style={{ color: 'red', fontSize: 14, fontWeight: '400' }}>
+						Erro ao enviar a solicitação
+					</Text>
+				</View>
+			)}
 			<View style={styles.buttonContainer}>
 				<PrimaryButton
 					isLoading={isLoading}
@@ -244,6 +266,14 @@ export function ServicesForm3Screen() {
 					}}
 				/>
 			</View>
+			<SuccessModal
+				visible={successModal}
+				buttonTitle='Voltar ao início'
+				message={`Parabéns! Sua solicitação foi enviada com sucesso à prefeitura. Número do protocolo gerado:`}
+				protocol={protocol}
+				onContinue={() => navigation.navigate('Inicio' as never)}
+				title='Sucesso!'
+			/>
 		</ScrollView>
 	)
 }

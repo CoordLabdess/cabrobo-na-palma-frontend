@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Pressable, Image } from 'react-native'
+import { View, Text, StyleSheet, Pressable, Image, Linking } from 'react-native'
 import IonIcons from '@expo/vector-icons/Ionicons'
 import { useContext } from 'react'
 import { COLORS } from '../constants/colors'
@@ -21,9 +21,14 @@ export function UserHeader() {
 					</View>
 				</Pressable>
 				<View style={styles.fastLinksContainer}>
-					<Pressable style={styles.linkContainer} onPress={() => {}}>
-						<Text style={styles.linkText}>Solicitações</Text>
-						<IonIcons name='document-text-outline' size={32} color='#123A56' />
+					<Pressable
+						style={styles.linkContainer}
+						onPress={() => {
+							Linking.openURL('https://cabrobo.pe.gov.br/ouvidoria/')
+						}}
+					>
+						<Text style={styles.linkText}>Ouvidoria</Text>
+						<IonIcons name='headset-outline' size={32} color='#123A56' />
 					</Pressable>
 					<Pressable
 						style={styles.linkContainer}

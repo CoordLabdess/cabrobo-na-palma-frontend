@@ -75,7 +75,7 @@ export function CadastrarEmpresaScreen1() {
 				)}
 			</View>
 			<Pressable
-				style={{ flex: 1, width: '100%' }}
+				style={{ flex: 1, width: '100%', alignItems: 'center' }}
 				onTouchMove={() => setLockedMap(true)}
 				onTouchStart={() => setLockedMap(true)}
 			>
@@ -89,7 +89,7 @@ export function CadastrarEmpresaScreen1() {
 				<View
 					style={{
 						width: '90%',
-						height: 200,
+						height: 150,
 						flexDirection: 'row',
 						overflow: 'hidden',
 						justifyContent: 'space-around',

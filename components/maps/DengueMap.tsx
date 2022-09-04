@@ -124,8 +124,12 @@ export function DengueMap(props: HTMLMapProps) {
 								})
 						
 
-								const fLayer = new FeatureLayer({
+								const fLayer1 = new FeatureLayer({
 									url: 'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Casos_de_Dengue_APP/FeatureServer/0'
+								})
+
+								const fLayer2 = new FeatureLayer({
+									url: 'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Casos_confirmados_de_Dengue_APP/FeatureServer/0'
 								})
 
 								const searchWidget = new Search({
@@ -136,7 +140,8 @@ export function DengueMap(props: HTMLMapProps) {
 									
 								})
 						
-								map.add(fLayer)
+								map.add(fLayer1)
+								map.add(fLayer2)
 								view.ui.add(searchWidget, {
 									position: "top-right",
 									index: 1

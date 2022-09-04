@@ -16,6 +16,7 @@ export interface GeneralServiceFormat {
 	TEMPO: string
 	NUMERO: number
 	OBSERVACAO: string
+	PROTOCOLO: string
 }
 
 interface Coords {

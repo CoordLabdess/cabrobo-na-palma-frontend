@@ -68,7 +68,7 @@ export function MapaDeCovidScreen() {
 				<View
 					style={{
 						width: '90%',
-						height: 200,
+						height: 150,
 						flexDirection: 'row',
 						overflow: 'hidden',
 						justifyContent: 'space-around'
