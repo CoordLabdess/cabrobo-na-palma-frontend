@@ -8,13 +8,15 @@ import { PrimaryButton } from '../../components/ui/PrimaryButton'
 import { CleanTextInput } from '../../components/ui/textInputs/CleanTextInput'
 import { COLORS } from '../../constants/colors'
 import { AuthContext } from '../../store/AuthContext'
-import { fakeSendData } from '../../utils/fakeFunctions'
+import { fakeLogin, fakeSendData } from '../../utils/fakeFunctions'
 import { PrivacyPolicyModal } from '../../components/modals/PrivacyPolicyModal'
 
 export function LoginScreen() {
-	const [email, setEmail] = useState('')
+	const [cpf, setCpf] = useState('')
 	const [password, setPassword] = useState('')
 	const [viewModal, setViewModal] = useState(false)
+	const [invalidCredentials, setInvalidCredentials] = useState(false)
+	const [emptyCredentials, setEmptyCredentials] = useState(false)
 	const [isLoading, setIsLoading] = useState(false)
 	const [acceptedPolicy, setAcceptedPolicy] = useState(true)
 	const authCtx = useContext(AuthContext)
@@ -22,10 +24,15 @@ export function LoginScreen() {
 	async function validate() {
 		if (!isLoading) {
 			setIsLoading(true)
-			await fakeSendData().then(() => {
-				setIsLoading(false)
-				authCtx.authenticate('a', 'Common')
-			})
+			await fakeLogin(cpf.trim(), password.trim())
+				.then(() => {
+					setIsLoading(false)
+					authCtx.authenticate('a', 'Common')
+				})
+				.catch(error => {
+					setIsLoading(false)
+					setInvalidCredentials(true)
+				})
 		}
 	}
 
@@ -87,9 +94,9 @@ export function LoginScreen() {
 					<View style={{ width: '100%', alignItems: 'center', marginBottom: 20 }}>
 						<CleanTextInput
 							style={styles.textInput}
-							value={email}
-							placeholder='E-mail'
-							onChangeText={text => setEmail(text)}
+							value={cpf}
+							placeholder='CPF'
+							onChangeText={text => setCpf(text)}
 						/>
 					</View>
 					<View style={[styles.elementContainer, { marginBottom: 40 }]}>
@@ -101,6 +108,13 @@ export function LoginScreen() {
 							onChangeText={text => setPassword(text)}
 						/>
 					</View>
+					{invalidCredentials && (
+						<View style={{ marginBottom: 15 }}>
+							<Text style={{ color: 'red', fontSize: 14, fontWeight: '400' }}>
+								Credenciais inválidas
+							</Text>
+						</View>
+					)}
 					<View style={[styles.elementContainer, { marginBottom: 40 }]}>
 						<PrimaryButton
 							style={{ width: '50%' }}

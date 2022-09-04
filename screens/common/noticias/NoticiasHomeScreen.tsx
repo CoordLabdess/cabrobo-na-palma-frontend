@@ -29,7 +29,7 @@ export function NoticiasHomeScreen() {
 						style={styles.linkContainer}
 						onPress={() => Linking.openURL('https://www.instagram.com/galegodenanai/?hl=pt-br')}
 					>
-						<Ionicons name='logo-instagram' color={COLORS.primary500} size={32} />
+						<Ionicons name='logo-instagram' color={COLORS.primary500} size={30} />
 						<Text style={styles.linkText}>Galego de Nanai</Text>
 						<Ionicons name='navigate-outline' color={COLORS.primary500} size={22} />
 					</Pressable>
@@ -39,7 +39,7 @@ export function NoticiasHomeScreen() {
 						style={styles.linkContainer}
 						onPress={() => Linking.openURL('https://www.instagram.com/governocabrobo/?hl=pt-br')}
 					>
-						<Ionicons name='logo-instagram' color={COLORS.primary500} size={32} />
+						<Ionicons name='logo-instagram' color={COLORS.primary500} size={30} />
 						<Text style={styles.linkText}>Governo de Cabrobó</Text>
 						<Ionicons name='navigate-outline' color={COLORS.primary500} size={22} />
 					</Pressable>
@@ -49,7 +49,7 @@ export function NoticiasHomeScreen() {
 						style={styles.linkContainer}
 						onPress={() => Linking.openURL('https://www.instagram.com/seduccabrobo/?hl=pt-br')}
 					>
-						<Ionicons name='logo-instagram' color={COLORS.primary500} size={32} />
+						<Ionicons name='logo-instagram' color={COLORS.primary500} size={30} />
 						<Text style={styles.linkText}>Seduc Cabrobó</Text>
 						<Ionicons name='navigate-outline' color={COLORS.primary500} size={22} />
 					</Pressable>
@@ -59,7 +59,7 @@ export function NoticiasHomeScreen() {
 						style={styles.linkContainer}
 						onPress={() => Linking.openURL('https://www.instagram.com/saude_cabrobo/?hl=pt-br')}
 					>
-						<Ionicons name='logo-instagram' color={COLORS.primary500} size={32} />
+						<Ionicons name='logo-instagram' color={COLORS.primary500} size={30} />
 						<Text style={styles.linkText}>Saúde Cabrobó</Text>
 						<Ionicons name='navigate-outline' color={COLORS.primary500} size={22} />
 					</Pressable>
@@ -69,7 +69,7 @@ export function NoticiasHomeScreen() {
 						style={styles.linkContainer}
 						onPress={() => Linking.openURL('https://www.instagram.com/infracabrobo/?hl=pt-br')}
 					>
-						<Ionicons name='logo-instagram' color={COLORS.primary500} size={32} />
+						<Ionicons name='logo-instagram' color={COLORS.primary500} size={30} />
 						<Text style={styles.linkText}>Secretaria de Infraestrutura</Text>
 						<Ionicons name='navigate-outline' color={COLORS.primary500} size={22} />
 					</Pressable>
@@ -79,7 +79,7 @@ export function NoticiasHomeScreen() {
 						style={styles.linkContainer}
 						onPress={() => Linking.openURL('https://www.instagram.com/habitacaocabrobo/?hl=pt-br')}
 					>
-						<Ionicons name='logo-instagram' color={COLORS.primary500} size={32} />
+						<Ionicons name='logo-instagram' color={COLORS.primary500} size={30} />
 						<Text style={styles.linkText}>Habitação Cabrobó</Text>
 						<Ionicons name='navigate-outline' color={COLORS.primary500} size={22} />
 					</Pressable>
@@ -89,7 +89,7 @@ export function NoticiasHomeScreen() {
 						style={styles.linkContainer}
 						onPress={() => Linking.openURL('https://www.instagram.com/sepladht/?hl=pt-br')}
 					>
-						<Ionicons name='logo-instagram' color={COLORS.primary500} size={32} />
+						<Ionicons name='logo-instagram' color={COLORS.primary500} size={30} />
 						<Text style={styles.linkText}>Secretaria de Planejamento</Text>
 						<Ionicons name='navigate-outline' color={COLORS.primary500} size={22} />
 					</Pressable>
@@ -99,7 +99,7 @@ export function NoticiasHomeScreen() {
 						style={styles.linkContainer}
 						onPress={() => Linking.openURL('https://www.instagram.com/turismocabrobo/?hl=pt-br')}
 					>
-						<Ionicons name='logo-instagram' color={COLORS.primary500} size={32} />
+						<Ionicons name='logo-instagram' color={COLORS.primary500} size={30} />
 						<Text style={styles.linkText}>Turismo Cabrobó</Text>
 						<Ionicons name='navigate-outline' color={COLORS.primary500} size={22} />
 					</Pressable>
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 	},
 	linkText: {
-		fontSize: 19,
+		fontSize: 18,
 		fontWeight: '600',
 		color: COLORS.primary500,
 		marginHorizontal: 5,
