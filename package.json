@@ -19,6 +19,7 @@
 		"@react-navigation/native": "^6.0.11",
 		"@react-navigation/native-stack": "^6.7.0",
 		"@react-navigation/stack": "^6.2.2",
+		"axios": "^0.27.2",
 		"esri": "^0.0.1-security",
 		"esri-loader": "^3.6.0",
 		"expo": "~45.0.0",

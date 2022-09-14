@@ -13,6 +13,7 @@ import { AnyScreen } from '../../screens/AnyScreen'
 import { CadastrarEmpresaScreen1 } from '../../screens/common/suaEmpresaAqui/CadastrarEmpresaScreen1'
 import { CadastrarEmpresaScreen2 } from '../../screens/common/suaEmpresaAqui/CadastrarEmpresaScreen2'
 import { PaginaEmConstrucao } from '../../screens/public/PaginaEmConstrucao'
+import { ProcurarEstabelecimentoScreen } from '../../screens/common/suaEmpresaAqui/ProcurarEstabelecimentoScreen'
 
 const Stack = createNativeStackNavigator()
 
@@ -56,12 +57,13 @@ export function SuaEmpresaAquiRouter() {
 				/>
 				<Stack.Screen
 					name='procurarEstabelecimento'
-					component={PaginaEmConstrucao}
+					component={ProcurarEstabelecimentoScreen}
 					options={{
 						title: 'Procurar Estabelecimento',
 						animation: 'none',
 					}}
 				/>
+
 				<Stack.Screen
 					name='cadastrarEmpresa'
 					component={CadastrarEmpresaScreen1}
