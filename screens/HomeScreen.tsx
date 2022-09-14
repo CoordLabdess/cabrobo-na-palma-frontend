@@ -34,13 +34,13 @@ export function HomeScreen() {
 const styles = StyleSheet.create({
 	root: {
 		flex: 1,
-		backgroundColor: '#fff'
+		backgroundColor: '#fff',
 	},
 	toolsGridContainer: {
 		flex: 1,
-		alignItems: 'center'
+		alignItems: 'center',
 	},
 	toolsGrid: {
-		flexGrow: 1
-	}
+		flexGrow: 1,
+	},
 })

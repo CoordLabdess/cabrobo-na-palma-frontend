@@ -51,14 +51,14 @@ const styles = StyleSheet.create({
 		backgroundColor: '#fff',
 		marginTop: 20,
 		borderRadius: 8,
-		overflow: 'hidden'
+		overflow: 'hidden',
 	},
 	userInfoContainer: {
 		padding: 20,
 		width: '100%',
 		flexDirection: 'row',
 		alignItems: 'center',
-		justifyContent: 'flex-start'
+		justifyContent: 'flex-start',
 	},
 	profileImageContainer: {
 		borderRadius: 500,
@@ -66,31 +66,31 @@ const styles = StyleSheet.create({
 		marginRight: 30,
 		backgroundColor: '#fff',
 		height: 90,
-		width: 90
+		width: 90,
 	},
 	profileImage: {
 		height: '100%',
-		width: '100%'
+		width: '100%',
 	},
 	userInfoName: {
 		fontSize: 18,
-		fontWeight: '600'
+		fontWeight: '600',
 	},
 	fastLinksContainer: {
 		flexDirection: 'row',
 		padding: 10,
 		backgroundColor: '#ACB1C6',
 		flex: 1,
-		justifyContent: 'space-between'
+		justifyContent: 'space-between',
 	},
 	linkContainer: {
 		flexDirection: 'row',
-		alignItems: 'center'
+		alignItems: 'center',
 	},
 	linkText: {
 		marginHorizontal: 10,
 		fontWeight: '600',
-		color: '#123A56'
+		color: '#123A56',
 	},
 	toolsGridTitle: {
 		color: COLORS.primary500,
@@ -100,6 +100,6 @@ const styles = StyleSheet.create({
 		width: '100%',
 		marginLeft: 5,
 		textAlign: 'left',
-		marginBottom: 10
-	}
+		marginBottom: 10,
+	},
 })
