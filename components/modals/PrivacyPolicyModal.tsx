@@ -1,5 +1,14 @@
 import { useState } from 'react'
-import { View, Text, StyleSheet, Modal, ScrollView, Pressable, Linking } from 'react-native'
+import {
+	View,
+	Text,
+	StyleSheet,
+	Modal,
+	ScrollView,
+	Pressable,
+	Linking,
+	Dimensions,
+} from 'react-native'
 import Checkbox from 'expo-checkbox'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
@@ -31,7 +40,7 @@ export function PrivacyPolicyModal(props: PrivacPolicyModalProps) {
 								paddingTop: '5%',
 								alignItems: 'center',
 								maxWidth: '100%',
-								padding: 15
+								padding: 15,
 							}}
 							alwaysBounceVertical={false}
 						>
@@ -97,7 +106,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '#00000070'
+		backgroundColor: '#00000070',
 	},
 	modalCardShadow: {
 		borderRadius: 16,
@@ -105,53 +114,56 @@ const styles = StyleSheet.create({
 		maxWidth: '90%',
 		backgroundColor: 'transparent',
 		shadowColor: '#000',
+		justifyContent: 'center',
 		shadowOffset: {
 			width: 0,
-			height: 1
+			height: 1,
 		},
 		shadowOpacity: 0.22,
 		shadowRadius: 2.22,
-		elevation: 3
+		elevation: 3,
 	},
 	modalCard: {
 		backgroundColor: '#fff',
 		overflow: 'hidden',
 		borderRadius: 16,
-		maxHeight: '80%',
+		minHeight: 300,
+		height: Dimensions.get('screen').height * 0.6,
+		maxHeight: 600,
 		justifyContent: 'flex-start',
-		alignItems: 'center'
+		alignItems: 'center',
 	},
 
 	title: {
 		fontSize: 25,
 		color: COLORS.primary500,
 		fontWeight: '600',
-		marginBottom: 19
+		marginBottom: 19,
 	},
 	description: {
 		fontSize: 14,
 		fontWeight: '500',
 		textAlign: 'center',
 		color: COLORS.secondary500,
-		marginBottom: 20
+		marginBottom: 20,
 	},
 	textContainer: {
 		borderWidth: 2,
 		overflow: 'hidden',
 		borderColor: COLORS.secondary500,
 		padding: 14,
-		marginBottom: 15
+		marginBottom: 15,
 	},
 	privacyText: {
 		fontWeight: '500',
 		fontSize: 12,
-		fontStyle: 'italic'
+		fontStyle: 'italic',
 	},
 	checkboxContainer: {
 		flexDirection: 'row',
 		alignItems: 'center',
 		marginBottom: 15,
-		padding: 10
+		padding: 10,
 	},
 	checkbox: {
 		borderRadius: 4,
@@ -159,11 +171,11 @@ const styles = StyleSheet.create({
 		borderWidth: 3,
 		height: 24,
 		width: 24,
-		marginRight: 5
+		marginRight: 5,
 	},
 	checkboxText: {
 		fontSize: 12,
 		fontWeight: '600',
-		color: COLORS.secondary500
-	}
+		color: COLORS.secondary500,
+	},
 })

@@ -10,6 +10,8 @@ import { COLORS } from '../../constants/colors'
 import { AuthContext } from '../../store/AuthContext'
 import { fakeLogin, fakeSendData } from '../../utils/fakeFunctions'
 import { PrivacyPolicyModal } from '../../components/modals/PrivacyPolicyModal'
+import { sendData } from '../../utils/arcgis'
+import { removerCaracteresEspeciais } from '../../utils/validaçõesString'
 
 export function LoginScreen() {
 	const [cpf, setCpf] = useState('')
@@ -24,7 +26,7 @@ export function LoginScreen() {
 	async function validate() {
 		if (!isLoading) {
 			setIsLoading(true)
-			await fakeLogin(cpf.trim(), password.trim())
+			await fakeLogin(removerCaracteresEspeciais(cpf).trim(), password.trim())
 				.then(() => {
 					setIsLoading(false)
 					authCtx.authenticate('a', 'Common')
@@ -63,6 +65,25 @@ export function LoginScreen() {
 		})
 	}
 
+	function writeCPF(text: string) {
+		const s = removerCaracteresEspeciais(text).split('')
+		if (s.length <= 11) {
+			setCpf(
+				s
+					.map((b, i) => {
+						if (i === 9) {
+							return `-${b}`
+						} else if (i === 3 || i === 6) {
+							return `.${b}`
+						} else {
+							return b
+						}
+					})
+					.join(''),
+			)
+		}
+	}
+
 	useLayoutEffect(() => {
 		// storeData('hasAcceptedPolicy', 'false')
 		checkA('hasAcceptedPolicy')
@@ -91,16 +112,27 @@ export function LoginScreen() {
 					</View>
 				</View>
 				<View style={styles.loginCard}>
-					<View style={{ width: '100%', alignItems: 'center', marginBottom: 20 }}>
+					<View style={{ width: '100%', alignItems: 'center', marginBottom: 10 }}>
 						<CleanTextInput
+							maxLength={14}
+							editable={!isLoading}
+							returnKeyType='next'
+							keyboardType='number-pad'
+							returnKeyLabel='Prox'
 							style={styles.textInput}
 							value={cpf}
 							placeholder='CPF'
-							onChangeText={text => setCpf(text)}
+							onChangeText={text => {
+								writeCPF(text)
+							}}
 						/>
 					</View>
 					<View style={[styles.elementContainer, { marginBottom: 40 }]}>
 						<CleanTextInput
+							editable={!isLoading}
+							returnKeyType={'send'}
+							onSubmit={validate}
+							returnKeyLabel={'Pronto'}
 							style={styles.textInput}
 							value={password}
 							secureTextEntry
@@ -115,15 +147,16 @@ export function LoginScreen() {
 							</Text>
 						</View>
 					)}
-					<View style={[styles.elementContainer, { marginBottom: 40 }]}>
+					<View style={[styles.elementContainer, { marginBottom: 10 }]}>
 						<PrimaryButton
-							style={{ width: '50%' }}
-							title='Fazer Login'
+							style={{ minWidth: 200, width: '50%', maxWidth: 300, padding: 5 }}
+							textStyle={{ fontSize: 22 }}
+							title='Acessar'
 							isLoading={isLoading}
 							onPress={validate}
 						/>
 					</View>
-					<View style={[styles.elementContainer, { marginBottom: 60 }]}>
+					<View style={[styles.elementContainer, { marginBottom: 20 }]}>
 						<CleanTextButton
 							textStyle={styles.forgotPassword}
 							title='Ver política de privacidade'
@@ -158,7 +191,7 @@ export function LoginScreen() {
 const styles = StyleSheet.create({
 	root: {
 		flex: 1,
-		backgroundColor: COLORS.primary400,
+		backgroundColor: COLORS.primary500,
 	},
 	foreground: {
 		minHeight: 200,
@@ -180,7 +213,7 @@ const styles = StyleSheet.create({
 		borderTopLeftRadius: 20,
 		borderTopRightRadius: 20,
 		paddingBottom: 40,
-		paddingTop: 60,
+		paddingTop: 30,
 		overflow: 'hidden',
 		alignItems: 'center',
 	},
@@ -190,10 +223,10 @@ const styles = StyleSheet.create({
 		fontWeight: '600',
 	},
 	forgotPassword: {
-		fontSize: 14,
+		fontSize: 16,
 	},
 	textInput: {
-		fontSize: 16,
+		fontSize: 20,
 		width: '60%',
 	},
 	elementContainer: {
