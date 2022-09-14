@@ -5,7 +5,7 @@ import { COLORS } from '../../../constants/colors'
 
 export function NoticiasHomeScreen() {
 	return (
-		<SafeAreaView edges={['top', 'left', 'right']}>
+		<SafeAreaView style={styles.root} edges={['top', 'left', 'right']}>
 			<ScrollView
 				keyboardShouldPersistTaps='handled'
 				contentContainerStyle={{
@@ -110,6 +110,10 @@ export function NoticiasHomeScreen() {
 }
 
 const styles = StyleSheet.create({
+	root: {
+		flex: 1,
+		backgroundColor: '#fff',
+	},
 	title: {
 		fontSize: 30,
 		color: COLORS.primary500,

@@ -7,6 +7,7 @@ import {
 	ImageSourcePropType,
 	ImageURISource,
 	Linking,
+	Platform,
 } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { useContext, useLayoutEffect, useState } from 'react'
@@ -125,7 +126,9 @@ export function EducacaoHomeScreen(props: ServiceScreenProps) {
 							onPress={() => {
 								if (itemData.item.alias === 'ReciclaCabrobo') {
 									Linking.openURL(
-										'https://play.google.com/store/apps/details?id=com.reciclaCabrobo',
+										Platform.OS === 'android'
+											? 'https://play.google.com/store/apps/details?id=com.reciclaCabrobo'
+											: 'https://apps.apple.com/br/app/recicla-cabrob%C3%B3/id1641828174',
 									)
 								} else {
 									navigation.navigate(itemData.item.alias as never)
