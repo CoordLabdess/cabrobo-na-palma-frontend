@@ -1,27 +1,44 @@
 import { useLayoutEffect, useState } from 'react'
 import { View, StyleSheet, FlatList, Text } from 'react-native'
+import axios from 'axios'
 import { useNavigation } from '@react-navigation/native'
 import { COLORS } from '../../../constants/colors'
 import { CovidMap } from '../../../components/maps/CovidMap'
 import { SearchTextInput } from '../../../components/ui/textInputs/SearchTextInput'
 import { PrimaryButton } from '../../../components/ui/PrimaryButton'
 
-function header() {
-	return (
-		<View style={{ width: '100%', alignItems: 'center' }}>
-			<SearchTextInput placeholder='Nome da empresa ou CNPJ' />
-			<PrimaryButton title='Procurar' onPress={() => console.log('oi')} />
-		</View>
-	)
+interface Empresa {
+	nome: string
+	tipo: string
+	status: string
+	cpnj: string
 }
+
+const fakeEmpresa = [
+	{
+		nome: 'Bar do Jeremenias',
+		tipo: 'Restaurante',
+		status: 'Aprovado',
+		cpnj: '01.234-567/8901-23',
+	},
+]
 
 export function ProcurarEstabelecimentoScreen() {
 	const navigation = useNavigation()
 	const [search, setSearch] = useState('')
 	const [isLoading, setIsLoading] = useState(false)
 
-	async function fetchData() {
-		console.log('oi')
+	function buscarEstabelecimentos() {
+		axios
+			.get(
+				'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Estabelecimentos/FeatureServer/',
+			)
+			.then(res => {
+				console.log(res.data)
+			})
+			.catch(err => {
+				console.log(err)
+			})
 	}
 
 	useLayoutEffect(() => {
@@ -38,7 +55,12 @@ export function ProcurarEstabelecimentoScreen() {
 					justifyContent: 'flex-start',
 					alignItems: 'center',
 				}}
-				ListHeaderComponent={header}
+				ListHeaderComponent={() => (
+					<View style={{ width: '100%', alignItems: 'center' }}>
+						<SearchTextInput placeholder='Nome da empresa ou CNPJ' />
+						<PrimaryButton title='Procurar' onPress={() => buscarEstabelecimentos()} />
+					</View>
+				)}
 				data={[0, 1, 2, 3]}
 				renderItem={x => {
 					return (
