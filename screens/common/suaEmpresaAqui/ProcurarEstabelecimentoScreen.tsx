@@ -11,15 +11,21 @@ interface Empresa {
 	nome: string
 	tipo: string
 	status: string
-	cpnj: string
+	cnpj: string
 }
 
-const fakeEmpresa = [
+const fakeEmpresa: Empresa[] = [
 	{
 		nome: 'Bar do Jeremenias',
 		tipo: 'Restaurante',
 		status: 'Aprovado',
-		cpnj: '01.234-567/8901-23',
+		cnpj: '01.234-567/8901-23',
+	},
+	{
+		nome: 'Hospital da Flores',
+		tipo: 'Hospital',
+		status: 'Aprovado',
+		cnpj: '33.333-333/3333-33',
 	},
 ]
 

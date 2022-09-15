@@ -34,7 +34,7 @@ export interface CadastrarEmpresaFormat {
 export const sendData = async (
 	coords: Coords,
 	attributes: Object,
-	url = 'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Servi%c3%a7os_P%c3%bablicos/FeatureServer/0'
+	url = 'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Servi%c3%a7os_P%c3%bablicos/FeatureServer/0',
 ) => {
 	return addFeatures({
 		url,
@@ -43,10 +43,10 @@ export const sendData = async (
 				geometry: {
 					x: coords.latitude,
 					y: coords.longitude,
-					spatialReference: { wkid: 4326 }
+					spatialReference: { wkid: 4326 },
 				} as IGeometry,
-				attributes
-			}
-		]
+				attributes,
+			},
+		],
 	})
 }
