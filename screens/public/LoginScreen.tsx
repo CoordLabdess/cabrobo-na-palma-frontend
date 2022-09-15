@@ -130,7 +130,7 @@ export function LoginScreen() {
 					<View style={[styles.elementContainer, { marginBottom: 40 }]}>
 						<CleanTextInput
 							editable={!isLoading}
-							returnKeyType={'send'}
+							returnKeyType={'go'}
 							onSubmit={validate}
 							returnKeyLabel={'Pronto'}
 							style={styles.textInput}

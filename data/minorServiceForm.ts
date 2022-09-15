@@ -41,11 +41,11 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: '',
 								alias: 'map',
 								type: 'map',
-								value: true
-							}
-						]
-					}
-				]
+								value: true,
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 2,
@@ -59,41 +59,41 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Logradouro',
 								alias: 'logradouro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Bairro',
 								alias: 'bairro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Número',
 								alias: 'numero',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Complemento (opcional)',
 								alias: 'complemento',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Ponto de Referência',
 								alias: 'pontoDeReferencia',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Número do Poste (opcional)',
 								alias: 'numeroDoPoste',
 								type: 'textInput',
-								value: ''
-							}
-						]
-					}
-				]
+								value: '',
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 3,
@@ -108,21 +108,21 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Lâmpada sempre acesa',
 								alias: 'lampadaSempreAcesa',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Lâmpada intermitente',
 								alias: 'lampadaIntermitente',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Lâmpada apagada',
 								alias: 'lampadaApagada',
 								type: 'radioButton',
-								value: false
-							}
-						]
+								value: false,
+							},
+						],
 					},
 					{
 						title: 'Opcional',
@@ -132,19 +132,19 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Descreva o serviço necessário (Opcional)',
 								alias: 'notes',
 								type: 'textArea',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Foto do problema (Opcional)',
 								alias: 'photo',
 								type: 'file',
-								value: ''
-							}
-						]
-					}
-				]
-			}
-		]
+								value: '',
+							},
+						],
+					},
+				],
+			},
+		],
 	},
 	{
 		minorServiceId: 2,
@@ -161,11 +161,11 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: '',
 								alias: 'map',
 								type: 'map',
-								value: true
-							}
-						]
-					}
-				]
+								value: true,
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 2,
@@ -179,41 +179,41 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Logradouro',
 								alias: 'logradouro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Bairro',
 								alias: 'bairro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Número',
 								alias: 'numero',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Complemento (opcional)',
 								alias: 'complemento',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Ponto de Referência',
 								alias: 'pontoDeReferencia',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Número do Poste (opcional)',
 								alias: 'numeroDoPoste',
 								type: 'textInput',
-								value: ''
-							}
-						]
-					}
-				]
+								value: '',
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 3,
@@ -228,27 +228,27 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Sem serviço de iluminação',
 								alias: 'semServicoDeIluminacao',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Lâmpada sempre acesa',
 								alias: 'lampadaSempreAcesa',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Lâmpada intermitente',
 								alias: 'lampadaIntermitente',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Lâmpada apagada',
 								alias: 'lampadaApagada',
 								type: 'radioButton',
-								value: false
-							}
-						]
+								value: false,
+							},
+						],
 					},
 					{
 						title: 'Opcional',
@@ -258,19 +258,19 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Descreva o serviço necessário (Opcional)',
 								alias: 'notes',
 								type: 'textArea',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Foto do problema (Opcional)',
 								alias: 'photo',
 								type: 'file',
-								value: ''
-							}
-						]
-					}
-				]
-			}
-		]
+								value: '',
+							},
+						],
+					},
+				],
+			},
+		],
 	},
 	//
 	//
@@ -290,11 +290,11 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: '',
 								alias: 'map',
 								type: 'map',
-								value: true
-							}
-						]
-					}
-				]
+								value: true,
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 2,
@@ -308,41 +308,41 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Logradouro',
 								alias: 'logradouro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Bairro',
 								alias: 'bairro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Número',
 								alias: 'numero',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Complemento (opcional)',
 								alias: 'complemento',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Ponto de Referência',
 								alias: 'pontoDeReferencia',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Número do Poste (opcional)',
 								alias: 'numeroDoPoste',
 								type: 'textInput',
-								value: ''
-							}
-						]
-					}
-				]
+								value: '',
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 3,
@@ -357,27 +357,27 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Sem serviço de iluminação',
 								alias: 'semServicoDeIluminacao',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Lâmpada sempre acesa',
 								alias: 'lampadaSempreAcesa',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Lâmpada intermitente',
 								alias: 'lampadaIntermitente',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Lâmpada apagada',
 								alias: 'lampadaApagada',
 								type: 'radioButton',
-								value: false
-							}
-						]
+								value: false,
+							},
+						],
 					},
 					{
 						title: 'Opcional',
@@ -387,19 +387,19 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Descreva o serviço necessário (Opcional)',
 								alias: 'notes',
 								type: 'textArea',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Foto do problema (Opcional)',
 								alias: 'photo',
 								type: 'file',
-								value: ''
-							}
-						]
-					}
-				]
-			}
-		]
+								value: '',
+							},
+						],
+					},
+				],
+			},
+		],
 	},
 	//
 	//
@@ -419,11 +419,11 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: '',
 								alias: 'map',
 								type: 'map',
-								value: true
-							}
-						]
-					}
-				]
+								value: true,
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 2,
@@ -437,35 +437,35 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Logradouro',
 								alias: 'logradouro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Bairro',
 								alias: 'bairro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Número',
 								alias: 'numero',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Complemento (opcional)',
 								alias: 'complemento',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Ponto de Referência',
 								alias: 'pontoDeReferencia',
 								type: 'textInput',
-								value: ''
-							}
-						]
-					}
-				]
+								value: '',
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 3,
@@ -480,15 +480,15 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Falta de água na residência',
 								alias: 'faltaDeAguaNaResidencia',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Falta de água no bairro',
 								alias: 'faltaDeAguaNoBairro',
 								type: 'radioButton',
-								value: false
-							}
-						]
+								value: false,
+							},
+						],
 					},
 					{
 						title: 'Tempo de ocorrência',
@@ -499,21 +499,21 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Menos de 24 horas',
 								alias: 'menosDe24Horas',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Entre 24 e 72 horas',
 								alias: 'entre24E72Horas',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Mais de 72 horas',
 								alias: 'maisDe72Horas',
 								type: 'radioButton',
-								value: false
-							}
-						]
+								value: false,
+							},
+						],
 					},
 					{
 						title: 'Opcional',
@@ -523,19 +523,19 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Descreva o serviço necessário (Opcional)',
 								alias: 'notes',
 								type: 'textArea',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Foto do problema (Opcional)',
 								alias: 'photo',
 								type: 'file',
-								value: ''
-							}
-						]
-					}
-				]
-			}
-		]
+								value: '',
+							},
+						],
+					},
+				],
+			},
+		],
 	},
 	//
 	//
@@ -555,11 +555,11 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: '',
 								alias: 'map',
 								type: 'map',
-								value: true
-							}
-						]
-					}
-				]
+								value: true,
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 2,
@@ -573,35 +573,35 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Logradouro',
 								alias: 'logradouro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Bairro',
 								alias: 'bairro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Número',
 								alias: 'numero',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Complemento (opcional)',
 								alias: 'complemento',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Ponto de Referência',
 								alias: 'pontoDeReferencia',
 								type: 'textInput',
-								value: ''
-							}
-						]
-					}
-				]
+								value: '',
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 3,
@@ -616,15 +616,15 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Vazamento na vida pública',
 								alias: 'vazamentoNaViaPublica',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Vazamento na Calçada',
 								alias: 'vazamentoNaCalcada',
 								type: 'radioButton',
-								value: false
-							}
-						]
+								value: false,
+							},
+						],
 					},
 					{
 						title: 'Tempo de ocorrência',
@@ -635,21 +635,21 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Menos de 24 horas',
 								alias: 'menosDe24Horas',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Entre 24 e 72 horas',
 								alias: 'entre24E72Horas',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Mais de 72 horas',
 								alias: 'maisDe72Horas',
 								type: 'radioButton',
-								value: false
-							}
-						]
+								value: false,
+							},
+						],
 					},
 					{
 						title: 'Opcional',
@@ -659,19 +659,19 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Descreva o serviço necessário (Opcional)',
 								alias: 'notes',
 								type: 'textArea',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Foto do problema (Opcional)',
 								alias: 'photo',
 								type: 'file',
-								value: ''
-							}
-						]
-					}
-				]
-			}
-		]
+								value: '',
+							},
+						],
+					},
+				],
+			},
+		],
 	},
 	//
 	//
@@ -691,11 +691,11 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: '',
 								alias: 'map',
 								type: 'map',
-								value: true
-							}
-						]
-					}
-				]
+								value: true,
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 2,
@@ -709,35 +709,35 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Logradouro',
 								alias: 'logradouro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Bairro',
 								alias: 'bairro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Número',
 								alias: 'numero',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Complemento (opcional)',
 								alias: 'complemento',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Ponto de Referência',
 								alias: 'pontoDeReferencia',
 								type: 'textInput',
-								value: ''
-							}
-						]
-					}
-				]
+								value: '',
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 3,
@@ -752,21 +752,21 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Não tenho abastecimento público',
 								alias: 'naoTenhoAbastecimentoPublico',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Não ppaguei a conta de água',
 								alias: 'naoPagueiAContaDeAgua',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Problemas no abastecimento',
 								alias: 'problemasNoAbastecimento',
 								type: 'radioButton',
-								value: false
-							}
-						]
+								value: false,
+							},
+						],
 					},
 					{
 						title: 'Opcional',
@@ -776,19 +776,19 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Descreva o serviço necessário (Opcional)',
 								alias: 'notes',
 								type: 'textArea',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Foto do problema (Opcional)',
 								alias: 'photo',
 								type: 'file',
-								value: ''
-							}
-						]
-					}
-				]
-			}
-		]
+								value: '',
+							},
+						],
+					},
+				],
+			},
+		],
 	},
 	//
 	//
@@ -808,11 +808,11 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: '',
 								alias: 'map',
 								type: 'map',
-								value: true
-							}
-						]
-					}
-				]
+								value: true,
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 2,
@@ -826,35 +826,35 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Logradouro',
 								alias: 'logradouro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Bairro',
 								alias: 'bairro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Número',
 								alias: 'numero',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Complemento (opcional)',
 								alias: 'complemento',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Ponto de Referência',
 								alias: 'pontoDeReferencia',
 								type: 'textInput',
-								value: ''
-							}
-						]
-					}
-				]
+								value: '',
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 3,
@@ -869,21 +869,21 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Esgoto residencial',
 								alias: 'esgotoResidencial',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Esgoto comercial',
 								alias: 'esgotoComercial',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Esgoto em Vias públicas',
 								alias: 'esgotoEmViasPublicas',
 								type: 'radioButton',
-								value: false
-							}
-						]
+								value: false,
+							},
+						],
 					},
 					{
 						title: 'Opcional',
@@ -893,19 +893,19 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Descreva o serviço necessário (Opcional)',
 								alias: 'notes',
 								type: 'textArea',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Foto do problema (Opcional)',
 								alias: 'photo',
 								type: 'file',
-								value: ''
-							}
-						]
-					}
-				]
-			}
-		]
+								value: '',
+							},
+						],
+					},
+				],
+			},
+		],
 	},
 	//
 	//
@@ -925,11 +925,11 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: '',
 								alias: 'map',
 								type: 'map',
-								value: true
-							}
-						]
-					}
-				]
+								value: true,
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 2,
@@ -943,35 +943,35 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Logradouro',
 								alias: 'logradouro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Bairro',
 								alias: 'bairro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Número',
 								alias: 'numero',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Complemento (opcional)',
 								alias: 'complemento',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Ponto de Referência',
 								alias: 'pontoDeReferencia',
 								type: 'textInput',
-								value: ''
-							}
-						]
-					}
-				]
+								value: '',
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 3,
@@ -986,21 +986,21 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Coleta de lixo residencial',
 								alias: 'coletaDeLixoResidencial',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Coleta de lixo comercial',
 								alias: 'coletaDeLixoComercial',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
-								label: 'Coleta de lixo em vidas públicas',
+								label: 'Coleta de lixo em vias públicas',
 								alias: 'coletaDeLixoEmViasPublicas',
 								type: 'radioButton',
-								value: false
-							}
-						]
+								value: false,
+							},
+						],
 					},
 					{
 						title: 'Opcional',
@@ -1010,19 +1010,19 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Descreva o serviço necessário (Opcional)',
 								alias: 'notes',
 								type: 'textArea',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Foto do problema (Opcional)',
 								alias: 'photo',
 								type: 'file',
-								value: ''
-							}
-						]
-					}
-				]
-			}
-		]
+								value: '',
+							},
+						],
+					},
+				],
+			},
+		],
 	},
 	//
 	//
@@ -1042,11 +1042,11 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: '',
 								alias: 'map',
 								type: 'map',
-								value: true
-							}
-						]
-					}
-				]
+								value: true,
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 2,
@@ -1060,35 +1060,35 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Logradouro',
 								alias: 'logradouro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Bairro',
 								alias: 'bairro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Número',
 								alias: 'numero',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Complemento (opcional)',
 								alias: 'complemento',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Ponto de Referência',
 								alias: 'pontoDeReferencia',
 								type: 'textInput',
-								value: ''
-							}
-						]
-					}
-				]
+								value: '',
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 3,
@@ -1103,21 +1103,21 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Controle de mosquitos',
 								alias: 'controleDeMosquitos',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Controle de roedores',
 								alias: 'controleDeRoedores',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Controle de baratas e outros insetos',
 								alias: 'controleDeBaratasEOutrosInsetos',
 								type: 'radioButton',
-								value: false
-							}
-						]
+								value: false,
+							},
+						],
 					},
 					{
 						title: 'Opcional',
@@ -1127,19 +1127,19 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Descreva o serviço necessário (Opcional)',
 								alias: 'notes',
 								type: 'textArea',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Foto do problema (Opcional)',
 								alias: 'photo',
 								type: 'file',
-								value: ''
-							}
-						]
-					}
-				]
-			}
-		]
+								value: '',
+							},
+						],
+					},
+				],
+			},
+		],
 	},
 	//
 	//
@@ -1159,11 +1159,11 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: '',
 								alias: 'map',
 								type: 'map',
-								value: true
-							}
-						]
-					}
-				]
+								value: true,
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 2,
@@ -1177,35 +1177,35 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Logradouro',
 								alias: 'logradouro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Bairro',
 								alias: 'bairro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Número',
 								alias: 'numero',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Complemento (opcional)',
 								alias: 'complemento',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Ponto de Referência',
 								alias: 'pontoDeReferencia',
 								type: 'textInput',
-								value: ''
-							}
-						]
-					}
-				]
+								value: '',
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 3,
@@ -1220,21 +1220,21 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Estrada de asfalto',
 								alias: 'estradaDeAsfalto',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Estrada de terra',
 								alias: 'estradaDeTerra',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Calçadas',
 								alias: 'calcadas',
 								type: 'radioButton',
-								value: false
-							}
-						]
+								value: false,
+							},
+						],
 					},
 					{
 						title: 'Opcional',
@@ -1244,19 +1244,19 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Descreva o serviço necessário (Opcional)',
 								alias: 'notes',
 								type: 'textArea',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Foto do problema (Opcional)',
 								alias: 'photo',
 								type: 'file',
-								value: ''
-							}
-						]
-					}
-				]
-			}
-		]
+								value: '',
+							},
+						],
+					},
+				],
+			},
+		],
 	},
 	//
 	//
@@ -1276,11 +1276,11 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: '',
 								alias: 'map',
 								type: 'map',
-								value: true
-							}
-						]
-					}
-				]
+								value: true,
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 2,
@@ -1294,35 +1294,35 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Logradouro',
 								alias: 'logradouro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Bairro',
 								alias: 'bairro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Número',
 								alias: 'numero',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Complemento (opcional)',
 								alias: 'complemento',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Ponto de Referência',
 								alias: 'pontoDeReferencia',
 								type: 'textInput',
-								value: ''
-							}
-						]
-					}
-				]
+								value: '',
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 3,
@@ -1337,27 +1337,27 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Residência',
 								alias: 'residencia',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Comércio',
 								alias: 'comercio',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Rua',
 								alias: 'rua',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Terreno baldio',
 								alias: 'terrenoBaldio',
 								type: 'radioButton',
-								value: false
-							}
-						]
+								value: false,
+							},
+						],
 					},
 					{
 						title: 'Opcional',
@@ -1367,19 +1367,19 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Descreva o serviço necessário (Opcional)',
 								alias: 'notes',
 								type: 'textArea',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Foto do problema (Opcional)',
 								alias: 'photo',
 								type: 'file',
-								value: ''
-							}
-						]
-					}
-				]
-			}
-		]
+								value: '',
+							},
+						],
+					},
+				],
+			},
+		],
 	},
 	//
 	//
@@ -1399,11 +1399,11 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: '',
 								alias: 'map',
 								type: 'map',
-								value: true
-							}
-						]
-					}
-				]
+								value: true,
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 2,
@@ -1417,35 +1417,35 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Logradouro',
 								alias: 'logradouro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Bairro',
 								alias: 'bairro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Número',
 								alias: 'numero',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Complemento (opcional)',
 								alias: 'complemento',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Ponto de Referência',
 								alias: 'pontoDeReferencia',
 								type: 'textInput',
-								value: ''
-							}
-						]
-					}
-				]
+								value: '',
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 3,
@@ -1459,19 +1459,19 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Descreva o serviço necessário (Opcional)',
 								alias: 'notes',
 								type: 'textArea',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Foto do problema (Opcional)',
 								alias: 'photo',
 								type: 'file',
-								value: ''
-							}
-						]
-					}
-				]
-			}
-		]
+								value: '',
+							},
+						],
+					},
+				],
+			},
+		],
 	},
 	//
 	//
@@ -1491,11 +1491,11 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: '',
 								alias: 'map',
 								type: 'map',
-								value: true
-							}
-						]
-					}
-				]
+								value: true,
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 2,
@@ -1509,35 +1509,35 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Logradouro',
 								alias: 'logradouro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Bairro',
 								alias: 'bairro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Número',
 								alias: 'numero',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Complemento (opcional)',
 								alias: 'complemento',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Ponto de Referência',
 								alias: 'pontoDeReferencia',
 								type: 'textInput',
-								value: ''
-							}
-						]
-					}
-				]
+								value: '',
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 3,
@@ -1552,15 +1552,15 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Árvore próxima à rede elétrica',
 								alias: 'arvoreProximaARedeEletrica',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Árvore ameaça cair',
 								alias: 'arvoreAmeacaCair',
 								type: 'radioButton',
-								value: false
-							}
-						]
+								value: false,
+							},
+						],
 					},
 					{
 						title: 'Opcional',
@@ -1570,19 +1570,19 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Descreva o serviço necessário (Opcional)',
 								alias: 'notes',
 								type: 'textArea',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Foto do problema (Opcional)',
 								alias: 'photo',
 								type: 'file',
-								value: ''
-							}
-						]
-					}
-				]
-			}
-		]
+								value: '',
+							},
+						],
+					},
+				],
+			},
+		],
 	},
 	//
 	//
@@ -1602,11 +1602,11 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: '',
 								alias: 'map',
 								type: 'map',
-								value: true
-							}
-						]
-					}
-				]
+								value: true,
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 2,
@@ -1620,35 +1620,35 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Logradouro',
 								alias: 'logradouro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Bairro',
 								alias: 'bairro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Número',
 								alias: 'numero',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Complemento (opcional)',
 								alias: 'complemento',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Ponto de Referência',
 								alias: 'pontoDeReferencia',
 								type: 'textInput',
-								value: ''
-							}
-						]
-					}
-				]
+								value: '',
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 3,
@@ -1663,21 +1663,21 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Via pavimentada',
 								alias: 'viaPavimentada',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Via não pavimentada',
 								alias: 'viaNaoPavimentada',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Áreas verdes e praças',
 								alias: 'areasVerdesEPracas',
 								type: 'radioButton',
-								value: false
-							}
-						]
+								value: false,
+							},
+						],
 					},
 					{
 						title: 'Opcional',
@@ -1687,19 +1687,19 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Descreva o serviço necessário (Opcional)',
 								alias: 'notes',
 								type: 'textArea',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Foto do problema (Opcional)',
 								alias: 'photo',
 								type: 'file',
-								value: ''
-							}
-						]
-					}
-				]
-			}
-		]
+								value: '',
+							},
+						],
+					},
+				],
+			},
+		],
 	},
 	//
 	//
@@ -1719,11 +1719,11 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: '',
 								alias: 'map',
 								type: 'map',
-								value: true
-							}
-						]
-					}
-				]
+								value: true,
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 2,
@@ -1737,35 +1737,35 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Logradouro',
 								alias: 'logradouro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Bairro',
 								alias: 'bairro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Número',
 								alias: 'numero',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Complemento (opcional)',
 								alias: 'complemento',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Ponto de Referência',
 								alias: 'pontoDeReferencia',
 								type: 'textInput',
-								value: ''
-							}
-						]
-					}
-				]
+								value: '',
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 3,
@@ -1780,21 +1780,21 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Presença de buracos',
 								alias: 'presencaDeBuracos',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Árvores e raízes obstruindo a passagem',
 								alias: 'arvoresERaizesObstruindoAPassagem',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Postes obstruindo a passagem',
 								alias: 'postesObstruindoAPassagem',
 								type: 'radioButton',
-								value: false
-							}
-						]
+								value: false,
+							},
+						],
 					},
 					{
 						title: 'Opcional',
@@ -1804,19 +1804,19 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Descreva o serviço necessário (Opcional)',
 								alias: 'notes',
 								type: 'textArea',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Foto do problema (Opcional)',
 								alias: 'photo',
 								type: 'file',
-								value: ''
-							}
-						]
-					}
-				]
-			}
-		]
+								value: '',
+							},
+						],
+					},
+				],
+			},
+		],
 	},
 	//
 	//
@@ -1836,11 +1836,11 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: '',
 								alias: 'map',
 								type: 'map',
-								value: true
-							}
-						]
-					}
-				]
+								value: true,
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 2,
@@ -1854,35 +1854,35 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Logradouro',
 								alias: 'logradouro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Bairro',
 								alias: 'bairro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Número',
 								alias: 'numero',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Complemento (opcional)',
 								alias: 'complemento',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Ponto de Referência',
 								alias: 'pontoDeReferencia',
 								type: 'textInput',
-								value: ''
-							}
-						]
-					}
-				]
+								value: '',
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 3,
@@ -1897,15 +1897,15 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Derivado de vazamento de tubulação',
 								alias: 'derivadoDeVazamentoDeTubulacao',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Decorrente de chuvas',
 								alias: 'decorrenteDeChuvas',
 								type: 'radioButton',
-								value: false
-							}
-						]
+								value: false,
+							},
+						],
 					},
 					{
 						title: 'Opcional',
@@ -1915,19 +1915,19 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Descreva o serviço necessário (Opcional)',
 								alias: 'notes',
 								type: 'textArea',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Foto do problema (Opcional)',
 								alias: 'photo',
 								type: 'file',
-								value: ''
-							}
-						]
-					}
-				]
-			}
-		]
+								value: '',
+							},
+						],
+					},
+				],
+			},
+		],
 	},
 	//
 	//
@@ -1947,11 +1947,11 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: '',
 								alias: 'map',
 								type: 'map',
-								value: true
-							}
-						]
-					}
-				]
+								value: true,
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 2,
@@ -1965,35 +1965,35 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Logradouro',
 								alias: 'logradouro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Bairro',
 								alias: 'bairro',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Número',
 								alias: 'numero',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Complemento (opcional)',
 								alias: 'complemento',
 								type: 'textInput',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Ponto de Referência',
 								alias: 'pontoDeReferencia',
 								type: 'textInput',
-								value: ''
-							}
-						]
-					}
-				]
+								value: '',
+							},
+						],
+					},
+				],
 			},
 			{
 				index: 3,
@@ -2008,21 +2008,21 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Necessidade de tratamento médico',
 								alias: 'necessidadeDeTratamentoMedico',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Dificuldade de locomoção',
 								alias: 'dificuldadeDeLocomocao',
 								type: 'radioButton',
-								value: false
+								value: false,
 							},
 							{
 								label: 'Postes obstruindo a passagem',
 								alias: 'postesObstruindoAPassagem',
 								type: 'radioButton',
-								value: false
-							}
-						]
+								value: false,
+							},
+						],
 					},
 					{
 						title: 'Opcional',
@@ -2032,18 +2032,18 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								label: 'Descreva o serviço necessário (Opcional)',
 								alias: 'notes',
 								type: 'textArea',
-								value: ''
+								value: '',
 							},
 							{
 								label: 'Foto do problema (Opcional)',
 								alias: 'photo',
 								type: 'file',
-								value: ''
-							}
-						]
-					}
-				]
-			}
-		]
-	}
+								value: '',
+							},
+						],
+					},
+				],
+			},
+		],
+	},
 ]

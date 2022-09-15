@@ -1,4 +1,4 @@
-import { useContext, useEffect, useLayoutEffect, useState } from 'react'
+import { useContext, useEffect, useLayoutEffect, useState, useRef } from 'react'
 import { View, Text, StyleSheet, ScrollView, Dimensions, Pressable } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { FormStepsBar } from '../../../components/form/FormStepsBar'
@@ -14,13 +14,14 @@ export function ServicesForm1Screen() {
 	const ServicesCtx = useContext(SolicitarServicoFormContext)
 	const [error, setError] = useState(false)
 	const mService = allMinorServices.filter(
-		minService => minService.id === ServicesCtx.minorServiceId
+		minService => minService.id === ServicesCtx.minorServiceId,
 	)[0]
 	const [lockedMap, setLockedMap] = useState(true)
+	const scrollViewRef = useRef<ScrollView>(null)
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
-			title: mService.title
+			title: mService.title,
 		})
 	}, [])
 
@@ -30,7 +31,7 @@ export function ServicesForm1Screen() {
 			contentContainerStyle={{
 				flexGrow: 1,
 				justifyContent: 'flex-start',
-				alignItems: 'center'
+				alignItems: 'center',
 			}}
 			alwaysBounceVertical={false}
 			showsVerticalScrollIndicator={false}
@@ -44,7 +45,10 @@ export function ServicesForm1Screen() {
 			</Pressable>
 			<Text style={styles.title}>Selecione no mapa a localização do problema.</Text>
 			<View style={{ width: '100%', height: Dimensions.get('window').height * 0.5 }}>
-				<HTMLMap onCoordsChange={c => ServicesCtx.updateData('coords', c)} />
+				<HTMLMap
+					onFirstMark={() => scrollViewRef.current?.scrollToEnd({ animated: true })}
+					onCoordsChange={c => ServicesCtx.updateData('coords', c)}
+				/>
 				{lockedMap && (
 					<Pressable
 						onPress={() => setLockedMap(false)}
@@ -53,7 +57,7 @@ export function ServicesForm1Screen() {
 							height: '100%',
 							position: 'absolute',
 							justifyContent: 'center',
-							alignItems: 'center'
+							alignItems: 'center',
 						}}
 					>
 						<View
@@ -62,7 +66,7 @@ export function ServicesForm1Screen() {
 								opacity: 0.3,
 								width: '100%',
 								height: '100%',
-								position: 'absolute'
+								position: 'absolute',
 							}}
 						/>
 						<Text style={{ color: '#fff', fontSize: 20, fontWeight: '600' }}>
@@ -105,7 +109,7 @@ export function ServicesForm1Screen() {
 const styles = StyleSheet.create({
 	root: {
 		flex: 1,
-		alignItems: 'center'
+		alignItems: 'center',
 	},
 	title: {
 		opacity: 0.5,
@@ -114,11 +118,11 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 		marginBottom: 10,
 		fontSize: 18,
-		color: COLORS.primary400
+		color: COLORS.primary400,
 	},
 	continueContainer: {
 		width: '100%',
 		marginVertical: 20,
-		alignItems: 'center'
-	}
+		alignItems: 'center',
+	},
 })

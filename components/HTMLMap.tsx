@@ -7,6 +7,7 @@ import { COLORS } from '../constants/colors'
 interface HTMLMapProps {
 	onCoordsChange?: (coords: Coords) => void
 	initialCoords?: Coords
+	onFirstMark?: () => void
 }
 
 export function HTMLMap(props: HTMLMapProps) {
@@ -16,6 +17,9 @@ export function HTMLMap(props: HTMLMapProps) {
 
 	function onMessage(data: any) {
 		const newCoords = data.nativeEvent.data.split('|') as string[]
+		if (!coords && props.onFirstMark) {
+			props.onFirstMark()
+		}
 		setCoords({ latitude: Number(newCoords[0]), longitude: Number(newCoords[1]) })
 	}
 

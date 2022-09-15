@@ -13,6 +13,7 @@ interface CadastrarEmpresaData {
 interface CadastrarEmpresa {
 	data: CadastrarEmpresaData
 	updateData: (d: CadastrarEmpresaData) => void
+	clearData: () => void
 }
 
 export const CadastrarEmpresaContext = createContext<CadastrarEmpresa>({
@@ -22,28 +23,36 @@ export const CadastrarEmpresaContext = createContext<CadastrarEmpresa>({
 		nomeDoEstabelecimento: null,
 		pontoDeReferencia: null,
 		telefoneParaContato: null,
-		tipoDoEstabelecimento: null
+		tipoDoEstabelecimento: null,
 	},
-	updateData: (d: CadastrarEmpresaData) => {}
+	updateData: (d: CadastrarEmpresaData) => {},
+	clearData: () => {},
 })
 
+const cleanData: CadastrarEmpresaData = {
+	coords: null,
+	logradouro: null,
+	nomeDoEstabelecimento: null,
+	pontoDeReferencia: null,
+	telefoneParaContato: null,
+	tipoDoEstabelecimento: null,
+}
+
 export function CadastrarEmpresaContextProvider(props: { children: React.ReactNode }) {
-	const [data, setData] = useState<CadastrarEmpresaData>({
-		coords: null,
-		logradouro: null,
-		nomeDoEstabelecimento: null,
-		pontoDeReferencia: null,
-		telefoneParaContato: null,
-		tipoDoEstabelecimento: null
-	})
+	const [data, setData] = useState<CadastrarEmpresaData>(cleanData)
 
 	function updateData(d: CadastrarEmpresaData) {
 		setData(d)
 	}
 
+	function clearData() {
+		setData(cleanData)
+	}
+
 	const value = {
 		data,
-		updateData
+		updateData,
+		clearData,
 	}
 
 	return (

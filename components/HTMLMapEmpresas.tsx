@@ -7,6 +7,7 @@ import { COLORS } from '../constants/colors'
 interface HTMLMapProps {
 	onCoordsChange?: (coords: Coords) => void
 	initialCoords?: Coords
+	onFirstMark?: () => void
 }
 
 export function HTMLMapEmpresas(props: HTMLMapProps) {
@@ -16,6 +17,9 @@ export function HTMLMapEmpresas(props: HTMLMapProps) {
 
 	function onMessage(data: any) {
 		const newCoords = data.nativeEvent.data.split('|') as string[]
+		if (!coords && props.onFirstMark) {
+			props.onFirstMark()
+		}
 		setCoords({ latitude: Number(newCoords[0]), longitude: Number(newCoords[1]) })
 	}
 
@@ -42,7 +46,7 @@ export function HTMLMapEmpresas(props: HTMLMapProps) {
 				width: '100%',
 				borderColor: COLORS.primary500,
 				borderBottomWidth: 2,
-				borderTopWidth: 2
+				borderTopWidth: 2,
 			}}
 		>
 			<WebView
@@ -176,7 +180,7 @@ export function HTMLMapEmpresas(props: HTMLMapProps) {
 						</script>
 					</body>
 				</html>
-`
+`,
 				}}
 			/>
 		</View>
@@ -187,6 +191,6 @@ const styles = StyleSheet.create({
 	ActivityIndicatorStyle: {
 		height: '100%',
 		width: '100%',
-		justifyContent: 'center'
-	}
+		justifyContent: 'center',
+	},
 })

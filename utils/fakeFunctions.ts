@@ -17,3 +17,10 @@ export async function fakeLogin(cpf: string, password: string) {
 		}, 700)
 	})
 }
+
+export function generateFakeProtocol(): string {
+	const a = Math.floor(Math.random() * (1000 - 100) + 100)
+	const b = Math.floor(Math.random() * (1000 - 100) + 100)
+	const c = Math.floor(Math.random() * (1000 - 100) + 100)
+	return `${a}.${b}-${c}`
+}

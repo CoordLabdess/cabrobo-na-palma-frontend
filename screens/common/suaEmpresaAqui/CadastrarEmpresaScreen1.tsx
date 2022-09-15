@@ -1,35 +1,33 @@
-import { useContext, useEffect, useLayoutEffect, useState } from 'react'
+import { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { View, Text, StyleSheet, ScrollView, Dimensions, Pressable, Image } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { FormStepsBar } from '../../../components/form/FormStepsBar'
-import { HTMLMap } from '../../../components/HTMLMap'
 import { PrimaryButton } from '../../../components/ui/PrimaryButton'
 import { COLORS } from '../../../constants/colors'
-import { Coords } from '../../../types/global'
-import { SolicitarServicoFormContext } from '../../../store/SolicitarServicosContext'
-import { allMinorServices } from '../../../data/minorServices'
 import { CadastrarEmpresaContext } from '../../../store/CadastrarEmpresaContext'
 import { HTMLMapEmpresas } from '../../../components/HTMLMapEmpresas'
 
 export function CadastrarEmpresaScreen1() {
 	const navigation = useNavigation()
 	const cadastrarEmpresaCtx = useContext(CadastrarEmpresaContext)
+	const scrollViewRef = useRef<ScrollView>(null)
 	const [error, setError] = useState(false)
 	const [lockedMap, setLockedMap] = useState(true)
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
-			title: 'Cadastrar Empresa'
+			title: 'Cadastrar Empresa',
 		})
 	}, [])
 
 	return (
 		<ScrollView
 			scrollEnabled={lockedMap}
+			ref={scrollViewRef}
 			contentContainerStyle={{
 				flexGrow: 1,
 				justifyContent: 'flex-start',
-				alignItems: 'center'
+				alignItems: 'center',
 			}}
 			alwaysBounceVertical={false}
 			showsVerticalScrollIndicator={false}
@@ -37,13 +35,15 @@ export function CadastrarEmpresaScreen1() {
 			<Pressable
 				onTouchMove={() => setLockedMap(true)}
 				onTouchStart={() => setLockedMap(true)}
-				style={{ marginVertical: 10, width: '100%', alignItems: 'center' }}
+				style={{ paddingVertical: 10, width: '100%', alignItems: 'center' }}
 			>
 				<FormStepsBar maxSteps={2} currentStep={1} />
+				<Text style={styles.title}>Selecione a localização da sua empresa.</Text>
 			</Pressable>
-			<Text style={styles.title}>Selecione a localização da sua empresa.</Text>
+
 			<View style={{ width: '100%', height: Dimensions.get('window').height * 0.5 }}>
 				<HTMLMapEmpresas
+					onFirstMark={() => scrollViewRef.current?.scrollToEnd({ animated: true })}
 					onCoordsChange={c =>
 						cadastrarEmpresaCtx.updateData({ ...cadastrarEmpresaCtx.data, coords: c })
 					}
@@ -56,7 +56,7 @@ export function CadastrarEmpresaScreen1() {
 							height: '100%',
 							position: 'absolute',
 							justifyContent: 'center',
-							alignItems: 'center'
+							alignItems: 'center',
 						}}
 					>
 						<View
@@ -65,7 +65,7 @@ export function CadastrarEmpresaScreen1() {
 								opacity: 0.3,
 								width: '100%',
 								height: '100%',
-								position: 'absolute'
+								position: 'absolute',
 							}}
 						/>
 						<Text style={{ color: '#fff', fontSize: 20, fontWeight: '600' }}>
@@ -89,11 +89,11 @@ export function CadastrarEmpresaScreen1() {
 				<View
 					style={{
 						width: '90%',
-						height: 150,
+						height: 200,
 						flexDirection: 'row',
 						overflow: 'hidden',
 						justifyContent: 'space-around',
-						marginTop: 10
+						marginTop: 10,
 					}}
 				>
 					<Image
@@ -128,20 +128,20 @@ export function CadastrarEmpresaScreen1() {
 const styles = StyleSheet.create({
 	root: {
 		flex: 1,
-		alignItems: 'center'
+		alignItems: 'center',
 	},
 	title: {
 		opacity: 0.5,
+		marginTop: 10,
 		fontWeight: '500',
 		width: 300,
 		textAlign: 'center',
-		marginBottom: 10,
 		fontSize: 18,
-		color: COLORS.primary400
+		color: COLORS.primary400,
 	},
 	continueContainer: {
 		width: '100%',
 		marginVertical: 20,
-		alignItems: 'center'
-	}
+		alignItems: 'center',
+	},
 })

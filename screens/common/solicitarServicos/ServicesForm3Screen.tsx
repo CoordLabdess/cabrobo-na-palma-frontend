@@ -7,7 +7,7 @@ import {
 	TextInput,
 	KeyboardAvoidingView,
 	Pressable,
-	Image
+	Image,
 } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import * as ImagePicker from 'expo-image-picker'
@@ -22,6 +22,7 @@ import { GeneralServiceFormat, sendData } from '../../../utils/arcgis'
 import { allMajorServices } from '../../../data/majorServices'
 import { allMinorServices } from '../../../data/minorServices'
 import { SuccessModal } from '../../../components/modals/SuccessModal'
+import { generateFakeProtocol } from '../../../utils/fakeFunctions'
 
 interface FormData {
 	[key: string]: any
@@ -37,12 +38,12 @@ export function ServicesForm3Screen() {
 	const [successModal, setSuccessModal] = useState(false)
 	const [protocol, setProtocol] = useState('000.000-000')
 	const minService = allMinorServices.filter(
-		minSrvc => minSrvc.id === ServicesCtx.minorServiceId
+		minSrvc => minSrvc.id === ServicesCtx.minorServiceId,
 	)[0]
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
-			title: minService.title
+			title: minService.title,
 		})
 	}, [])
 
@@ -52,7 +53,7 @@ export function ServicesForm3Screen() {
 			base64: true,
 			// allowsEditing: true,
 			// aspect: [1, 1],
-			quality: 1
+			quality: 1,
 		})
 
 		if (!result.cancelled) {
@@ -60,17 +61,10 @@ export function ServicesForm3Screen() {
 		}
 	}
 
-	function generateRandomProtocol() {
-		const a = Math.floor(Math.random() * (1000 - 100) + 100)
-		const b = Math.floor(Math.random() * (1000 - 100) + 100)
-		const c = Math.floor(Math.random() * (1000 - 100) + 100)
-		return `${a}.${b}-${c}`
-	}
-
 	function handleSendingData() {
 		if (!isLoading) {
 			setIsLoading(true)
-			const p = generateRandomProtocol()
+			const p = generateFakeProtocol()
 			setProtocol(p)
 			const d: GeneralServiceFormat = {
 				BAIRRO: ServicesCtx.data.bairro || '',
@@ -91,7 +85,7 @@ export function ServicesForm3Screen() {
 				TELEFONE: 0,
 				PROTOCOLO: p,
 				TIPO: allMinorServices.filter(mService => mService.id === ServicesCtx.minorServiceId)[0]
-					.title
+					.title,
 			}
 			sendData(ServicesCtx.data.coords || { latitude: 0, longitude: 0 }, d)
 				.then(res => {
@@ -109,8 +103,8 @@ export function ServicesForm3Screen() {
 	useLayoutEffect(() => {
 		setFormPage(
 			allMinorServicesForm.filter(
-				minSrvForm => minSrvForm.minorServiceId === ServicesCtx.minorServiceId
-			)[0].pages[2]
+				minSrvForm => minSrvForm.minorServiceId === ServicesCtx.minorServiceId,
+			)[0].pages[2],
 		)
 	}, [])
 
@@ -135,7 +129,7 @@ export function ServicesForm3Screen() {
 				flexGrow: 1,
 				justifyContent: 'flex-start',
 				alignItems: 'center',
-				paddingBottom: 20
+				paddingBottom: 20,
 			}}
 			alwaysBounceVertical={false}
 			showsVerticalScrollIndicator={false}
@@ -179,8 +173,8 @@ export function ServicesForm3Screen() {
 												style={[
 													styles.radioButton,
 													ServicesCtx.data[section.alias] === field.label && {
-														backgroundColor: COLORS.primary500
-													}
+														backgroundColor: COLORS.primary500,
+													},
 												]}
 											/>
 											<Text style={styles.fieldLabel}>{field.label}</Text>
@@ -194,7 +188,7 @@ export function ServicesForm3Screen() {
 													borderColor: COLORS.primary500,
 													height: 250,
 													width: 200,
-													justifyContent: 'center'
+													justifyContent: 'center',
 												}}
 												onPress={() => pickImage(field.alias)}
 											>
@@ -215,7 +209,7 @@ export function ServicesForm3Screen() {
 																flex: 1,
 																height: '100%',
 																width: '100%',
-																resizeMode: 'contain'
+																resizeMode: 'contain',
 															}}
 															source={{ uri: ServicesCtx.data[field.alias] }}
 														/>
@@ -284,29 +278,29 @@ const styles = StyleSheet.create({
 		color: COLORS.primary500,
 		opacity: 0.5,
 		fontWeight: '500',
-		marginVertical: 10
+		marginVertical: 10,
 	},
 	section: {
 		width: '100%',
-		marginBottom: 20
+		marginBottom: 20,
 	},
 	sectionTitle: {
 		fontSize: 16,
 		paddingHorizontal: '7%',
 		fontWeight: '500',
 		color: COLORS.primary500,
-		marginBottom: 20
+		marginBottom: 20,
 	},
 	field: {
 		width: '100%',
 		paddingHorizontal: '7%',
-		marginBottom: 10
+		marginBottom: 10,
 	},
 	fieldLabel: {
 		fontWeight: '500',
 		fontSize: 14,
 		opacity: 1,
-		color: COLORS.primary500
+		color: COLORS.primary500,
 	},
 	textInput: {
 		textAlignVertical: 'top',
@@ -316,15 +310,15 @@ const styles = StyleSheet.create({
 		fontSize: 14,
 		paddingHorizontal: 15,
 		paddingVertical: 8,
-		color: COLORS.primary400
+		color: COLORS.primary400,
 	},
 	buttonContainer: {
-		padding: 20
+		padding: 20,
 	},
 	radioButtonContainer: {
 		flexDirection: 'row',
 		alignItems: 'center',
-		paddingVertical: 5
+		paddingVertical: 5,
 	},
 	radioButton: {
 		backgroundColor: '#fff',
@@ -333,6 +327,6 @@ const styles = StyleSheet.create({
 		borderRadius: 100,
 		marginRight: 10,
 		borderColor: COLORS.primary500,
-		borderWidth: 1
-	}
+		borderWidth: 1,
+	},
 })
