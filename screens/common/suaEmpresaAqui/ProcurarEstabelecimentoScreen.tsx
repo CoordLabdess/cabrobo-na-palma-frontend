@@ -6,6 +6,9 @@ import { COLORS } from '../../../constants/colors'
 import { CovidMap } from '../../../components/maps/CovidMap'
 import { SearchTextInput } from '../../../components/ui/textInputs/SearchTextInput'
 import { PrimaryButton } from '../../../components/ui/PrimaryButton'
+import { Estabelecimento, generateToken, obterTodosEstabelecimentos } from '../../../utils/arcgis'
+import { Coords } from '../../../types/global'
+import { HTMLMapEmpresas } from '../../../components/HTMLMapEmpresas'
 
 interface Empresa {
 	nome: string
@@ -33,18 +36,26 @@ export function ProcurarEstabelecimentoScreen() {
 	const navigation = useNavigation()
 	const [search, setSearch] = useState('')
 	const [isLoading, setIsLoading] = useState(false)
+	const [error, setError] = useState(false)
+	const [estabelecimentos, setEstabelecimentos] = useState<Estabelecimento[]>([])
+	const [coords, setCoords] = useState<Coords | null>(null)
 
 	function buscarEstabelecimentos() {
-		axios
-			.get(
-				'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Estabelecimentos/FeatureServer/',
-			)
-			.then(res => {
-				console.log(res.data)
+		if (!isLoading) {
+			setIsLoading(true)
+			generateToken().then(token => {
+				obterTodosEstabelecimentos(token)
+					.then(res => {
+						setIsLoading(false)
+						setError(false)
+						setEstabelecimentos(res.features)
+					})
+					.catch(err => {
+						setIsLoading(false)
+						setError(true)
+					})
 			})
-			.catch(err => {
-				console.log(err)
-			})
+		}
 	}
 
 	useLayoutEffect(() => {
@@ -63,15 +74,24 @@ export function ProcurarEstabelecimentoScreen() {
 				}}
 				ListHeaderComponent={() => (
 					<View style={{ width: '100%', alignItems: 'center' }}>
+						<View style={{ height: 400, width: '100%' }}>
+							<HTMLMapEmpresas onCoordsChange={setCoords} />
+						</View>
 						<SearchTextInput placeholder='Nome da empresa ou CNPJ' />
-						<PrimaryButton title='Procurar' onPress={() => buscarEstabelecimentos()} />
+						<PrimaryButton
+							isLoading={isLoading}
+							title='Procurar'
+							onPress={() => buscarEstabelecimentos()}
+						/>
 					</View>
 				)}
-				data={[0, 1, 2, 3]}
-				renderItem={x => {
+				data={estabelecimentos}
+				renderItem={itemData => {
+					const attributes = itemData.item.attributes
 					return (
-						<View>
-							<Text>{x.item}</Text>
+						<View style={{ marginBottom: 10 }}>
+							<Text>Nome: {attributes.name}</Text>
+							<Text>Tipo: {attributes.TIPO_ESTAB}</Text>
 						</View>
 					)
 				}}
