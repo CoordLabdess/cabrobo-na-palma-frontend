@@ -57,7 +57,7 @@ export function SuaEmpresaAquiRouter() {
 				/>
 				<Stack.Screen
 					name='procurarEstabelecimento'
-					component={ProcurarEstabelecimentoScreen}
+					component={PaginaEmConstrucao}
 					options={{
 						title: 'Procurar Estabelecimento',
 						animation: 'none',
