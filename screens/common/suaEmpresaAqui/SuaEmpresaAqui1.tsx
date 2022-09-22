@@ -8,17 +8,19 @@ import {
 	ImageURISource,
 } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import { useContext, useLayoutEffect, useState } from 'react'
+import React, { useContext, useLayoutEffect, useState } from 'react'
 import { MinorService, MajorService, RouteProp, Tool } from '../../../types/global'
 import { allMajorServices } from '../../../data/majorServices'
 import { allMinorServices } from '../../../data/minorServices'
 import { allTools } from '../../../data/toolsData'
 import { COLORS } from '../../../constants/colors'
 import { ServiceItem } from '../../../components/services/ServiceItem'
-import { SolicitarServicoFormContext } from '../../../store/SolicitarServicosContext'
+import { useServiceRequestForm } from '../../../store/SolicitarServicosContext'
 import { SuaEmpresaAquiMajorServices } from '../../../data/suaEmpresaAquiMajor'
 import { GenericGridTile } from '../../../components/gridTitles/GenericGridTile'
-import { CadastrarEmpresaContext } from '../../../store/CadastrarEmpresaContext'
+import { useRegisterEnterprise } from '../../../store/CadastrarEmpresaContext'
+import Header from '../../../components/common/Header'
+import { RoutesType } from '../../../types/routes'
 
 interface ServiceScreenProps {
 	route: RouteProp
@@ -31,8 +33,8 @@ export function SuaEmpresaAqui1(props: ServiceScreenProps) {
 	const [serviceType, setServiceType] = useState('')
 	const [dataArray, setDataArray] = useState<MinorService[] | MajorService[]>([])
 	const [currentService, setCurrentService] = useState<Tool | MajorService>()
-	const solicitarServicosContext = useContext(SolicitarServicoFormContext)
-	const cadastrarEmpresaCtx = useContext(CadastrarEmpresaContext)
+	const solicitarServicosContext = useServiceRequestForm()
+	const cadastrarEmpresaCtx = useRegisterEnterprise()
 
 	useLayoutEffect(() => {
 		cadastrarEmpresaCtx.clearData()
@@ -88,6 +90,7 @@ export function SuaEmpresaAqui1(props: ServiceScreenProps) {
 
 	return (
 		<View>
+			<Header goBack />
 			<FlatList
 				keyboardShouldPersistTaps='handled'
 				contentContainerStyle={{
@@ -124,7 +127,7 @@ export function SuaEmpresaAqui1(props: ServiceScreenProps) {
 							img={itemData.item.imgMono}
 							title={itemData.item.title}
 							onPress={() => {
-								navigation.navigate(itemData.item.alias as never)
+								navigation.navigate(itemData.item.alias as RoutesType)
 							}}
 						/>
 					)

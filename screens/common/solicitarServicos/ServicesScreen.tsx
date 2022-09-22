@@ -5,17 +5,18 @@ import {
 	FlatList,
 	Image,
 	ImageSourcePropType,
-	ImageURISource
+	ImageURISource,
 } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import { useContext, useLayoutEffect, useState } from 'react'
+import React, { useContext, useLayoutEffect, useState } from 'react'
 import { MinorService, MajorService, RouteProp, Tool } from '../../../types/global'
 import { allMajorServices } from '../../../data/majorServices'
 import { allMinorServices } from '../../../data/minorServices'
 import { allTools } from '../../../data/toolsData'
 import { COLORS } from '../../../constants/colors'
 import { ServiceItem } from '../../../components/services/ServiceItem'
-import { SolicitarServicoFormContext } from '../../../store/SolicitarServicosContext'
+import { useServiceRequestForm } from '../../../store/SolicitarServicosContext'
+import Header from '../../../components/common/Header'
 
 interface ServiceScreenProps {
 	route: RouteProp
@@ -28,7 +29,7 @@ export function ServicesScreen(props: ServiceScreenProps) {
 	const [serviceType, setServiceType] = useState('')
 	const [dataArray, setDataArray] = useState<MinorService[] | MajorService[]>([])
 	const [currentService, setCurrentService] = useState<Tool | MajorService>()
-	const solicitarServicosContext = useContext(SolicitarServicoFormContext)
+	const solicitarServicosContext = useServiceRequestForm()
 
 	useLayoutEffect(() => {
 		setServiceId(props.route.params?.serviceId)
@@ -36,7 +37,7 @@ export function ServicesScreen(props: ServiceScreenProps) {
 		setServiceType(props.route.params?.serviceType)
 		if (solicitarServicosContext.majorServiceId > 0) {
 			setCurrentService(
-				allMajorServices.filter(m => m.id === solicitarServicosContext.majorServiceId)[0]
+				allMajorServices.filter(m => m.id === solicitarServicosContext.majorServiceId)[0],
 			)
 		} else {
 			setCurrentService(allTools.filter(m => m.id === 1)[0])
@@ -45,7 +46,7 @@ export function ServicesScreen(props: ServiceScreenProps) {
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
-			title: serviceTitle || 'Solicitar Servicos'
+			title: serviceTitle || 'Solicitar Servicos',
 		})
 	}, [serviceTitle])
 
@@ -58,7 +59,7 @@ export function ServicesScreen(props: ServiceScreenProps) {
 							return tool.id === 1
 						})[0]
 						.majorServicesIds.includes(majorService.id)
-				})
+				}),
 			)
 		} else if (serviceType === 'MinorServices') {
 			setDataArray(
@@ -68,7 +69,7 @@ export function ServicesScreen(props: ServiceScreenProps) {
 							return majorService.id === serviceId
 						})[0]
 						.minorServicesId.includes(minorService.id)
-				})
+				}),
 			)
 		}
 	}, [serviceId, serviceType])
@@ -82,7 +83,8 @@ export function ServicesScreen(props: ServiceScreenProps) {
 	}
 
 	return (
-		<View>
+		<>
+			<Header goBack title='Solicitar Serviços' />
 			<FlatList
 				keyboardShouldPersistTaps='handled'
 				contentContainerStyle={{
@@ -90,7 +92,7 @@ export function ServicesScreen(props: ServiceScreenProps) {
 					justifyContent: 'flex-start',
 					paddingHorizontal: '5%',
 					alignItems: 'center',
-					paddingBottom: 20
+					paddingBottom: 20,
 				}}
 				alwaysBounceVertical={false}
 				showsVerticalScrollIndicator={false}
@@ -119,7 +121,7 @@ export function ServicesScreen(props: ServiceScreenProps) {
 				}}
 				numColumns={1}
 			/>
-		</View>
+		</>
 	)
 }
 
@@ -127,26 +129,26 @@ const styles = StyleSheet.create({
 	servicesGridTitleContainer: {
 		width: '100%',
 		paddingHorizontal: 45,
-		marginVertical: 30
+		marginVertical: 30,
 	},
 	servicesGridTitle: {
 		color: COLORS.secondary500,
 		fontWeight: '400',
 		fontSize: 15,
 		marginLeft: 5,
-		textAlign: 'center'
+		textAlign: 'center',
 	},
 	servicesGridContainer: {
 		marginTop: 20,
 		width: '100%',
-		alignItems: 'center'
+		alignItems: 'center',
 	},
 	servicesGrid: {
-		width: '100%'
+		width: '100%',
 	},
 	serviceImg: {
 		height: 122,
 		width: 188,
-		marginBottom: 10
-	}
+		marginBottom: 10,
+	},
 })

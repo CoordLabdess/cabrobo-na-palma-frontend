@@ -10,16 +10,18 @@ import {
 	Platform,
 } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import { useContext, useLayoutEffect, useState } from 'react'
+import React, { useLayoutEffect, useState } from 'react'
 import { MinorService, MajorService, RouteProp, Tool } from '../../../types/global'
 import { allMajorServices } from '../../../data/majorServices'
 import { allMinorServices } from '../../../data/minorServices'
 import { allTools } from '../../../data/toolsData'
 import { COLORS } from '../../../constants/colors'
 import { ServiceItem } from '../../../components/services/ServiceItem'
-import { SolicitarServicoFormContext } from '../../../store/SolicitarServicosContext'
+import { useServiceRequestForm } from '../../../store/SolicitarServicosContext'
 import { educacaoMajorServices } from '../../../data/educacaoMajorServices'
 import { GenericGridTile } from '../../../components/gridTitles/GenericGridTile'
+import Header from '../../../components/common/Header'
+import { RootStackParamList, RoutesType } from '../../../types/routes'
 
 interface ServiceScreenProps {
 	route: RouteProp
@@ -32,7 +34,7 @@ export function EducacaoHomeScreen(props: ServiceScreenProps) {
 	const [serviceType, setServiceType] = useState('')
 	const [dataArray, setDataArray] = useState<MinorService[] | MajorService[]>([])
 	const [currentService, setCurrentService] = useState<Tool | MajorService>()
-	const solicitarServicosContext = useContext(SolicitarServicoFormContext)
+	const solicitarServicosContext = useServiceRequestForm()
 
 	useLayoutEffect(() => {
 		setServiceId(props.route.params?.serviceId)
@@ -87,6 +89,7 @@ export function EducacaoHomeScreen(props: ServiceScreenProps) {
 
 	return (
 		<View>
+			<Header goBack />
 			<FlatList
 				keyboardShouldPersistTaps='handled'
 				contentContainerStyle={{
@@ -131,7 +134,7 @@ export function EducacaoHomeScreen(props: ServiceScreenProps) {
 											: 'https://apps.apple.com/br/app/recicla-cabrob%C3%B3/id1641828174',
 									)
 								} else {
-									navigation.navigate(itemData.item.alias as never)
+									navigation.navigate(itemData.item.alias as RoutesType)
 								}
 							}}
 						/>

@@ -1,7 +1,7 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useContext, useState } from 'react'
 import { Coords } from '../types/global'
 
-interface SolicitarServicoForm {
+interface ServiceRequestFormContextData {
 	majorServiceId: number
 	minorServiceId: number
 	data: {
@@ -12,16 +12,11 @@ interface SolicitarServicoForm {
 	updateData: (key: string, value: any) => void
 }
 
-export const SolicitarServicoFormContext = createContext<SolicitarServicoForm>({
-	majorServiceId: -1,
-	minorServiceId: -1,
-	data: {},
-	updateMajorServiceId: (id: number) => {},
-	updateMinorServiceId: (id: number) => {},
-	updateData: (key: string, value: any) => {}
-})
+export const ServiceRequestFormContext = createContext<ServiceRequestFormContextData>(
+	{} as ServiceRequestFormContextData,
+)
 
-export function SolicitarServicoFormContextProvider(props: { children: React.ReactNode }) {
+export function ServiceRequestFormProvider(props: { children: React.ReactNode }) {
 	const [data, setData] = useState({})
 	const [majorServiceId, setMajorServiceId] = useState(-1)
 	const [minorServiceId, setMinorServiceId] = useState(-1)
@@ -48,12 +43,16 @@ export function SolicitarServicoFormContextProvider(props: { children: React.Rea
 		data,
 		updateData,
 		updateMajorServiceId,
-		updateMinorServiceId
+		updateMinorServiceId,
 	}
 
 	return (
-		<SolicitarServicoFormContext.Provider value={value}>
+		<ServiceRequestFormContext.Provider value={value}>
 			{props.children}
-		</SolicitarServicoFormContext.Provider>
+		</ServiceRequestFormContext.Provider>
 	)
+}
+
+export function useServiceRequestForm() {
+	return useContext(ServiceRequestFormContext)
 }

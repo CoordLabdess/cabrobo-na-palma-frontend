@@ -1,7 +1,7 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useContext, useState } from 'react'
 import { Coords } from '../types/global'
 
-interface CadastrarEmpresaData {
+interface RegisterEnterpriseData {
 	coords: Coords | null
 	logradouro: string | null
 	nomeDoEstabelecimento: string | null
@@ -10,26 +10,15 @@ interface CadastrarEmpresaData {
 	pontoDeReferencia: string | null
 }
 
-interface CadastrarEmpresa {
-	data: CadastrarEmpresaData
-	updateData: (d: CadastrarEmpresaData) => void
+interface RegisterEnterprise {
+	data: RegisterEnterpriseData
+	updateData: (d: RegisterEnterpriseData) => void
 	clearData: () => void
 }
 
-export const CadastrarEmpresaContext = createContext<CadastrarEmpresa>({
-	data: {
-		coords: null,
-		logradouro: null,
-		nomeDoEstabelecimento: null,
-		pontoDeReferencia: null,
-		telefoneParaContato: null,
-		tipoDoEstabelecimento: null,
-	},
-	updateData: (d: CadastrarEmpresaData) => {},
-	clearData: () => {},
-})
+export const RegisterEnterpriseContext = createContext<RegisterEnterprise>({} as RegisterEnterprise)
 
-const cleanData: CadastrarEmpresaData = {
+const cleanData: RegisterEnterpriseData = {
 	coords: null,
 	logradouro: null,
 	nomeDoEstabelecimento: null,
@@ -38,10 +27,10 @@ const cleanData: CadastrarEmpresaData = {
 	tipoDoEstabelecimento: null,
 }
 
-export function CadastrarEmpresaContextProvider(props: { children: React.ReactNode }) {
-	const [data, setData] = useState<CadastrarEmpresaData>(cleanData)
+export function RegisterEnterpriseContextProvider(props: { children: React.ReactNode }) {
+	const [data, setData] = useState<RegisterEnterpriseData>(cleanData)
 
-	function updateData(d: CadastrarEmpresaData) {
+	function updateData(d: RegisterEnterpriseData) {
 		setData(d)
 	}
 
@@ -56,8 +45,12 @@ export function CadastrarEmpresaContextProvider(props: { children: React.ReactNo
 	}
 
 	return (
-		<CadastrarEmpresaContext.Provider value={value}>
+		<RegisterEnterpriseContext.Provider value={value}>
 			{props.children}
-		</CadastrarEmpresaContext.Provider>
+		</RegisterEnterpriseContext.Provider>
 	)
+}
+
+export function useRegisterEnterprise() {
+	return useContext(RegisterEnterpriseContext)
 }

@@ -5,11 +5,13 @@ import {
 	StyleSheet,
 	Image,
 	Platform,
-	ImageSourcePropType
+	ImageSourcePropType,
 } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+import React from 'react'
 import { Tool } from '../../types/global'
 import { COLORS } from '../../constants/colors'
+import { RoutesType } from '../../types/routes'
 
 interface ToolItemProps {
 	tool: Tool
@@ -17,6 +19,7 @@ interface ToolItemProps {
 
 export function ToolItem(props: ToolItemProps) {
 	const navigation = useNavigation()
+
 	return (
 		<View style={styles.outterContainer}>
 			<Pressable
@@ -26,7 +29,7 @@ export function ToolItem(props: ToolItemProps) {
 						: styles.innerContainer
 				}
 				onPress={() => {
-					navigation.navigate(props.tool.navigateTo as never)
+					navigation.navigate(props.tool.navigateTo as RoutesType)
 				}}
 				android_ripple={{ color: '#ccc' }}
 			>
@@ -43,8 +46,8 @@ export function ToolItem(props: ToolItemProps) {
 
 const styles = StyleSheet.create({
 	outterContainer: {
-		width: 160,
-		height: 110,
+		width: '47%',
+		paddingVertical: 5,
 		backgroundColor: COLORS.secondary100,
 		borderRadius: 10,
 		elevation: 4,
@@ -53,23 +56,23 @@ const styles = StyleSheet.create({
 		shadowRadius: 3,
 		shadowOpacity: 0.3,
 		marginBottom: 12,
-		marginHorizontal: 6
+		marginHorizontal: 6,
 	},
 	innerContainer: {
 		flex: 1,
 		alignItems: 'center',
 		padding: 6,
-		justifyContent: 'space-between'
+		justifyContent: 'space-between',
 	},
 	pressed: {
-		opacity: 0.6
+		opacity: 0.6,
 	},
 	toolImage: {
 		width: 72,
-		height: 72
+		height: 72,
 	},
 	toolTitle: {
 		color: COLORS.primary500,
-		fontWeight: '500'
-	}
+		fontWeight: '500',
+	},
 })

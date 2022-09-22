@@ -6,9 +6,8 @@ import { FormStepsBar } from '../../../components/form/FormStepsBar'
 import { PrimaryButton } from '../../../components/ui/PrimaryButton'
 import { COLORS } from '../../../constants/colors'
 import { allMinorServicesForm, FormPage } from '../../../data/minorServiceForm'
-import { SolicitarServicoFormContext } from '../../../store/SolicitarServicosContext'
 import { allMinorServices } from '../../../data/minorServices'
-import { CadastrarEmpresaContext } from '../../../store/CadastrarEmpresaContext'
+import { useRegisterEnterprise } from '../../../store/CadastrarEmpresaContext'
 import { CadastrarEmpresaFormat, sendData } from '../../../utils/arcgis'
 import { SuccessModal } from '../../../components/modals/SuccessModal'
 import { generateFakeProtocol } from '../../../utils/fakeFunctions'
@@ -17,7 +16,7 @@ const fakeProtocol = generateFakeProtocol()
 
 export function CadastrarEmpresaScreen2() {
 	const navigation = useNavigation()
-	const cadastrarEmpresaCtx = useContext(CadastrarEmpresaContext)
+	const cadastrarEmpresaCtx = useRegisterEnterprise()
 	const [success, setSuccess] = useState(false)
 	const [isLoading, setIsLoading] = useState(false)
 	const [error, setError] = useState(false)
@@ -180,7 +179,7 @@ export function CadastrarEmpresaScreen2() {
 				message={
 					'O cadastro da sua empresa foi enviado com sucesso à prefeitura. Você poderá acompanhar o status do cadastro pelo protocolo abaixo:'
 				}
-				onContinue={() => navigation.navigate('SuaEmpresaAquiHome' as never)}
+				onContinue={() => navigation.navigate('SuaEmpresaAqui')}
 			/>
 		</>
 	)

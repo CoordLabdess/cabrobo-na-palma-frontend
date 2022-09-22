@@ -1,15 +1,15 @@
-import { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { View, Text, StyleSheet, ScrollView, Dimensions, Pressable, Image } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { FormStepsBar } from '../../../components/form/FormStepsBar'
 import { PrimaryButton } from '../../../components/ui/PrimaryButton'
 import { COLORS } from '../../../constants/colors'
-import { CadastrarEmpresaContext } from '../../../store/CadastrarEmpresaContext'
+import { useRegisterEnterprise } from '../../../store/CadastrarEmpresaContext'
 import { HTMLMapEmpresas } from '../../../components/HTMLMapEmpresas'
 
 export function CadastrarEmpresaScreen1() {
 	const navigation = useNavigation()
-	const cadastrarEmpresaCtx = useContext(CadastrarEmpresaContext)
+	const cadastrarEmpresaCtx = useRegisterEnterprise()
 	const scrollViewRef = useRef<ScrollView>(null)
 	const [error, setError] = useState(false)
 	const [lockedMap, setLockedMap] = useState(true)
@@ -112,7 +112,7 @@ export function CadastrarEmpresaScreen1() {
 						onPress={() => {
 							if (cadastrarEmpresaCtx.data?.coords) {
 								setError(false)
-								navigation.navigate('cadastrarEmpresa2' as never)
+								navigation.navigate('cadastrarEmpresa2')
 							} else {
 								setError(true)
 							}

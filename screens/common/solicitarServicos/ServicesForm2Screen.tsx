@@ -6,8 +6,10 @@ import { FormStepsBar } from '../../../components/form/FormStepsBar'
 import { PrimaryButton } from '../../../components/ui/PrimaryButton'
 import { COLORS } from '../../../constants/colors'
 import { allMinorServicesForm, FormPage } from '../../../data/minorServiceForm'
-import { SolicitarServicoFormContext } from '../../../store/SolicitarServicosContext'
+import { useServiceRequestForm } from '../../../store/SolicitarServicosContext'
 import { allMinorServices } from '../../../data/minorServices'
+import Header from '../../../components/common/Header'
+import { RoutesType } from '../../../types/routes'
 
 interface FormData {
 	[key: string]: any
@@ -16,22 +18,22 @@ interface FormData {
 export function ServicesForm2Screen() {
 	const [formPage, setFormPage] = useState<FormPage | null>()
 	const navigation = useNavigation()
-	const ServicesCtx = useContext(SolicitarServicoFormContext)
+	const ServicesCtx = useServiceRequestForm()
 	const [error, setError] = useState(false)
 	const [isMissing, setIsMissing] = useState(true)
 
 	const mService = allMinorServices.filter(
-		minService => minService.id === ServicesCtx.minorServiceId
+		minService => minService.id === ServicesCtx.minorServiceId,
 	)[0]
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
-			title: mService.title
+			title: mService.title,
 		})
 		setFormPage(
 			allMinorServicesForm.filter(
-				minSrvForm => minSrvForm.minorServiceId === ServicesCtx.minorServiceId
-			)[0].pages[1]
+				minSrvForm => minSrvForm.minorServiceId === ServicesCtx.minorServiceId,
+			)[0].pages[1],
 		)
 	}, [])
 
@@ -56,75 +58,78 @@ export function ServicesForm2Screen() {
 	}
 
 	return (
-		<ScrollView
-			contentContainerStyle={{
-				flexGrow: 1,
-				justifyContent: 'flex-start',
-				alignItems: 'center',
-				paddingBottom: 20
-			}}
-			alwaysBounceVertical={false}
-			showsVerticalScrollIndicator={false}
-		>
-			<View style={{ marginVertical: 10, width: '100%', alignItems: 'center' }}>
-				<FormStepsBar maxSteps={3} currentStep={2} />
-				<Text style={styles.pageTitle}>{formPage.title}</Text>
-			</View>
-			{formPage.sections.map((section, key1) => {
-				return (
-					<View style={styles.section} key={key1}>
-						<Text style={styles.sectionTitle}>{section.title}</Text>
-						{section.fields.map((field, key2) => {
-							return (
-								<View style={styles.field} key={key2}>
-									<Text style={styles.fieldLabel}>{field.label}</Text>
-									{field.type === 'textInput' ? (
-										<TextInput
-											style={styles.textInput}
-											placeholder='Digite aqui...'
-											onChangeText={text => {
-												ServicesCtx.updateData(field.alias, text)
-											}}
-											value={ServicesCtx.data[field.alias] || ''}
-										/>
-									) : field.type === 'textArea' ? (
-										<TextInput
-											style={styles.textInput}
-											multiline
-											numberOfLines={4}
-											placeholder='Digite aqui...'
-											value={field.value as string}
-										/>
-									) : (
-										<View />
-									)}
-								</View>
-							)
-						})}
-					</View>
-				)
-			})}
-			{error && (
-				<View style={{ marginTop: 15 }}>
-					<Text style={{ color: 'red', fontSize: 14, fontWeight: '400' }}>
-						Preencha todos os campos
-					</Text>
+		<>
+			<Header goBack />
+			<ScrollView
+				contentContainerStyle={{
+					flexGrow: 1,
+					justifyContent: 'flex-start',
+					alignItems: 'center',
+					paddingBottom: 20,
+				}}
+				alwaysBounceVertical={false}
+				showsVerticalScrollIndicator={false}
+			>
+				<View style={{ marginVertical: 10, width: '100%', alignItems: 'center' }}>
+					<FormStepsBar maxSteps={3} currentStep={2} />
+					<Text style={styles.pageTitle}>{formPage.title}</Text>
 				</View>
-			)}
-			<View style={styles.buttonContainer}>
-				<PrimaryButton
-					title='Continuar'
-					onPress={() => {
-						if (checkIfFieldsAreFilled()) {
-							setError(false)
-							navigation.navigate('SolicitarServicosForm3' as never)
-						} else {
-							setError(true)
-						}
-					}}
-				/>
-			</View>
-		</ScrollView>
+				{formPage.sections.map((section, key1) => {
+					return (
+						<View style={styles.section} key={key1}>
+							<Text style={styles.sectionTitle}>{section.title}</Text>
+							{section.fields.map((field, key2) => {
+								return (
+									<View style={styles.field} key={key2}>
+										<Text style={styles.fieldLabel}>{field.label}</Text>
+										{field.type === 'textInput' ? (
+											<TextInput
+												style={styles.textInput}
+												placeholder='Digite aqui...'
+												onChangeText={text => {
+													ServicesCtx.updateData(field.alias, text)
+												}}
+												value={ServicesCtx.data[field.alias] || ''}
+											/>
+										) : field.type === 'textArea' ? (
+											<TextInput
+												style={styles.textInput}
+												multiline
+												numberOfLines={4}
+												placeholder='Digite aqui...'
+												value={field.value as string}
+											/>
+										) : (
+											<View />
+										)}
+									</View>
+								)
+							})}
+						</View>
+					)
+				})}
+				{error && (
+					<View style={{ marginTop: 15 }}>
+						<Text style={{ color: 'red', fontSize: 14, fontWeight: '400' }}>
+							Preencha todos os campos
+						</Text>
+					</View>
+				)}
+				<View style={styles.buttonContainer}>
+					<PrimaryButton
+						title='Continuar'
+						onPress={() => {
+							if (checkIfFieldsAreFilled()) {
+								setError(false)
+								navigation.navigate('SolicitarServicosForm3' as RoutesType)
+							} else {
+								setError(true)
+							}
+						}}
+					/>
+				</View>
+			</ScrollView>
+		</>
 	)
 }
 
@@ -134,22 +139,22 @@ const styles = StyleSheet.create({
 		color: COLORS.primary500,
 		opacity: 0.5,
 		fontWeight: '500',
-		marginVertical: 10
+		marginVertical: 10,
 	},
 	section: {
-		width: '100%'
+		width: '100%',
 	},
 	sectionTitle: {},
 	field: {
 		width: '100%',
 		paddingHorizontal: '7%',
-		marginBottom: 10
+		marginBottom: 10,
 	},
 	fieldLabel: {
 		fontWeight: '500',
 		fontSize: 14,
 		opacity: 1,
-		color: COLORS.primary500
+		color: COLORS.primary500,
 	},
 	textInput: {
 		borderColor: COLORS.primary500,
@@ -158,9 +163,9 @@ const styles = StyleSheet.create({
 		fontSize: 14,
 		paddingHorizontal: 15,
 		paddingVertical: 8,
-		color: COLORS.primary400
+		color: COLORS.primary400,
 	},
 	buttonContainer: {
-		marginVertical: 20
-	}
+		marginVertical: 20,
+	},
 })

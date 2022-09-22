@@ -5,45 +5,39 @@ import {
 	StyleSheet,
 	Image,
 	Platform,
-	ImageSourcePropType
+	ImageSourcePropType,
 } from 'react-native'
-import { useContext } from 'react'
+import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { MajorService, MinorService } from '../../types/global'
 import { COLORS } from '../../constants/colors'
-import { SolicitarServicoFormContext } from '../../store/SolicitarServicosContext'
+import { useServiceRequestForm } from '../../store/SolicitarServicosContext'
 
 interface ServiceItemProps {
 	service: MajorService | MinorService
 }
 
 export function ServiceItem(props: ServiceItemProps) {
-	const ServiceCtx = useContext(SolicitarServicoFormContext)
+	const ServiceCtx = useServiceRequestForm()
 
 	const navigation = useNavigation()
 
 	function handleNavigation() {
 		if (props.service.category === 'MajorService') {
 			ServiceCtx.updateMajorServiceId(props.service.id)
-			navigation.navigate(
-				'SolicitarServicosMinor' as never,
-				{
-					serviceId: props.service.id,
-					serviceType: 'MinorServices',
-					serviceTitle: props.service.title
-				} as never
-			)
+			navigation.navigate('SolicitarServicosMinor', {
+				serviceId: props.service.id,
+				serviceType: 'MinorServices',
+				serviceTitle: props.service.title,
+			} as never)
 		} else if (props.service.category === 'MinorService') {
 			ServiceCtx.updateMinorServiceId(props.service.id)
-			navigation.navigate(
-				'SolicitarServicosForm1' as never,
-				{
-					serviceId: (props.service as MinorService).formId,
-					serviceType: 'MinorServiceForm',
-					serviceTitle: props.service.title,
-					step: 1
-				} as never
-			)
+			navigation.navigate('SolicitarServicosForm1', {
+				serviceId: (props.service as MinorService).formId,
+				serviceType: 'MinorServiceForm',
+				serviceTitle: props.service.title,
+				step: 1,
+			} as never)
 		}
 	}
 
@@ -87,34 +81,34 @@ const styles = StyleSheet.create({
 		shadowRadius: 3,
 		shadowOpacity: 0.3,
 		marginBottom: 20,
-		marginHorizontal: 6
+		marginHorizontal: 6,
 	},
 	innerContainer: {
 		flex: 1,
 		flexDirection: 'row',
 		alignItems: 'center',
 		padding: 6,
-		justifyContent: 'space-around'
+		justifyContent: 'space-around',
 	},
 	pressed: {
-		opacity: 0.6
+		opacity: 0.6,
 	},
 	serviceImage: {
 		width: 65,
-		height: 65
+		height: 65,
 	},
 	serviceImageContainer: {
 		width: '50%',
-		alignItems: 'center'
+		alignItems: 'center',
 	},
 	serviceTitleContainer: {
 		width: '50%',
-		alignItems: 'center'
+		alignItems: 'center',
 	},
 	serviceTitle: {
 		fontSize: 20,
 		color: COLORS.primary500,
 		textAlign: 'center',
-		fontWeight: '500'
-	}
+		fontWeight: '500',
+	},
 })

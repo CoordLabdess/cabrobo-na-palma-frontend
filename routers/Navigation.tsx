@@ -1,5 +1,5 @@
 import { View, Text } from 'react-native'
-import { useContext } from 'react'
+import React, { useContext } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { StatusBar } from 'expo-status-bar'
 import { UserTypeNavigation } from './UserTypeNavigation'
@@ -7,8 +7,8 @@ import { AuthContext } from '../store/AuthContext'
 import { RootPublicRouter } from './public/RootPublicRouter'
 
 export function Navigation() {
-	const authCtx = useContext(AuthContext)
-	return authCtx.isAuthenticated ? (
+	const { isAuthenticated } = useContext(AuthContext)
+	return isAuthenticated ? (
 		<UserTypeNavigation />
 	) : (
 		<NavigationContainer>

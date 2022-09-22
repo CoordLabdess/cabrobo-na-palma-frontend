@@ -8,7 +8,7 @@ import genericUserImg from '../assets/public/genericUser.png'
 export function UserHeader() {
 	const authCtx = useContext(AuthContext)
 	return (
-		<View style={{ flex: 1 }}>
+		<View style={{ width: '100%' }}>
 			<View style={styles.headerContainer}>
 				<Pressable style={styles.userInfoContainer}>
 					<View style={styles.profileImageContainer}>
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		padding: 10,
 		backgroundColor: '#ACB1C6',
-		flex: 1,
+		// flex: 1,
 		justifyContent: 'space-between',
 	},
 	linkContainer: {
