@@ -9,6 +9,7 @@ import {
 	ImageURISource,
 } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+import { Column, ScrollView } from 'native-base'
 import { MinorService, MajorService, RouteProp, Tool } from '../../../types/global'
 import { allMajorServices } from '../../../data/majorServices'
 import { allMinorServices } from '../../../data/minorServices'
@@ -79,44 +80,27 @@ export function ServicesScreen2(props: ServiceScreenProps) {
 	}
 
 	return (
-		<View>
+		<ScrollView>
 			<Header goBack />
-			<FlatList
-				keyboardShouldPersistTaps='handled'
-				contentContainerStyle={{
-					flexGrow: 1,
-					justifyContent: 'flex-start',
-					paddingHorizontal: '5%',
-					alignItems: 'center',
-					paddingBottom: 20,
-				}}
-				alwaysBounceVertical={false}
-				showsVerticalScrollIndicator={false}
-				ListHeaderComponent={() => (
-					<View style={styles.servicesGridTitleContainer}>
-						<View style={{ alignItems: 'center' }}>
-							<Image
-								resizeMode='contain'
-								style={styles.serviceImg}
-								source={currentService.img2 as ImageSourcePropType}
-								defaultSource={currentService.img2 as ImageURISource}
-							/>
-							<Text style={styles.servicesGridTitle}>
-								Envie sua solicitação referente ao servico de {currentService.title}.
-							</Text>
-						</View>
-					</View>
-				)}
-				data={dataArray}
-				keyExtractor={item => {
-					return item.id.toString()
-				}}
-				renderItem={itemData => {
-					return <ServiceItem service={itemData.item} />
-				}}
-				numColumns={1}
-			/>
-		</View>
+			<View style={styles.servicesGridTitleContainer}>
+				<View style={{ alignItems: 'center' }}>
+					<Image
+						resizeMode='contain'
+						style={styles.serviceImg}
+						source={currentService.img2 as ImageSourcePropType}
+						defaultSource={currentService.img2 as ImageURISource}
+					/>
+					<Text style={styles.servicesGridTitle}>
+						Envie sua solicitação referente ao servico de {currentService.title}.
+					</Text>
+				</View>
+			</View>
+			<Column alignItems='center'>
+				{dataArray.map((item, index) => {
+					return <ServiceItem service={item} key={index} />
+				})}
+			</Column>
+		</ScrollView>
 	)
 }
 

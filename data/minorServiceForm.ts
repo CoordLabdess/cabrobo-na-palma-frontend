@@ -272,9 +272,6 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 			},
 		],
 	},
-	//
-	//
-	//
 	{
 		minorServiceId: 3,
 		pages: [
@@ -401,9 +398,6 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 			},
 		],
 	},
-	//
-	//
-	//
 	{
 		minorServiceId: 4,
 		pages: [
@@ -537,9 +531,6 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 			},
 		],
 	},
-	//
-	//
-	//
 	{
 		minorServiceId: 5,
 		pages: [
