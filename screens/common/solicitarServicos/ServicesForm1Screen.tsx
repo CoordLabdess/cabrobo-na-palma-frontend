@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useLayoutEffect, useState, useRef } from 'react'
+import React, { useLayoutEffect, useState, useRef } from 'react'
 import { View, Text, StyleSheet, ScrollView, Dimensions, Pressable } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { FormStepsBar } from '../../../components/form/FormStepsBar'
@@ -13,11 +13,9 @@ import { RoutesType } from '../../../types/routes'
 
 export function ServicesForm1Screen() {
 	const navigation = useNavigation()
-	const ServicesCtx = useServiceRequestForm()
+	const { updateData, data, minorServiceId } = useServiceRequestForm()
 	const [error, setError] = useState(false)
-	const mService = allMinorServices.filter(
-		minService => minService.id === ServicesCtx.minorServiceId,
-	)[0]
+	const mService = allMinorServices.filter(minService => minService.id === minorServiceId)[0]
 	const [lockedMap, setLockedMap] = useState(true)
 	const scrollViewRef = useRef<ScrollView>(null)
 
@@ -51,7 +49,7 @@ export function ServicesForm1Screen() {
 				<View style={{ width: '100%', height: Dimensions.get('window').height * 0.5 }}>
 					<HTMLMap
 						onFirstMark={() => scrollViewRef.current?.scrollToEnd({ animated: true })}
-						onCoordsChange={c => ServicesCtx.updateData('coords', c)}
+						onCoordsChange={c => updateData('coords', c)}
 					/>
 					{lockedMap && (
 						<Pressable
@@ -95,7 +93,7 @@ export function ServicesForm1Screen() {
 					<View style={styles.continueContainer}>
 						<PrimaryButton
 							onPress={() => {
-								if (ServicesCtx.data['coords']) {
+								if (data['coords']) {
 									setError(false)
 									navigation.navigate('SolicitarServicosForm2' as RoutesType)
 								} else {

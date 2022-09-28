@@ -10,6 +10,8 @@ import { useServiceRequestForm } from '../../../store/SolicitarServicosContext'
 import { allMinorServices } from '../../../data/minorServices'
 import Header from '../../../components/common/Header'
 import { RoutesType } from '../../../types/routes'
+import FirstMinorService1Form from '../../../components/form/MinorService1Form'
+import FirstMinorService2Form from '../../../components/form/MinorService2Form'
 
 interface FormData {
 	[key: string]: any
@@ -18,22 +20,19 @@ interface FormData {
 export function ServicesForm2Screen() {
 	const [formPage, setFormPage] = useState<FormPage | null>()
 	const navigation = useNavigation()
-	const ServicesCtx = useServiceRequestForm()
+	const { minorServiceId, data, updateData } = useServiceRequestForm()
 	const [error, setError] = useState(false)
 	const [isMissing, setIsMissing] = useState(true)
 
-	const mService = allMinorServices.filter(
-		minService => minService.id === ServicesCtx.minorServiceId,
-	)[0]
+	const mService = allMinorServices.filter(minService => minService.id === minorServiceId)[0]
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
 			title: mService.title,
 		})
 		setFormPage(
-			allMinorServicesForm.filter(
-				minSrvForm => minSrvForm.minorServiceId === ServicesCtx.minorServiceId,
-			)[0].pages[1],
+			allMinorServicesForm.filter(minSrvForm => minSrvForm.minorServiceId === minorServiceId)[0]
+				.pages[1],
 		)
 	}, [])
 
@@ -43,18 +42,6 @@ export function ServicesForm2Screen() {
 				<Text>aaa</Text>
 			</View>
 		)
-	}
-
-	function checkIfFieldsAreFilled() {
-		if (
-			ServicesCtx?.data['logradouro']?.trim() &&
-			ServicesCtx?.data['bairro']?.trim() &&
-			ServicesCtx?.data['numero']?.trim() &&
-			ServicesCtx?.data['pontoDeReferencia']?.trim()
-		) {
-			return true
-		}
-		return false
 	}
 
 	return (
@@ -74,60 +61,7 @@ export function ServicesForm2Screen() {
 					<FormStepsBar maxSteps={3} currentStep={2} />
 					<Text style={styles.pageTitle}>{formPage.title}</Text>
 				</View>
-				{formPage.sections.map((section, key1) => {
-					return (
-						<View style={styles.section} key={key1}>
-							<Text style={styles.sectionTitle}>{section.title}</Text>
-							{section.fields.map((field, key2) => {
-								return (
-									<View style={styles.field} key={key2}>
-										<Text style={styles.fieldLabel}>{field.label}</Text>
-										{field.type === 'textInput' ? (
-											<TextInput
-												style={styles.textInput}
-												placeholder='Digite aqui...'
-												onChangeText={text => {
-													ServicesCtx.updateData(field.alias, text)
-												}}
-												value={ServicesCtx.data[field.alias] || ''}
-											/>
-										) : field.type === 'textArea' ? (
-											<TextInput
-												style={styles.textInput}
-												multiline
-												numberOfLines={4}
-												placeholder='Digite aqui...'
-												value={field.value as string}
-											/>
-										) : (
-											<View />
-										)}
-									</View>
-								)
-							})}
-						</View>
-					)
-				})}
-				{error && (
-					<View style={{ marginTop: 15 }}>
-						<Text style={{ color: 'red', fontSize: 14, fontWeight: '400' }}>
-							Preencha todos os campos
-						</Text>
-					</View>
-				)}
-				<View style={styles.buttonContainer}>
-					<PrimaryButton
-						title='Continuar'
-						onPress={() => {
-							if (checkIfFieldsAreFilled()) {
-								setError(false)
-								navigation.navigate('SolicitarServicosForm3' as RoutesType)
-							} else {
-								setError(true)
-							}
-						}}
-					/>
-				</View>
+				{minorServiceId <= 3 ? <FirstMinorService1Form /> : <FirstMinorService2Form />}
 			</ScrollView>
 		</>
 	)

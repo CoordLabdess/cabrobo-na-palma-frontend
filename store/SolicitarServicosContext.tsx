@@ -10,6 +10,7 @@ interface ServiceRequestFormContextData {
 	updateMajorServiceId: (id: number) => void
 	updateMinorServiceId: (id: number) => void
 	updateData: (key: string, value: any) => void
+	updateForm: (object: { [key: string]: any }) => void
 }
 
 export const ServiceRequestFormContext = createContext<ServiceRequestFormContextData>(
@@ -37,6 +38,14 @@ export function ServiceRequestFormProvider(props: { children: React.ReactNode })
 		})
 	}
 
+	const updateForm = (object: { [key: string]: any }) => {
+		setData(oldState => {
+			return { ...oldState, ...object }
+		})
+	}
+
+	console.log(data)
+
 	const value = {
 		majorServiceId,
 		minorServiceId,
@@ -44,6 +53,7 @@ export function ServiceRequestFormProvider(props: { children: React.ReactNode })
 		updateData,
 		updateMajorServiceId,
 		updateMinorServiceId,
+		updateForm,
 	}
 
 	return (

@@ -31,6 +31,8 @@ interface FormData {
 }
 
 export function ServicesForm3Screen() {
+	const { minorServiceId, data, updateData } = useServiceRequestForm()
+
 	const [formPage, setFormPage] = useState<FormPage | null>()
 	const navigation = useNavigation()
 	const [error, setError] = useState(false)
@@ -273,7 +275,7 @@ export function ServicesForm3Screen() {
 					buttonTitle='Voltar ao início'
 					message={`Parabéns! Sua solicitação foi enviada com sucesso à prefeitura. Número do protocolo gerado:`}
 					protocol={protocol}
-					onContinue={() => navigation.navigate('Inicio' as RoutesType)}
+					onContinue={() => navigation.navigate('Root' as RoutesType)}
 					title='Sucesso!'
 				/>
 			</ScrollView>
