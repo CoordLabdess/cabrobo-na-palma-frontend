@@ -24,6 +24,7 @@ import { EducacaoHomeScreen } from '../../screens/common/educacao/EducacaoHomeSc
 import { PontosDeColetaScreen } from '../../screens/common/educacao/PontosDeColetaScreen'
 import { MenuScreen } from '../../screens/common/MenuScreen'
 import { PersonalData } from '../../screens/common/ProfileScreen/PersonalData'
+import EstablishmentsListScreen from '../../screens/common/EstablishmentsListScreen'
 
 const BottomTab = createBottomTabNavigator<RootTabParamList>()
 
@@ -164,7 +165,7 @@ export function HomeNavigator() {
 			/>
 			<Stack.Screen
 				name='procurarEstabelecimento'
-				component={PaginaEmConstrucao}
+				component={EstablishmentsListScreen}
 				options={{
 					title: 'Procurar Estabelecimento',
 					animation: 'none',

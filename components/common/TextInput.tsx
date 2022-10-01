@@ -17,6 +17,7 @@ interface TextInputProps {
 	exclude?: boolean
 	handleIconPress?: () => void
 	title?: string
+	placeholder?: string
 }
 
 export function TextInput({
@@ -27,6 +28,7 @@ export function TextInput({
 	errorMessage,
 	numeric,
 	title,
+	placeholder = 'Digite aqui...',
 }: TextInputProps) {
 	return (
 		<View>
@@ -52,7 +54,7 @@ export function TextInput({
 						borderColor: 'black',
 						backgroundColor: 'transparent',
 					}}
-					placeholder='Digite aqui...'
+					placeholder={placeholder}
 				/>
 				{errorMessage && (
 					<FormControl.HelperText

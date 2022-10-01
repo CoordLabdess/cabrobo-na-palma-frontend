@@ -6,6 +6,7 @@ import { Navigation } from './routers/Navigation'
 import { AuthContextProvider } from './store/AuthContext'
 import { RegisterEnterpriseContextProvider } from './store/CadastrarEmpresaContext'
 import { ServiceRequestFormProvider } from './store/SolicitarServicosContext'
+import { UserProvider } from './store/userContext'
 
 export default function App() {
 	return (
@@ -13,21 +14,23 @@ export default function App() {
 			<NativeBaseProvider>
 				<AuthContextProvider>
 					<ServiceRequestFormProvider>
-						<RegisterEnterpriseContextProvider>
-							<SafeAreaView style={{ flex: 1, backgroundColor: '#000' }}>
-								{Platform.OS === 'ios' ? (
-									<KeyboardAvoidingView
-										style={{ width: '100%', height: '100%' }}
-										behavior='padding'
-										keyboardVerticalOffset={0}
-									>
+						<UserProvider>
+							<RegisterEnterpriseContextProvider>
+								<SafeAreaView style={{ flex: 1, backgroundColor: '#000' }}>
+									{Platform.OS === 'ios' ? (
+										<KeyboardAvoidingView
+											style={{ width: '100%', height: '100%' }}
+											behavior='padding'
+											keyboardVerticalOffset={0}
+										>
+											<Navigation />
+										</KeyboardAvoidingView>
+									) : (
 										<Navigation />
-									</KeyboardAvoidingView>
-								) : (
-									<Navigation />
-								)}
-							</SafeAreaView>
-						</RegisterEnterpriseContextProvider>
+									)}
+								</SafeAreaView>
+							</RegisterEnterpriseContextProvider>
+						</UserProvider>
 					</ServiceRequestFormProvider>
 				</AuthContextProvider>
 			</NativeBaseProvider>

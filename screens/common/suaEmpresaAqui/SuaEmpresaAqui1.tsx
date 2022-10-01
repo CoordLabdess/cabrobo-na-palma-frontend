@@ -90,7 +90,7 @@ export function SuaEmpresaAqui1(props: ServiceScreenProps) {
 
 	return (
 		<View>
-			<Header goBack />
+			<Header goBack title='Sua Empresa Aqui' />
 			<FlatList
 				keyboardShouldPersistTaps='handled'
 				contentContainerStyle={{
