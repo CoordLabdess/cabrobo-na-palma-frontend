@@ -23,6 +23,7 @@ import { MapaDeDengueScreen } from '../../screens/common/saude/MapaDeDengueScree
 import { EducacaoHomeScreen } from '../../screens/common/educacao/EducacaoHomeScreen'
 import { PontosDeColetaScreen } from '../../screens/common/educacao/PontosDeColetaScreen'
 import { MenuScreen } from '../../screens/common/MenuScreen'
+import { PersonalData } from '../../screens/common/ProfileScreen/PersonalData'
 
 const BottomTab = createBottomTabNavigator<RootTabParamList>()
 
@@ -127,6 +128,13 @@ export function HomeNavigator() {
 			<Stack.Screen
 				name='SolicitarServicosForm1'
 				component={ServicesForm1Screen}
+				options={{
+					animation: 'none',
+				}}
+			/>
+			<Stack.Screen
+				name='PersonalData'
+				component={PersonalData}
 				options={{
 					animation: 'none',
 				}}

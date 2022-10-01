@@ -11,6 +11,7 @@ import { useRegisterEnterprise } from '../../../store/CadastrarEmpresaContext'
 import { CadastrarEmpresaFormat, sendData } from '../../../utils/arcgis'
 import { SuccessModal } from '../../../components/modals/SuccessModal'
 import { generateFakeProtocol } from '../../../utils/fakeFunctions'
+import Header from '../../../components/common/Header'
 
 const fakeProtocol = generateFakeProtocol()
 
@@ -65,6 +66,7 @@ export function CadastrarEmpresaScreen2() {
 
 	return (
 		<>
+			<Header goBack title='Cadastrar Estabelecimento' />
 			<ScrollView
 				contentContainerStyle={{
 					flexGrow: 1,

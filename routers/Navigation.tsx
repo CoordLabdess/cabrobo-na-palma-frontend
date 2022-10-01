@@ -5,15 +5,23 @@ import { StatusBar } from 'expo-status-bar'
 import { UserTypeNavigation } from './UserTypeNavigation'
 import { AuthContext } from '../store/AuthContext'
 import { RootPublicRouter } from './public/RootPublicRouter'
+import { HomeNavigator } from './common/RootCommonRouter'
 
 export function Navigation() {
-	const { isAuthenticated } = useContext(AuthContext)
-	return isAuthenticated ? (
-		<UserTypeNavigation />
-	) : (
+	const { signed } = useContext(AuthContext)
+	return (
 		<NavigationContainer>
-			<StatusBar style='dark' backgroundColor='#fff' />
-			<RootPublicRouter />
+			{signed === 1 ? (
+				<>
+					<StatusBar style='dark' />
+					<HomeNavigator />
+				</>
+			) : signed === 2 ? (
+				<>
+					<StatusBar style='dark' backgroundColor='#fff' />
+					<RootPublicRouter />
+				</>
+			) : undefined}
 		</NavigationContainer>
 	)
 }
