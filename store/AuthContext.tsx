@@ -28,8 +28,11 @@ export function AuthContextProvider(props: { children: React.ReactNode }) {
 		setSigned(1)
 	}
 
-	function logout() {
+	async function logout() {
 		setAuthToken(null)
+		await SecureStore.deleteItemAsync('token')
+		await SecureStore.deleteItemAsync('auth')
+		setSigned(2)
 	}
 
 	async function fetchToken() {
