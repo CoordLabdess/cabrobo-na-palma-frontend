@@ -1,6 +1,9 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import * as SecureStore from 'expo-secure-store'
 import * as SplashScreen from 'expo-splash-screen'
+import { AxiosError } from 'axios'
+import { useToast } from 'native-base'
+import { api } from '../services/api'
 
 export type AuthType = 'Common' | null
 
@@ -11,6 +14,8 @@ interface Auth {
 	authenticate: (token: string, type: AuthType) => void
 	logout: () => void
 	signed: null | number
+	login: (values: any) => void
+	loading: boolean
 }
 
 export const AuthContext = createContext<Auth>({} as Auth)
@@ -19,6 +24,8 @@ export function AuthContextProvider(props: { children: React.ReactNode }) {
 	const [authToken, setAuthToken] = useState<null | string>(null)
 	const [authType, setAuthType] = useState<AuthType>(null)
 	const [signed, setSigned] = useState<null | number>(null)
+	const [loading, setLoading] = useState(false)
+	const toast = useToast()
 
 	async function authenticate(token: string, type: AuthType) {
 		await SecureStore.setItemAsync('auth', 'true')
@@ -26,6 +33,31 @@ export function AuthContextProvider(props: { children: React.ReactNode }) {
 		setAuthToken(token)
 		setAuthType(type)
 		setSigned(1)
+	}
+
+	async function login(values: any) {
+		try {
+			setLoading(true)
+			const { data } = await api.post('/login', {
+				cpf: values.login.replace(/\./g, '').replace(/\-/g, ''),
+				password: values.password,
+			})
+			await SecureStore.setItemAsync('auth', 'true')
+			await SecureStore.setItemAsync('token', data.accessToken)
+			setAuthToken(data.accessToken)
+			setAuthType('Common')
+			setSigned(1)
+		} catch (error: any) {
+			if (error.response?.data?.message.includes('incorretos')) {
+				toast.show({
+					title: 'Credenciais inválidas',
+
+					placement: 'bottom',
+				})
+			}
+		} finally {
+			setLoading(false)
+		}
 	}
 
 	async function logout() {
@@ -65,6 +97,8 @@ export function AuthContextProvider(props: { children: React.ReactNode }) {
 		authenticate,
 		logout,
 		signed,
+		login,
+		loading,
 	}
 
 	return <AuthContext.Provider value={value}>{props.children}</AuthContext.Provider>
