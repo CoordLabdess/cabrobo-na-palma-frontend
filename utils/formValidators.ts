@@ -100,6 +100,13 @@ export const MinorService1FormSchema = Yup.object().shape({
 	pontoDeReferencia: Yup.string().required('Necessário'),
 	numeroDoPoste: Yup.string(),
 })
+export const loginSchema = Yup.object().shape({
+	login: Yup.string()
+		.required('Necessário')
+		.min(14, 'Digite um CPF válido')
+		.max(14, 'Digite um CPF válido'),
+	password: Yup.string().required('Necessário').min(6, 'Mínimo 6 caracteres'),
+})
 export const MinorService2FormSchema = Yup.object().shape({
 	logradouro: Yup.string().required('Necessário'),
 	bairro: Yup.string().required('Necessário'),

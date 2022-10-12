@@ -24,6 +24,7 @@ export type RootStackParamList = {
 	Educacao: undefined
 	SaudeMapaDengue: undefined
 	PontosDeColeta: undefined
+	PersonalData: undefined
 	ComingSoon: undefined
 }
 

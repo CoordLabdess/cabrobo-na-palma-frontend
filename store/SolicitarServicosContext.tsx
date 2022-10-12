@@ -44,8 +44,6 @@ export function ServiceRequestFormProvider(props: { children: React.ReactNode })
 		})
 	}
 
-	console.log(data)
-
 	const value = {
 		majorServiceId,
 		minorServiceId,

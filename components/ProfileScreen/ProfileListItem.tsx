@@ -9,14 +9,26 @@ import {
 	FontAwesome5,
 } from '@expo/vector-icons'
 import { TouchableOpacity } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
+import { Navigation } from '../../routers/Navigation'
+import { useAuth } from '../../store/AuthContext'
 
 interface MenuListItemProps {
 	title: string
 }
 
 export default function ProfileListItem({ title }: MenuListItemProps) {
+	const navigation = useNavigation()
+	const { logout } = useAuth()
+	const handlePress = () => {
+		if (title === 'Encerrar Sessão') {
+			logout()
+		} else if (title === 'Dados Pessoais') {
+			navigation.navigate('PersonalData')
+		}
+	}
 	return (
-		<TouchableOpacity>
+		<TouchableOpacity onPress={handlePress}>
 			<Row
 				alignItems='center'
 				borderWidth={1}

@@ -8,14 +8,21 @@ import {
 	FontAwesome,
 } from '@expo/vector-icons'
 import { TouchableOpacity } from 'react-native'
+import { useNavigation } from '@react-navigation/native'
 
 interface MenuListItemProps {
 	title: string
 }
 
 export default function MenuListItem({ title }: MenuListItemProps) {
+	const navigation = useNavigation()
 	return (
-		<TouchableOpacity>
+		<TouchableOpacity
+			onPress={() => {
+				console.log(title)
+				navigation.navigate('PersonalData')
+			}}
+		>
 			<Row space={2} alignItems='center'>
 				{title === 'Minhas Solicitações' ? (
 					<MaterialCommunityIcons name='text-box-search-outline' size={24} color='#123A56' />
