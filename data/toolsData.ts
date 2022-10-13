@@ -13,6 +13,9 @@ import saudeColor from '../assets/home/saudeColor.png'
 
 import educacaoColor from '../assets/home/educacaoColor.png'
 
+import assistenciaSocial from '../assets/home/assistenciaSocial.png'
+import assistenciaSocialColor from '../assets/home/assistenciaSocialColor.png'
+
 export const allTools: Tool[] = [
 	{
 		id: 1,
@@ -71,6 +74,16 @@ export const allTools: Tool[] = [
 		title: 'Transporte Seguro',
 		img: transporteSeguroImg,
 		img2: transporteSeguroImg,
+		category: 'Tool',
+		majorServicesIds: [],
+	},
+	{
+		id: 7,
+		navigateTo: 'AssistenciaSocial',
+		alias: 'assistencia-social',
+		title: 'Assistência Social',
+		img: assistenciaSocial,
+		img2: assistenciaSocialColor,
 		category: 'Tool',
 		majorServicesIds: [],
 	},

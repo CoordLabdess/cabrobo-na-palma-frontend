@@ -7,7 +7,7 @@ import { COLORS } from '../../constants/colors'
 import { PaginaEmConstrucao } from '../../screens/public/PaginaEmConstrucao'
 import { NoticiasHomeScreen } from '../../screens/common/noticias/NoticiasHomeScreen'
 
-import { HomeScreen, ProfileScreen, ServicesScreen } from '../../screens'
+import { ComingSoon, HomeScreen, ProfileScreen, ServicesScreen } from '../../screens'
 
 import { RootStackParamList, RootTabParamList } from '../../types/routes'
 import { ServicesScreen2 } from '../../screens/common/solicitarServicos/ServicesScreen2'
@@ -25,6 +25,7 @@ import { PontosDeColetaScreen } from '../../screens/common/educacao/PontosDeCole
 import { MenuScreen } from '../../screens/common/MenuScreen'
 import { PersonalData } from '../../screens/common/ProfileScreen/PersonalData'
 import EstablishmentsListScreen from '../../screens/common/EstablishmentsListScreen'
+import { AssistenciaSocialScreen } from '../../screens/common/assistenciaSocial/AssistenciaSocialScreen'
 
 const BottomTab = createBottomTabNavigator<RootTabParamList>()
 
@@ -213,7 +214,7 @@ export function HomeNavigator() {
 				name='Educacao'
 				component={EducacaoHomeScreen}
 				options={{
-					title: 'Notícias',
+					title: 'Educação',
 					animation: 'none',
 				}}
 			/>
@@ -222,6 +223,22 @@ export function HomeNavigator() {
 				component={PontosDeColetaScreen}
 				options={{
 					title: 'Pontos de Coleta',
+					animation: 'none',
+				}}
+			/>
+			<Stack.Screen
+				name='AssistenciaSocial'
+				component={AssistenciaSocialScreen}
+				options={{
+					title: 'Assistência Social',
+					animation: 'none',
+				}}
+			/>
+			<Stack.Screen
+				name='AuxilioBrasil'
+				component={ComingSoon}
+				options={{
+					title: 'Auxílio Brasil',
 					animation: 'none',
 				}}
 			/>
