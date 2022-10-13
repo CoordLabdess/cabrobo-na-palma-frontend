@@ -26,6 +26,7 @@ import { MenuScreen } from '../../screens/common/MenuScreen'
 import { PersonalData } from '../../screens/common/ProfileScreen/PersonalData'
 import EstablishmentsListScreen from '../../screens/common/EstablishmentsListScreen'
 import { AssistenciaSocialScreen } from '../../screens/common/assistenciaSocial/AssistenciaSocialScreen'
+import { AuxilioBrasilScreen } from '../../screens/common/assistenciaSocial/AuxilioBrasilScreen'
 
 const BottomTab = createBottomTabNavigator<RootTabParamList>()
 
@@ -236,12 +237,13 @@ export function HomeNavigator() {
 			/>
 			<Stack.Screen
 				name='AuxilioBrasil'
-				component={ComingSoon}
+				component={AuxilioBrasilScreen}
 				options={{
 					title: 'Auxílio Brasil',
 					animation: 'none',
 				}}
 			/>
+
 			<Stack.Screen name='ComingSoon' component={PaginaEmConstrucao} />
 		</Stack.Navigator>
 	)
