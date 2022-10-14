@@ -71,6 +71,11 @@ export function generateToken(): Promise<string> {
 		})
 }
 
+interface Geometry {
+	x: number
+	y: number
+}
+
 export interface Estabelecimento {
 	attributes: {
 		FID: number
@@ -83,10 +88,7 @@ export interface Estabelecimento {
 		long: number
 		TIPO_ESTAB: string
 	}
-	geometry: {
-		x: number
-		y: number
-	}
+	geometry: Geometry
 }
 
 interface EstabelecimentoFeatureDataReturnInterface {
@@ -108,6 +110,34 @@ export function obterTodosEstabelecimentos(
 		)
 		.then(res => {
 			const data = res.data as EstabelecimentoFeatureDataReturnInterface
+			return data
+		})
+		.catch(err => {
+			throw new Error('Erro ao buscar os estabelecimentos')
+		})
+}
+
+// Consultar NIS
+
+export interface PessoaFisicaDataReturn {
+	attributes: {
+		NU_NIS_RF: number
+		NOME_RF: string
+		LOGRADOURO: string
+		CIDADE: string
+		ObjectId: number
+	}
+	geometry: Geometry
+}
+
+export async function obterPessoasPorNis(nis: string) {
+	const token = await generateToken()
+	return axios
+		.get(
+			`https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Assistencia/FeatureServer/0/query?where=NU_NIS_RF%3D${nis}&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&relationParam=&returnGeodetic=false&outFields=*&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&token=${token}`,
+		)
+		.then(res => {
+			const data = res.data.features as PessoaFisicaDataReturn[]
 			return data
 		})
 		.catch(err => {
