@@ -1,4 +1,4 @@
-import React, { useContext, useLayoutEffect, useState } from 'react'
+import React, { useContext, useEffect, useLayoutEffect, useState } from 'react'
 import { ScrollView, View, Text, StyleSheet, TextInput, Image } from 'react-native'
 
 import AsyncStorage from '@react-native-async-storage/async-storage'
@@ -6,6 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { Ionicons } from '@expo/vector-icons'
 import { Formik } from 'formik'
 import { Column, Button, Center } from 'native-base'
+import { useNavigation } from '@react-navigation/native'
 import { CleanTextButton } from '../../components/ui/buttons/CleanTextButton'
 import { PrimaryButton } from '../../components/ui/PrimaryButton'
 import { CleanTextInput } from '../../components/ui/textInputs/CleanTextInput'
@@ -16,6 +17,7 @@ import { PrivacyPolicyModal } from '../../components/modals/PrivacyPolicyModal'
 import { sendData } from '../../utils/arcgis'
 import { removerCaracteresEspeciais } from '../../utils/validaçõesString'
 import { loginSchema, MinorService1FormSchema } from '../../utils/formValidators'
+import { Navigation } from '../../routers/Navigation'
 
 export function LoginScreen() {
 	const [cpf, setCpf] = useState('')
@@ -25,7 +27,8 @@ export function LoginScreen() {
 	const [emptyCredentials, setEmptyCredentials] = useState(false)
 	const [isLoading, setIsLoading] = useState(false)
 	const [acceptedPolicy, setAcceptedPolicy] = useState(true)
-	const { login, loading } = useAuth()
+	const { login, loading, signed } = useAuth()
+	const navigation = useNavigation()
 
 	async function storeData(key: string, value: string) {
 		try {
@@ -53,6 +56,12 @@ export function LoginScreen() {
 			setAcceptedPolicy(value === 'true')
 		})
 	}
+
+	useEffect(() => {
+		if (signed === 1) {
+			navigation.navigate('Root')
+		}
+	}, [signed])
 
 	useLayoutEffect(() => {
 		// storeData('hasAcceptedPolicy', 'false')
@@ -90,7 +99,7 @@ export function LoginScreen() {
 							login(values)
 						}}
 						initialValues={{
-							login: '',
+							cpf: '',
 							password: '',
 						}}
 					>
@@ -99,7 +108,7 @@ export function LoginScreen() {
 								const s = removerCaracteresEspeciais(text).split('')
 								if (s.length <= 11) {
 									setFieldValue(
-										'login',
+										'cpf',
 										s
 											.map((b, i) => {
 												if (i === 9) {
@@ -124,7 +133,7 @@ export function LoginScreen() {
 										keyboardType='number-pad'
 										returnKeyLabel='Prox'
 										style={styles.textInput}
-										value={values['login']}
+										value={values['cpf']}
 										placeholder='CPF'
 										onChangeText={text => {
 											writeCPF(text)

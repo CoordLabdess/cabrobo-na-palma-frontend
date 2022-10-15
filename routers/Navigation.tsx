@@ -11,7 +11,7 @@ export function Navigation() {
 	const { signed } = useContext(AuthContext)
 	return (
 		<NavigationContainer>
-			{signed === 1 ? (
+			{/* {signed === 1 ? (
 				<>
 					<StatusBar style='dark' />
 					<HomeNavigator />
@@ -21,7 +21,9 @@ export function Navigation() {
 					<StatusBar style='dark' backgroundColor='#fff' />
 					<RootPublicRouter />
 				</>
-			) : undefined}
+			) : undefined} */}
+			<StatusBar style='dark' />
+			<HomeNavigator />
 		</NavigationContainer>
 	)
 }

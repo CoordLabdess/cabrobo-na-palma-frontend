@@ -25,6 +25,8 @@ import { PontosDeColetaScreen } from '../../screens/common/educacao/PontosDeCole
 import { MenuScreen } from '../../screens/common/MenuScreen'
 import { PersonalData } from '../../screens/common/ProfileScreen/PersonalData'
 import EstablishmentsListScreen from '../../screens/common/EstablishmentsListScreen'
+import { LoginScreen } from '../../screens/public/LoginScreen'
+import SignUpScreen from '../../screens/public/SignUpScreen'
 
 const BottomTab = createBottomTabNavigator<RootTabParamList>()
 
@@ -118,6 +120,22 @@ export function HomeNavigator() {
 	return (
 		<Stack.Navigator screenOptions={{ headerShown: false }}>
 			<Stack.Screen name='Root' component={RootCommonRouter} />
+			<Stack.Screen
+				name='Login'
+				component={LoginScreen}
+				options={{
+					title: 'Login',
+					animation: 'slide_from_right',
+				}}
+			/>
+			<Stack.Screen
+				name='Signup'
+				component={SignUpScreen}
+				options={{
+					title: 'Cadastro',
+					animation: 'slide_from_right',
+				}}
+			/>
 			<Stack.Screen
 				name='SolicitarServicos'
 				component={ServicesScreen}

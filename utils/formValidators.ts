@@ -101,7 +101,7 @@ export const MinorService1FormSchema = Yup.object().shape({
 	numeroDoPoste: Yup.string(),
 })
 export const loginSchema = Yup.object().shape({
-	login: Yup.string()
+	cpf: Yup.string()
 		.required('Necessário')
 		.min(14, 'Digite um CPF válido')
 		.max(14, 'Digite um CPF válido'),
