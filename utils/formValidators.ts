@@ -114,3 +114,14 @@ export const MinorService2FormSchema = Yup.object().shape({
 	complemento: Yup.string(),
 	pontoDeReferencia: Yup.string().required('Necessário'),
 })
+
+export const SignupValidationSchema = Yup.object().shape({
+	name: Yup.string().required('Necessário'),
+	mail: Yup.string().email().required('Necessário'),
+	cpf: Yup.string().required('Necessário'),
+	phone: Yup.string().required('Necessário'),
+	password: Yup.string().required('Necessário'),
+	confirmPassword: Yup.string()
+		.oneOf([Yup.ref('password'), 'Senhas não são iguais'])
+		.required('Confirmação de senha é necessária'),
+})

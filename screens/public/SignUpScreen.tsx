@@ -7,6 +7,7 @@ import { useAuth } from '../../store/AuthContext'
 import Header from '../../components/common/Header'
 import { TextInput } from '../../components/common/TextInput'
 import { removerCaracteresEspeciais } from '../../utils/validaçõesString'
+import { SignupValidationSchema } from '../../utils/formValidators'
 
 export default function SignUpScreen() {
 	const { signed, signup, loading } = useAuth()
@@ -26,7 +27,7 @@ export default function SignUpScreen() {
 					<Formik
 						enableReinitialize
 						validateOnChange
-						// validationSchema={MinorService1FormSchema}
+						validationSchema={SignupValidationSchema}
 						onSubmit={values => {
 							signup(values)
 						}}

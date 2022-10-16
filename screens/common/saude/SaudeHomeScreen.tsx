@@ -87,7 +87,7 @@ export function SaudeHomeScreen(props: ServiceScreenProps) {
 
 	return (
 		<View>
-			<Header goBack />
+			<Header goBack title='Saúde' />
 			<FlatList
 				keyboardShouldPersistTaps='handled'
 				contentContainerStyle={{
