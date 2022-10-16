@@ -144,3 +144,174 @@ export async function obterPessoasPorNis(nis: string) {
 			throw new Error('Erro ao buscar os estabelecimentos')
 		})
 }
+
+export interface CalendarioAssitenciaDataFormat {
+	attributes: {
+		FINAL_DO_NIS: number
+		MÊS: string
+		DATA: number
+		CIDADE: string
+	}
+}
+
+export interface AssistenciaData {
+	mes: string
+	dia: string
+}
+
+export function obterProxDiaPagamento(nis: string): AssistenciaData[] {
+	const lastChar = nis.substring(nis.length - 1)
+	if (lastChar === '0') {
+		return [
+			{ mes: '01', dia: '31' },
+			{ mes: '02', dia: '25' },
+			{ mes: '03', dia: '31' },
+			{ mes: '04', dia: '29' },
+			{ mes: '05', dia: '31' },
+			{ mes: '06', dia: '30' },
+			{ mes: '07', dia: '29' },
+			{ mes: '08', dia: '31' },
+			{ mes: '09', dia: '30' },
+			{ mes: '10', dia: '31' },
+			{ mes: '11', dia: '30' },
+			{ mes: '12', dia: '23' },
+		]
+	} else if (lastChar === '1') {
+		return [
+			{ mes: '01', dia: '18' },
+			{ mes: '02', dia: '14' },
+			{ mes: '03', dia: '18' },
+			{ mes: '04', dia: '14' },
+			{ mes: '05', dia: '18' },
+			{ mes: '06', dia: '17' },
+			{ mes: '07', dia: '18' },
+			{ mes: '08', dia: '18' },
+			{ mes: '09', dia: '19' },
+			{ mes: '10', dia: '18' },
+			{ mes: '11', dia: '17' },
+			{ mes: '12', dia: '12' },
+		]
+	} else if (lastChar === '2') {
+		return [
+			{ mes: '01', dia: '19' },
+			{ mes: '02', dia: '15' },
+			{ mes: '03', dia: '21' },
+			{ mes: '04', dia: '18' },
+			{ mes: '05', dia: '19' },
+			{ mes: '06', dia: '20' },
+			{ mes: '07', dia: '19' },
+			{ mes: '08', dia: '19' },
+			{ mes: '09', dia: '20' },
+			{ mes: '10', dia: '19' },
+			{ mes: '11', dia: '18' },
+			{ mes: '12', dia: '13' },
+		]
+	} else if (lastChar === '3') {
+		return [
+			{ mes: '01', dia: '20' },
+			{ mes: '02', dia: '16' },
+			{ mes: '03', dia: '22' },
+			{ mes: '04', dia: '19' },
+			{ mes: '05', dia: '20' },
+			{ mes: '06', dia: '21' },
+			{ mes: '07', dia: '20' },
+			{ mes: '08', dia: '22' },
+			{ mes: '09', dia: '21' },
+			{ mes: '10', dia: '20' },
+			{ mes: '11', dia: '21' },
+			{ mes: '12', dia: '14' },
+		]
+	} else if (lastChar === '4') {
+		return [
+			{ mes: '01', dia: '21' },
+			{ mes: '02', dia: '17' },
+			{ mes: '03', dia: '23' },
+			{ mes: '04', dia: '20' },
+			{ mes: '05', dia: '23' },
+			{ mes: '06', dia: '22' },
+			{ mes: '07', dia: '21' },
+			{ mes: '08', dia: '23' },
+			{ mes: '09', dia: '22' },
+			{ mes: '10', dia: '21' },
+			{ mes: '11', dia: '22' },
+			{ mes: '12', dia: '15' },
+		]
+	} else if (lastChar === '5') {
+		return [
+			{ mes: '01', dia: '24' },
+			{ mes: '02', dia: '18' },
+			{ mes: '03', dia: '24' },
+			{ mes: '04', dia: '22' },
+			{ mes: '05', dia: '24' },
+			{ mes: '06', dia: '23' },
+			{ mes: '07', dia: '22' },
+			{ mes: '08', dia: '24' },
+			{ mes: '09', dia: '23' },
+			{ mes: '10', dia: '24' },
+			{ mes: '11', dia: '23' },
+			{ mes: '12', dia: '16' },
+		]
+	} else if (lastChar === '6') {
+		return [
+			{ mes: '01', dia: '25' },
+			{ mes: '02', dia: '21' },
+			{ mes: '03', dia: '25' },
+			{ mes: '04', dia: '25' },
+			{ mes: '05', dia: '25' },
+			{ mes: '06', dia: '24' },
+			{ mes: '07', dia: '25' },
+			{ mes: '08', dia: '25' },
+			{ mes: '09', dia: '26' },
+			{ mes: '10', dia: '25' },
+			{ mes: '11', dia: '24' },
+			{ mes: '12', dia: '19' },
+		]
+	} else if (lastChar === '7') {
+		return [
+			{ mes: '01', dia: '26' },
+			{ mes: '02', dia: '22' },
+			{ mes: '03', dia: '28' },
+			{ mes: '04', dia: '26' },
+			{ mes: '05', dia: '26' },
+			{ mes: '06', dia: '27' },
+			{ mes: '07', dia: '26' },
+			{ mes: '08', dia: '26' },
+			{ mes: '09', dia: '27' },
+			{ mes: '10', dia: '26' },
+			{ mes: '11', dia: '25' },
+			{ mes: '12', dia: '20' },
+		]
+	} else if (lastChar === '8') {
+		return [
+			{ mes: '01', dia: '27' },
+			{ mes: '02', dia: '23' },
+			{ mes: '03', dia: '29' },
+			{ mes: '04', dia: '27' },
+			{ mes: '05', dia: '27' },
+			{ mes: '06', dia: '28' },
+			{ mes: '07', dia: '27' },
+			{ mes: '08', dia: '29' },
+			{ mes: '09', dia: '28' },
+			{ mes: '10', dia: '27' },
+			{ mes: '11', dia: '28' },
+			{ mes: '12', dia: '21' },
+		]
+	} else if (lastChar === '9') {
+		return [
+			{ mes: '01', dia: '28' },
+			{ mes: '02', dia: '24' },
+			{ mes: '03', dia: '30' },
+			{ mes: '04', dia: '28' },
+			{ mes: '05', dia: '30' },
+			{ mes: '06', dia: '29' },
+			{ mes: '07', dia: '28' },
+			{ mes: '08', dia: '30' },
+			{ mes: '09', dia: '29' },
+			{ mes: '10', dia: '28' },
+			{ mes: '11', dia: '29' },
+			{ mes: '12', dia: '22' },
+		]
+	} else {
+		return []
+	}
+}
