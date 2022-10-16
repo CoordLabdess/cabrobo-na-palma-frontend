@@ -11,6 +11,9 @@ declare global {
 export type RootStackParamList = {
 	SolicitarServicos: undefined
 	Root: NavigatorScreenParams<RootTabParamList> | undefined
+	Login: undefined
+	Signup: undefined
+	RequestsScreen: undefined
 	SolicitarServicosMinor: undefined
 	SolicitarServicosForm1: undefined
 	SolicitarServicosForm2: undefined

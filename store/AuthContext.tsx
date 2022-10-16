@@ -3,7 +3,9 @@ import * as SecureStore from 'expo-secure-store'
 import * as SplashScreen from 'expo-splash-screen'
 import { AxiosError } from 'axios'
 import { useToast } from 'native-base'
+import { useNavigation } from '@react-navigation/native'
 import { api } from '../services/api'
+import { UserProps } from '../utils/contextTypes'
 
 export type AuthType = 'Common' | null
 
@@ -16,6 +18,8 @@ interface Auth {
 	signed: null | number
 	login: (values: any) => void
 	loading: boolean
+	signup: (values: any) => void
+	user: UserProps
 }
 
 export const AuthContext = createContext<Auth>({} as Auth)
@@ -25,6 +29,7 @@ export function AuthContextProvider(props: { children: React.ReactNode }) {
 	const [authType, setAuthType] = useState<AuthType>(null)
 	const [signed, setSigned] = useState<null | number>(null)
 	const [loading, setLoading] = useState(false)
+	const [user, setUser] = useState<UserProps>({} as UserProps)
 	const toast = useToast()
 
 	async function authenticate(token: string, type: AuthType) {
@@ -39,7 +44,7 @@ export function AuthContextProvider(props: { children: React.ReactNode }) {
 		try {
 			setLoading(true)
 			const { data } = await api.post('/login', {
-				cpf: values.login.replace(/\./g, '').replace(/\-/g, ''),
+				cpf: values.cpf.replace(/\./g, '').replace(/\-/g, ''),
 				password: values.password,
 			})
 			await SecureStore.setItemAsync('auth', 'true')
@@ -60,11 +65,41 @@ export function AuthContextProvider(props: { children: React.ReactNode }) {
 		}
 	}
 
+	async function signup(values: any) {
+		try {
+			setLoading(true)
+			const { data } = await api.post('/user/createUser', {
+				cpf: values.cpf.replace(/\./g, '').replace(/\-/g, ''),
+				email: values.mail,
+				nome: values.name,
+				telefone: values.phone.replace(/\-/g, '').replace(/\(/g, '').replace(/\)/g, ''),
+				senha: values.password,
+			})
+			login(values)
+		} catch (error: any) {
+			console.log(error.response?.data)
+		} finally {
+			setLoading(false)
+		}
+	}
+
 	async function logout() {
 		setAuthToken(null)
 		await SecureStore.deleteItemAsync('token')
 		await SecureStore.deleteItemAsync('auth')
 		setSigned(2)
+	}
+
+	async function listUser() {
+		try {
+			setLoading(true)
+			const { data } = await api.get('/user')
+			setUser(data)
+		} catch (error: any) {
+			console.log(error.response?.data)
+		} finally {
+			setLoading(false)
+		}
 	}
 
 	async function fetchToken() {
@@ -81,6 +116,9 @@ export function AuthContextProvider(props: { children: React.ReactNode }) {
 		try {
 			SplashScreen.preventAutoHideAsync()
 			fetchToken()
+			if (signed === 1) {
+				listUser()
+			}
 		} catch (error) {
 			console.log(error)
 		} finally {
@@ -99,6 +137,8 @@ export function AuthContextProvider(props: { children: React.ReactNode }) {
 		signed,
 		login,
 		loading,
+		signup,
+		user,
 	}
 
 	return <AuthContext.Provider value={value}>{props.children}</AuthContext.Provider>

@@ -1,10 +1,10 @@
-import { FormControl, HStack, Icon, Input, Row, Text, View } from 'native-base'
+import { FormControl, HStack, Icon, IInputProps, Input, Row, Text, View } from 'native-base'
 import { convertAbsoluteToRem } from 'native-base/lib/typescript/theme/v33x-theme/tools'
 import React, { useState } from 'react'
 import { MaterialIcons, AntDesign } from '@expo/vector-icons'
 import { COLORS } from '../../constants/colors'
 
-interface TextInputProps {
+interface TextInputProps extends IInputProps {
 	question?: string
 	handleChange: (text: string) => void
 	value: string

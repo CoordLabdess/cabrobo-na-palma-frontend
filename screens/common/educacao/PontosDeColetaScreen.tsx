@@ -20,7 +20,7 @@ export function PontosDeColetaScreen() {
 
 	return (
 		<>
-			<Header goBack />
+			<Header goBack title='Pontos de Coleta' />
 			<ScrollView
 				scrollEnabled={lockedMap}
 				contentContainerStyle={{

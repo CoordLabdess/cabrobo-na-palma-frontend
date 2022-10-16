@@ -19,7 +19,6 @@ export default function MenuListItem({ title }: MenuListItemProps) {
 	return (
 		<TouchableOpacity
 			onPress={() => {
-				console.log(title)
 				navigation.navigate('PersonalData')
 			}}
 		>

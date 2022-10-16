@@ -101,7 +101,7 @@ export const MinorService1FormSchema = Yup.object().shape({
 	numeroDoPoste: Yup.string(),
 })
 export const loginSchema = Yup.object().shape({
-	login: Yup.string()
+	cpf: Yup.string()
 		.required('Necessário')
 		.min(14, 'Digite um CPF válido')
 		.max(14, 'Digite um CPF válido'),
@@ -113,4 +113,15 @@ export const MinorService2FormSchema = Yup.object().shape({
 	numero: Yup.number().required('Necessário'),
 	complemento: Yup.string(),
 	pontoDeReferencia: Yup.string().required('Necessário'),
+})
+
+export const SignupValidationSchema = Yup.object().shape({
+	name: Yup.string().required('Necessário'),
+	mail: Yup.string().email().required('Necessário'),
+	cpf: Yup.string().required('Necessário'),
+	phone: Yup.string().required('Necessário'),
+	password: Yup.string().required('Necessário'),
+	confirmPassword: Yup.string()
+		.oneOf([Yup.ref('password'), 'Senhas não são iguais'])
+		.required('Confirmação de senha é necessária'),
 })

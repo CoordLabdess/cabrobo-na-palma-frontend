@@ -1,25 +1,52 @@
 import { View, Text, StyleSheet, Pressable, Image, Linking } from 'react-native'
 import IonIcons from '@expo/vector-icons/Ionicons'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 import { useContext } from 'react'
+import { Text as NBText } from 'native-base'
+import { useNavigation } from '@react-navigation/native'
 import { COLORS } from '../constants/colors'
 import { AuthContext } from '../store/AuthContext'
 import genericUserImg from '../assets/public/genericUser.png'
 
 export function UserHeader() {
-	const authCtx = useContext(AuthContext)
+	const { logout, signed, user } = useContext(AuthContext)
+	const navigation = useNavigation()
+	const cpf = user?.cpf?.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4')
 	return (
 		<View style={{ width: '100%' }}>
 			<View style={styles.headerContainer}>
-				<Pressable style={styles.userInfoContainer}>
-					<View style={styles.profileImageContainer}>
-						<Image style={styles.profileImage} resizeMode='cover' source={genericUserImg} />
-					</View>
-					<View>
-						<Text style={styles.userInfoName}>Cidadão de Cabrobó</Text>
-						<Text style={styles.userInfoText}>Cidadão</Text>
-						<Text style={styles.userInfoText}>xxx.xxx.xxx-xx</Text>
-					</View>
-				</Pressable>
+				{
+					signed === 1 && (
+						<Pressable style={styles.userInfoContainer}>
+							<View style={styles.profileImageContainer}>
+								<Image style={styles.profileImage} resizeMode='cover' source={genericUserImg} />
+							</View>
+							<View>
+								<Text style={styles.userInfoName}>{user.nome}</Text>
+								<Text style={styles.userInfoText}>Cidadão</Text>
+								<Text style={styles.userInfoText}>{cpf}</Text>
+							</View>
+						</Pressable>
+					)
+					// : (
+					// 	<Pressable style={styles.userInfoContainer}>
+					// 		<NBText fontSize='lg'>
+					// 			Faça seu
+					// 			<NBText fontWeight={700} onPress={() => navigation.navigate('Login')}>
+					// 				{' '}
+					// 				login{' '}
+					// 			</NBText>
+					// 			ou
+					// 			<NBText fontWeight={700} onPress={() => navigation.navigate('Signup')}>
+					// 				{' '}
+					// 				cadastre-se{' '}
+					// 			</NBText>
+					// 			agora!
+					// 		</NBText>
+					// 	</Pressable>
+					// )
+				}
+
 				<View style={styles.fastLinksContainer}>
 					<Pressable
 						style={styles.linkContainer}
@@ -30,14 +57,29 @@ export function UserHeader() {
 						<Text style={styles.linkText}>Ouvidoria</Text>
 						<IonIcons name='headset-outline' size={32} color='#123A56' />
 					</Pressable>
+					{signed === 1 && (
+						<Pressable
+							style={styles.linkContainer}
+							onPress={() => {
+								logout()
+							}}
+						>
+							<IonIcons name='exit-outline' size={32} color='#123A56' />
+							<Text style={styles.linkText}>Sair</Text>
+						</Pressable>
+					)}
 					<Pressable
 						style={styles.linkContainer}
 						onPress={() => {
-							authCtx.logout()
+							navigation.navigate('RequestsScreen')
 						}}
 					>
-						<IonIcons name='exit-outline' size={32} color='#123A56' />
-						<Text style={styles.linkText}>Sair</Text>
+						<Text style={styles.linkText}>Solicitações</Text>
+						<MaterialCommunityIcons
+							name='clipboard-text-search-outline'
+							size={32}
+							color='#123A56'
+						/>
 					</Pressable>
 				</View>
 			</View>

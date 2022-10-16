@@ -100,6 +100,15 @@ interface EstabelecimentoFeatureDataReturnInterface {
 	}
 	features: Estabelecimento[]
 }
+interface RequestProps {
+	fields: {
+		name: string
+		alias: string
+		type: string
+		[key: string]: any
+	}
+	features: Estabelecimento[]
+}
 
 export function obterTodosEstabelecimentos(
 	token: string,
@@ -116,6 +125,22 @@ export function obterTodosEstabelecimentos(
 			throw new Error('Erro ao buscar os estabelecimentos')
 		})
 }
+
+export async function getRequestByProtocol(protocol: string) {
+	const token = await generateToken()
+	return axios
+		.get(
+			`https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Servi%c3%a7os_P%c3%bablicos/FeatureServer/0/query?where=PROTOCOLO%3D%27${protocol}%27&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&relationParam=&returnGeodetic=false&outFields=*&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&token=${token}`,
+		)
+		.then(res => {
+			const data = res.data.features as any[]
+			return data
+		})
+		.catch(err => {
+			throw new Error('Erro ao buscar os estabelecimentos')
+		})
+}
+
 
 // Consultar NIS
 
@@ -137,13 +162,13 @@ export async function obterPessoasPorNis(nis: string) {
 			`https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Assistencia/FeatureServer/0/query?where=NU_NIS_RF%3D${nis}&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&relationParam=&returnGeodetic=false&outFields=*&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&defaultSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&token=${token}`,
 		)
 		.then(res => {
-			const data = res.data.features as PessoaFisicaDataReturn[]
-			return data
+			const data = res.data.features as PessoaFisicaDataReturn[]return data
 		})
 		.catch(err => {
 			throw new Error('Erro ao buscar os estabelecimentos')
 		})
 }
+
 
 export interface CalendarioAssitenciaDataFormat {
 	attributes: {
