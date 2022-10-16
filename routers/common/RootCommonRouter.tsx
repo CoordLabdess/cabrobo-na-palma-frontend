@@ -25,6 +25,9 @@ import { PontosDeColetaScreen } from '../../screens/common/educacao/PontosDeCole
 import { MenuScreen } from '../../screens/common/MenuScreen'
 import { PersonalData } from '../../screens/common/ProfileScreen/PersonalData'
 import EstablishmentsListScreen from '../../screens/common/EstablishmentsListScreen'
+import { LoginScreen } from '../../screens/public/LoginScreen'
+import SignUpScreen from '../../screens/public/SignUpScreen'
+import RequestsListScreen from '../../screens/common/Requests'
 
 const BottomTab = createBottomTabNavigator<RootTabParamList>()
 
@@ -59,7 +62,7 @@ function RootCommonRouter() {
 					},
 				}}
 			/>
-			<BottomTab.Screen
+			{/* <BottomTab.Screen
 				name='RootPerfil'
 				component={ProfileScreen}
 				options={{
@@ -74,7 +77,7 @@ function RootCommonRouter() {
 						)
 					},
 				}}
-			/>
+			/> */}
 			<BottomTab.Screen
 				name='RootNoticias'
 				component={NoticiasHomeScreen}
@@ -91,7 +94,7 @@ function RootCommonRouter() {
 					},
 				}}
 			/>
-			<BottomTab.Screen
+			{/* <BottomTab.Screen
 				name='RootConfiguracoes'
 				component={MenuScreen}
 				options={{
@@ -107,7 +110,7 @@ function RootCommonRouter() {
 						)
 					},
 				}}
-			/>
+			/> */}
 		</BottomTab.Navigator>
 	)
 }
@@ -119,6 +122,22 @@ export function HomeNavigator() {
 		<Stack.Navigator screenOptions={{ headerShown: false }}>
 			<Stack.Screen name='Root' component={RootCommonRouter} />
 			<Stack.Screen
+				name='Login'
+				component={LoginScreen}
+				options={{
+					title: 'Login',
+					animation: 'slide_from_right',
+				}}
+			/>
+			<Stack.Screen
+				name='Signup'
+				component={SignUpScreen}
+				options={{
+					title: 'Cadastro',
+					animation: 'slide_from_right',
+				}}
+			/>
+			<Stack.Screen
 				name='SolicitarServicos'
 				component={ServicesScreen}
 				options={{
@@ -129,6 +148,13 @@ export function HomeNavigator() {
 			<Stack.Screen
 				name='SolicitarServicosForm1'
 				component={ServicesForm1Screen}
+				options={{
+					animation: 'none',
+				}}
+			/>
+			<Stack.Screen
+				name='RequestsScreen'
+				component={RequestsListScreen}
 				options={{
 					animation: 'none',
 				}}

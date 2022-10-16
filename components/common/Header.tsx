@@ -4,6 +4,8 @@ import { TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { HStack, IconButton, Text } from 'native-base'
 import { ColorType } from 'native-base/lib/typescript/components/types'
+import { useUser } from '../../store/userContext'
+import { RequestProps } from '../../utils/contextTypes'
 
 interface HeaderProps {
 	title?: string
@@ -16,6 +18,7 @@ interface HeaderProps {
 
 export default function Header({ title, bgColor, goBack, height, px, fontSize }: HeaderProps) {
 	const navigation = useNavigation()
+	const { setRequest } = useUser()
 
 	return (
 		<HStack
