@@ -12,6 +12,7 @@ import {
 import { useNavigation } from '@react-navigation/native'
 import * as ImagePicker from 'expo-image-picker'
 import { Ionicons } from '@expo/vector-icons'
+import { v4 } from 'uuid'
 
 import { FormStepsBar } from '../../../components/form/FormStepsBar'
 import { PrimaryButton } from '../../../components/ui/PrimaryButton'
@@ -40,7 +41,7 @@ export function ServicesForm3Screen() {
 	const ServicesCtx = useServiceRequestForm()
 	const [isLoading, setIsLoading] = useState(false)
 	const [successModal, setSuccessModal] = useState(false)
-	const [protocol, setProtocol] = useState('000.000-000')
+	const [protocol, setProtocol] = useState('0000.0000-0000')
 	const minService = allMinorServices.filter(
 		minSrvc => minSrvc.id === ServicesCtx.minorServiceId,
 	)[0]
@@ -129,7 +130,7 @@ export function ServicesForm3Screen() {
 
 	return (
 		<>
-			<Header goBack />
+			<Header goBack title={minService.title} />
 			<ScrollView
 				contentContainerStyle={{
 					flexGrow: 1,

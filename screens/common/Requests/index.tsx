@@ -6,6 +6,7 @@ import { TextInput } from '../../../components/common/TextInput'
 import { useUser } from '../../../store/userContext'
 import RequestCard from '../../../components/Requests/RequestCard'
 import { RequestProps } from '../../../utils/contextTypes'
+import { removerCaracteresEspeciais } from '../../../utils/validaçõesString'
 
 export default function RequestsListScreen() {
 	const { getRequest, request, setRequest, loading } = useUser()
@@ -21,6 +22,25 @@ export default function RequestsListScreen() {
 		setRequest({} as RequestProps)
 	}, [])
 
+	function formatProtocol(text: string) {
+		const s = removerCaracteresEspeciais(text).split('')
+		if (s.length <= 12) {
+			setSearch(
+				s
+					.map((b, i) => {
+						if (i === 8) {
+							return `-${b}`
+						} else if (i === 4) {
+							return `.${b}`
+						} else {
+							return b
+						}
+					})
+					.join(''),
+			)
+		}
+	}
+
 	return (
 		<>
 			<Header goBack title='Procurar Solicitação' />
@@ -31,8 +51,9 @@ export default function RequestsListScreen() {
 				<Row my={4} w='100%' space={3}>
 					<Box flex='1'>
 						<TextInput
+							numeric
 							value={search}
-							handleChange={text => setSearch(text)}
+							handleChange={text => formatProtocol(text)}
 							placeholder='Pesquise pelo número do protocolo'
 						/>
 					</Box>

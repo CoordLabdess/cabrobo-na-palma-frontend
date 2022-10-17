@@ -22,7 +22,6 @@ export function Navigation() {
 					<RootPublicRouter />
 				</>
 			) : undefined} */}
-			<StatusBar style='dark' />
 			<HomeNavigator />
 		</NavigationContainer>
 	)

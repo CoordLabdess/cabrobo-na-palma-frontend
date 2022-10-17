@@ -27,7 +27,7 @@ export function ServicesForm1Screen() {
 
 	return (
 		<>
-			<Header goBack />
+			<Header goBack title={mService.title} />
 			<ScrollView
 				scrollEnabled={lockedMap}
 				contentContainerStyle={{

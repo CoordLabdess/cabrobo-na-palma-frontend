@@ -1,4 +1,5 @@
 import { NativeBaseProvider } from 'native-base'
+import { StatusBar } from 'expo-status-bar'
 import React from 'react'
 import { KeyboardAvoidingView, Platform, View } from 'react-native'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
@@ -17,6 +18,8 @@ export default function App() {
 						<UserProvider>
 							<RegisterEnterpriseContextProvider>
 								<SafeAreaView style={{ flex: 1, backgroundColor: '#000' }}>
+									<StatusBar style='dark' backgroundColor='#fff' />
+
 									{Platform.OS === 'ios' ? (
 										<KeyboardAvoidingView
 											style={{ width: '100%', height: '100%' }}

@@ -81,7 +81,7 @@ export function ServicesScreen2(props: ServiceScreenProps) {
 
 	return (
 		<ScrollView>
-			<Header goBack />
+			<Header goBack title={serviceTitle} />
 			<View style={styles.servicesGridTitleContainer}>
 				<View style={{ alignItems: 'center' }}>
 					<Image

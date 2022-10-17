@@ -46,7 +46,7 @@ export function ServicesForm2Screen() {
 
 	return (
 		<>
-			<Header goBack />
+			<Header goBack title={mService.title} />
 			<ScrollView
 				contentContainerStyle={{
 					flexGrow: 1,

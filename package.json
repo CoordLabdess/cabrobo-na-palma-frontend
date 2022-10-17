@@ -19,6 +19,7 @@
 		"@react-navigation/native": "^6.0.11",
 		"@react-navigation/native-stack": "^6.7.0",
 		"@react-navigation/stack": "^6.2.2",
+		"@types/uuid": "^8.3.4",
 		"axios": "^0.27.2",
 		"esri": "^0.0.1-security",
 		"esri-loader": "^3.6.0",
@@ -41,6 +42,7 @@
 		"react-native-svg": "12.3.0",
 		"react-native-web": "0.17.7",
 		"react-native-webview": "11.18.1",
+		"uuid": "^9.0.0",
 		"yup": "^0.32.11"
 	},
 	"devDependencies": {
