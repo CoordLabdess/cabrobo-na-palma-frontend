@@ -157,7 +157,7 @@ export function AuxilioBrasilScreen() {
 			</ScrollView>
 			<CalendarioAuxilioBrasilModal
 				isVisible={exibirCalendario}
-				numFinalNis={'2'}
+				numFinalNis={nis.substring(nis.length - 1)}
 				onClose={() => setExibirCalendario(false)}
 			/>
 		</>
