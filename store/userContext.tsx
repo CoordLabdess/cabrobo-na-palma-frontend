@@ -12,6 +12,7 @@ import { RequestProps } from '../utils/contextTypes'
 interface UserContextData {
 	loading: boolean
 	establishments: Estabelecimento[]
+	setEstablishments: (establishments: Estabelecimento[]) => void
 	buscarEstabelecimentos: () => void
 	getRequest: (protocol: string) => void
 	request: RequestProps
@@ -63,7 +64,15 @@ export function UserProvider(props: { children: React.ReactNode }) {
 
 	return (
 		<UserContext.Provider
-			value={{ loading, establishments, buscarEstabelecimentos, getRequest, request, setRequest }}
+			value={{
+				loading,
+				establishments,
+				buscarEstabelecimentos,
+				getRequest,
+				request,
+				setRequest,
+				setEstablishments,
+			}}
 		>
 			{props.children}
 		</UserContext.Provider>
