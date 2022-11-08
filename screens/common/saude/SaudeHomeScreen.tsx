@@ -6,6 +6,7 @@ import {
 	Image,
 	ImageSourcePropType,
 	ImageURISource,
+	Platform,
 } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import React, { useLayoutEffect, useState } from 'react'
@@ -20,6 +21,7 @@ import { saudeMajorServices } from '../../../data/saudeMajorServices'
 import { GenericGridTile } from '../../../components/gridTitles/GenericGridTile'
 import Header from '../../../components/common/Header'
 import { RoutesType } from '../../../types/routes'
+import { PaginaEmConstrucao } from '../../public/PaginaEmConstrucao'
 
 interface ServiceScreenProps {
 	route: RouteProp
@@ -86,52 +88,59 @@ export function SaudeHomeScreen(props: ServiceScreenProps) {
 	}
 
 	return (
-		<View>
-			<Header goBack title='Saúde' />
-			<FlatList
-				keyboardShouldPersistTaps='handled'
-				contentContainerStyle={{
-					flexGrow: 1,
-					justifyContent: 'flex-start',
-					paddingHorizontal: '5%',
-					alignItems: 'center',
-					paddingBottom: 20,
-				}}
-				alwaysBounceVertical={false}
-				showsVerticalScrollIndicator={false}
-				ListHeaderComponent={() => (
-					<View style={styles.servicesGridTitleContainer}>
-						<View style={{ alignItems: 'center' }}>
-							<Image
-								resizeMode='contain'
-								style={styles.serviceImg}
-								source={currentService.img2 as ImageSourcePropType}
-								defaultSource={currentService.img2 as ImageURISource}
-							/>
-							<Text style={styles.servicesGridTitle}>
-								Veja os mapas referentes aos casos de COVID-19 e dengue no município
-							</Text>
-						</View>
-					</View>
-				)}
-				data={saudeMajorServices}
-				keyExtractor={item => {
-					return item.id.toString()
-				}}
-				renderItem={itemData => {
-					return (
-						<GenericGridTile
-							img={itemData.item.imgMono}
-							title={itemData.item.title}
-							onPress={() => {
-								navigation.navigate(itemData.item.alias as RoutesType)
-							}}
-						/>
-					)
-				}}
-				numColumns={1}
-			/>
-		</View>
+		// eslint-disable-next-line react/jsx-no-useless-fragment
+		<>
+			{Platform.OS === `ios` ? (
+				<PaginaEmConstrucao />
+			) : (
+				<View>
+					<Header goBack title='Saúde' />
+					<FlatList
+						keyboardShouldPersistTaps='handled'
+						contentContainerStyle={{
+							flexGrow: 1,
+							justifyContent: 'flex-start',
+							paddingHorizontal: '5%',
+							alignItems: 'center',
+							paddingBottom: 20,
+						}}
+						alwaysBounceVertical={false}
+						showsVerticalScrollIndicator={false}
+						ListHeaderComponent={() => (
+							<View style={styles.servicesGridTitleContainer}>
+								<View style={{ alignItems: 'center' }}>
+									<Image
+										resizeMode='contain'
+										style={styles.serviceImg}
+										source={currentService.img2 as ImageSourcePropType}
+										defaultSource={currentService.img2 as ImageURISource}
+									/>
+									<Text style={styles.servicesGridTitle}>
+										Veja os mapas referentes aos casos de COVID-19 e dengue no município
+									</Text>
+								</View>
+							</View>
+						)}
+						data={saudeMajorServices}
+						keyExtractor={item => {
+							return item.id.toString()
+						}}
+						renderItem={itemData => {
+							return (
+								<GenericGridTile
+									img={itemData.item.imgMono}
+									title={itemData.item.title}
+									onPress={() => {
+										navigation.navigate(itemData.item.alias as RoutesType)
+									}}
+								/>
+							)
+						}}
+						numColumns={1}
+					/>
+				</View>
+			)}
+		</>
 	)
 }
 
