@@ -115,12 +115,6 @@ export function AuxilioBrasilScreen() {
 										{`${proxData?.dia}/${proxData?.mes}/2022`}
 									</Text>
 								</VStack>
-								<VStack w='100%' alignItems='center'>
-									<Text style={[styles.infoText, { fontWeight: '700' }]}>Valor Previsto</Text>
-									<Text flex={1} style={styles.infoText}>
-										R$ 400
-									</Text>
-								</VStack>
 							</Box>
 							<Pressable
 								onPress={() => setExibirCalendario(true)}
