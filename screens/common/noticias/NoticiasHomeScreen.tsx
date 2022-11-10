@@ -1,3 +1,4 @@
+import React from 'react'
 import { ScrollView, View, Text, Linking, StyleSheet, Pressable } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Ionicons } from '@expo/vector-icons'
@@ -101,6 +102,18 @@ export function NoticiasHomeScreen() {
 					>
 						<Ionicons name='logo-instagram' color={COLORS.primary500} size={30} />
 						<Text style={styles.linkText}>Turismo Cabrobó</Text>
+						<Ionicons name='navigate-outline' color={COLORS.primary500} size={22} />
+					</Pressable>
+				</View>
+				<View style={styles.elementContainer}>
+					<Pressable
+						style={styles.linkContainer}
+						onPress={() =>
+							Linking.openURL('https://www.instagram.com/sec.assistenciasocialcabrobo/?hl=pt-br')
+						}
+					>
+						<Ionicons name='logo-instagram' color={COLORS.primary500} size={30} />
+						<Text style={styles.linkText}>Assistência Social</Text>
 						<Ionicons name='navigate-outline' color={COLORS.primary500} size={22} />
 					</Pressable>
 				</View>

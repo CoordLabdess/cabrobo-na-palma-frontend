@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
 		fontWeight: '400',
 		color: COLORS.primary500,
 		textAlign: 'center',
-		paddingVertical: 2,
+		paddingVertical: 4,
 		marginBottom: 5,
 	},
 	details: {
