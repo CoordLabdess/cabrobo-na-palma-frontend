@@ -6,7 +6,7 @@ import { TextInput } from '../../../components/common/TextInput'
 import { useUser } from '../../../store/userContext'
 import RequestCard from '../../../components/Requests/RequestCard'
 import { RequestProps } from '../../../utils/contextTypes'
-import { removerCaracteresEspeciais } from '../../../utils/validaçõesString'
+import { removerCaracteresEspeciais } from '../../../utils/validacaoString'
 
 export default function RequestsListScreen() {
 	const { getRequest, request, setRequest, loading } = useUser()

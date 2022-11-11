@@ -6,7 +6,7 @@ import { Formik } from 'formik'
 import { useAuth } from '../../store/AuthContext'
 import Header from '../../components/common/Header'
 import { TextInput } from '../../components/common/TextInput'
-import { removerCaracteresEspeciais } from '../../utils/validaçõesString'
+import { removerCaracteresEspeciais } from '../../utils/validacaoString'
 import { SignupValidationSchema } from '../../utils/formValidators'
 
 export default function SignUpScreen() {

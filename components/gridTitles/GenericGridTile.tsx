@@ -5,7 +5,7 @@ import {
 	StyleSheet,
 	Image,
 	Platform,
-	ImageSourcePropType
+	ImageSourcePropType,
 } from 'react-native'
 import { COLORS } from '../../constants/colors'
 
@@ -54,34 +54,34 @@ const styles = StyleSheet.create({
 		shadowRadius: 3,
 		shadowOpacity: 0.3,
 		marginBottom: 20,
-		marginHorizontal: 6
+		marginHorizontal: 6,
 	},
 	innerContainer: {
 		flex: 1,
 		flexDirection: 'row',
 		alignItems: 'center',
 		padding: 6,
-		justifyContent: 'space-around'
+		justifyContent: 'space-around',
 	},
 	pressed: {
-		opacity: 0.6
+		opacity: 0.6,
 	},
 	serviceImage: {
 		width: 65,
-		height: 65
+		height: 65,
 	},
 	serviceImageContainer: {
 		width: '50%',
-		alignItems: 'center'
+		alignItems: 'center',
 	},
 	serviceTitleContainer: {
 		width: '50%',
-		alignItems: 'center'
+		alignItems: 'center',
 	},
 	serviceTitle: {
 		fontSize: 20,
 		color: COLORS.primary500,
 		textAlign: 'center',
-		fontWeight: '500'
-	}
+		fontWeight: '500',
+	},
 })

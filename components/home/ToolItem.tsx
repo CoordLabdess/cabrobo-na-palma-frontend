@@ -47,7 +47,7 @@ export function ToolItem(props: ToolItemProps) {
 const styles = StyleSheet.create({
 	outterContainer: {
 		width: '47%',
-		paddingVertical: 5,
+		overflow: 'hidden',
 		backgroundColor: COLORS.secondary100,
 		borderRadius: 10,
 		elevation: 4,

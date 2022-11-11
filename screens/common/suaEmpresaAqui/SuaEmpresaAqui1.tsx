@@ -41,13 +41,8 @@ export function SuaEmpresaAqui1(props: ServiceScreenProps) {
 		setServiceId(props.route.params?.serviceId)
 		setServiceTitle(props.route.params?.serviceTitle)
 		setServiceType(props.route.params?.serviceType)
-		if (solicitarServicosContext.majorServiceId > 0) {
-			setCurrentService(
-				allMajorServices.filter(m => m.id === solicitarServicosContext.majorServiceId)[0],
-			)
-		} else {
-			setCurrentService(allTools.filter(m => m.id === 2)[0])
-		}
+
+		setCurrentService(allTools.filter(m => m.id === 2)[0])
 	}, [])
 
 	useLayoutEffect(() => {

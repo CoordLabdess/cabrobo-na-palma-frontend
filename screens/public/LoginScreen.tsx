@@ -1,23 +1,17 @@
-import React, { useContext, useEffect, useLayoutEffect, useState } from 'react'
+import React, { useContext, useLayoutEffect, useState } from 'react'
 import { ScrollView, View, Text, StyleSheet, TextInput, Image } from 'react-native'
-
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Ionicons } from '@expo/vector-icons'
-import { Formik } from 'formik'
-import { Column, Button, Center } from 'native-base'
-import { useNavigation } from '@react-navigation/native'
 import { CleanTextButton } from '../../components/ui/buttons/CleanTextButton'
 import { PrimaryButton } from '../../components/ui/PrimaryButton'
 import { CleanTextInput } from '../../components/ui/textInputs/CleanTextInput'
 import { COLORS } from '../../constants/colors'
-import { AuthContext, useAuth } from '../../store/AuthContext'
+import { AuthContext } from '../../store/AuthContext'
 import { fakeLogin, fakeSendData } from '../../utils/fakeFunctions'
 import { PrivacyPolicyModal } from '../../components/modals/PrivacyPolicyModal'
 import { sendData } from '../../utils/arcgis'
-import { removerCaracteresEspeciais } from '../../utils/validaçõesString'
-import { loginSchema, MinorService1FormSchema } from '../../utils/formValidators'
-import { Navigation } from '../../routers/Navigation'
+import { removerCaracteresEspeciais } from '../../utils/validacaoString'
 
 export function LoginScreen() {
 	const [cpf, setCpf] = useState('')
@@ -27,8 +21,22 @@ export function LoginScreen() {
 	const [emptyCredentials, setEmptyCredentials] = useState(false)
 	const [isLoading, setIsLoading] = useState(false)
 	const [acceptedPolicy, setAcceptedPolicy] = useState(true)
-	const { login, loading, signed } = useAuth()
-	const navigation = useNavigation()
+	const authCtx = useContext(AuthContext)
+
+	async function validate() {
+		if (!isLoading) {
+			setIsLoading(true)
+			await fakeLogin(removerCaracteresEspeciais(cpf).trim(), password.trim())
+				.then(() => {
+					setIsLoading(false)
+					authCtx.authenticate('a', 'Common')
+				})
+				.catch(error => {
+					setIsLoading(false)
+					setInvalidCredentials(true)
+				})
+		}
+	}
 
 	async function storeData(key: string, value: string) {
 		try {
@@ -57,11 +65,24 @@ export function LoginScreen() {
 		})
 	}
 
-	useEffect(() => {
-		if (signed === 1) {
-			navigation.navigate('Root')
+	function writeCPF(text: string) {
+		const s = removerCaracteresEspeciais(text).split('')
+		if (s.length <= 11) {
+			setCpf(
+				s
+					.map((b, i) => {
+						if (i === 9) {
+							return `-${b}`
+						} else if (i === 3 || i === 6) {
+							return `.${b}`
+						} else {
+							return b
+						}
+					})
+					.join(''),
+			)
 		}
-	}, [signed])
+	}
 
 	useLayoutEffect(() => {
 		// storeData('hasAcceptedPolicy', 'false')
@@ -91,78 +112,34 @@ export function LoginScreen() {
 					</View>
 				</View>
 				<View style={styles.loginCard}>
-					<Formik
-						enableReinitialize
-						validateOnMount
-						validationSchema={loginSchema}
-						onSubmit={values => {
-							login(values)
-						}}
-						initialValues={{
-							cpf: '',
-							password: '',
-						}}
-					>
-						{({ values, errors, handleSubmit, setFieldValue }) => {
-							function writeCPF(text: string) {
-								const s = removerCaracteresEspeciais(text).split('')
-								if (s.length <= 11) {
-									setFieldValue(
-										'cpf',
-										s
-											.map((b, i) => {
-												if (i === 9) {
-													return `-${b}`
-												} else if (i === 3 || i === 6) {
-													return `.${b}`
-												} else {
-													return b
-												}
-											})
-											.join(''),
-									)
-								}
-							}
-
-							return (
-								<Center w='100%'>
-									<CleanTextInput
-										maxLength={14}
-										editable={!isLoading}
-										returnKeyType='next'
-										keyboardType='number-pad'
-										returnKeyLabel='Prox'
-										style={styles.textInput}
-										value={values['cpf']}
-										placeholder='CPF'
-										onChangeText={text => {
-											writeCPF(text)
-										}}
-									/>
-									<CleanTextInput
-										editable={!isLoading}
-										returnKeyType={'go'}
-										// onSubmit={validate}
-										returnKeyLabel={'Pronto'}
-										style={styles.textInput}
-										value={values['password']}
-										secureTextEntry
-										placeholder='Senha'
-										onChangeText={text => setFieldValue('password', text)}
-									/>
-									<Center mt={8}>
-										<PrimaryButton
-											style={{ minWidth: 200, width: '50%', maxWidth: 300, padding: 5 }}
-											textStyle={{ fontSize: 22 }}
-											title='Acessar'
-											isLoading={loading}
-											onPress={handleSubmit}
-										/>
-									</Center>
-								</Center>
-							)
-						}}
-					</Formik>
+					<View style={{ width: '100%', alignItems: 'center', marginBottom: 10 }}>
+						<CleanTextInput
+							maxLength={14}
+							editable={!isLoading}
+							returnKeyType='next'
+							keyboardType='number-pad'
+							returnKeyLabel='Prox'
+							style={styles.textInput}
+							value={cpf}
+							placeholder='CPF'
+							onChangeText={text => {
+								writeCPF(text)
+							}}
+						/>
+					</View>
+					<View style={[styles.elementContainer, { marginBottom: 40 }]}>
+						<CleanTextInput
+							editable={!isLoading}
+							returnKeyType={'send'}
+							onSubmit={validate}
+							returnKeyLabel={'Pronto'}
+							style={styles.textInput}
+							value={password}
+							secureTextEntry
+							placeholder='Senha'
+							onChangeText={text => setPassword(text)}
+						/>
+					</View>
 					{invalidCredentials && (
 						<View style={{ marginBottom: 15 }}>
 							<Text style={{ color: 'red', fontSize: 14, fontWeight: '400' }}>
@@ -170,6 +147,15 @@ export function LoginScreen() {
 							</Text>
 						</View>
 					)}
+					<View style={[styles.elementContainer, { marginBottom: 10 }]}>
+						<PrimaryButton
+							style={{ minWidth: 200, width: '50%', maxWidth: 300, padding: 5 }}
+							textStyle={{ fontSize: 22 }}
+							title='Acessar'
+							isLoading={isLoading}
+							onPress={validate}
+						/>
+					</View>
 					<View style={[styles.elementContainer, { marginBottom: 20 }]}>
 						<CleanTextButton
 							textStyle={styles.forgotPassword}
