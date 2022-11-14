@@ -19,7 +19,7 @@
 		"assetBundlePatterns": ["**/*"],
 		"ios": {
 			"supportsTablet": true,
-			"bundleIdentifier": "com.cabroboNaPalmaDaMao"
+			"bundleIdentifier": "com.cabrobo.NaPalmaDaMao"
 		},
 		"android": {
 			"package": "com.cabroboNaPalmaDaMao",
