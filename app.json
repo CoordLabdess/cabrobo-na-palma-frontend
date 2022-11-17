@@ -6,10 +6,10 @@
 		"version": "1.3.5",
 		"description": "Cabrobó na palma da mão",
 		"orientation": "portrait",
-		"icon": "./assets/cabroboIcon2.png",
+		"icon": "./assets/icon.png",
 		"userInterfaceStyle": "light",
 		"splash": {
-			"image": "./assets/cabroboSplash.png",
+			"image": "./assets/splash.png",
 			"resizeMode": "contain",
 			"backgroundColor": "#4782c6"
 		},
