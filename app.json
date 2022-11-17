@@ -3,10 +3,10 @@
 		"name": "Cabrobó na Palma da Mão",
 		"slug": "cabroboNaPalmaDaMao",
 		"privacy": "public",
-		"version": "1.3.4",
+		"version": "1.3.5",
 		"description": "Cabrobó na palma da mão",
 		"orientation": "portrait",
-		"icon": "./assets/cabroboIcon.png",
+		"icon": "./assets/cabroboIcon2.png",
 		"userInterfaceStyle": "light",
 		"splash": {
 			"image": "./assets/cabroboSplash.png",

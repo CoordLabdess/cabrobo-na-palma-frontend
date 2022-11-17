@@ -85,7 +85,7 @@ export function SaudeHomeScreen(props: ServiceScreenProps) {
 	return (
 		// eslint-disable-next-line react/jsx-no-useless-fragment
 		<>
-			{false ? (
+			{Platform.OS === 'ios' ? (
 				<PaginaEmConstrucao />
 			) : (
 				<View>

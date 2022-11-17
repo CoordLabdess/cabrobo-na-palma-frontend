@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { Platform } from 'react-native'
+import { Platform, View } from 'react-native'
 import React from 'react'
 import { Ionicons } from '@expo/vector-icons'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
@@ -55,11 +55,13 @@ function RootCommonRouter() {
 					tabBarLabel: () => null,
 					tabBarIcon: tabInfo => {
 						return (
-							<Ionicons
-								name={tabInfo.focused ? 'home-sharp' : 'home-outline'}
-								size={40}
-								color={tabInfo.color}
-							/>
+							<View style={{ width: 40 }}>
+								<Ionicons
+									name={tabInfo.focused ? 'home-sharp' : 'home-outline'}
+									size={40}
+									color={tabInfo.color}
+								/>
+							</View>
 						)
 					},
 				}}
@@ -87,11 +89,13 @@ function RootCommonRouter() {
 					tabBarLabel: () => null,
 					tabBarIcon: tabInfo => {
 						return (
-							<Ionicons
-								name={tabInfo.focused ? 'newspaper-sharp' : 'newspaper-outline'}
-								size={40}
-								color={tabInfo.color}
-							/>
+							<View style={{ width: 40 }}>
+								<Ionicons
+									name={tabInfo.focused ? 'newspaper-sharp' : 'newspaper-outline'}
+									size={40}
+									color={tabInfo.color}
+								/>
+							</View>
 						)
 					},
 				}}
