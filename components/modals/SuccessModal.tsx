@@ -26,7 +26,9 @@ export function SuccessModal(props: PrivacPolicyModalProps) {
 					<View style={styles.modalCard}>
 						<Text style={styles.title}>{props.title}</Text>
 						<Text style={styles.description}>{props.message}</Text>
-						<Text style={styles.protocol}>{props.protocol}</Text>
+						<Text selectable style={styles.protocol}>
+							{props.protocol}
+						</Text>
 						<PrimaryButton title='Voltar ao Início' onPress={props.onContinue} />
 					</View>
 				</View>
@@ -40,7 +42,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		backgroundColor: '#00000070'
+		backgroundColor: '#00000070',
 	},
 	modalCardShadow: {
 		borderRadius: 16,
@@ -50,11 +52,11 @@ const styles = StyleSheet.create({
 		shadowColor: '#000',
 		shadowOffset: {
 			width: 0,
-			height: 1
+			height: 1,
 		},
 		shadowOpacity: 0.22,
 		shadowRadius: 2.22,
-		elevation: 3
+		elevation: 3,
 	},
 	modalCard: {
 		backgroundColor: '#fff',
@@ -62,26 +64,26 @@ const styles = StyleSheet.create({
 		borderRadius: 16,
 		justifyContent: 'flex-start',
 		alignItems: 'center',
-		padding: 20
+		padding: 20,
 	},
 
 	title: {
 		fontSize: 25,
 		color: COLORS.primary500,
 		fontWeight: '600',
-		marginBottom: 19
+		marginBottom: 19,
 	},
 	description: {
 		fontSize: 14,
 		fontWeight: '500',
 		textAlign: 'center',
 		color: COLORS.primary500,
-		marginBottom: 20
+		marginBottom: 20,
 	},
 	protocol: {
 		fontSize: 20,
 		fontWeight: '600',
 		color: COLORS.primary500,
-		marginBottom: 20
-	}
+		marginBottom: 20,
+	},
 })

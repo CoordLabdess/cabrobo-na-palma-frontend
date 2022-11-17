@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native'
 import { COLORS } from '../../../constants/colors'
 
 import { DengueMap } from '../../../components/maps/DengueMap'
+import Header from '../../../components/common/Header'
 
 export function MapaDeDengueScreen() {
 	const navigation = useNavigation()
@@ -12,7 +13,7 @@ export function MapaDeDengueScreen() {
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
-			title: 'Mapa de Dengue'
+			title: 'Mapa de Dengue',
 		})
 	}, [])
 
@@ -22,11 +23,12 @@ export function MapaDeDengueScreen() {
 			contentContainerStyle={{
 				flexGrow: 1,
 				justifyContent: 'flex-start',
-				alignItems: 'center'
+				alignItems: 'center',
 			}}
 			alwaysBounceVertical={false}
 			showsVerticalScrollIndicator={false}
 		>
+			<Header goBack title={'Mapa de Dengue'} />
 			<Pressable
 				style={{ width: '100%', alignItems: 'center' }}
 				onTouchMove={() => setLockedMap(true)}
@@ -44,7 +46,7 @@ export function MapaDeDengueScreen() {
 							height: '100%',
 							position: 'absolute',
 							justifyContent: 'center',
-							alignItems: 'center'
+							alignItems: 'center',
 						}}
 					>
 						<View
@@ -53,7 +55,7 @@ export function MapaDeDengueScreen() {
 								opacity: 0.3,
 								width: '100%',
 								height: '100%',
-								position: 'absolute'
+								position: 'absolute',
 							}}
 						/>
 						<Text style={{ color: '#fff', fontSize: 20, fontWeight: '600' }}>
@@ -73,7 +75,7 @@ export function MapaDeDengueScreen() {
 						height: 150,
 						flexDirection: 'row',
 						overflow: 'hidden',
-						justifyContent: 'space-around'
+						justifyContent: 'space-around',
 					}}
 				>
 					<Image
@@ -90,7 +92,7 @@ export function MapaDeDengueScreen() {
 const styles = StyleSheet.create({
 	root: {
 		flex: 1,
-		alignItems: 'center'
+		alignItems: 'center',
 	},
 	title: {
 		opacity: 0.5,
@@ -99,23 +101,23 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 		marginVertical: 10,
 		fontSize: 18,
-		color: COLORS.primary400
+		color: COLORS.primary400,
 	},
 	continueContainer: {
 		width: '100%',
 		marginVertical: 20,
-		alignItems: 'center'
+		alignItems: 'center',
 	},
 	legenda1: {
 		height: 100,
-		width: 100
+		width: 100,
 	},
 	legenda2: {
 		height: 100,
-		width: 100
+		width: 100,
 	},
 	elementContainer: {
 		width: '100%',
-		alignItems: 'flex-start'
-	}
+		alignItems: 'flex-start',
+	},
 })

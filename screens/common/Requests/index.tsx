@@ -1,5 +1,6 @@
 import { Box, Column, Button, Row, Heading, Spinner } from 'native-base'
 import React, { useEffect, useState } from 'react'
+import { ScrollView } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons'
 import Header from '../../../components/common/Header'
 import { TextInput } from '../../../components/common/TextInput'
@@ -42,9 +43,18 @@ export default function RequestsListScreen() {
 	}
 
 	return (
-		<>
+		<ScrollView
+			contentContainerStyle={{
+				flexGrow: 1,
+				justifyContent: 'flex-start',
+				alignItems: 'center',
+				paddingBottom: 20,
+			}}
+			alwaysBounceVertical={false}
+			showsVerticalScrollIndicator={false}
+		>
 			<Header goBack title='Procurar Solicitação' />
-			<Column mx={8} flex={1}>
+			<Column mx={8} flex={1} alignItems='center'>
 				<Heading alignSelf={'center'} my={4} color='#123A56'>
 					Minhas Solicitações
 				</Heading>
@@ -66,6 +76,6 @@ export default function RequestsListScreen() {
 				{loading && <Spinner color='#123A56' size='lg' mt={4} />}
 				{request.TIPO && <RequestCard />}
 			</Column>
-		</>
+		</ScrollView>
 	)
 }

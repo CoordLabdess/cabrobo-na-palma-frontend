@@ -31,7 +31,6 @@ import { LoginScreen } from '../../screens/public/LoginScreen'
 import SignUpScreen from '../../screens/public/SignUpScreen'
 import RequestsListScreen from '../../screens/common/Requests'
 
-
 const BottomTab = createBottomTabNavigator<RootTabParamList>()
 
 function RootCommonRouter() {
@@ -42,8 +41,8 @@ function RootCommonRouter() {
 				tabBarHideOnKeyboard: true,
 				tabBarStyle: {
 					backgroundColor: COLORS.primary500,
-					height: Platform.OS === 'ios' ? 80 : 65,
-					paddingBottom: Platform.OS === 'ios' ? 20 : 0,
+					height: Platform.OS === 'ios' ? 70 : 65,
+					paddingBottom: Platform.OS === 'ios' ? 5 : 0,
 				},
 				tabBarInactiveTintColor: COLORS.secondary100,
 				tabBarActiveTintColor: COLORS.secondary100,

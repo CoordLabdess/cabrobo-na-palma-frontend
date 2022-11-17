@@ -18,7 +18,10 @@ export default function App() {
 						<UserProvider>
 							<RegisterEnterpriseContextProvider>
 								<SafeAreaView style={{ flex: 1, backgroundColor: '#000' }}>
-									<StatusBar style='dark' backgroundColor='#fff' />
+									<StatusBar
+										style={Platform.OS === 'android' ? 'dark' : 'light'}
+										backgroundColor='#fff'
+									/>
 
 									{Platform.OS === 'ios' ? (
 										<KeyboardAvoidingView

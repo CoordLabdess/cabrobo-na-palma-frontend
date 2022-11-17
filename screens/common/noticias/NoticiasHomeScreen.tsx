@@ -6,7 +6,7 @@ import { COLORS } from '../../../constants/colors'
 
 export function NoticiasHomeScreen() {
 	return (
-		<SafeAreaView style={styles.root} edges={['top', 'left', 'right']}>
+		<SafeAreaView style={styles.root} edges={['left', 'right']}>
 			<ScrollView
 				keyboardShouldPersistTaps='handled'
 				contentContainerStyle={{

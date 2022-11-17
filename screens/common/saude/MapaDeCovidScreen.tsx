@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Image, Pressable, ScrollView, Dimensions } from
 import { useNavigation } from '@react-navigation/native'
 import { COLORS } from '../../../constants/colors'
 import { CovidMap } from '../../../components/maps/CovidMap'
+import Header from '../../../components/common/Header'
 
 export function MapaDeCovidScreen() {
 	const navigation = useNavigation()
@@ -10,7 +11,7 @@ export function MapaDeCovidScreen() {
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
-			title: 'Mapa de COVID-19'
+			title: 'Mapa de COVID-19',
 		})
 	}, [])
 
@@ -20,11 +21,12 @@ export function MapaDeCovidScreen() {
 			contentContainerStyle={{
 				flexGrow: 1,
 				justifyContent: 'flex-start',
-				alignItems: 'center'
+				alignItems: 'center',
 			}}
 			alwaysBounceVertical={false}
 			showsVerticalScrollIndicator={false}
 		>
+			<Header goBack title={'Mapa de COVID-19'} />
 			<Pressable
 				style={{ width: '100%', alignItems: 'center' }}
 				onTouchMove={() => setLockedMap(true)}
@@ -42,7 +44,7 @@ export function MapaDeCovidScreen() {
 							height: '100%',
 							position: 'absolute',
 							justifyContent: 'center',
-							alignItems: 'center'
+							alignItems: 'center',
 						}}
 					>
 						<View
@@ -51,7 +53,7 @@ export function MapaDeCovidScreen() {
 								opacity: 0.3,
 								width: '100%',
 								height: '100%',
-								position: 'absolute'
+								position: 'absolute',
 							}}
 						/>
 						<Text style={{ color: '#fff', fontSize: 20, fontWeight: '600' }}>
@@ -71,7 +73,7 @@ export function MapaDeCovidScreen() {
 						height: 150,
 						flexDirection: 'row',
 						overflow: 'hidden',
-						justifyContent: 'space-around'
+						justifyContent: 'space-around',
 					}}
 				>
 					<Image
@@ -93,7 +95,7 @@ export function MapaDeCovidScreen() {
 const styles = StyleSheet.create({
 	root: {
 		flex: 1,
-		alignItems: 'center'
+		alignItems: 'center',
 	},
 	title: {
 		opacity: 0.5,
@@ -102,23 +104,23 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 		marginVertical: 10,
 		fontSize: 18,
-		color: COLORS.primary400
+		color: COLORS.primary400,
 	},
 	continueContainer: {
 		width: '100%',
 		marginVertical: 20,
-		alignItems: 'center'
+		alignItems: 'center',
 	},
 	legenda1: {
 		height: 100,
-		width: 100
+		width: 100,
 	},
 	legenda2: {
 		height: 100,
-		width: 100
+		width: 100,
 	},
 	elementContainer: {
 		width: '100%',
-		alignItems: 'flex-start'
-	}
+		alignItems: 'flex-start',
+	},
 })

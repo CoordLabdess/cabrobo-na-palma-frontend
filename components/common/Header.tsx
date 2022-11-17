@@ -31,6 +31,7 @@ export default function Header({ title, bgColor, goBack, height, px, fontSize }:
 		>
 			{goBack && (
 				<IconButton
+					padding={3}
 					size={fontSize || 'lg'}
 					variant='solid'
 					bgColor={'transparent'}
