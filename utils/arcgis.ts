@@ -1,5 +1,6 @@
 import { addFeatures, IGeometry } from '@esri/arcgis-rest-feature-layer'
 import axios from 'axios'
+import { number } from 'yup'
 
 export interface GeneralServiceFormat {
 	NOME: string
@@ -183,7 +184,7 @@ export interface AssistenciaData {
 	dia: string
 }
 
-export function obterProxDiaPagamento(nis: string): AssistenciaData[] {
+export function obterListaDePagamentosDoAno(nis: string): AssistenciaData[] {
 	const lastChar = nis.substring(nis.length - 1)
 	if (lastChar === '0') {
 		return [
@@ -338,4 +339,20 @@ export function obterProxDiaPagamento(nis: string): AssistenciaData[] {
 	} else {
 		return []
 	}
+}
+
+export function obterProxDiaPagamento(nis: string): AssistenciaData {
+	const dias = obterListaDePagamentosDoAno(nis)
+	const hoje = new Date()
+	const dia = dias.filter(x => {
+		if (
+			Number(x.mes) > hoje.getMonth() + 1 ||
+			(Number(x.mes) === hoje.getMonth() + 1 && Number(x.dia) >= hoje.getDate())
+		) {
+			return true
+		} else {
+			return false
+		}
+	})[0]
+	return dia || dias[0]
 }
