@@ -1,5 +1,6 @@
 import React, { useLayoutEffect, useState, useRef } from 'react'
 import { View, Text, StyleSheet, ScrollView, Dimensions, Pressable } from 'react-native'
+import * as Location from 'expo-location'
 import { useNavigation } from '@react-navigation/native'
 import { FormStepsBar } from '../../../components/form/FormStepsBar'
 import { HTMLMap } from '../../../components/HTMLMap'
@@ -18,6 +19,28 @@ export function ServicesForm1Screen() {
 	const mService = allMinorServices.filter(minService => minService.id === minorServiceId)[0]
 	const [lockedMap, setLockedMap] = useState(true)
 	const scrollViewRef = useRef<ScrollView>(null)
+	const [location, setLocation] = useState<Location.LocationObject | null>(null)
+	const [status, requestPermission] = Location.useForegroundPermissions()
+
+	useLayoutEffect(() => {
+		requestPermission()
+	}, [])
+
+	useLayoutEffect(() => {
+		;(async () => {
+			if (status?.granted) {
+				await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Highest })
+					.then(res => {
+						console.log(res)
+					})
+					.catch(err => {
+						console.log(err)
+					})
+			} else {
+				requestPermission()
+			}
+		})()
+	}, [status])
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
