@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native'
 import React from 'react'
 import { Modal, Text, Button, Center, VStack, ScrollView, FlatList, Box } from 'native-base'
-import { obterProxDiaPagamento } from '../../utils/arcgis'
+import { obterListaDePagamentosDoAno, obterProxDiaPagamento } from '../../utils/arcgis'
 import { COLORS } from '../../constants/colors'
 
 interface CalendarioAuxilioBrasilModalProps {
@@ -19,7 +19,7 @@ export function CalendarioAuxilioBrasilModal(props: CalendarioAuxilioBrasilModal
 				<Modal.Body>
 					<Center>
 						<FlatList
-							data={obterProxDiaPagamento(props.numFinalNis)}
+							data={obterListaDePagamentosDoAno(props.numFinalNis)}
 							numColumns={2}
 							renderItem={itemData => {
 								return (

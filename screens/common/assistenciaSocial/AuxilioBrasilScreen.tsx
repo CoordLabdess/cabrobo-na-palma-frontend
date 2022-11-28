@@ -30,13 +30,7 @@ export function AuxilioBrasilScreen() {
 						setSemResgitro(true)
 					} else {
 						setSemResgitro(false)
-						setProxData(
-							obterProxDiaPagamento(nis).filter(
-								x =>
-									Number(x.mes) >= new Date().getMonth() + 1 &&
-									Number(x.dia) >= new Date().getDay(),
-							)[0],
-						)
+						setProxData(obterProxDiaPagamento(nis))
 					}
 				})
 				.catch(err => {
@@ -110,7 +104,7 @@ export function AuxilioBrasilScreen() {
 									</Text>
 								</VStack>
 								<VStack w='100%' mb={2} alignItems='center'>
-									<Text style={[styles.infoText, { fontWeight: '700' }]}>Próximo Pagamento</Text>
+									<Text style={[styles.infoText, { fontWeight: '700' }]}>Dia do Pagamento</Text>
 									<Text flex={1} style={styles.infoText}>
 										{`${proxData?.dia}/${proxData?.mes}/2022`}
 									</Text>
@@ -118,10 +112,10 @@ export function AuxilioBrasilScreen() {
 							</Box>
 							<Pressable
 								onPress={() => setExibirCalendario(true)}
-								style={{ padding: 5, marginTop: 20 }}
+								style={{ padding: 7, marginTop: 20 }}
 							>
 								<Text style={styles.details}>
-									Clique aqui para conferir o calendário de pagamentos completo
+									Clique aqui para conferir o calendário de pagamentos completo do seu NIS
 								</Text>
 							</Pressable>
 						</>
