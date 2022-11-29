@@ -21,6 +21,7 @@ export function ServicesForm1Screen() {
 	const scrollViewRef = useRef<ScrollView>(null)
 	const [location, setLocation] = useState<Location.LocationObject | null>(null)
 	const [status, requestPermission] = Location.useForegroundPermissions()
+	const [msg, setMsg] = useState('oi')
 
 	useLayoutEffect(() => {
 		requestPermission()
@@ -32,6 +33,7 @@ export function ServicesForm1Screen() {
 				await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Highest })
 					.then(res => {
 						console.log(res)
+						setLocation(res)
 					})
 					.catch(err => {
 						console.log(err)
@@ -63,7 +65,10 @@ export function ServicesForm1Screen() {
 			>
 				<Pressable
 					onTouchMove={() => setLockedMap(true)}
-					onTouchStart={() => setLockedMap(true)}
+					onTouchStart={() => {
+						setLockedMap(true)
+						setMsg('dqwijwqxwq')
+					}}
 					style={{ marginVertical: 10, width: '100%', alignItems: 'center' }}
 				>
 					<FormStepsBar maxSteps={3} currentStep={1} />
@@ -71,6 +76,10 @@ export function ServicesForm1Screen() {
 				<Text style={styles.title}>Selecione no mapa a localização do problema.</Text>
 				<View style={{ width: '100%', height: Dimensions.get('window').height * 0.5 }}>
 					<HTMLMap
+						initialCoords={{
+							longitude: location.coords.longitude,
+							latitude: location.coords.latitude,
+						}}
 						onFirstMark={() => scrollViewRef.current?.scrollToEnd({ animated: true })}
 						onCoordsChange={c => updateData('coords', c)}
 					/>

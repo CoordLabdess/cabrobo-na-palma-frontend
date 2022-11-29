@@ -11,11 +11,12 @@ interface HTMLMapProps {
 }
 
 export function HTMLMap(props: HTMLMapProps) {
-	const webViewRef = useRef()
+	const webViewRef = useRef<WebView>()
 
 	const [coords, setCoords] = useState<Coords | null>(null)
 
 	function onMessage(data: any) {
+		console.log(data.nativeEvent.data)
 		const newCoords = data.nativeEvent.data.split('|') as string[]
 		if (!coords && props.onFirstMark) {
 			props.onFirstMark()
@@ -120,7 +121,9 @@ export function HTMLMap(props: HTMLMapProps) {
 								const view = new MapView({
 									container: 'viewDiv',
 									map: map,
-									center: [-39.31, -8.51],
+									center: [${props.initialCoords ? props.initialCoords.longitude : -39.31}, ${
+						props.initialCoords ? props.initialCoords.latitude : -8.51
+					}],
 									zoom: 15,
 								})
 								let layer = new GraphicsLayer({
@@ -130,6 +133,8 @@ export function HTMLMap(props: HTMLMapProps) {
 									source: [pointGraphic],
 									url: '',
 								})
+
+								
 
 								const fLayer1 = new FeatureLayer({
 									url: 'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Ruas_Cabrobo_APP/FeatureServer/0'
@@ -165,8 +170,26 @@ export function HTMLMap(props: HTMLMapProps) {
 										symbol: simpleMarkerSymbol,
 									})
 									sendDataToReactNativeApp(evt.mapPoint.longitude, evt.mapPoint.latitude)
-								})
-								map.add(featureLayer)
+								});
+
+								
+								if(!layer.loaded){
+									
+									layer.removeAll()
+									layer.graphics = new Graphic({
+										geometry: {
+											type: 'point',
+											longitude: ${props.initialCoords.longitude},
+											latitude: ${props.initialCoords.latitude},
+										},
+										symbol: simpleMarkerSymbol,
+									})
+									sendDataToReactNativeApp(${props.initialCoords?.latitude}, ${props.initialCoords?.longitude})
+								}
+								
+								
+
+								map.add(featureLayer);
 								map.add(fLayer1)
 								map.add(fLayer2)
 								map.add(fLayer3)
@@ -189,7 +212,7 @@ export function HTMLMap(props: HTMLMapProps) {
 								senDataToReactNativeApp(1, 1)
 							}
 							document.addEventListener("message", function(data) {
-								alert(data.data);
+								sendDataToReactNativeApp(data.data);
 							  })
 						</script>
 					</body>
