@@ -1,11 +1,13 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import * as SecureStore from 'expo-secure-store'
+import * as Location from 'expo-location'
 import * as SplashScreen from 'expo-splash-screen'
 import { AxiosError } from 'axios'
 import { useToast } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
 import { api } from '../services/api'
 import { UserProps } from '../utils/contextTypes'
+import { Coords } from '../types/global'
 
 export type AuthType = 'Common' | null
 
@@ -20,6 +22,7 @@ interface Auth {
 	loading: boolean
 	signup: (values: any) => void
 	user: UserProps
+	location: Coords | null
 }
 
 export const AuthContext = createContext<Auth>({} as Auth)
@@ -30,6 +33,8 @@ export function AuthContextProvider(props: { children: React.ReactNode }) {
 	const [signed, setSigned] = useState<null | number>(null)
 	const [loading, setLoading] = useState(false)
 	const [user, setUser] = useState<UserProps>({} as UserProps)
+	const [location, setLocation] = useState<Coords | null>(null)
+	const [status, requestPermission] = Location.useForegroundPermissions()
 	const toast = useToast()
 
 	async function authenticate(token: string, type: AuthType) {
@@ -128,6 +133,25 @@ export function AuthContextProvider(props: { children: React.ReactNode }) {
 		}
 	}, [signed])
 
+	useEffect(() => {
+		;(async () => {
+			if (status?.granted) {
+				await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Highest })
+					.then(res => {
+						const c = { latitude: res.coords.latitude, longitude: res.coords.longitude }
+						setLocation(c)
+					})
+					.catch(err => {
+						setLocation(null)
+					})
+			}
+		})()
+	}, [status])
+
+	useEffect(() => {
+		requestPermission()
+	}, [])
+
 	const value: Auth = {
 		token: authToken,
 		type: authType,
@@ -139,6 +163,7 @@ export function AuthContextProvider(props: { children: React.ReactNode }) {
 		loading,
 		signup,
 		user,
+		location,
 	}
 
 	return <AuthContext.Provider value={value}>{props.children}</AuthContext.Provider>

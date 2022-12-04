@@ -1,6 +1,7 @@
 import { NativeBaseProvider } from 'native-base'
 import { StatusBar } from 'expo-status-bar'
-import React from 'react'
+import * as Location from 'expo-location'
+import React, { useLayoutEffect } from 'react'
 import { KeyboardAvoidingView, Platform, View } from 'react-native'
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context'
 import { Navigation } from './routers/Navigation'

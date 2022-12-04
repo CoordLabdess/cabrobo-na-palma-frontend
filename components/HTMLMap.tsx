@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { View, Button, ActivityIndicator, StyleSheet } from 'react-native'
 import { WebView } from 'react-native-webview'
 import { Coords } from '../types/global'
@@ -16,12 +16,15 @@ export function HTMLMap(props: HTMLMapProps) {
 	const [coords, setCoords] = useState<Coords | null>(null)
 
 	function onMessage(data: any) {
-		console.log(data.nativeEvent.data)
+		const c = {
+			latitude: data.nativeEvent.data.split('|')[1],
+			longitude: data.nativeEvent.data.split('|')[0],
+		}
 		const newCoords = data.nativeEvent.data.split('|') as string[]
 		if (!coords && props.onFirstMark) {
 			props.onFirstMark()
 		}
-		setCoords({ latitude: Number(newCoords[0]), longitude: Number(newCoords[1]) })
+		setCoords(c)
 	}
 
 	useEffect(() => {
@@ -172,8 +175,9 @@ export function HTMLMap(props: HTMLMapProps) {
 									sendDataToReactNativeApp(evt.mapPoint.longitude, evt.mapPoint.latitude)
 								});
 
-								
-								if(!layer.loaded){
+								${
+									props.initialCoords
+										? `if(!layer.loaded){
 									
 									layer.removeAll()
 									layer.graphics = new Graphic({
@@ -184,8 +188,11 @@ export function HTMLMap(props: HTMLMapProps) {
 										},
 										symbol: simpleMarkerSymbol,
 									})
-									sendDataToReactNativeApp(${props.initialCoords?.latitude}, ${props.initialCoords?.longitude})
+									sendDataToReactNativeApp(${props.initialCoords?.longitude}, ${props.initialCoords?.latitude})
+								}`
+										: ''
 								}
+								
 								
 								
 

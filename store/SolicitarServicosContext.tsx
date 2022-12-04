@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react'
+import React, { createContext, useContext, useState, useEffect } from 'react'
 import { Coords } from '../types/global'
 
 interface ServiceRequestFormContextData {
@@ -22,6 +22,8 @@ export function ServiceRequestFormProvider(props: { children: React.ReactNode })
 	const [majorServiceId, setMajorServiceId] = useState(-1)
 	const [minorServiceId, setMinorServiceId] = useState(-1)
 
+	useEffect(() => {}, [data])
+
 	function updateMajorServiceId(id: number) {
 		setMajorServiceId(id)
 		setData({})
@@ -43,6 +45,10 @@ export function ServiceRequestFormProvider(props: { children: React.ReactNode })
 			return { ...oldState, ...object }
 		})
 	}
+
+	useEffect(() => {
+		console.log(data)
+	}, [data])
 
 	const value = {
 		majorServiceId,

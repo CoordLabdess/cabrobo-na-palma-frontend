@@ -1,6 +1,5 @@
-import React, { useLayoutEffect, useState, useRef } from 'react'
+import React, { useLayoutEffect, useState, useRef, useContext } from 'react'
 import { View, Text, StyleSheet, ScrollView, Dimensions, Pressable } from 'react-native'
-import * as Location from 'expo-location'
 import { useNavigation } from '@react-navigation/native'
 import { FormStepsBar } from '../../../components/form/FormStepsBar'
 import { HTMLMap } from '../../../components/HTMLMap'
@@ -11,38 +10,17 @@ import { allMinorServices } from '../../../data/minorServices'
 import { useServiceRequestForm } from '../../../store/SolicitarServicosContext'
 import Header from '../../../components/common/Header'
 import { RoutesType } from '../../../types/routes'
+import { AuthContext } from '../../../store/AuthContext'
 
 export function ServicesForm1Screen() {
+	const { location } = useContext(AuthContext)
 	const navigation = useNavigation()
 	const { updateData, data, minorServiceId } = useServiceRequestForm()
 	const [error, setError] = useState(false)
 	const mService = allMinorServices.filter(minService => minService.id === minorServiceId)[0]
 	const [lockedMap, setLockedMap] = useState(true)
 	const scrollViewRef = useRef<ScrollView>(null)
-	const [location, setLocation] = useState<Location.LocationObject | null>(null)
-	const [status, requestPermission] = Location.useForegroundPermissions()
-	const [msg, setMsg] = useState('oi')
-
-	useLayoutEffect(() => {
-		requestPermission()
-	}, [])
-
-	useLayoutEffect(() => {
-		;(async () => {
-			if (status?.granted) {
-				await Location.getCurrentPositionAsync({ accuracy: Location.Accuracy.Highest })
-					.then(res => {
-						console.log(res)
-						setLocation(res)
-					})
-					.catch(err => {
-						console.log(err)
-					})
-			} else {
-				requestPermission()
-			}
-		})()
-	}, [status])
+	const [initialCoords, setInitialCoords] = useState<Coords | null>(null)
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
@@ -65,10 +43,7 @@ export function ServicesForm1Screen() {
 			>
 				<Pressable
 					onTouchMove={() => setLockedMap(true)}
-					onTouchStart={() => {
-						setLockedMap(true)
-						setMsg('dqwijwqxwq')
-					}}
+					onTouchStart={() => setLockedMap(true)}
 					style={{ marginVertical: 10, width: '100%', alignItems: 'center' }}
 				>
 					<FormStepsBar maxSteps={3} currentStep={1} />
@@ -76,10 +51,7 @@ export function ServicesForm1Screen() {
 				<Text style={styles.title}>Selecione no mapa a localização do problema.</Text>
 				<View style={{ width: '100%', height: Dimensions.get('window').height * 0.5 }}>
 					<HTMLMap
-						initialCoords={{
-							longitude: location.coords.longitude,
-							latitude: location.coords.latitude,
-						}}
+						initialCoords={location}
 						onFirstMark={() => scrollViewRef.current?.scrollToEnd({ animated: true })}
 						onCoordsChange={c => updateData('coords', c)}
 					/>
