@@ -4,7 +4,9 @@ import saudeImg from '../assets/home/saude.png'
 import solicitarServicoImg from '../assets/home/solicitar-servico.png'
 import suaEmpresaAquiImg from '../assets/home/sua-empresa-aqui.png'
 import transporteSeguroImg from '../assets/home/transporte-seguro.png'
+
 import turismoImg from '../assets/home/turismo.png'
+import turismoColor from '../assets/home/turismoColor.png'
 
 import solicitarServicoColor from '../assets/home/solicitarServicoColor.png'
 import suaEmpresaAquiColor from '../assets/home/suaEmpresaAquiColor.png'
@@ -49,11 +51,11 @@ export const allTools: Tool[] = [
 	},
 	{
 		id: 4,
-		navigateTo: 'ComingSoon',
+		navigateTo: 'Turismo',
 		alias: 'turismo',
 		title: 'Turismo',
 		img: turismoImg,
-		img2: transporteSeguroImg,
+		img2: turismoColor,
 		category: 'Tool',
 		majorServicesIds: [],
 	},

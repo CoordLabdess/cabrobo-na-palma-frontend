@@ -30,6 +30,7 @@ import { AuxilioBrasilScreen } from '../../screens/common/assistenciaSocial/Auxi
 import { LoginScreen } from '../../screens/public/LoginScreen'
 import SignUpScreen from '../../screens/public/SignUpScreen'
 import RequestsListScreen from '../../screens/common/Requests'
+import { TurismoHomeScreen } from '../../screens/common/turismo/TurismoHomeScreen'
 
 const BottomTab = createBottomTabNavigator<RootTabParamList>()
 
@@ -270,6 +271,22 @@ export function HomeNavigator() {
 				component={AuxilioBrasilScreen}
 				options={{
 					title: 'Auxílio Brasil',
+					animation: 'none',
+				}}
+			/>
+			<Stack.Screen
+				name='Turismo'
+				component={TurismoHomeScreen}
+				options={{
+					title: 'Turismo',
+					animation: 'none',
+				}}
+			/>
+			<Stack.Screen
+				name='PontosTuristicos'
+				component={ComingSoon}
+				options={{
+					title: 'Pontos Turísticos',
 					animation: 'none',
 				}}
 			/>

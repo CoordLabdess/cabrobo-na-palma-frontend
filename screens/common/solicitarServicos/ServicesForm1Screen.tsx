@@ -46,10 +46,11 @@ export function ServicesForm1Screen() {
 					onTouchStart={() => setLockedMap(true)}
 					style={{ marginVertical: 10, width: '100%', alignItems: 'center' }}
 				>
-					<FormStepsBar maxSteps={3} currentStep={1} />
+					<FormStepsBar style={{ marginBottom: 10 }} maxSteps={3} currentStep={1} />
+					<Text style={styles.title}>Selecione no mapa a localização do problema.</Text>
 				</Pressable>
-				<Text style={styles.title}>Selecione no mapa a localização do problema.</Text>
-				<View style={{ width: '100%', height: Dimensions.get('window').height * 0.5 }}>
+
+				<View style={{ width: '100%', height: Dimensions.get('window').height * 0.57 }}>
 					<HTMLMap
 						initialCoords={location}
 						onFirstMark={() => scrollViewRef.current?.scrollToEnd({ animated: true })}
@@ -123,7 +124,6 @@ const styles = StyleSheet.create({
 		fontWeight: '500',
 		width: 300,
 		textAlign: 'center',
-		marginBottom: 10,
 		fontSize: 18,
 		color: COLORS.primary400,
 	},
