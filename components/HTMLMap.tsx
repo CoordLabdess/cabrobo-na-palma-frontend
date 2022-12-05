@@ -103,7 +103,8 @@ export function HTMLMap(props: HTMLMapProps) {
 								'esri/Graphic',
 								'esri/layers/GraphicsLayer',
 								'esri/widgets/Search',
-							], (Map, MapView, FeatureLayer, Graphic, GraphicsLayer, Search) => {
+								'esri/widgets/BasemapToggle'
+							], (Map, MapView, FeatureLayer, Graphic, GraphicsLayer, Search, BasemapToggle) => {
 								const map = new Map({
 									basemap: 'topo-vector',
 								})
@@ -129,6 +130,14 @@ export function HTMLMap(props: HTMLMapProps) {
 					}],
 									zoom: 15,
 								})
+
+								const basemapToggle = new BasemapToggle({
+									view: view,
+									nextBasemap: "hybrid"
+								 });
+								 view.ui.add(basemapToggle,"bottom-right");
+
+
 								let layer = new GraphicsLayer({
 									graphics: pointGraphic,
 								})

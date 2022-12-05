@@ -5,9 +5,14 @@ import { FontAwesome } from '@expo/vector-icons'
 import Header from '../../../components/common/Header'
 import { TextInput } from '../../../components/common/TextInput'
 import { useUser } from '../../../store/userContext'
+import { MapModal } from '../../../components/modals/MapModal'
+import { Coords } from '../../../types/global'
 
 export default function EstablishmentsListScreen() {
 	const { buscarEstabelecimentos, establishments, setEstablishments, loading } = useUser()
+	const [estabelecimento, setEstabelecimento] = useState<{ coords: Coords; nome: string } | null>(
+		null,
+	)
 
 	const [search, setSearch] = useState('')
 
@@ -55,7 +60,17 @@ export default function EstablishmentsListScreen() {
 						showsVerticalScrollIndicator={false}
 						renderItem={itemData => {
 							return (
-								<TouchableOpacity>
+								<TouchableOpacity
+									onPress={() =>
+										setEstabelecimento({
+											nome: itemData.item.attributes.name,
+											coords: {
+												longitude: itemData.item.geometry.x,
+												latitude: itemData.item.geometry.y,
+											},
+										})
+									}
+								>
 									<Box bgColor='#fff' p={4} my={4} borderRadius={10} shadow={2} w='100%' flex={1}>
 										<Text fontSize='lg'>{itemData.item.attributes.name}</Text>
 										<Text>{itemData.item.attributes.snippet}</Text>
@@ -66,6 +81,16 @@ export default function EstablishmentsListScreen() {
 					/>
 				)}
 			</Column>
+			{estabelecimento && (
+				<MapModal
+					title={estabelecimento.nome}
+					buttonTitle='Fechar'
+					message='Localização do estabelecimento'
+					onContinue={() => setEstabelecimento(null)}
+					visible={estabelecimento !== null}
+					initialCoords={estabelecimento.coords}
+				/>
+			)}
 		</>
 	)
 }
