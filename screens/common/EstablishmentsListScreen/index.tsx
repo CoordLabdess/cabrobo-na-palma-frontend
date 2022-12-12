@@ -65,8 +65,8 @@ export default function EstablishmentsListScreen() {
 										setEstabelecimento({
 											nome: itemData.item.attributes.name,
 											coords: {
-												longitude: itemData.item.geometry.x,
-												latitude: itemData.item.geometry.y,
+												longitude: itemData.item.attributes.long,
+												latitude: itemData.item.attributes.lat,
 											},
 										})
 									}

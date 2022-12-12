@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
 import { Coords } from '../types/global'
+import { locationToAddress } from '../utils/arcgis'
 
 interface ServiceRequestFormContextData {
 	majorServiceId: number
@@ -45,10 +46,6 @@ export function ServiceRequestFormProvider(props: { children: React.ReactNode })
 			return { ...oldState, ...object }
 		})
 	}
-
-	useEffect(() => {
-		console.log(data)
-	}, [data])
 
 	const value = {
 		majorServiceId,

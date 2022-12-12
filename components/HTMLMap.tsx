@@ -20,7 +20,6 @@ export function HTMLMap(props: HTMLMapProps) {
 			latitude: data.nativeEvent.data.split('|')[1],
 			longitude: data.nativeEvent.data.split('|')[0],
 		}
-		const newCoords = data.nativeEvent.data.split('|') as string[]
 		if (!coords && props.onFirstMark) {
 			props.onFirstMark()
 		}
@@ -76,10 +75,10 @@ export function HTMLMap(props: HTMLMapProps) {
 						/>
 						<link
 							rel="stylesheet"
-							href="https://js.arcgis.com/4.13/esri/themes/light/main.css"
+							href="https://js.arcgis.com/4.20/esri/themes/light/main.css"
 
 						/>
-						<script src="https://js.arcgis.com/4.13/"></script>
+						<script src="https://js.arcgis.com/4.20/"></script>
 				
 						<style>
 							html,
@@ -103,8 +102,9 @@ export function HTMLMap(props: HTMLMapProps) {
 								'esri/Graphic',
 								'esri/layers/GraphicsLayer',
 								'esri/widgets/Search',
-								'esri/widgets/BasemapToggle'
-							], (Map, MapView, FeatureLayer, Graphic, GraphicsLayer, Search, BasemapToggle) => {
+								'esri/widgets/BasemapToggle',
+								'esri/rest/locator'
+							], (Map, MapView, FeatureLayer, Graphic, GraphicsLayer, Search, BasemapToggle, locator) => {
 								const map = new Map({
 									basemap: 'topo-vector',
 								})
@@ -203,7 +203,19 @@ export function HTMLMap(props: HTMLMapProps) {
 								}
 								
 								
-								
+								const params = {
+									address: {
+										"name": "Supermercados Pague Menos - Filial 3"
+									}
+								}
+								locator.addressToLocations("https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer",
+								params).then((results) => {
+									if(results.length) {
+										window.alert("oi")
+									}
+								}).catch((err) => {
+									window.alert(err.message)
+								})
 
 								map.add(featureLayer);
 								map.add(fLayer1)

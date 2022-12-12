@@ -11,6 +11,8 @@ import { useServiceRequestForm } from '../../../store/SolicitarServicosContext'
 import Header from '../../../components/common/Header'
 import { RoutesType } from '../../../types/routes'
 import { AuthContext } from '../../../store/AuthContext'
+import { BooleanModal } from '../../../components/modals/BooleanModal'
+import { GeocodeData, locationToAddress } from '../../../utils/arcgis'
 
 export function ServicesForm1Screen() {
 	const { location } = useContext(AuthContext)
@@ -20,13 +22,43 @@ export function ServicesForm1Screen() {
 	const mService = allMinorServices.filter(minService => minService.id === minorServiceId)[0]
 	const [lockedMap, setLockedMap] = useState(true)
 	const scrollViewRef = useRef<ScrollView>(null)
-	const [initialCoords, setInitialCoords] = useState<Coords | null>(null)
+	const [confirmAddress, setConfirmAddress] = useState(false)
+	const [isLoading, setIsLoading] = useState(false)
+	const [address, setAddress] = useState<GeocodeData | null>(null)
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
 			title: mService.title,
 		})
 	}, [])
+
+	async function handleContinue() {
+		if (!isLoading) {
+			if (data['coords']) {
+				setError(false)
+				setIsLoading(true)
+				await locationToAddress(data['coords'])
+					.then(res => {
+						setAddress(res)
+						setIsLoading(false)
+					})
+					.catch(err => {
+						setIsLoading(false)
+						console.log(err)
+					})
+			} else {
+				setConfirmAddress(false)
+				setError(true)
+			}
+		}
+	}
+
+	function handleConfirm() {
+		updateData('local', address?.address.Match_addr)
+
+		setAddress(null)
+		navigation.navigate('SolicitarServicosForm2')
+	}
 
 	return (
 		<>
@@ -96,20 +128,22 @@ export function ServicesForm1Screen() {
 						</View>
 					)}
 					<View style={styles.continueContainer}>
-						<PrimaryButton
-							onPress={() => {
-								if (data['coords']) {
-									setError(false)
-									navigation.navigate('SolicitarServicosForm2' as RoutesType)
-								} else {
-									setError(true)
-								}
-							}}
-							title='Continuar'
-						/>
+						<PrimaryButton isLoading={isLoading} onPress={handleContinue} title='Continuar' />
 					</View>
 				</Pressable>
 			</ScrollView>
+			{address && (
+				<BooleanModal
+					visible={address !== null}
+					title='Confirme o Endereço'
+					message={`${address.address.Match_addr} 
+				`}
+					cancelbuttonTitle='Alterar'
+					continueButtonTitle='Confirmar'
+					onCancel={() => setAddress(null)}
+					onContinue={handleConfirm}
+				/>
+			)}
 		</>
 	)
 }

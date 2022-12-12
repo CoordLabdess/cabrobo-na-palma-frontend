@@ -356,3 +356,48 @@ export function obterProxDiaPagamento(nis: string): AssistenciaData {
 	})[0]
 	return dia || dias[0]
 }
+
+export interface GeocodeData {
+	address: {
+		Match_addr: string
+		LongLabel: string
+		ShortLabel: string
+		Addr_type: string
+		Type: string
+		Placename: string
+		AddNum: string
+		Address: string
+		Block: string
+		Sector: string
+		Neighborhood: string
+		District: string
+		City: string
+		MetroArea: string
+		Subregion: string
+		Region: string
+		RegionAbbr: string
+		Territory: string
+		Postal: string
+		PostalExt: string
+		CntryName: string
+		CountryCode: string
+	}
+	location: {
+		x: number
+		y: number
+	}
+}
+
+export async function locationToAddress(coords: Coords): Promise<GeocodeData> {
+	return axios
+		.get(
+			`https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=pjson&featureTypes=&location=${coords.longitude},${coords.latitude}&locationType=street&outSR=4326`,
+		)
+		.then(res => {
+			const data = res.data as GeocodeData
+			return data
+		})
+		.catch(err => {
+			throw new Error(err)
+		})
+}
