@@ -12,7 +12,7 @@ import Header from '../../../components/common/Header'
 import { RoutesType } from '../../../types/routes'
 import { AuthContext } from '../../../store/AuthContext'
 import { BooleanModal } from '../../../components/modals/BooleanModal'
-import { GeocodeData, locationToAddress } from '../../../utils/arcgis'
+import { GeocodeLocationToAddressData, locationToAddress } from '../../../utils/arcgis'
 
 export function ServicesForm1Screen() {
 	const { location } = useContext(AuthContext)
@@ -24,7 +24,7 @@ export function ServicesForm1Screen() {
 	const scrollViewRef = useRef<ScrollView>(null)
 	const [confirmAddress, setConfirmAddress] = useState(false)
 	const [isLoading, setIsLoading] = useState(false)
-	const [address, setAddress] = useState<GeocodeData | null>(null)
+	const [address, setAddress] = useState<GeocodeLocationToAddressData | null>(null)
 
 	useLayoutEffect(() => {
 		navigation.setOptions({

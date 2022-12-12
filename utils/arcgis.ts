@@ -17,6 +17,7 @@ export interface GeneralServiceFormat {
 	ESPECIFICA: string
 	TEMPO: string
 	NUMERO: number
+	CEP: string
 	OBSERVACAO: string
 	PROTOCOLO: string
 }
@@ -357,7 +358,7 @@ export function obterProxDiaPagamento(nis: string): AssistenciaData {
 	return dia || dias[0]
 }
 
-export interface GeocodeData {
+export interface GeocodeLocationToAddressData {
 	address: {
 		Match_addr: string
 		LongLabel: string
@@ -390,13 +391,46 @@ export interface GeocodeData {
 	}
 }
 
-export async function locationToAddress(coords: Coords): Promise<GeocodeData> {
+export async function locationToAddress(coords: Coords): Promise<GeocodeLocationToAddressData> {
 	return axios
 		.get(
 			`https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=pjson&featureTypes=&location=${coords.longitude},${coords.latitude}&outFields=*&locationType=street&outSR=4326`,
 		)
 		.then(res => {
-			const data = res.data as GeocodeData
+			const data = res.data as GeocodeLocationToAddressData
+			return data
+		})
+		.catch(err => {
+			throw new Error(err)
+		})
+}
+
+interface GeocodeAddressToLocationData {
+	address: string
+	location: {
+		x: number
+		y: number
+	}
+	score: number
+	attributes: {
+		Match_addr: string
+		LongLabel: string
+		ShortLabel: string
+		PlaceName: string
+		Place_addr: string
+		City: string
+		Postal: string
+		ExInfo: string
+	}
+}
+
+export async function addressToLocations(matchAddr: string): Promise<GeocodeAddressToLocationData> {
+	return axios
+		.get(
+			`https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?address=${matchAddr}&outFields=*&f=json`,
+		)
+		.then(res => {
+			const data = res.data.candidates as GeocodeAddressToLocationData
 			return data
 		})
 		.catch(err => {

@@ -89,6 +89,7 @@ export function ServicesForm3Screen() {
 				OBSERVACAO: ServicesCtx.data.notes || '',
 				TELEFONE: 0,
 				PROTOCOLO: p,
+				CEP: ServicesCtx.data.cep || '',
 				TIPO: allMinorServices.filter(mService => mService.id === ServicesCtx.minorServiceId)[0]
 					.title,
 			}
