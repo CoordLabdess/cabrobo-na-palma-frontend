@@ -363,6 +363,8 @@ export interface GeocodeData {
 		LongLabel: string
 		ShortLabel: string
 		Addr_type: string
+		Place_addr: string
+		StName: string
 		Type: string
 		Placename: string
 		AddNum: string
@@ -391,7 +393,7 @@ export interface GeocodeData {
 export async function locationToAddress(coords: Coords): Promise<GeocodeData> {
 	return axios
 		.get(
-			`https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=pjson&featureTypes=&location=${coords.longitude},${coords.latitude}&locationType=street&outSR=4326`,
+			`https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=pjson&featureTypes=&location=${coords.longitude},${coords.latitude}&outFields=*&locationType=street&outSR=4326`,
 		)
 		.then(res => {
 			const data = res.data as GeocodeData

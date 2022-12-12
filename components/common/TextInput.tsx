@@ -24,6 +24,7 @@ export function TextInput({
 	handleChange,
 	value,
 	formError,
+	editable,
 	required,
 	errorMessage,
 	numeric,
@@ -39,8 +40,10 @@ export function TextInput({
 					</Text>
 				)}
 				<Input
+					editable={editable}
 					type='text'
 					value={value}
+					backgroundColor={editable ? '#fff' : COLORS.secondary200}
 					keyboardType={numeric ? 'numeric' : 'default'}
 					onChangeText={handleChange}
 					borderColor={'#123A56'}

@@ -73,10 +73,10 @@ export function ServicesForm3Screen() {
 			setProtocol(p)
 			const d: GeneralServiceFormat = {
 				BAIRRO: ServicesCtx.data.bairro || '',
-				CIDADE: 'Cabrobó',
+				CIDADE: ServicesCtx.data.cidade || '',
 				NUMERO: Number(ServicesCtx.data.numero) || 0,
 				COMPLEMENT: ServicesCtx.data.complemento || '',
-				ENDEREÇO: 'Aguardando atualização da base de Cabrobó',
+				ENDEREÇO: ServicesCtx.data.endereco || '',
 				PONTO_DE_R: ServicesCtx.data.pontoDeReferencia || '',
 				SERVIÇO: allMajorServices
 					.filter(mService => mService.id === ServicesCtx.majorServiceId)[0]

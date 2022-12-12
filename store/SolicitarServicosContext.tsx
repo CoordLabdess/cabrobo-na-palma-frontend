@@ -23,7 +23,9 @@ export function ServiceRequestFormProvider(props: { children: React.ReactNode })
 	const [majorServiceId, setMajorServiceId] = useState(-1)
 	const [minorServiceId, setMinorServiceId] = useState(-1)
 
-	useEffect(() => {}, [data])
+	useEffect(() => {
+		console.log(data)
+	}, [data])
 
 	function updateMajorServiceId(id: number) {
 		setMajorServiceId(id)

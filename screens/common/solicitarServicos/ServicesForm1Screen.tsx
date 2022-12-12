@@ -54,8 +54,11 @@ export function ServicesForm1Screen() {
 	}
 
 	function handleConfirm() {
-		updateData('local', address?.address.Match_addr)
-
+		updateData('cidade', address?.address.City)
+		updateData('endereco', address?.address.LongLabel)
+		updateData('logradouro', address?.address.Address)
+		updateData('bairro', address?.address.District)
+		updateData('cep', address?.address.Postal)
 		setAddress(null)
 		navigation.navigate('SolicitarServicosForm2')
 	}

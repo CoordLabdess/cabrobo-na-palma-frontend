@@ -68,6 +68,12 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								value: '',
 							},
 							{
+								label: 'CEP',
+								alias: 'cep',
+								type: 'textInput',
+								value: '',
+							},
+							{
 								label: 'Número',
 								alias: 'numero',
 								type: 'textInput',
@@ -184,6 +190,12 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 							{
 								label: 'Bairro',
 								alias: 'bairro',
+								type: 'textInput',
+								value: '',
+							},
+							{
+								label: 'CEP',
+								alias: 'cep',
 								type: 'textInput',
 								value: '',
 							},
@@ -314,6 +326,12 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								value: '',
 							},
 							{
+								label: 'CEP',
+								alias: 'cep',
+								type: 'textInput',
+								value: '',
+							},
+							{
 								label: 'Número',
 								alias: 'numero',
 								type: 'textInput',
@@ -436,6 +454,12 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 							{
 								label: 'Bairro',
 								alias: 'bairro',
+								type: 'textInput',
+								value: '',
+							},
+							{
+								label: 'CEP',
+								alias: 'cep',
 								type: 'textInput',
 								value: '',
 							},
@@ -569,6 +593,12 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 							{
 								label: 'Bairro',
 								alias: 'bairro',
+								type: 'textInput',
+								value: '',
+							},
+							{
+								label: 'CEP',
+								alias: 'cep',
 								type: 'textInput',
 								value: '',
 							},
@@ -709,6 +739,12 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								value: '',
 							},
 							{
+								label: 'CEP',
+								alias: 'cep',
+								type: 'textInput',
+								value: '',
+							},
+							{
 								label: 'Número',
 								alias: 'numero',
 								type: 'textInput',
@@ -822,6 +858,12 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 							{
 								label: 'Bairro',
 								alias: 'bairro',
+								type: 'textInput',
+								value: '',
+							},
+							{
+								label: 'CEP',
+								alias: 'cep',
 								type: 'textInput',
 								value: '',
 							},
@@ -943,6 +985,12 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								value: '',
 							},
 							{
+								label: 'CEP',
+								alias: 'cep',
+								type: 'textInput',
+								value: '',
+							},
+							{
 								label: 'Número',
 								alias: 'numero',
 								type: 'textInput',
@@ -1056,6 +1104,12 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 							{
 								label: 'Bairro',
 								alias: 'bairro',
+								type: 'textInput',
+								value: '',
+							},
+							{
+								label: 'CEP',
+								alias: 'cep',
 								type: 'textInput',
 								value: '',
 							},
@@ -1177,6 +1231,12 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								value: '',
 							},
 							{
+								label: 'CEP',
+								alias: 'cep',
+								type: 'textInput',
+								value: '',
+							},
+							{
 								label: 'Número',
 								alias: 'numero',
 								type: 'textInput',
@@ -1290,6 +1350,12 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 							{
 								label: 'Bairro',
 								alias: 'bairro',
+								type: 'textInput',
+								value: '',
+							},
+							{
+								label: 'CEP',
+								alias: 'cep',
 								type: 'textInput',
 								value: '',
 							},
@@ -1417,6 +1483,12 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								value: '',
 							},
 							{
+								label: 'CEP',
+								alias: 'cep',
+								type: 'textInput',
+								value: '',
+							},
+							{
 								label: 'Número',
 								alias: 'numero',
 								type: 'textInput',
@@ -1505,6 +1577,12 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 							{
 								label: 'Bairro',
 								alias: 'bairro',
+								type: 'textInput',
+								value: '',
+							},
+							{
+								label: 'CEP',
+								alias: 'cep',
 								type: 'textInput',
 								value: '',
 							},
@@ -1616,6 +1694,12 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 							{
 								label: 'Bairro',
 								alias: 'bairro',
+								type: 'textInput',
+								value: '',
+							},
+							{
+								label: 'CEP',
+								alias: 'cep',
 								type: 'textInput',
 								value: '',
 							},
@@ -1737,6 +1821,12 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								value: '',
 							},
 							{
+								label: 'CEP',
+								alias: 'cep',
+								type: 'textInput',
+								value: '',
+							},
+							{
 								label: 'Número',
 								alias: 'numero',
 								type: 'textInput',
@@ -1854,6 +1944,12 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								value: '',
 							},
 							{
+								label: 'CEP',
+								alias: 'cep',
+								type: 'textInput',
+								value: '',
+							},
+							{
 								label: 'Número',
 								alias: 'numero',
 								type: 'textInput',
@@ -1961,6 +2057,12 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 							{
 								label: 'Bairro',
 								alias: 'bairro',
+								type: 'textInput',
+								value: '',
+							},
+							{
+								label: 'CEP',
+								alias: 'cep',
 								type: 'textInput',
 								value: '',
 							},

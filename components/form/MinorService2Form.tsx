@@ -13,7 +13,7 @@ export default function FirstMinorService2Form() {
 
 	const questions = allMinorServicesForm[5].pages[1].sections[0].fields
 
-	type aliases = 'logradouro' | 'bairro' | 'numero' | 'pontoDeReferencia' | 'complemento'
+	type aliases = 'logradouro' | 'bairro' | 'cep' | 'numero' | 'pontoDeReferencia' | 'complemento'
 	return (
 		<Formik
 			enableReinitialize
@@ -26,6 +26,7 @@ export default function FirstMinorService2Form() {
 			initialValues={{
 				logradouro: data['logradouro'] || '',
 				bairro: data['bairro'] || '',
+				cep: data['cep'] || '',
 				numero: data['numero'] || '',
 				complemento: data['complemento'] || '',
 				pontoDeReferencia: data['pontoDeReferencia'] || '',
@@ -36,6 +37,12 @@ export default function FirstMinorService2Form() {
 					<Column w='80%' space={4}>
 						{questions.map(({ label, alias }) => (
 							<TextInput
+								editable={
+									alias !== 'logradouro' &&
+									alias !== 'bairro' &&
+									alias !== 'cep' &&
+									alias !== 'numero'
+								}
 								title={label}
 								handleChange={(text: string) => setFieldValue(alias, text)}
 								value={values[`${alias}` as aliases]}

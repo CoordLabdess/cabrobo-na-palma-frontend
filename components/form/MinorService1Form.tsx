@@ -16,6 +16,7 @@ export default function FirstMinorService1Form() {
 	type aliases =
 		| 'logradouro'
 		| 'bairro'
+		| 'cep'
 		| 'numero'
 		| 'pontoDeReferencia'
 		| 'complemento'
@@ -33,6 +34,7 @@ export default function FirstMinorService1Form() {
 			initialValues={{
 				logradouro: data['logradouro'] || '',
 				bairro: data['bairro'] || '',
+				cep: data['cep'] || '',
 				numero: data['numero'] || '',
 				complemento: data['complemento'] || '',
 				pontoDeReferencia: data['pontoDeReferencia'] || '',
@@ -44,6 +46,12 @@ export default function FirstMinorService1Form() {
 					<Column w='80%' space={4}>
 						{questions.map(({ label, alias }) => (
 							<TextInput
+								editable={
+									alias !== 'logradouro' &&
+									alias !== 'bairro' &&
+									alias !== 'cep' &&
+									alias !== 'numero'
+								}
 								title={label}
 								handleChange={(text: string) => setFieldValue(alias, text)}
 								value={values[`${alias}` as aliases]}

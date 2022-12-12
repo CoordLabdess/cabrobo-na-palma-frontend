@@ -93,9 +93,10 @@ const isValidState = (state: any) => {
 // Yup validators
 
 export const MinorService1FormSchema = Yup.object().shape({
-	logradouro: Yup.string().required('Necessário'),
-	bairro: Yup.string().required('Necessário'),
-	numero: Yup.number().required('Necessário'),
+	logradouro: Yup.string(),
+	cep: Yup.string(),
+	bairro: Yup.string(),
+	numero: Yup.number(),
 	complemento: Yup.string(),
 	pontoDeReferencia: Yup.string().required('Necessário'),
 	numeroDoPoste: Yup.string(),
@@ -108,9 +109,10 @@ export const loginSchema = Yup.object().shape({
 	password: Yup.string().required('Necessário').min(6, 'Mínimo 6 caracteres'),
 })
 export const MinorService2FormSchema = Yup.object().shape({
-	logradouro: Yup.string().required('Necessário'),
-	bairro: Yup.string().required('Necessário'),
-	numero: Yup.number().required('Necessário'),
+	logradouro: Yup.string(),
+	cep: Yup.string(),
+	bairro: Yup.string(),
+	numero: Yup.number(),
 	complemento: Yup.string(),
 	pontoDeReferencia: Yup.string().required('Necessário'),
 })

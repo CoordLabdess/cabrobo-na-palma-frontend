@@ -30,7 +30,7 @@ export function BooleanModal(props: BooleanModalProps) {
 						<View style={styles.buttonsContainer}>
 							<PrimaryButton
 								title={props.cancelbuttonTitle}
-								onPress={props.onContinue}
+								onPress={props.onCancel}
 								style={{ backgroundColor: COLORS.secondary500, width: 140, marginRight: 5 }}
 							/>
 							<PrimaryButton
