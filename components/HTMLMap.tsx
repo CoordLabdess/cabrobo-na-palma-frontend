@@ -8,6 +8,7 @@ interface HTMLMapProps {
 	onCoordsChange?: (coords: Coords) => void
 	initialCoords?: Coords
 	onFirstMark?: () => void
+	avoidChangeCoords?: boolean
 }
 
 export function HTMLMap(props: HTMLMapProps) {
@@ -171,6 +172,9 @@ export function HTMLMap(props: HTMLMapProps) {
 									suggestionsEnabled: false,
 									
 								})
+								${
+									!props.avoidChangeCoords &&
+									`
 								view.on('click', (evt) => {
 									layer.removeAll()
 									layer.graphics = new Graphic({
@@ -182,8 +186,8 @@ export function HTMLMap(props: HTMLMapProps) {
 										symbol: simpleMarkerSymbol,
 									})
 									sendDataToReactNativeApp(evt.mapPoint.longitude, evt.mapPoint.latitude)
-								});
-
+								});`
+								}
 								${
 									props.initialCoords
 										? `if(!layer.loaded){
