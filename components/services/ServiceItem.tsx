@@ -15,6 +15,7 @@ import { useServiceRequestForm } from '../../store/SolicitarServicosContext'
 
 interface ServiceItemProps {
 	service: MajorService | MinorService
+	onPress?: () => void
 }
 
 export function ServiceItem(props: ServiceItemProps) {
@@ -32,12 +33,15 @@ export function ServiceItem(props: ServiceItemProps) {
 			} as never)
 		} else if (props.service.category === 'MinorService') {
 			ServiceCtx.updateMinorServiceId(props.service.id)
-			navigation.navigate('SolicitarServicosForm1', {
-				serviceId: (props.service as MinorService).formId,
-				serviceType: 'MinorServiceForm',
-				serviceTitle: props.service.title,
-				step: 1,
-			} as never)
+			// navigation.navigate('SolicitarServicosForm1', {
+			// 	serviceId: (props.service as MinorService).formId,
+			// 	serviceType: 'MinorServiceForm',
+			// 	serviceTitle: props.service.title,
+			// 	step: 1,
+			// } as never)
+			if (props.onPress) {
+				props.onPress()
+			}
 		}
 	}
 

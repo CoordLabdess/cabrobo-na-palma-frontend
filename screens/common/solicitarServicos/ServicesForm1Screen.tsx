@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useState, useRef, useContext } from 'react'
 import { View, Text, StyleSheet, ScrollView, Dimensions, Pressable } from 'react-native'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, RouteProp } from '@react-navigation/native'
 import { FormStepsBar } from '../../../components/form/FormStepsBar'
 import { HTMLMap } from '../../../components/HTMLMap'
 import { PrimaryButton } from '../../../components/ui/PrimaryButton'
@@ -14,7 +14,11 @@ import { AuthContext } from '../../../store/AuthContext'
 import { BooleanModal } from '../../../components/modals/BooleanModal'
 import { GeocodeLocationToAddressData, locationToAddress } from '../../../utils/arcgis'
 
-export function ServicesForm1Screen() {
+interface ServicesForm1ScreenProps {
+	route: RouteProp<{ params: { addressCoords?: Coords } }>
+}
+
+export function ServicesForm1Screen(props: ServicesForm1ScreenProps) {
 	const { location } = useContext(AuthContext)
 	const navigation = useNavigation()
 	const { updateData, data, minorServiceId } = useServiceRequestForm()
@@ -25,6 +29,7 @@ export function ServicesForm1Screen() {
 	const [confirmAddress, setConfirmAddress] = useState(false)
 	const [isLoading, setIsLoading] = useState(false)
 	const [address, setAddress] = useState<GeocodeLocationToAddressData | null>(null)
+	console.log(props.route.params.addressCoords)
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
@@ -87,7 +92,7 @@ export function ServicesForm1Screen() {
 
 				<View style={{ width: '100%', height: Dimensions.get('window').height * 0.57 }}>
 					<HTMLMap
-						initialCoords={location}
+						initialCoords={props.route.params.addressCoords || location}
 						onFirstMark={() => scrollViewRef.current?.scrollToEnd({ animated: true })}
 						onCoordsChange={c => updateData('coords', c)}
 					/>
@@ -141,6 +146,7 @@ export function ServicesForm1Screen() {
 					title='Confirme o Endereço'
 					message={`${address.address.Match_addr} 
 				`}
+					onClose={() => setAddress(null)}
 					cancelbuttonTitle='Alterar'
 					continueButtonTitle='Confirmar'
 					onCancel={() => setAddress(null)}

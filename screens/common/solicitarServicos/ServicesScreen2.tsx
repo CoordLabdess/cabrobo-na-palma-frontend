@@ -18,6 +18,7 @@ import { COLORS } from '../../../constants/colors'
 import { ServiceItem } from '../../../components/services/ServiceItem'
 import { useServiceRequestForm } from '../../../store/SolicitarServicosContext'
 import Header from '../../../components/common/Header'
+import { BooleanModal } from '../../../components/modals/BooleanModal'
 
 interface ServiceScreenProps {
 	route: RouteProp
@@ -31,6 +32,7 @@ export function ServicesScreen2(props: ServiceScreenProps) {
 	const [dataArray, setDataArray] = useState<MinorService[] | MajorService[]>([])
 	const [currentService, setCurrentService] = useState<Tool | MajorService>()
 	const solicitarServicosContext = useServiceRequestForm()
+	const [chooseLocationModal, setChooseLocationModal] = useState(false)
 
 	useLayoutEffect(() => {
 		setServiceId(props.route.params?.serviceId)
@@ -80,27 +82,51 @@ export function ServicesScreen2(props: ServiceScreenProps) {
 	}
 
 	return (
-		<ScrollView>
-			<Header goBack title={serviceTitle} />
-			<View style={styles.servicesGridTitleContainer}>
-				<View style={{ alignItems: 'center' }}>
-					<Image
-						resizeMode='contain'
-						style={styles.serviceImg}
-						source={currentService.img2 as ImageSourcePropType}
-						defaultSource={currentService.img2 as ImageURISource}
-					/>
-					<Text style={styles.servicesGridTitle}>
-						Envie sua solicitação referente ao servico de {currentService.title}.
-					</Text>
+		<>
+			<ScrollView>
+				<Header goBack title={serviceTitle} />
+				<View style={styles.servicesGridTitleContainer}>
+					<View style={{ alignItems: 'center' }}>
+						<Image
+							resizeMode='contain'
+							style={styles.serviceImg}
+							source={currentService.img2 as ImageSourcePropType}
+							defaultSource={currentService.img2 as ImageURISource}
+						/>
+						<Text style={styles.servicesGridTitle}>
+							Envie sua solicitação referente ao servico de {currentService.title}.
+						</Text>
+					</View>
 				</View>
-			</View>
-			<Column alignItems='center'>
-				{dataArray.map((item, index) => {
-					return <ServiceItem service={item} key={index} />
-				})}
-			</Column>
-		</ScrollView>
+				<Column alignItems='center'>
+					{dataArray.map((item, index) => {
+						return (
+							<ServiceItem
+								service={item}
+								key={index}
+								onPress={() => setChooseLocationModal(true)}
+							/>
+						)
+					})}
+				</Column>
+			</ScrollView>
+			<BooleanModal
+				title='Iniciar mapa na localização atual?'
+				visible={chooseLocationModal}
+				cancelbuttonTitle='Não'
+				continueButtonTitle='Sim'
+				message='Você deseja iniciar no mapa na sua localização atual? Caso não, busque o local a partir do endereço informado.'
+				onContinue={() => {
+					setChooseLocationModal(false)
+					navigation.navigate('SolicitarServicosForm1')
+				}}
+				onClose={() => setChooseLocationModal(false)}
+				onCancel={() => {
+					setChooseLocationModal(false)
+					navigation.navigate('ChooseAddress')
+				}}
+			/>
+		</>
 	)
 }
 

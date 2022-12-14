@@ -29,6 +29,7 @@ export type RootStackParamList = {
 	PontosDeColeta: undefined
 	PersonalData: undefined
 	ComingSoon: undefined
+	ChooseAddress: undefined
 }
 
 export type RoutesType =
@@ -48,6 +49,7 @@ export type RoutesType =
 	| 'SaudeMapaDengue'
 	| 'PontosDeColeta'
 	| 'ComingSoon'
+	| 'ChooseAddress'
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
 	RootStackParamList,

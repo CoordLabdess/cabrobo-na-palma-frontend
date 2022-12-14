@@ -7,7 +7,6 @@ import { ServicesForm1Screen } from '../../screens/common/solicitarServicos/Serv
 import { ServicesForm2Screen } from '../../screens/common/solicitarServicos/ServicesForm2Screen'
 import { ServicesForm3Screen } from '../../screens/common/solicitarServicos/ServicesForm3Screen'
 import { ServicesScreen2 } from '../../screens/common/solicitarServicos/ServicesScreen2'
-import { SelectMapScreen } from '../../screens/common/solicitarServicos/SelectMapScreen'
 
 const Stack = createNativeStackNavigator()
 

@@ -405,7 +405,7 @@ export async function locationToAddress(coords: Coords): Promise<GeocodeLocation
 		})
 }
 
-interface GeocodeAddressToLocationData {
+export interface GeocodeAddressToLocationData {
 	address: string
 	location: {
 		x: number
@@ -424,13 +424,15 @@ interface GeocodeAddressToLocationData {
 	}
 }
 
-export async function addressToLocations(matchAddr: string): Promise<GeocodeAddressToLocationData> {
+export async function addressToLocations(
+	matchAddr: string,
+): Promise<GeocodeAddressToLocationData[]> {
 	return axios
 		.get(
 			`https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?address=${matchAddr}&outFields=*&f=json`,
 		)
 		.then(res => {
-			const data = res.data.candidates as GeocodeAddressToLocationData
+			const data = res.data.candidates as GeocodeAddressToLocationData[]
 			return data
 		})
 		.catch(err => {

@@ -17,6 +17,7 @@ interface BooleanModalProps {
 	message: string
 	continueButtonTitle: string
 	cancelbuttonTitle: string
+	onClose: () => void
 }
 
 export function BooleanModal(props: BooleanModalProps) {
@@ -25,18 +26,32 @@ export function BooleanModal(props: BooleanModalProps) {
 			<SafeAreaView style={styles.modalContainer} edges={['top', 'left', 'right']}>
 				<View style={styles.modalCardShadow}>
 					<View style={styles.modalCard}>
-						<Text style={styles.title}>{props.title}</Text>
+						<View
+							style={{
+								flexDirection: 'row',
+								width: '100%',
+								justifyContent: 'center',
+							}}
+						>
+							<Pressable style={{ opacity: 0 }}>
+								<Ionicons name='close' size={30} />
+							</Pressable>
+							<Text style={styles.title}>{props.title}</Text>
+							<Pressable onPress={props.onClose}>
+								<Ionicons name='close' size={30} />
+							</Pressable>
+						</View>
 						<Text style={styles.description}>{props.message}</Text>
 						<View style={styles.buttonsContainer}>
 							<PrimaryButton
-								title={props.cancelbuttonTitle}
-								onPress={props.onCancel}
-								style={{ backgroundColor: COLORS.secondary500, width: 140, marginRight: 5 }}
-							/>
-							<PrimaryButton
 								title={props.continueButtonTitle}
 								onPress={props.onContinue}
-								style={{ width: 140, marginLeft: 5 }}
+								style={{ width: 140, marginRight: 5 }}
+							/>
+							<PrimaryButton
+								title={props.cancelbuttonTitle}
+								onPress={props.onCancel}
+								style={{ backgroundColor: COLORS.secondary500, width: 140, marginLeft: 5 }}
 							/>
 						</View>
 					</View>
@@ -56,7 +71,7 @@ const styles = StyleSheet.create({
 	modalCardShadow: {
 		borderRadius: 16,
 		marginTop: 20,
-		maxWidth: '80%',
+		maxWidth: '82%',
 		backgroundColor: 'transparent',
 		shadowColor: '#000',
 		shadowOffset: {
@@ -73,12 +88,15 @@ const styles = StyleSheet.create({
 		borderRadius: 16,
 		justifyContent: 'flex-start',
 		alignItems: 'center',
-		padding: 20,
+		paddingVertical: 20,
+		paddingHorizontal: 10,
 	},
 
 	title: {
-		fontSize: 25,
+		fontSize: 22,
+		flex: 1,
 		color: COLORS.primary500,
+		textAlign: 'center',
 		fontWeight: '600',
 		marginBottom: 19,
 	},

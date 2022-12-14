@@ -31,6 +31,7 @@ import { LoginScreen } from '../../screens/public/LoginScreen'
 import SignUpScreen from '../../screens/public/SignUpScreen'
 import RequestsListScreen from '../../screens/common/Requests'
 import { TurismoHomeScreen } from '../../screens/common/turismo/TurismoHomeScreen'
+import { ChooseAddressScreen } from '../../screens/common/solicitarServicos/ChooseAddressScreen'
 
 const BottomTab = createBottomTabNavigator<RootTabParamList>()
 
@@ -152,6 +153,7 @@ export function HomeNavigator() {
 				}}
 			/>
 			<Stack.Screen name='SolicitarServicosMinor' component={ServicesScreen2} />
+			<Stack.Screen name='ChooseAddress' component={ChooseAddressScreen} />
 			<Stack.Screen
 				name='SolicitarServicosForm1'
 				component={ServicesForm1Screen}
