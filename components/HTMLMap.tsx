@@ -9,6 +9,7 @@ interface HTMLMapProps {
 	initialCoords?: Coords
 	onFirstMark?: () => void
 	avoidChangeCoords?: boolean
+	featuresURL?: string[]
 }
 
 export function HTMLMap(props: HTMLMapProps) {
@@ -42,6 +43,8 @@ export function HTMLMap(props: HTMLMapProps) {
 		const injectedData = `document.getElementById('a').value = '${myData.planet + myData.galaxy}';`
 		return injectedData
 	}
+	const x =
+		'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Ruas_Cabrobo_APP/FeatureServer/0'
 
 	return (
 		<View
@@ -148,22 +151,11 @@ export function HTMLMap(props: HTMLMapProps) {
 								})
 
 								
-
-								const fLayer1 = new FeatureLayer({
-									url: 'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Ruas_Cabrobo_APP/FeatureServer/0'
-								})
-
-								const fLayer2 = new FeatureLayer({
-									url: 'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Bairros_Cabrobo/FeatureServer/0'
-								})
-
-								const fLayer3 = new FeatureLayer({
-									url: 'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Lotes_Cabrobo_APP/FeatureServer/0'
-								})
-
-								const fLayer4 = new FeatureLayer({
-									url: 'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Lotes_Cabrobo_APP/FeatureServer/0'
-								})
+							
+							
+								
+								
+								
 
 								const searchWidget = new Search({
 									view: view,
@@ -212,19 +204,17 @@ export function HTMLMap(props: HTMLMapProps) {
 										"name": "Supermercados Pague Menos - Filial 3"
 									}
 								}
-								locator.addressToLocations("https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer",
-								params).then((results) => {
-									if(results.length) {
-										window.alert("oi")
-									}
-								}).catch((err) => {
-									window.alert(err.message)
-								})
+								
+								${props.featuresURL?.map(feat => {
+									return `
+										map.add(new FeatureLayer({
+											url: '${feat}'
+										}))
+										`
+								})}
 
 								map.add(featureLayer);
-								map.add(fLayer1)
-								map.add(fLayer2)
-								map.add(fLayer3)
+								
 								view.ui.add(searchWidget, {
 									position: "top-right",
 									index: 1

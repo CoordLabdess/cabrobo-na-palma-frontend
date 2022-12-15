@@ -93,6 +93,12 @@ export function ServicesForm1Screen(props: ServicesForm1ScreenProps) {
 
 				<View style={{ width: '100%', height: Dimensions.get('window').height * 0.57 }}>
 					<HTMLMap
+						featuresURL={[
+							'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Ruas_Cabrobo_APP/FeatureServer/0',
+							'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Bairros_Cabrobo/FeatureServer/0',
+							'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Lotes_Cabrobo_APP/FeatureServer/0',
+							'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Lotes_Cabrobo_APP/FeatureServer/0',
+						]}
 						initialCoords={initialCoords}
 						onFirstMark={() => scrollViewRef.current?.scrollToEnd({ animated: true })}
 						onCoordsChange={c => updateData('coords', c)}
