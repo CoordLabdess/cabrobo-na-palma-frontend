@@ -29,7 +29,8 @@ export function ServicesForm1Screen(props: ServicesForm1ScreenProps) {
 	const [confirmAddress, setConfirmAddress] = useState(false)
 	const [isLoading, setIsLoading] = useState(false)
 	const [address, setAddress] = useState<GeocodeLocationToAddressData | null>(null)
-	console.log(props.route.params.addressCoords)
+	console.log(props.route)
+	const initialCoords = props.route.params ? props.route.params.addressCoords : location
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
@@ -92,7 +93,7 @@ export function ServicesForm1Screen(props: ServicesForm1ScreenProps) {
 
 				<View style={{ width: '100%', height: Dimensions.get('window').height * 0.57 }}>
 					<HTMLMap
-						initialCoords={props.route.params.addressCoords || location}
+						initialCoords={initialCoords}
 						onFirstMark={() => scrollViewRef.current?.scrollToEnd({ animated: true })}
 						onCoordsChange={c => updateData('coords', c)}
 					/>

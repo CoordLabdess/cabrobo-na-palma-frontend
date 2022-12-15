@@ -70,9 +70,9 @@ export function ChooseAddressScreen() {
 							</Text>
 						</View>
 
-						{data.map(location => {
+						{data.map((location, i) => {
 							return (
-								<View style={styles.locationCard}>
+								<View key={i} style={styles.locationCard}>
 									<Pressable
 										onPress={() => {
 											navigation.navigate('SolicitarServicosForm1', {
