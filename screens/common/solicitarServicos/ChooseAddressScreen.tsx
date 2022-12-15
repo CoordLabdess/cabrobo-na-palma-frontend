@@ -61,15 +61,17 @@ export function ChooseAddressScreen() {
 						<PrimaryButton title='Pesquisar' onPress={SearchAddresses} isLoading={isLoading} />
 					</View>
 				</View>
-				{data &&
-					data.map(location => {
-						return (
-							<>
-								<View style={{ width: '80%', marginBottom: 20 }}>
-									<Text style={{ textAlign: 'center', fontSize: 20 }}>
-										Selecione algum dos resultados da busca:
-									</Text>
-								</View>
+
+				{data && (
+					<>
+						<View style={{ width: '80%', marginBottom: 20 }}>
+							<Text style={{ textAlign: 'center', fontSize: 20 }}>
+								Selecione algum dos resultados da busca:
+							</Text>
+						</View>
+
+						{data.map(location => {
+							return (
 								<View style={styles.locationCard}>
 									<Pressable
 										onPress={() => {
@@ -90,9 +92,10 @@ export function ChooseAddressScreen() {
 										<Text style={styles.description}>{location.attributes.LongLabel}</Text>
 									</Pressable>
 								</View>
-							</>
-						)
-					})}
+							)
+						})}
+					</>
+				)}
 			</ScrollView>
 		</>
 	)
