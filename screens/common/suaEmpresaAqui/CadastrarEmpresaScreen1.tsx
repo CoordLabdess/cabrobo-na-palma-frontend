@@ -7,6 +7,7 @@ import { COLORS } from '../../../constants/colors'
 import { useRegisterEnterprise } from '../../../store/CadastrarEmpresaContext'
 import { HTMLMapEmpresas } from '../../../components/HTMLMapEmpresas'
 import Header from '../../../components/common/Header'
+import { HTMLMap } from '../../../components/HTMLMap'
 
 export function CadastrarEmpresaScreen1() {
 	const navigation = useNavigation()
@@ -45,12 +46,16 @@ export function CadastrarEmpresaScreen1() {
 				</Pressable>
 
 				<View style={{ width: '100%', height: Dimensions.get('window').height * 0.5 }}>
-					<HTMLMapEmpresas
+					<HTMLMap
+						featuresURL={[
+							'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Estabelecimentos/FeatureServer/0',
+						]}
 						onFirstMark={() => scrollViewRef.current?.scrollToEnd({ animated: true })}
 						onCoordsChange={c =>
 							cadastrarEmpresaCtx.updateData({ ...cadastrarEmpresaCtx.data, coords: c })
 						}
 					/>
+
 					{lockedMap && (
 						<Pressable
 							onPress={() => setLockedMap(false)}

@@ -1,9 +1,10 @@
-import { useLayoutEffect, useState } from 'react'
+import React, { useLayoutEffect, useState } from 'react'
 import { View, Text, StyleSheet, Image, Pressable, ScrollView, Dimensions } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { COLORS } from '../../../constants/colors'
 import { CovidMap } from '../../../components/maps/CovidMap'
 import Header from '../../../components/common/Header'
+import { HTMLMap } from '../../../components/HTMLMap'
 
 export function MapaDeCovidScreen() {
 	const navigation = useNavigation()
@@ -35,7 +36,14 @@ export function MapaDeCovidScreen() {
 				<Text style={styles.title}>Mapa de calor dos casos de COVID-19 no município</Text>
 			</Pressable>
 			<View style={{ width: '100%', height: Dimensions.get('window').height * 0.5 }}>
-				<CovidMap />
+				<HTMLMap
+					avoidChangeCoords
+					featuresURL={[
+						'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/US_Covid_APP/FeatureServer/0',
+						// 'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/US_Covid_APP___rotulo/FeatureServer/0',
+						'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Covid_APP/FeatureServer/0',
+					]}
+				/>
 				{lockedMap && (
 					<Pressable
 						onPress={() => setLockedMap(false)}

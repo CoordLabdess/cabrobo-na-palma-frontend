@@ -107,8 +107,7 @@ export function HTMLMap(props: HTMLMapProps) {
 								'esri/layers/GraphicsLayer',
 								'esri/widgets/Search',
 								'esri/widgets/BasemapToggle',
-								'esri/rest/locator'
-							], (Map, MapView, FeatureLayer, Graphic, GraphicsLayer, Search, BasemapToggle, locator) => {
+							], (Map, MapView, FeatureLayer, Graphic, GraphicsLayer, Search, BasemapToggle) => {
 								const map = new Map({
 									basemap: 'topo-vector',
 								})
@@ -215,10 +214,10 @@ export function HTMLMap(props: HTMLMapProps) {
 
 								map.add(featureLayer);
 								
-								view.ui.add(searchWidget, {
-									position: "top-right",
-									index: 1
-								});
+								// view.ui.add(searchWidget, {
+								// 	position: "top-right",
+								// 	index: 1
+								// });
 								map.add(layer)
 							})
 						</script>

@@ -29,7 +29,7 @@ export function MapModal(props: MapModalProps) {
 						<Text style={styles.title}>{props.title}</Text>
 						<Text style={styles.description}>{props.message}</Text>
 						<View style={{ width: '100%', maxHeight: 300, minWidth: 300, marginBottom: 10 }}>
-							<HTMLMap avoidChangeCoords initialCoords={props.initialCoords} />
+							<HTMLMap initialCoords={props.initialCoords} avoidChangeCoords />
 						</View>
 						<PrimaryButton title={props.buttonTitle} onPress={props.onContinue} />
 					</View>

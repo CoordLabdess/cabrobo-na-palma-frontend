@@ -7,6 +7,7 @@ import { COLORS } from '../../../constants/colors'
 import { DengueMap } from '../../../components/maps/DengueMap'
 import { PontosDeColetaMap } from '../../../components/maps/PontosDeColetaMap'
 import Header from '../../../components/common/Header'
+import { HTMLMap } from '../../../components/HTMLMap'
 
 export function PontosDeColetaScreen() {
 	const navigation = useNavigation()
@@ -39,7 +40,12 @@ export function PontosDeColetaScreen() {
 					<Text style={styles.title}>Mapa dos pontos de coleta de materiais recicláveis</Text>
 				</Pressable>
 				<View style={{ width: '100%', height: Dimensions.get('window').height * 0.5 }}>
-					<PontosDeColetaMap />
+					<HTMLMap
+						avoidChangeCoords
+						featuresURL={[
+							'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Escolas_Recicla_APP/FeatureServer/0',
+						]}
+					/>
 					{lockedMap && (
 						<Pressable
 							onPress={() => setLockedMap(false)}
