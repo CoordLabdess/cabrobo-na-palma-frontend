@@ -129,6 +129,9 @@ export function HTMLMap(props: HTMLMapProps) {
 								const view = new MapView({
 									container: 'viewDiv',
 									map: map,
+									constraints: {
+										minZoom: 13,
+									},
 									center: [${props.initialCoords ? props.initialCoords.longitude : -39.31}, ${
 						props.initialCoords ? props.initialCoords.latitude : -8.51
 					}],
