@@ -46,6 +46,7 @@ export function CadastrarEmpresaScreen1() {
 				</Pressable>
 
 				<View style={{ width: '100%', height: Dimensions.get('window').height * 0.5 }}>
+					{/* <HTMLMapEmpresas /> */}
 					<HTMLMap
 						featuresURL={[
 							'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Estabelecimentos/FeatureServer/0',

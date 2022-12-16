@@ -10,6 +10,7 @@ interface HTMLMapProps {
 	onFirstMark?: () => void
 	avoidChangeCoords?: boolean
 	featuresURL?: string[]
+	initialZoom?: number
 }
 
 export function HTMLMap(props: HTMLMapProps) {
@@ -131,7 +132,7 @@ export function HTMLMap(props: HTMLMapProps) {
 									center: [${props.initialCoords ? props.initialCoords.longitude : -39.31}, ${
 						props.initialCoords ? props.initialCoords.latitude : -8.51
 					}],
-									zoom: 15,
+									zoom: ${props.initialZoom || 16},
 								})
 
 								const basemapToggle = new BasemapToggle({
@@ -177,6 +178,10 @@ export function HTMLMap(props: HTMLMapProps) {
 										symbol: simpleMarkerSymbol,
 									})
 									sendDataToReactNativeApp(evt.mapPoint.longitude, evt.mapPoint.latitude)
+									view.goTo({
+										target: [evt.mapPoint.longitude, evt.mapPoint.latitude],
+										zoom: 19
+									})
 								});`
 								}
 								${
@@ -193,6 +198,10 @@ export function HTMLMap(props: HTMLMapProps) {
 										symbol: simpleMarkerSymbol,
 									})
 									sendDataToReactNativeApp(${props.initialCoords?.longitude}, ${props.initialCoords?.latitude})
+									view.goTo({
+										target: [${props.initialCoords.longitude}, ${props.initialCoords.latitude}],
+										zoom: 19
+									})
 								}`
 										: ''
 								}
