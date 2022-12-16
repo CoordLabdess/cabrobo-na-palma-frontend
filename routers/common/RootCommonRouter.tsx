@@ -152,8 +152,20 @@ export function HomeNavigator() {
 					animation: 'none',
 				}}
 			/>
-			<Stack.Screen name='SolicitarServicosMinor' component={ServicesScreen2} />
-			<Stack.Screen name='ChooseAddress' component={ChooseAddressScreen} />
+			<Stack.Screen
+				name='SolicitarServicosMinor'
+				options={{
+					animation: 'none',
+				}}
+				component={ServicesScreen2}
+			/>
+			<Stack.Screen
+				name='ChooseAddress'
+				options={{
+					animation: 'none',
+				}}
+				component={ChooseAddressScreen}
+			/>
 			<Stack.Screen
 				name='SolicitarServicosForm1'
 				component={ServicesForm1Screen}
