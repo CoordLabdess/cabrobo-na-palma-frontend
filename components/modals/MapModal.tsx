@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { View, Text, StyleSheet, Modal, ScrollView, Pressable, Linking } from 'react-native'
 import Checkbox from 'expo-checkbox'
 import { SafeAreaView } from 'react-native-safe-area-context'
-
 import { Ionicons } from '@expo/vector-icons'
 import { privacyPolicyText } from './privacyPolicyText'
 import { COLORS } from '../../constants/colors'
@@ -14,6 +13,7 @@ import { HTMLMap } from '../HTMLMap'
 interface MapModalProps {
 	visible: boolean
 	onContinue: () => void
+	onClose: () => void
 	title: string
 	message: string
 	buttonTitle: string
@@ -29,7 +29,15 @@ export function MapModal(props: MapModalProps) {
 			<SafeAreaView style={styles.modalContainer} edges={['top', 'left', 'right']}>
 				<View style={styles.modalCardShadow}>
 					<View style={styles.modalCard}>
-						<Text style={styles.title}>{props.title}</Text>
+						<View style={{ width: '100%', flexDirection: 'row', justifyContent: 'space-between' }}>
+							<View style={{ marginRight: 5, opacity: 0 }}>
+								<Ionicons name='close' size={30} />
+							</View>
+							<Text style={styles.title}>{props.title}</Text>
+							<Pressable style={{ marginLeft: 5 }} onPress={props.onClose}>
+								<Ionicons name='close' size={30} />
+							</Pressable>
+						</View>
 						<View style={{ width: '100%' }}>
 							<View style={{ flexDirection: 'row', width: '100%' }}>
 								<Text style={[styles.detalhes, { fontWeight: '700' }]}>Categoria: </Text>
@@ -50,7 +58,9 @@ export function MapModal(props: MapModalProps) {
 						<View style={{ width: '100%', maxHeight: 300, marginBottom: 10 }}>
 							<HTMLMap initialCoords={props.initialCoords} avoidChangeCoords />
 						</View>
-						<PrimaryButton title={props.buttonTitle} onPress={props.onContinue} />
+						<View style={{ marginBottom: 0, paddingVertical: 5 }}>
+							<PrimaryButton title={props.buttonTitle} onPress={props.onContinue} />
+						</View>
 					</View>
 				</View>
 			</SafeAreaView>
@@ -68,6 +78,7 @@ const styles = StyleSheet.create({
 	modalCardShadow: {
 		borderRadius: 16,
 		marginTop: 20,
+		width: 500,
 		maxWidth: '90%',
 		backgroundColor: 'transparent',
 		shadowColor: '#000',
@@ -85,11 +96,11 @@ const styles = StyleSheet.create({
 		borderRadius: 16,
 		justifyContent: 'flex-start',
 		alignItems: 'center',
-		padding: 20,
+		padding: 10,
 	},
 
 	title: {
-		fontSize: 25,
+		fontSize: 20,
 		textAlign: 'center',
 		color: COLORS.primary500,
 		fontWeight: '600',

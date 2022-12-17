@@ -66,7 +66,6 @@ export default function EstablishmentsListScreen() {
 							return (
 								<TouchableOpacity
 									onPress={() => {
-										console.log(itemData.item)
 										setEstabelecimento({
 											nome: itemData.item.attributes.name,
 											coords: {
@@ -92,6 +91,7 @@ export default function EstablishmentsListScreen() {
 			{estabelecimento && (
 				<MapModal
 					title={estabelecimento.nome.trim()}
+					onClose={() => setEstabelecimento(null)}
 					categoria={estabelecimento.categoia.trim()}
 					telefone={estabelecimento.telefone.trim()}
 					endereco={estabelecimento.endereco.trim()}
