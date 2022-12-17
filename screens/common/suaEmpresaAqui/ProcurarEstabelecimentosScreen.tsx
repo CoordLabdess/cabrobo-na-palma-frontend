@@ -10,9 +10,13 @@ import { Coords } from '../../../types/global'
 
 export default function EstablishmentsListScreen() {
 	const { buscarEstabelecimentos, establishments, setEstablishments, loading } = useUser()
-	const [estabelecimento, setEstabelecimento] = useState<{ coords: Coords; nome: string } | null>(
-		null,
-	)
+	const [estabelecimento, setEstabelecimento] = useState<{
+		coords: Coords
+		nome: string
+		categoia: string
+		telefone: string
+		endereco: string
+	} | null>(null)
 
 	const [search, setSearch] = useState('')
 
@@ -61,15 +65,19 @@ export default function EstablishmentsListScreen() {
 						renderItem={itemData => {
 							return (
 								<TouchableOpacity
-									onPress={() =>
+									onPress={() => {
+										console.log(itemData.item)
 										setEstabelecimento({
 											nome: itemData.item.attributes.name,
 											coords: {
 												longitude: itemData.item.attributes.long,
 												latitude: itemData.item.attributes.lat,
 											},
+											categoia: itemData.item.attributes.TIPO_ESTAB,
+											telefone: itemData.item.attributes.phoneNumbe,
+											endereco: itemData.item.attributes.address,
 										})
-									}
+									}}
 								>
 									<Box bgColor='#fff' p={4} my={4} borderRadius={10} shadow={2} w='100%' flex={1}>
 										<Text fontSize='lg'>{itemData.item.attributes.name}</Text>
@@ -83,7 +91,10 @@ export default function EstablishmentsListScreen() {
 			</Column>
 			{estabelecimento && (
 				<MapModal
-					title={estabelecimento.nome}
+					title={estabelecimento.nome.trim()}
+					categoria={estabelecimento.categoia.trim()}
+					telefone={estabelecimento.telefone.trim()}
+					endereco={estabelecimento.endereco.trim()}
 					buttonTitle='Fechar'
 					message='Localização do estabelecimento'
 					onContinue={() => setEstabelecimento(null)}

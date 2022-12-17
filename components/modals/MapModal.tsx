@@ -18,6 +18,9 @@ interface MapModalProps {
 	message: string
 	buttonTitle: string
 	initialCoords?: Coords
+	telefone?: string
+	categoria?: string
+	endereco?: string
 }
 
 export function MapModal(props: MapModalProps) {
@@ -27,8 +30,24 @@ export function MapModal(props: MapModalProps) {
 				<View style={styles.modalCardShadow}>
 					<View style={styles.modalCard}>
 						<Text style={styles.title}>{props.title}</Text>
+						<View style={{ width: '100%' }}>
+							<View style={{ flexDirection: 'row', width: '100%' }}>
+								<Text style={[styles.detalhes, { fontWeight: '700' }]}>Categoria: </Text>
+								<Text style={styles.detalhes}>{props.categoria || 'Não informado'}</Text>
+							</View>
+							<View style={{ flexDirection: 'row', width: '100%' }}>
+								<Text style={[styles.detalhes, { fontWeight: '700' }]}>Telefone: </Text>
+								<Text style={styles.detalhes}>{props.telefone || 'Não informado'}</Text>
+							</View>
+							<View style={{ flexDirection: 'row', width: '100%' }}>
+								<Text style={[styles.detalhes, { fontWeight: '700' }]}>Endereço: </Text>
+								<Text style={[styles.detalhes, { flex: 1 }]}>
+									{props.endereco || 'Não informado'}
+								</Text>
+							</View>
+						</View>
 						<Text style={styles.description}>{props.message}</Text>
-						<View style={{ width: '100%', maxHeight: 300, minWidth: 300, marginBottom: 10 }}>
+						<View style={{ width: '100%', maxHeight: 300, marginBottom: 10 }}>
 							<HTMLMap initialCoords={props.initialCoords} avoidChangeCoords />
 						</View>
 						<PrimaryButton title={props.buttonTitle} onPress={props.onContinue} />
@@ -49,7 +68,7 @@ const styles = StyleSheet.create({
 	modalCardShadow: {
 		borderRadius: 16,
 		marginTop: 20,
-		maxWidth: '80%',
+		maxWidth: '90%',
 		backgroundColor: 'transparent',
 		shadowColor: '#000',
 		shadowOffset: {
@@ -78,15 +97,21 @@ const styles = StyleSheet.create({
 	},
 	description: {
 		fontSize: 14,
-		fontWeight: '500',
+		fontWeight: '600',
 		textAlign: 'center',
 		color: COLORS.primary500,
-		marginBottom: 20,
+		marginVertical: 10,
 	},
 	protocol: {
 		fontSize: 20,
 		fontWeight: '600',
 		color: COLORS.primary500,
 		marginBottom: 20,
+	},
+	detalhes: {
+		fontSize: 14,
+		fontWeight: '500',
+		color: COLORS.primary500,
+		marginBottom: 5,
 	},
 })

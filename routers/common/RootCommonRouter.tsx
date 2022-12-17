@@ -24,7 +24,7 @@ import { EducacaoHomeScreen } from '../../screens/common/educacao/EducacaoHomeSc
 import { PontosDeColetaScreen } from '../../screens/common/educacao/PontosDeColetaScreen'
 import { MenuScreen } from '../../screens/common/MenuScreen'
 import { PersonalData } from '../../screens/common/ProfileScreen/PersonalData'
-import EstablishmentsListScreen from '../../screens/common/EstablishmentsListScreen'
+import EstablishmentsListScreen from '../../screens/common/suaEmpresaAqui/ProcurarEstabelecimentosScreen'
 import { AssistenciaSocialScreen } from '../../screens/common/assistenciaSocial/AssistenciaSocialScreen'
 import { AuxilioBrasilScreen } from '../../screens/common/assistenciaSocial/AuxilioBrasilScreen'
 import { LoginScreen } from '../../screens/public/LoginScreen'
