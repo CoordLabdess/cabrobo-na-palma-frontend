@@ -96,6 +96,7 @@ export default function EstablishmentsListScreen() {
 					telefone={estabelecimento.telefone.trim()}
 					endereco={estabelecimento.endereco.trim()}
 					buttonTitle='Fechar'
+					estabelecimento
 					message='Localização do estabelecimento'
 					onContinue={() => setEstabelecimento(null)}
 					visible={estabelecimento !== null}

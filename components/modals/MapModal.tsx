@@ -21,6 +21,7 @@ interface MapModalProps {
 	telefone?: string
 	categoria?: string
 	endereco?: string
+	estabelecimento?: boolean
 }
 
 export function MapModal(props: MapModalProps) {
@@ -38,26 +39,25 @@ export function MapModal(props: MapModalProps) {
 								<Ionicons name='close' size={30} />
 							</Pressable>
 						</View>
-						{props.categoria && (
-							<View style={{ flexDirection: 'row', width: '100%' }}>
-								<Text style={[styles.detalhes, { fontWeight: '700' }]}>Categoria: </Text>
-								<Text style={styles.detalhes}>{props.categoria || 'Não informado'}</Text>
-							</View>
+						{props.estabelecimento && (
+							<>
+								<View style={{ flexDirection: 'row', width: '100%' }}>
+									<Text style={[styles.detalhes, { fontWeight: '700' }]}>Categoria: </Text>
+									<Text style={styles.detalhes}>{props.categoria || 'Não informado'}</Text>
+								</View>
+								<View style={{ flexDirection: 'row', width: '100%' }}>
+									<Text style={[styles.detalhes, { fontWeight: '700' }]}>Telefone: </Text>
+									<Text style={styles.detalhes}>{props.telefone || 'Não informado'}</Text>
+								</View>
+								<View style={{ flexDirection: 'row', width: '100%' }}>
+									<Text style={[styles.detalhes, { fontWeight: '700' }]}>Endereço: </Text>
+									<Text style={[styles.detalhes, { flex: 1 }]}>
+										{props.endereco || 'Não informado'}
+									</Text>
+								</View>
+							</>
 						)}
-						{props.telefone && (
-							<View style={{ flexDirection: 'row', width: '100%' }}>
-								<Text style={[styles.detalhes, { fontWeight: '700' }]}>Telefone: </Text>
-								<Text style={styles.detalhes}>{props.telefone || 'Não informado'}</Text>
-							</View>
-						)}
-						{props.endereco && (
-							<View style={{ flexDirection: 'row', width: '100%' }}>
-								<Text style={[styles.detalhes, { fontWeight: '700' }]}>Endereço: </Text>
-								<Text style={[styles.detalhes, { flex: 1 }]}>
-									{props.endereco || 'Não informado'}
-								</Text>
-							</View>
-						)}
+
 						<Text style={styles.description}>{props.message}</Text>
 						<View style={{ width: '100%', maxHeight: 300, marginBottom: 10 }}>
 							<HTMLMap initialCoords={props.initialCoords} avoidChangeCoords />
