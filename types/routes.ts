@@ -1,6 +1,7 @@
 import { BottomTabScreenProps } from '@react-navigation/bottom-tabs'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native'
+import { PontoTuristico } from './Turismo'
 
 declare global {
 	namespace ReactNavigation {
@@ -30,6 +31,11 @@ export type RootStackParamList = {
 	PersonalData: undefined
 	ComingSoon: undefined
 	ChooseAddress: undefined
+	AssistenciaSocial: undefined
+	AuxilioBrasil: undefined
+	Turismo: undefined
+	PontosTuristicos: undefined
+	DetalhesPontoTuristico: { PontoTuristico: PontoTuristico }
 }
 
 export type RoutesType =
@@ -50,6 +56,11 @@ export type RoutesType =
 	| 'PontosDeColeta'
 	| 'ComingSoon'
 	| 'ChooseAddress'
+	| 'AssistenciaSocial'
+	| 'AuxilioBrasil'
+	| 'Turismo'
+	| 'PontosTuristicos'
+	| 'DetalhesPontoTuristico'
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
 	RootStackParamList,
@@ -66,4 +77,9 @@ export type RootTabParamList = {
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> = CompositeScreenProps<
 	BottomTabScreenProps<RootTabParamList, Screen>,
 	NativeStackScreenProps<RootStackParamList>
+>
+
+export type DetalhesPontoTuristicoProps = NativeStackScreenProps<
+	RootStackParamList,
+	'DetalhesPontoTuristico'
 >

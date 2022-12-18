@@ -46,7 +46,7 @@ export function TurismoHomeScreen(props: ServiceScreenProps) {
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
-			title: serviceTitle || 'Educação',
+			title: serviceTitle || 'Turismo',
 		})
 	}, [serviceTitle])
 
@@ -84,7 +84,7 @@ export function TurismoHomeScreen(props: ServiceScreenProps) {
 
 	return (
 		<View>
-			<Header goBack title='Educação' />
+			<Header goBack title='Turismo' />
 			<FlatList
 				keyboardShouldPersistTaps='handled'
 				contentContainerStyle={{
@@ -120,17 +120,7 @@ export function TurismoHomeScreen(props: ServiceScreenProps) {
 						<GenericGridTile
 							img={itemData.item.imgMono}
 							title={itemData.item.title}
-							onPress={() => {
-								if (itemData.item.alias === 'ReciclaCabrobo') {
-									Linking.openURL(
-										Platform.OS === 'android'
-											? 'https://play.google.com/store/apps/details?id=com.reciclaCabrobo'
-											: 'https://apps.apple.com/br/app/recicla-cabrob%C3%B3/id1641828174',
-									)
-								} else {
-									navigation.navigate(itemData.item.alias as RoutesType)
-								}
-							}}
+							onPress={() => navigation.navigate(itemData.item.alias as RoutesType)}
 						/>
 					)
 				}}

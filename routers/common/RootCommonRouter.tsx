@@ -32,6 +32,8 @@ import SignUpScreen from '../../screens/public/SignUpScreen'
 import RequestsListScreen from '../../screens/common/Requests'
 import { TurismoHomeScreen } from '../../screens/common/turismo/TurismoHomeScreen'
 import { ChooseAddressScreen } from '../../screens/common/solicitarServicos/ChooseAddressScreen'
+import { PontoTuristicosScreen } from '../../screens/common/turismo/PontosTuristicosScreen'
+import { DetalhesPontoTuristicoScreen } from '../../screens/common/turismo/DetalhesPontoTuristicoScreen'
 
 const BottomTab = createBottomTabNavigator<RootTabParamList>()
 
@@ -298,13 +300,20 @@ export function HomeNavigator() {
 			/>
 			<Stack.Screen
 				name='PontosTuristicos'
-				component={ComingSoon}
+				component={PontoTuristicosScreen}
 				options={{
 					title: 'Pontos Turísticos',
 					animation: 'none',
 				}}
 			/>
-
+			<Stack.Screen
+				name='DetalhesPontoTuristico'
+				component={DetalhesPontoTuristicoScreen}
+				options={{
+					title: 'Detalhes',
+					animation: 'none',
+				}}
+			/>
 			<Stack.Screen name='ComingSoon' component={PaginaEmConstrucao} />
 		</Stack.Navigator>
 	)
