@@ -57,7 +57,6 @@ export function CadastrarEmpresaScreen2() {
 	function checkIfFieldsAreFilled() {
 		if (
 			cadastrarEmpresaCtx.data['nomeDoEstabelecimento']?.trim() &&
-			cadastrarEmpresaCtx.data['telefoneParaContato']?.trim() &&
 			cadastrarEmpresaCtx.data['tipoDoEstabelecimento']?.trim()
 		) {
 			return true
@@ -147,7 +146,7 @@ export function CadastrarEmpresaScreen2() {
 						/>
 					</View>
 					<View style={styles.field}>
-						<Text style={styles.fieldLabel}>Telefone para Contato</Text>
+						<Text style={styles.fieldLabel}>{`Telefone para Contato (opcional)`}</Text>
 						<TextInput
 							style={styles.textInput}
 							placeholder='Digite aqui...'
