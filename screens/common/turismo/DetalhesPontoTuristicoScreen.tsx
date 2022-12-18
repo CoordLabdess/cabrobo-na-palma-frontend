@@ -39,8 +39,18 @@ export function DetalhesPontoTuristicoScreen({ route, navigation }: DetalhesPont
 					>
 						<Image style={styles.thumbnail} resizeMode='cover' source={{ uri: pt.thumbnail }} />
 					</View>
+					<View style={{ width: '100%', marginBottom: 10 }}>
+						<PrimaryButton title='Ver no mapa' onPress={() => setMapModal(true)} />
+					</View>
+					<Text
+						style={[
+							styles.description,
+							{ fontWeight: '600', width: '100%', lineHeight: 0, marginTop: 10, fontSize: 18 },
+						]}
+					>
+						Descrição
+					</Text>
 					<Text style={styles.description}>{pt.descricao}</Text>
-					<PrimaryButton title='Ver no mapa' onPress={() => setMapModal(true)} />
 				</ScrollView>
 			</View>
 			<MapModal
