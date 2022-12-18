@@ -82,7 +82,7 @@ export function EducacaoHomeScreen(props: ServiceScreenProps) {
 	}
 
 	return (
-		<View>
+		<>
 			<Header goBack title='Educação' />
 			<FlatList
 				keyboardShouldPersistTaps='handled'
@@ -136,7 +136,7 @@ export function EducacaoHomeScreen(props: ServiceScreenProps) {
 				}}
 				numColumns={1}
 			/>
-		</View>
+		</>
 	)
 }
 

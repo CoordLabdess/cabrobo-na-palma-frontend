@@ -84,7 +84,7 @@ export function SuaEmpresaAqui1(props: ServiceScreenProps) {
 	}
 
 	return (
-		<View>
+		<>
 			<Header goBack title='Sua Empresa Aqui' />
 			<FlatList
 				keyboardShouldPersistTaps='handled'
@@ -129,7 +129,7 @@ export function SuaEmpresaAqui1(props: ServiceScreenProps) {
 				}}
 				numColumns={1}
 			/>
-		</View>
+		</>
 	)
 }
 

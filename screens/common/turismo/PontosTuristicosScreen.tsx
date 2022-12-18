@@ -11,7 +11,7 @@ export function PontoTuristicosScreen() {
 	const navigation = useNavigation()
 
 	return (
-		<View>
+		<>
 			<Header goBack title='Pontos Turísticos' />
 			<ScrollView
 				keyboardShouldPersistTaps='handled'
@@ -38,7 +38,7 @@ export function PontoTuristicosScreen() {
 					)
 				})}
 			</ScrollView>
-		</View>
+		</>
 	)
 }
 
