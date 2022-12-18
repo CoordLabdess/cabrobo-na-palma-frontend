@@ -111,11 +111,11 @@ export function ServicesScreen2(props: ServiceScreenProps) {
 				</Column>
 			</ScrollView>
 			<BooleanModal
-				title='Iniciar mapa na localização atual?'
+				title='Usar minha localização atual?'
 				visible={chooseLocationModal}
 				cancelbuttonTitle='Não'
 				continueButtonTitle='Sim'
-				message='Você deseja iniciar no mapa na sua localização atual? Caso não, busque o local a partir do endereço informado.'
+				message='Você deseja iniciar no mapa na sua localização atual? Caso não, informe um endereço.'
 				onContinue={() => {
 					setChooseLocationModal(false)
 					navigation.navigate('SolicitarServicosForm1')
