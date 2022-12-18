@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from 'react'
+import { CategoriasDeEstabelecimentos } from '../types/Estabelecimento'
 import { Coords } from '../types/global'
 
 interface RegisterEnterpriseData {
@@ -6,7 +7,7 @@ interface RegisterEnterpriseData {
 	logradouro: string | null
 	nomeDoEstabelecimento: string | null
 	telefoneParaContato: string | null
-	tipoDoEstabelecimento: string | null
+	tipoDoEstabelecimento: CategoriasDeEstabelecimentos | null
 	pontoDeReferencia: string | null
 }
 

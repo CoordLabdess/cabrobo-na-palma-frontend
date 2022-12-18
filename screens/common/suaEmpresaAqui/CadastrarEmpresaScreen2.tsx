@@ -1,6 +1,8 @@
 import React, { useContext, useLayoutEffect, useState } from 'react'
-import { ScrollView, Text, View, StyleSheet, TextInput } from 'react-native'
+import { ScrollView, Text, View, StyleSheet, TextInput, Platform } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+import { Picker } from '@react-native-picker/picker'
+import { tiposEstabelecimentos } from '../../../data/estabelecimentos'
 
 import { FormStepsBar } from '../../../components/form/FormStepsBar'
 import { PrimaryButton } from '../../../components/ui/PrimaryButton'
@@ -122,7 +124,7 @@ export function CadastrarEmpresaScreen2() {
 							value={cadastrarEmpresaCtx.data.telefoneParaContato || ''}
 						/>
 					</View>
-					<View style={styles.field}>
+					{/* <View style={styles.field}>
 						<Text style={styles.fieldLabel}>Tipo de Estabelecimento</Text>
 						<TextInput
 							style={styles.textInput}
@@ -135,6 +137,38 @@ export function CadastrarEmpresaScreen2() {
 							}}
 							value={cadastrarEmpresaCtx.data.tipoDoEstabelecimento || ''}
 						/>
+					</View> */}
+					<View
+						style={[
+							styles.field,
+							{ height: Platform.OS === 'ios' ? 140 : 100, overflow: 'hidden' },
+						]}
+					>
+						<Text style={styles.fieldLabel}>Categoria de Estabelecimento</Text>
+						<View style={[{ flex: 1 }, styles.textInput]}>
+							<Picker
+								style={[
+									{ flex: 1 },
+									Platform.OS === 'ios' && {
+										flex: 1,
+										justifyContent: 'center',
+										overflow: 'hidden',
+									},
+								]}
+								selectedValue={cadastrarEmpresaCtx.data.tipoDoEstabelecimento}
+								onValueChange={itemValue =>
+									cadastrarEmpresaCtx.updateData({
+										...cadastrarEmpresaCtx.data,
+										tipoDoEstabelecimento: itemValue,
+									})
+								}
+							>
+								<Picker.Item label='Selecione uma categoria' value={null} />
+								{tiposEstabelecimentos.map(te => {
+									return <Picker.Item key={te.id} label={te.categoria} value={te.categoria} />
+								})}
+							</Picker>
+						</View>
 					</View>
 					<View style={styles.field}>
 						<Text style={styles.fieldLabel}>{'Ponto de Referência (opcional)'}</Text>

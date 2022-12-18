@@ -22,3 +22,8 @@ export type CategoriasDeEstabelecimentos =
 	| 'DOCERIA'
 	| 'PADARIA'
 	| 'FARMÁCIA'
+
+export interface TipoEstabelecimento {
+	id: number
+	categoria: CategoriasDeEstabelecimentos
+}
