@@ -8,19 +8,59 @@ import { useRegisterEnterprise } from '../../../store/CadastrarEmpresaContext'
 import { HTMLMapEmpresas } from '../../../components/HTMLMapEmpresas'
 import Header from '../../../components/common/Header'
 import { HTMLMap } from '../../../components/HTMLMap'
+import { GeocodeLocationToAddressData, locationToAddress } from '../../../utils/arcgis'
+import { BooleanModal } from '../../../components/modals/BooleanModal'
 
 export function CadastrarEmpresaScreen1() {
 	const navigation = useNavigation()
 	const cadastrarEmpresaCtx = useRegisterEnterprise()
 	const scrollViewRef = useRef<ScrollView>(null)
 	const [error, setError] = useState(false)
+	const [isLoading, setIsLoading] = useState(false)
 	const [lockedMap, setLockedMap] = useState(true)
+	const data = cadastrarEmpresaCtx.data
+	const [address, setAddress] = useState<GeocodeLocationToAddressData | null>(null)
+	const [confirmAddress, setConfirmAddress] = useState(false)
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
 			title: 'Cadastrar Empresa',
 		})
 	}, [])
+
+	async function handleContinue() {
+		if (!isLoading) {
+			if (data['coords']) {
+				setError(false)
+				setIsLoading(true)
+				await locationToAddress(data['coords'])
+					.then(res => {
+						setAddress(res)
+						setIsLoading(false)
+					})
+					.catch(err => {
+						setIsLoading(false)
+						console.log(err)
+					})
+			} else {
+				setConfirmAddress(false)
+				setError(true)
+			}
+		}
+	}
+
+	function handleConfirm() {
+		cadastrarEmpresaCtx.updateData({
+			...data,
+			logradouro: address?.address.Address as string | null,
+			endereco: address?.address.LongLabel as string | null,
+			cep: address?.address.Postal as string | null,
+			bairro: address?.address.District as string | null,
+			numero: address?.address.AddNum as string | null,
+		})
+		setAddress(null)
+		navigation.navigate('cadastrarEmpresa2')
+	}
 
 	return (
 		<>
@@ -120,8 +160,7 @@ export function CadastrarEmpresaScreen1() {
 						<PrimaryButton
 							onPress={() => {
 								if (cadastrarEmpresaCtx.data?.coords) {
-									setError(false)
-									navigation.navigate('cadastrarEmpresa2')
+									handleContinue()
 								} else {
 									setError(true)
 								}
@@ -131,6 +170,19 @@ export function CadastrarEmpresaScreen1() {
 					</View>
 				</Pressable>
 			</ScrollView>
+			{address && (
+				<BooleanModal
+					visible={address !== null}
+					title='Confirme o Endereço'
+					message={`${address.address.Match_addr} 
+				`}
+					onClose={() => setAddress(null)}
+					cancelbuttonTitle='Alterar'
+					continueButtonTitle='Confirmar'
+					onCancel={() => setAddress(null)}
+					onContinue={handleConfirm}
+				/>
+			)}
 		</>
 	)
 }

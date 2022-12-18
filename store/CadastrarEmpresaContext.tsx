@@ -5,6 +5,10 @@ import { Coords } from '../types/global'
 interface RegisterEnterpriseData {
 	coords: Coords | null
 	logradouro: string | null
+	bairro: string | null
+	numero: string | null
+	endereco: string | null
+	cep: string | null
 	nomeDoEstabelecimento: string | null
 	telefoneParaContato: string | null
 	tipoDoEstabelecimento: CategoriasDeEstabelecimentos | null
@@ -22,6 +26,10 @@ export const RegisterEnterpriseContext = createContext<RegisterEnterprise>({} as
 const cleanData: RegisterEnterpriseData = {
 	coords: null,
 	logradouro: null,
+	bairro: null,
+	numero: null,
+	endereco: null,
+	cep: null,
 	nomeDoEstabelecimento: null,
 	pontoDeReferencia: null,
 	telefoneParaContato: null,

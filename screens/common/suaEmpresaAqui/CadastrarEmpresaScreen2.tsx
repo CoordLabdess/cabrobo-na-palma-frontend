@@ -56,7 +56,6 @@ export function CadastrarEmpresaScreen2() {
 
 	function checkIfFieldsAreFilled() {
 		if (
-			cadastrarEmpresaCtx.data['logradouro']?.trim() &&
 			cadastrarEmpresaCtx.data['nomeDoEstabelecimento']?.trim() &&
 			cadastrarEmpresaCtx.data['telefoneParaContato']?.trim() &&
 			cadastrarEmpresaCtx.data['tipoDoEstabelecimento']?.trim()
@@ -88,12 +87,49 @@ export function CadastrarEmpresaScreen2() {
 					<View style={styles.field}>
 						<Text style={styles.fieldLabel}>Logradouro</Text>
 						<TextInput
-							style={styles.textInput}
-							placeholder='Digite aqui...'
+							editable={false}
+							style={[styles.textInput, { backgroundColor: COLORS.secondary200 }]}
+							placeholder='Não Informado'
 							onChangeText={text => {
 								cadastrarEmpresaCtx.updateData({ ...cadastrarEmpresaCtx.data, logradouro: text })
 							}}
 							value={cadastrarEmpresaCtx.data.logradouro || ''}
+						/>
+					</View>
+					<View style={styles.field}>
+						<Text style={styles.fieldLabel}>Bairro</Text>
+						<TextInput
+							editable={false}
+							style={[styles.textInput, { backgroundColor: COLORS.secondary200 }]}
+							placeholder='Não Informado'
+							onChangeText={text => {
+								cadastrarEmpresaCtx.updateData({ ...cadastrarEmpresaCtx.data, bairro: text })
+							}}
+							value={cadastrarEmpresaCtx.data.bairro || ''}
+						/>
+					</View>
+					<View style={styles.field}>
+						<Text style={styles.fieldLabel}>CEP</Text>
+						<TextInput
+							editable={false}
+							style={[styles.textInput, { backgroundColor: COLORS.secondary200 }]}
+							placeholder='Não Informado'
+							onChangeText={text => {
+								cadastrarEmpresaCtx.updateData({ ...cadastrarEmpresaCtx.data, cep: text })
+							}}
+							value={cadastrarEmpresaCtx.data.cep || ''}
+						/>
+					</View>
+					<View style={styles.field}>
+						<Text style={styles.fieldLabel}>Número</Text>
+						<TextInput
+							editable={false}
+							style={[styles.textInput, { backgroundColor: COLORS.secondary200 }]}
+							placeholder='Não Informado'
+							onChangeText={text => {
+								cadastrarEmpresaCtx.updateData({ ...cadastrarEmpresaCtx.data, numero: text })
+							}}
+							value={cadastrarEmpresaCtx.data.numero || ''}
 						/>
 					</View>
 					<View style={styles.field}>

@@ -46,6 +46,14 @@ export default function FirstMinorService1Form() {
 					<Column w='80%' space={4}>
 						{questions.map(({ label, alias }) => (
 							<TextInput
+								placeholder={
+									alias !== 'logradouro' &&
+									alias !== 'bairro' &&
+									alias !== 'cep' &&
+									alias !== 'numero'
+										? 'Digite aqui...'
+										: 'Não informado'
+								}
 								editable={
 									alias !== 'logradouro' &&
 									alias !== 'bairro' &&
