@@ -65,6 +65,7 @@ export function ServicesForm1Screen(props: ServicesForm1ScreenProps) {
 		updateData('logradouro', address?.address.Address)
 		updateData('bairro', address?.address.District)
 		updateData('cep', address?.address.Postal)
+		updateData('numero', address?.address.AddNum)
 		setAddress(null)
 		navigation.navigate('SolicitarServicosForm2')
 	}
