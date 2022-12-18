@@ -14,45 +14,43 @@ export function DetalhesPontoTuristicoScreen({ route, navigation }: DetalhesPont
 
 	return (
 		<>
-			<View>
-				<Header goBack title={pt.nome} />
-				<ScrollView
-					keyboardShouldPersistTaps='handled'
-					contentContainerStyle={{
-						flexGrow: 1,
-						justifyContent: 'flex-start',
-						paddingHorizontal: '5%',
+			<Header goBack title={pt.nome} />
+			<ScrollView
+				keyboardShouldPersistTaps='handled'
+				contentContainerStyle={{
+					flexGrow: 1,
+					justifyContent: 'flex-start',
+					paddingHorizontal: '5%',
+					alignItems: 'center',
+					paddingBottom: 20,
+				}}
+				alwaysBounceVertical={false}
+				showsVerticalScrollIndicator={false}
+			>
+				<View
+					style={{
+						width: '100%',
+						borderRadius: 10,
+						overflow: 'hidden',
 						alignItems: 'center',
-						paddingBottom: 20,
+						marginVertical: 20,
 					}}
-					alwaysBounceVertical={false}
-					showsVerticalScrollIndicator={false}
 				>
-					<View
-						style={{
-							width: '100%',
-							borderRadius: 10,
-							overflow: 'hidden',
-							alignItems: 'center',
-							marginVertical: 20,
-						}}
-					>
-						<Image style={styles.thumbnail} resizeMode='cover' source={{ uri: pt.thumbnail }} />
-					</View>
-					<View style={{ width: '100%', marginBottom: 10 }}>
-						<PrimaryButton title='Ver no mapa' onPress={() => setMapModal(true)} />
-					</View>
-					<Text
-						style={[
-							styles.description,
-							{ fontWeight: '600', width: '100%', lineHeight: 0, marginTop: 10, fontSize: 18 },
-						]}
-					>
-						Descrição
-					</Text>
-					<Text style={styles.description}>{pt.descricao}</Text>
-				</ScrollView>
-			</View>
+					<Image style={styles.thumbnail} resizeMode='cover' source={{ uri: pt.thumbnail }} />
+				</View>
+				<View style={{ width: '100%', marginBottom: 10 }}>
+					<PrimaryButton title='Ver no mapa' onPress={() => setMapModal(true)} />
+				</View>
+				<Text
+					style={[
+						styles.description,
+						{ fontWeight: '600', width: '100%', lineHeight: 0, marginTop: 10, fontSize: 18 },
+					]}
+				>
+					Descrição
+				</Text>
+				<Text style={styles.description}>{pt.descricao}</Text>
+			</ScrollView>
 			<MapModal
 				visible={mapModal}
 				title={pt.nome}
