@@ -110,7 +110,7 @@ export function HTMLMap(props: HTMLMapProps) {
 								'esri/widgets/BasemapToggle',
 							], (Map, MapView, FeatureLayer, Graphic, GraphicsLayer, Search, BasemapToggle) => {
 								const map = new Map({
-									basemap: 'topo-vector',
+									basemap: 'hybrid',
 								})
 				
 								const simpleMarkerSymbol = {
@@ -140,7 +140,7 @@ export function HTMLMap(props: HTMLMapProps) {
 
 								const basemapToggle = new BasemapToggle({
 									view: view,
-									nextBasemap: "hybrid"
+									nextBasemap: "streets"
 								 });
 								 view.ui.add(basemapToggle,"bottom-right");
 
