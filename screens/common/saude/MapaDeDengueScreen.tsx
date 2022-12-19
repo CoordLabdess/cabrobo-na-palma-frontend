@@ -38,6 +38,13 @@ export function MapaDeDengueScreen() {
 				<Text style={styles.title}>Mapa de calor dos casos de dengue no município</Text>
 			</Pressable>
 			<View style={{ width: '100%', height: Dimensions.get('window').height * 0.5 }}>
+				<HTMLMap
+					avoidChangeCoords
+					featuresURL={[
+						'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Casos_confirmados_de_Dengue_APP/FeatureServer/0',
+						'https://services3.arcgis.com/09SOnzI0u31UQEFZ/ArcGIS/rest/services/Casos_de_Dengue_APP/FeatureServer/0',
+					]}
+				/>
 				{lockedMap && (
 					<Pressable
 						onPress={() => setLockedMap(false)}
