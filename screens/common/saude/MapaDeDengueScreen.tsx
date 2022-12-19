@@ -38,7 +38,6 @@ export function MapaDeDengueScreen() {
 				<Text style={styles.title}>Mapa de calor dos casos de dengue no município</Text>
 			</Pressable>
 			<View style={{ width: '100%', height: Dimensions.get('window').height * 0.5 }}>
-				4 gtb gtb6b6b6b66bbbbbbbbbbbbbbbbbbt6g 666b
 				{lockedMap && (
 					<Pressable
 						onPress={() => setLockedMap(false)}
