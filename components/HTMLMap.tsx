@@ -131,6 +131,7 @@ export function HTMLMap(props: HTMLMapProps) {
 									map: map,
 									constraints: {
 										minZoom: 13,
+										rotationEnabled: false,
 									},
 									center: [${props.initialCoords ? props.initialCoords.longitude : -39.31}, ${
 						props.initialCoords ? props.initialCoords.latitude : -8.51
