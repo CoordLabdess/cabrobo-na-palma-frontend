@@ -1274,6 +1274,12 @@ export const allMinorServicesForm: MinorServiceForm[] = [
 								value: false,
 							},
 							{
+								label: 'Estrada de paralelepípedo',
+								alias: 'estradaDeParalelepipedo',
+								type: 'radioButton',
+								value: false,
+							},
+							{
 								label: 'Estrada de terra',
 								alias: 'estradaDeTerra',
 								type: 'radioButton',
